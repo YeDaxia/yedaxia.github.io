@@ -1,0 +1,693 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ApiDocs,PlayFramework," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Darcy's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API文档生成工具设计与实现">
+<meta property="og:url" content="https://yedaxia.github.io/ApiDocs-Design-And-For-PlayFramework/index.html">
+<meta property="og:site_name" content="Darcy's Blog">
+<meta property="og:description" content="我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。">
+<meta property="og:updated_time" content="2017-01-15T14:36:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="API文档生成工具设计与实现">
+<meta name="twitter:description" content="我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/ApiDocs-Design-And-For-PlayFramework/"/>
+
+
+  <title> API文档生成工具设计与实现 | Darcy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darcy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                API文档生成工具设计与实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-15T22:09:06+08:00" content="2017-01-15">
+              2017-01-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/ApiDocs-Design-And-For-PlayFramework/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="ApiDocs-Design-And-For-PlayFramework/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。<br><a id="more"></a></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>之前有在IDE端根据API文档生成相关接口的数据模型，这减少了客户端这边的工作量，具体可以看上一篇文章:<a href="https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/">Model代码插件开发</a>。后面想到如果直接让服务端订好接口的代码规范，那么就可以通过写个工具把API文档，Android和IOS的数据模型代码一并生成了，这样既减少了客户端的工作量，又能减少服务端人员的工作量(不用再去手工维护接口文档)。</p>
+<p>我们先来看看最终的效果:<a href="https://yedaxia.github.io/play-apidocs/">点击查看</a></p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><h2 id="服务端环境"><a href="#服务端环境" class="headerlink" title="服务端环境"></a>服务端环境</h2><p>目前服务端的API接口是通过<a href="https://www.playframework.com/documentation/1.4.x/home" target="_blank" rel="external">Play1.4版本</a>框架来写的，通过研究服务端的代码结构，不难知道它的路由是通过一个<code>conf/routes</code>配置文件来维护的，它的结构如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># api</div><div class="line">POST    /api/admin/auth    api.admin.AdminController.auth</div><div class="line">GET     /api/game/list     api.game.GameController.list</div><div class="line">GET     /api/messageList   api.MyController.messageList</div></pre></td></tr></table></figure>
+<p><code>#</code>是注释，一条路由从左到右分别是[请求方法,请求接口,具体调用所在类的方法]，结构非常清晰。</p>
+<p>我们来看一下具体某个接口代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Description</span> 消息列表接口</div><div class="line"> * <span class="doctag">@param</span> type 消息类型0是系统消息；1是回复我的；2是点赞我的；</div><div class="line"> * <span class="doctag">@param</span> page 页码 从1开始</div><div class="line"> * <span class="doctag">@author</span> yedaxia</div><div class="line"> */</div><div class="line"><span class="meta">@ApiResult</span>(name = MessageListResult.class)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">messageList</span><span class="params">(@Required <span class="keyword">int</span> type, @Required <span class="keyword">int</span> page)</span> </span>&#123;</div><div class="line">	renderJSON();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>方法的参数和请求的参数一致，注解是一些验证，如果有，表示该参数是必须要传的。</p>
+<h2 id="API描述信息"><a href="#API描述信息" class="headerlink" title="API描述信息"></a>API描述信息</h2><p>api是客户端和服务端通信的接口，一般是http或者https作为协议载体，主要包含了请求信息和返回的信息。</p>
+<p><strong>请求信息:</strong></p>
+<ul>
+<li>基本信息</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">接口作用描述</div><div class="line">接口作者: yedaxia</div><div class="line">method：POST</div><div class="line">url: api.github/updateUserinfo</div></pre></td></tr></table></figure>
+<ul>
+<li>参数列表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必需</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>true</td>
+<td>用户名</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回结果:</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"long //用户id"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"String //用户昵称"</span>,</div><div class="line">  <span class="attr">"gender"</span>: <span class="string">"int //用户性别（1：男；2：女;0：未知）"</span>,</div><div class="line">  <span class="attr">"avatar"</span>: <span class="string">"String //用户头像"</span>,</div><div class="line">  <span class="attr">"token"</span>: <span class="string">"String //用户token"</span>,</div><div class="line">  <span class="attr">"isNewUser"</span>: <span class="string">"int //是否是新用户"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>返回结果我们用json数据结构表示，这样在多层的数据结构中可读性更强，而且许多应用也是采用的json格式作为返回结果，我们在相应的字段后加入类型和相关的注释。有了这些信息之后，对于客户端开发人员来说就很清晰了，有问题也可以根据作者找到相关的后端人员。</p>
+<h2 id="建立关联关系"><a href="#建立关联关系" class="headerlink" title="建立关联关系"></a>建立关联关系</h2><ol>
+<li><p><code>基本信息</code> 可以读取<code>routes</code>的路由信息; <code>接口描述</code>读取方法上的<code>@Description</code>注释信息，<code>接口作者</code> 读取相关接口方法的<code>@author</code>注释。</p>
+</li>
+<li><p><code>参数列表</code>中的参数可以读取方法中参数，<code>参数名</code>和<code>类型</code>很容易就对应上，如果有注解<code>@Required</code>或者其他的就视为必传参数，相关注释读取<code>@param</code>注释，这些都和java的编程习惯保持一致。</p>
+</li>
+<li><p><code>返回结果</code>这个就不好直接知道了，通过协商，决定通过添加一个注解来完成，这可能也是唯一增加了服务端工作的一个地方，前面看到的<code>@ApiResult(name = MessageListResult.class)</code>就是我们定义返回结果了，<code>MessageListResult</code>是个简单的JavaBean对象，里面的每个字段和返回的字段一一对应。生成的结果应该支持数组或者列表，类的组合，继承等；每个字段都有类型和相关的注释信息。</p>
+</li>
+</ol>
+<h2 id="展示形式"><a href="#展示形式" class="headerlink" title="展示形式"></a>展示形式</h2><p>一开始是打算通过生成markdown的代码，后面发现从markdown转成html代码的几个java库生成效果不是特别理想，最后还是决定通过html模板来实现。</p>
+<p>每个<code>Controller</code>作为一个API集合，放在一个单独的文件中，通过锚点和目录的方式来实现方便的跳转。</p>
+<h1 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h1><p>最终的实现效果可以点击这里进行<a href="https://yedaxia.github.io/play-apidocs/">查看</a>，至此，我们API文档的完整性和规范性完全交给代码本身进行维护，并自动生成了相关客户端的数据模型代码，有效减少了大家的工作量，实施效果非常好。</p>
+<p>相关代码和例子已经上传到<a href="https://github.com/YeDaxia/Docs-For-PlayFramework" target="_blank" rel="external">github</a>了，由于当前只能支持<code>Play</code>框架，如果大家有兴趣可以提相关issue或者自己去研读代码，提交自己的实现，笔者有时间会考虑支持其他框架。</p>
+<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。虽然整个流程看起来已经比较顺畅了，但是在应付接口变化还需要进一步的努力，除了接口设计上的扩展性应该更好一些之外，在文档工具上后续会考虑加入ChangeLog。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://blog.csdn.net/viviju1989/article/details/8529453" target="_blank" rel="external">Java反射获取方法的参数名列表</a></li>
+<li><a href="https://github.com/apidoc/apidoc" target="_blank" rel="external">apidoc 开源项目</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ApiDocs/" rel="tag">#ApiDocs</a>
+          
+            <a href="/tags/PlayFramework/" rel="tag">#PlayFramework</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-Studio-ModelCodeGenerator/" rel="next" title="Android Studio的Model代码插件开发">
+                <i class="fa fa-chevron-left"></i> Android Studio的Model代码插件开发
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android-Learning-Team/" rel="prev" title="Android团队技术成长计划">
+                Android团队技术成长计划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="ApiDocs-Design-And-For-PlayFramework/"
+           data-title="API文档生成工具设计与实现" data-url="https://yedaxia.github.io/ApiDocs-Design-And-For-PlayFramework/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Darcy" />
+          <p class="site-author-name" itemprop="name">Darcy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计思路"><span class="nav-number">2.</span> <span class="nav-text">设计思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端环境"><span class="nav-number">2.1.</span> <span class="nav-text">服务端环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API描述信息"><span class="nav-number">2.2.</span> <span class="nav-text">API描述信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立关联关系"><span class="nav-number">2.3.</span> <span class="nav-text">建立关联关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#展示形式"><span class="nav-number">2.4.</span> <span class="nav-text">展示形式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现结果"><span class="nav-number">3.</span> <span class="nav-text">实现结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进一步思考"><span class="nav-number">4.</span> <span class="nav-text">进一步思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-11 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darcy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yedaxia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

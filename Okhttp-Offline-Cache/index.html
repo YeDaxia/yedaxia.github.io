@@ -1,0 +1,656 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="okhttp,okhttp缓存," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Darcy's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OkHttp离线缓存实现">
+<meta property="og:url" content="https://yedaxia.github.io/Okhttp-Offline-Cache/index.html">
+<meta property="og:site_name" content="Darcy's Blog">
+<meta property="og:description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
+<meta property="og:updated_time" content="2016-12-12T05:31:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OkHttp离线缓存实现">
+<meta name="twitter:description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/Okhttp-Offline-Cache/"/>
+
+
+  <title> OkHttp离线缓存实现 | Darcy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darcy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OkHttp离线缓存实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-12T13:25:36+08:00" content="2016-12-12">
+              2016-12-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Okhttp-Offline-Cache/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Okhttp-Offline-Cache/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。<br><a id="more"></a></p>
+<h1 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用:"></a>场景应用:</h1><p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。</p>
+<h1 id="OkHttp保存缓存的时机"><a href="#OkHttp保存缓存的时机" class="headerlink" title="OkHttp保存缓存的时机:"></a>OkHttp保存缓存的时机:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.HttpEngine:</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">maybeCache</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    InternalCache responseCache = Internal.instance.internalCache(client);</div><div class="line">    <span class="keyword">if</span> (responseCache == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Should we cache this response for this request?</span></div><div class="line">    <span class="keyword">if</span> (!CacheStrategy.isCacheable(userResponse, networkRequest)) &#123;</div><div class="line">      <span class="keyword">if</span> (HttpMethod.invalidatesCache(networkRequest.method())) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">          responseCache.remove(networkRequest);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          <span class="comment">// The cache cannot be written.</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Offer this request to the cache.</span></div><div class="line">    storeRequest = responseCache.put(stripBody(userResponse));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里我们可以看到OkHttp是否缓存请求结果其中的一个条件:<code>CacheStrategy.isCacheable()</code>, 看看这里面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.CacheStrategy:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCacheable</span><span class="params">(Response response, Request request)</span> </span>&#123;</div><div class="line">    <span class="comment">// Always go to network for uncacheable response codes (RFC 7231 section 6.1),</span></div><div class="line">    <span class="comment">// This implementation doesn't support caching partial content.</span></div><div class="line">    <span class="keyword">switch</span> (response.code()) &#123;</div><div class="line">      <span class="keyword">case</span> HTTP_OK:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_AUTHORITATIVE:</div><div class="line">      <span class="keyword">case</span> HTTP_NO_CONTENT:</div><div class="line">      <span class="keyword">case</span> HTTP_MULT_CHOICE:</div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_PERM:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_FOUND:</div><div class="line">      <span class="keyword">case</span> HTTP_BAD_METHOD:</div><div class="line">      <span class="keyword">case</span> HTTP_GONE:</div><div class="line">      <span class="keyword">case</span> HTTP_REQ_TOO_LONG:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_IMPLEMENTED:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_PERM_REDIRECT:</div><div class="line">        <span class="comment">// These codes can be cached unless headers forbid it.</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_TEMP:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_TEMP_REDIRECT:</div><div class="line">        <span class="comment">// These codes can only be cached with the right response headers.</span></div><div class="line">        <span class="comment">// http://tools.ietf.org/html/rfc7234#section-3</span></div><div class="line">        <span class="comment">// s-maxage is not checked because OkHttp is a private cache that should ignore s-maxage.</span></div><div class="line">        <span class="keyword">if</span> (response.header(<span class="string">"Expires"</span>) != <span class="keyword">null</span></div><div class="line">            || response.cacheControl().maxAgeSeconds() != -<span class="number">1</span></div><div class="line">            || response.cacheControl().isPublic()</div><div class="line">            || response.cacheControl().isPrivate()) &#123;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Fall-through.</span></div><div class="line"></div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="comment">// All other codes cannot be cached.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// A 'no-store' directive on request or response prevents the response from being cached.</span></div><div class="line">    <span class="keyword">return</span> !response.cacheControl().noStore() &amp;&amp; !request.cacheControl().noStore();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们接着回到<code>maybeCache()</code>方法往下看,最后一句<code>responseCache.put(stripBody(userResponse))</code>将会调用下面的方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache:</div><div class="line"><span class="function"><span class="keyword">private</span> CacheRequest <span class="title">put</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    String requestMethod = response.request().method();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (HttpMethod.invalidatesCache(response.request().method())) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        remove(response.request());</div><div class="line">      &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        <span class="comment">// The cache cannot be written.</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!requestMethod.equals(<span class="string">"GET"</span>)) &#123;</div><div class="line">      <span class="comment">// Don't cache non-GET responses. We're technically allowed to cache</span></div><div class="line">      <span class="comment">// HEAD requests and some POST requests, but the complexity of doing</span></div><div class="line">      <span class="comment">// so is high and the benefit is low.</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (OkHeaders.hasVaryAll(response)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Entry entry = <span class="keyword">new</span> Entry(response);</div><div class="line">    DiskLruCache.Editor editor = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      editor = cache.edit(urlToKey(response.request()));</div><div class="line">      <span class="keyword">if</span> (editor == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//缓存写入文件:</span></div><div class="line">      entry.writeTo(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CacheRequestImpl(editor);</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">      abortQuietly(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总的来说就是只要是<code>Get</code>请求,同时请求和响应头部<code>CacheControl</code>没有设置<code>no store</code>就会把请求结果缓存了。</p>
+<h1 id="OkHttp保存缓存的格式"><a href="#OkHttp保存缓存的格式" class="headerlink" title="OkHttp保存缓存的格式:"></a>OkHttp保存缓存的格式:</h1><p>url所对应的缓存文件名规则,不难看出是url的md5值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Util.md5Hex(request.url().toString())</div></pre></td></tr></table></figure></p>
+<p>保存的代码很明显就在<code>entry.writeTo</code>里面啦。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache.Entry:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(DiskLruCache.Editor editor)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">  <span class="comment">//.0结尾的文件</span></div><div class="line">  BufferedSink sink = Okio.buffer(editor.newSink(ENTRY_METADATA));</div><div class="line"></div><div class="line">  sink.writeUtf8(url);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeUtf8(requestMethod);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(varyHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = varyHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(varyHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(varyHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  sink.writeUtf8(<span class="keyword">new</span> StatusLine(protocol, code, message).toString());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(responseHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = responseHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(responseHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(responseHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (isHttps()) &#123;</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	sink.writeUtf8(handshake.cipherSuite().javaName());</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	writeCertList(sink, handshake.peerCertificates());</div><div class="line">	writeCertList(sink, handshake.localCertificates());</div><div class="line">	<span class="comment">// The handshake’s TLS version is null on HttpsURLConnection and on older cached responses.</span></div><div class="line">	<span class="keyword">if</span> (handshake.tlsVersion() != <span class="keyword">null</span>) &#123;</div><div class="line">	  sink.writeUtf8(handshake.tlsVersion().javaName());</div><div class="line">	  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	&#125;</div><div class="line">  &#125;</div><div class="line">  sink.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们打开相应的缓存目录看一下，果然其中包含了以url的md5值作为文件名的一系列文件，还有一个<code>journal</code>文件，这个文件和DiskLruCache缓存有关，我们这里不展开分析。我们看一下.0和.1文件的内容吧，其实.0里面的东西从上面的代码已经可以知道就是和请求和响应头部的一些信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">http://www.infoq.com/cn/articles/etags</div><div class="line">GET</div><div class="line">2</div><div class="line">Accept-Encoding: gzip</div><div class="line">User-Agent: okhttp/3.2.0</div><div class="line">HTTP/1.1 200 OK</div><div class="line">15</div><div class="line">Date: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Server: Apache</div><div class="line">Sniply-Options: BLOCK</div><div class="line">Set-Cookie: JSESSIONID=7FFBDE344A66525EE343DCCC6DD23692; Path=/</div><div class="line">Last-Modified: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Vary: Accept-Encoding,User-Agent</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Accept-Ranges: none</div><div class="line">Access-Control-Allow-Origin: http://www.infoq.com</div><div class="line">Content-Encoding: gzip</div><div class="line">Connection: close</div><div class="line">Transfer-Encoding: chunked</div><div class="line">Content-Type: text/html;charset=utf-8</div><div class="line">OkHttp-Sent-Millis: 1481467841870</div><div class="line">OkHttp-Received-Millis: 1481467844412</div></pre></td></tr></table></figure></p>
+<p>md5(url).1文件很容易猜到就是response本身的内容了。读者可以自行验证，另外如果response是gzip的格式，那么这里缓存的直接就是gzip后的内容了。</p>
+<h1 id="OkHttp离线缓存实现"><a href="#OkHttp离线缓存实现" class="headerlink" title="OkHttp离线缓存实现:"></a>OkHttp离线缓存实现:</h1><p>通过以上的分析，我们的思路就很清晰了，其实就是一开始就判断是否连接网络，如果是否就直接返回缓存的内容，根据response的头部是否是<code>Content-Encoding: gzip</code>来确定是否需要解压后返回；如果请求服务端失败，那么也返回缓存的内容。</p>
+<p>通过分析OkHttp的InterceptorChain实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.RealCall.ApplicationInterceptorChain:</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">proceed</span><span class="params">(Request request)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">      <span class="comment">// If there's another interceptor in the chain, call that.</span></div><div class="line">      <span class="keyword">if</span> (index &lt; client.interceptors().size()) &#123;</div><div class="line">        Interceptor.Chain chain = <span class="keyword">new</span> ApplicationInterceptorChain(index + <span class="number">1</span>, request, forWebSocket);</div><div class="line">        Interceptor interceptor = client.interceptors().get(index);</div><div class="line">        Response interceptedResponse = interceptor.intercept(chain);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (interceptedResponse == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"application interceptor "</span> + interceptor</div><div class="line">              + <span class="string">" returned null"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> interceptedResponse;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">// No more interceptors. Do HTTP.</span></div><div class="line">      <span class="keyword">return</span> getResponse(request, forWebSocket);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不难发现只要通过一个Interceptor返回response即可中断http后续的请求动作，如果服务端错误，response将会返回相应的错误码，总结最后的实现代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheControlInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mCacheDir;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ILog mLog;</div><div class="line"></div><div class="line">    CacheControlInterceptor(ILog log, String cacheDir)&#123;</div><div class="line">        <span class="keyword">this</span>.mCacheDir = cacheDir;</div><div class="line">        <span class="keyword">this</span>.mLog = log;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        Request request = chain.request();</div><div class="line">        <span class="keyword">boolean</span> networkAvail = NetUtils.isNetworkAvailable();</div><div class="line">        <span class="keyword">if</span> (!networkAvail)&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        Response networkResponse = chain.proceed(request);</div><div class="line">        <span class="keyword">if</span>(networkAvail &amp;&amp; !networkResponse.isSuccessful())&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> networkResponse;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Response <span class="title">getCacheResponse</span><span class="params">(Request request)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(!<span class="string">"get"</span>.equalsIgnoreCase(request.method())|| mCacheDir == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String urlMd5 = Util.md5Hex(request.url().url().toString());</div><div class="line">        File headerCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".0"</span>);</div><div class="line">        Response.Builder cacheResponseBuilder = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (headerCacheFile.exists()) &#123;</div><div class="line">            cacheResponseBuilder = <span class="keyword">new</span> Response.Builder();</div><div class="line">            cacheResponseBuilder.request(request);</div><div class="line">            readCacheResponseHeaders(headerCacheFile,cacheResponseBuilder);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(cacheResponseBuilder != <span class="keyword">null</span>)&#123;</div><div class="line">            Response cacheResponse = cacheResponseBuilder.build();</div><div class="line">            File bodyCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".1"</span>);</div><div class="line">            Source cacheSource;</div><div class="line">            <span class="keyword">if</span>(!<span class="string">"gzip"</span>.equalsIgnoreCase(cacheResponse.header(<span class="string">"Content-Encoding"</span>)))&#123;</div><div class="line">                cacheSource = Okio.source(bodyCacheFile);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                cacheSource = <span class="keyword">new</span> GzipSource(Okio.source(bodyCacheFile));</div><div class="line">            &#125;</div><div class="line">            RealResponseBody responseBody = <span class="keyword">new</span> RealResponseBody(cacheResponse.headers(),Okio.buffer(cacheSource));</div><div class="line">            <span class="keyword">return</span> cacheResponse.newBuilder().body(responseBody).build();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readCacheResponseHeaders</span><span class="params">(File headerCacheFile,Response.Builder responseBuilder)</span> </span>&#123;</div><div class="line">        BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(headerCacheFile)));</div><div class="line">            String lineText;</div><div class="line">            <span class="keyword">int</span> code = <span class="number">0</span>;</div><div class="line">            <span class="keyword">boolean</span> isHeaderBegin = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span>((lineText = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(isHeaderBegin)&#123;</div><div class="line">                    <span class="keyword">int</span> sepIndex = lineText.indexOf(<span class="string">":"</span>);</div><div class="line">                    String headerName = lineText.substring(<span class="number">0</span>,sepIndex);</div><div class="line">                    String headerVal = lineText.substring(sepIndex + <span class="number">1</span>).trim();</div><div class="line">                    responseBuilder.addHeader(headerName,headerVal);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(code != <span class="number">0</span> &amp;&amp; NumberUtils.parseInt(lineText,<span class="number">0</span>) != <span class="number">0</span>)&#123;</div><div class="line">                    isHeaderBegin = <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(lineText.startsWith(<span class="string">"HTTP/1.1"</span>))&#123;</div><div class="line">                    code = Integer.valueOf(lineText.substring(lineText.indexOf(<span class="string">" "</span>)).trim());</div><div class="line">                    responseBuilder.protocol(Protocol.HTTP_1_1);</div><div class="line">                    responseBuilder.code(code);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            IOUtils.closeSilently(reader);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li>http缓存: <a href="https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn" target="_blank" rel="external">https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn</a></li>
+<li>tomcat中对客户端的缓存机制: <a href="http://blog.csdn.net/liweisnake/article/details/8524179" target="_blank" rel="external">http://blog.csdn.net/liweisnake/article/details/8524179</a></li>
+<li>Okhttp Interceptors: <a href="https://github.com/square/okhttp/wiki/Interceptors" target="_blank" rel="external">https://github.com/square/okhttp/wiki/Interceptors</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/okhttp/" rel="tag">#okhttp</a>
+          
+            <a href="/tags/okhttp缓存/" rel="tag">#okhttp缓存</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-MediaExtractor-And-MediaCodec/" rel="next" title="利用MediaExtractor和MediaCodec实现音频编解码和混音">
+                <i class="fa fa-chevron-left"></i> 利用MediaExtractor和MediaCodec实现音频编解码和混音
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android-Studio-ModelCodeGenerator/" rel="prev" title="Android Studio的Model代码插件开发">
+                Android Studio的Model代码插件开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Okhttp-Offline-Cache/"
+           data-title="OkHttp离线缓存实现" data-url="https://yedaxia.github.io/Okhttp-Offline-Cache/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Darcy" />
+          <p class="site-author-name" itemprop="name">Darcy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#场景应用"><span class="nav-number">1.</span> <span class="nav-text">场景应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp保存缓存的时机"><span class="nav-number">2.</span> <span class="nav-text">OkHttp保存缓存的时机:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp保存缓存的格式"><span class="nav-number">3.</span> <span class="nav-text">OkHttp保存缓存的格式:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp离线缓存实现"><span class="nav-number">4.</span> <span class="nav-text">OkHttp离线缓存实现:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-11 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darcy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yedaxia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
