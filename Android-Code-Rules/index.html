@@ -92,7 +92,7 @@
 <meta property="og:url" content="https://yedaxia.github.io/Android-Code-Rules/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
 <meta property="og:description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
-<meta property="og:updated_time" content="2017-03-23T06:47:19.000Z">
+<meta property="og:updated_time" content="2017-03-23T06:56:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android代码规范指北">
 <meta name="twitter:description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
@@ -307,7 +307,7 @@
       
         <p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
 <a id="more"></a>
-<ol>
+<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><ol>
 <li>高度有秩序的代码具有天然的美感，写代码的人心情会好很多。</li>
 <li>减低开发人员流动带来的风险。</li>
 <li>对于新人能更好地理解和参与到开发中。</li>
@@ -386,22 +386,22 @@
 </table>
 <ul>
 <li>【推荐】实用工具类命名成 <code>**Utils</code> 、<code>**Helper</code> 。</li>
-<li>【推荐】<code>EventBus</code> 发布的事件名命名成以 <code>Event</code> 结尾，比如 <code>LoginEvent</code> 。</li>
+<li>【推荐】EventBus 发布的事件名命名成以 Event 结尾，比如 <code>LoginEvent</code> 。</li>
 <li>【推荐】如果使用到了设计模式，建议在类名中体现出具体模式。</li>
 <li>【推荐】接口一般以大写 <code>I</code> 开头，回调的接口一般为 <code>Listener</code> 或者 <code>Callback</code> 结尾。</li>
 </ul>
 <h2 id="方法命名"><a href="#方法命名" class="headerlink" title="方法命名"></a>方法命名</h2><ul>
-<li>【强制】POJO 类中的任何布尔类型的变量，都不要加 is，否则部分框架解析会引起序列化错误。<br>  ==反例==：定义为基本数据类型<code>boolean isSuccess;</code>的属性，它的方法也是 isSuccess() ，部分Json 框架在反向解析的时候，“以为”对应的属性名称是 success，导致属性获取不到，进而抛出异常。</li>
-<li>【强制】<code>EventBus</code> 回调的方法必须和相关 Event 类一致，比如LoginEvent类的方法签名为: <code>public final void onLoginEvent(LoginEvent e);</code></li>
+<li>【强制】POJO 类中的任何布尔类型的变量，都不要加 is，否则部分框架解析会引起序列化错误。<br>  ==反例==：定义为基本数据类型 boolean isSuccess; 的属性，它的方法也是 isSuccess() ，部分Json 框架在反向解析的时候，“以为”对应的属性名称是 success，导致属性获取不到，进而抛出异常。</li>
+<li>【强制】EventBus 回调的方法必须和相关 Event 类一致，比如LoginEvent类的方法签名为: <code>public final void onLoginEvent(LoginEvent e);</code></li>
 <li>【推荐】客户端逻辑大部分是基于事件驱动的，应该以<code>on</code>来开头，比如登录按钮的点击可以是：<code>onLoginClick()</code>。</li>
 </ul>
 <h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><ul>
 <li>【强制】常量命名全部大写，单词间用下划线隔开。</li>
 <li>【强制】局部变量和一般类变量以小写字母开头。</li>
-<li>【推荐】<code>static</code>类变量名称以<code>s</code>开头，<code>final</code>类变量用<code>f</code>开头。</li>
-<li>【推荐】组件相关的可以用【全部首字母+名字】的命名，比如id是<code>R.id.tv_login</code>的控件名称是：<code>tvLogin</code>。</li>
+<li>【推荐】static 类变量名称以<code>s</code>开头，final类变量用<code>f</code>开头。</li>
+<li>【推荐】组件相关的可以用【全部首字母+名字】的命名，比如 id 是 R.id.tv_login 的控件名称是：<code>tvLogin</code>。</li>
 </ul>
-<h2 id="资源文件命名"><a href="#资源文件命名" class="headerlink" title="资源文件命名"></a>资源文件命名</h2><p>除了<code>attr</code> 和  <code>style</code> 资源遵循驼峰命名之外，其他资源的命名统一用小写字母+下划线的风格。</p>
+<h2 id="资源文件命名"><a href="#资源文件命名" class="headerlink" title="资源文件命名"></a>资源文件命名</h2><p>除了 attr 和 style 资源遵循驼峰命名之外，其他资源的命名统一用小写字母+下划线的风格。</p>
 <ul>
 <li>【推荐】<strong>布局文件命名</strong>：</li>
 </ul>
@@ -498,27 +498,29 @@
 <ul>
 <li>【推荐】<strong>drawable命名</strong>：</li>
 </ul>
+<blockquote>
 <ol>
-<li><strong>xml定义图形</strong>：参考图片命名规则，在以上基础上添加辨识，比如: <code>bg_login_shape</code>,  <code>bg_login_vector</code>, <code>bg_login_shape_primary</code>。</li>
-<li><strong>多个状态drawable</strong>: 命名为         【××_selector】，比如<code>bg_login_selector</code>。</li>
+<li>xml定义图形：参考图片命名规则，在以上基础上添加辨识，比如: bg_login_shape,  bg_login_vector, bg_login_shape_primary。</li>
+<li>多个状态drawable: 命名为         【××_selector】，比如 bg_login_selector。</li>
 </ol>
+</blockquote>
 <ul>
 <li>【推荐】<strong>颜色命名</strong>：</li>
 </ul>
 <blockquote>
 <ol>
-<li>单色：命名规则为【类型+名字+状态(如果有)】，我把用到颜色的元素类型做了个归类，分别是字体「text」，背景「bg」，线「line」，还是一些常规色(比如白色，透明等)，正例：<code>text_black_primary</code>, <code>bg_black_selected</code>, <code>line_orange</code>。</li>
-<li>字体selector颜色：【名字 + text_selector】 ,比如<code>tab_item_text_selector</code></li>
+<li>单色：命名规则为【类型+名字+状态(如果有)】，我把用到颜色的元素类型做了个归类，分别是字体「text」，背景「bg」，线「line」，还是一些常规色(比如白色，透明等)，正例：text_black_primary, bg_black_selected, line_orange。</li>
+<li>字体selector颜色：【名字 + text_selector】 ,比如 tab_item_text_selector。</li>
 </ol>
 </blockquote>
 <ul>
-<li>【推荐】<strong>尺寸命名</strong>：通用性比较强和需要适配的在<code>dimens.xml</code>中设置，一般的可以在代码中直接写。</li>
+<li>【推荐】<strong>尺寸命名</strong>：通用性比较强和需要适配的在 dimens.xml 中设置，一般的可以在代码中直接写。</li>
 </ul>
 <blockquote>
 <ol>
 <li>字体大小： 【font_××】，××和设计稿保持一致的换算。</li>
-<li>间距：组件外用【××_margin】，组件内用【××_padding】, 例子: <code>app_left_margin</code>。</li>
-<li>控件大小：【宽度:××_width】，【高度:××_height】，其他【××_size】，例子: <code>login_button_height</code>。</li>
+<li>间距：组件外用【××_margin】，组件内用【××_padding】, 例子: app_left_margin。</li>
+<li>控件大小：【宽度:××_width】，【高度:××_height】，其他【××_size】，例子: login_button_height。</li>
 </ol>
 <ul>
 <li>【推荐】<strong>其他</strong>：文字不得直接写到 java 代码和 layout 代码里面，应该抽离到相关的 strings 资源文件中；menu 和动画资源命名不需要加前缀或者后缀，能表达意图即可，因为 R.menu 或者 R.anim 已经携带了相关的信息。</li>
@@ -566,7 +568,7 @@
 <p>正例：下例中实参的 “a” ,后边必须要有一个空格。<code>method(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</code>; </p>
 </blockquote>
 <ul>
-<li><p>【强制】在 <code>if/else/for/while/do</code> 语句中必须使用大括号，即使只有一行代码，避免使用下面的形式：<code>if (condition) statements</code>;</p>
+<li><p>【强制】在 if/else/for/while/do 语句中必须使用大括号，即使只有一行代码，避免使用下面的形式：<code>if (condition) statements</code>;</p>
 </li>
 <li><p>【推荐】推荐尽量少用 else， if-else 的方式可以改写成：</p>
 </li>
@@ -835,7 +837,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命名规约"><span class="nav-number">1.</span> <span class="nav-text">命名规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的命名"><span class="nav-number">1.1.</span> <span class="nav-text">类的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法命名"><span class="nav-number">1.2.</span> <span class="nav-text">方法命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量命名"><span class="nav-number">1.3.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源文件命名"><span class="nav-number">1.4.</span> <span class="nav-text">资源文件命名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码风格"><span class="nav-number">2.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编码规约"><span class="nav-number">3.</span> <span class="nav-text">编码规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OOP-规约"><span class="nav-number">3.1.</span> <span class="nav-text">OOP 规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量定义"><span class="nav-number">3.2.</span> <span class="nav-text">常量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">3.3.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码注释"><span class="nav-number">3.4.</span> <span class="nav-text">代码注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-实践"><span class="nav-number">3.5.</span> <span class="nav-text">Android 实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料参考"><span class="nav-number">3.6.</span> <span class="nav-text">资料参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#意义"><span class="nav-number">1.</span> <span class="nav-text">意义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命名规约"><span class="nav-number">2.</span> <span class="nav-text">命名规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的命名"><span class="nav-number">2.1.</span> <span class="nav-text">类的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法命名"><span class="nav-number">2.2.</span> <span class="nav-text">方法命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量命名"><span class="nav-number">2.3.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源文件命名"><span class="nav-number">2.4.</span> <span class="nav-text">资源文件命名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码风格"><span class="nav-number">3.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编码规约"><span class="nav-number">4.</span> <span class="nav-text">编码规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OOP-规约"><span class="nav-number">4.1.</span> <span class="nav-text">OOP 规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量定义"><span class="nav-number">4.2.</span> <span class="nav-text">常量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">4.3.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码注释"><span class="nav-number">4.4.</span> <span class="nav-text">代码注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-实践"><span class="nav-number">4.5.</span> <span class="nav-text">Android 实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料参考"><span class="nav-number">4.6.</span> <span class="nav-text">资料参考</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
