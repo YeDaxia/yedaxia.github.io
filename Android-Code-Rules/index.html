@@ -1,0 +1,993 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android代码规范," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Darcy's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android代码规范指北">
+<meta property="og:url" content="https://yedaxia.github.io/Android-Code-Rules/index.html">
+<meta property="og:site_name" content="Darcy's Blog">
+<meta property="og:description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
+<meta property="og:updated_time" content="2017-03-23T06:47:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android代码规范指北">
+<meta name="twitter:description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/Android-Code-Rules/"/>
+
+
+  <title> Android代码规范指北 | Darcy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darcy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android代码规范指北
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T14:12:28+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Android-Code-Rules/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Code-Rules/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家提出根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
+<a id="more"></a>
+<ol>
+<li>高度有秩序的代码具有天然的美感，写代码的人心情会好很多。</li>
+<li>减低开发人员流动带来的风险。</li>
+<li>对于新人能更好地理解和参与到开发中。</li>
+<li>更好的可维护性。</li>
+<li>随之带来更好的产品质量和开发效率提升。</li>
+</ol>
+<h1 id="命名规约"><a href="#命名规约" class="headerlink" title="命名规约"></a>命名规约</h1><ul>
+<li>【强制】所有编程相关命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。</li>
+<li>【强制】所有编程相关的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。</li>
+<li>【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从驼峰形式。</li>
+</ul>
+<h2 id="类的命名"><a href="#类的命名" class="headerlink" title="类的命名"></a>类的命名</h2><ul>
+<li>【强制】抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾。</li>
+<li>【强制】相关组件类应该以组件名作为后缀以便识别。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>命名规则</th>
+<th>命名举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>×××Activity</td>
+<td>MainActivity</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>×××Fragment</td>
+<td>HomeFragment</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td>×××Dialog</td>
+<td>AlertDialog</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>×××Service</td>
+<td>DownloadService</td>
+</tr>
+<tr>
+<td>BroadcastReceiver</td>
+<td>×××Receiver</td>
+<td>LoginReceiver</td>
+</tr>
+<tr>
+<td>ContentProvider</td>
+<td>×××Provider</td>
+<td>UserProvider</td>
+</tr>
+<tr>
+<td>Adapter</td>
+<td>名字+类型+Adapter</td>
+<td>ArticleListAdapter, ImageGridAdapter</td>
+</tr>
+<tr>
+<td>AsyncTask</td>
+<td>×××Task</td>
+<td>LoginTask</td>
+</tr>
+<tr>
+<td>Handler</td>
+<td>名字+所在线程+Handler</td>
+<td>HomeUIHandler, CompressWorkHandler</td>
+</tr>
+<tr>
+<td>ViewHolder</td>
+<td>VH + 名字</td>
+<td>VHArticle</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】实用工具类命名成 <code>**Utils</code> 、<code>**Helper</code> 。</li>
+<li>【推荐】<code>EventBus</code> 发布的事件名命名成以 <code>Event</code> 结尾，比如 <code>LoginEvent</code> 。</li>
+<li>【推荐】如果使用到了设计模式，建议在类名中体现出具体模式。</li>
+<li>【推荐】接口一般以大写 <code>I</code> 开头，回调的接口一般为 <code>Listener</code> 或者 <code>Callback</code> 结尾。</li>
+</ul>
+<h2 id="方法命名"><a href="#方法命名" class="headerlink" title="方法命名"></a>方法命名</h2><ul>
+<li>【强制】POJO 类中的任何布尔类型的变量，都不要加 is，否则部分框架解析会引起序列化错误。<br>  ==反例==：定义为基本数据类型<code>boolean isSuccess;</code>的属性，它的方法也是 isSuccess() ，部分Json 框架在反向解析的时候，“以为”对应的属性名称是 success，导致属性获取不到，进而抛出异常。</li>
+<li>【强制】<code>EventBus</code> 回调的方法必须和相关 Event 类一致，比如LoginEvent类的方法签名为: <code>public final void onLoginEvent(LoginEvent e);</code></li>
+<li>【推荐】客户端逻辑大部分是基于事件驱动的，应该以<code>on</code>来开头，比如登录按钮的点击可以是：<code>onLoginClick()</code>。</li>
+</ul>
+<h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><ul>
+<li>【强制】常量命名全部大写，单词间用下划线隔开。</li>
+<li>【强制】局部变量和一般类变量以小写字母开头。</li>
+<li>【推荐】<code>static</code>类变量名称以<code>s</code>开头，<code>final</code>类变量用<code>f</code>开头。</li>
+<li>【推荐】组件相关的可以用【全部首字母+名字】的命名，比如id是<code>R.id.tv_login</code>的控件名称是：<code>tvLogin</code>。</li>
+</ul>
+<h2 id="资源文件命名"><a href="#资源文件命名" class="headerlink" title="资源文件命名"></a>资源文件命名</h2><p>除了<code>attr</code> 和  <code>style</code> 资源遵循驼峰命名之外，其他资源的命名统一用小写字母+下划线的风格。</p>
+<ul>
+<li>【推荐】<strong>布局文件命名</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>布局类型</th>
+<th>命名规则</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>activity_×××</td>
+<td>HomeActivity 对应 activity_home</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td>dlg_×××</td>
+<td>LoginDialog 对应 dlg_login</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>frag_×××</td>
+<td>HomeFragment 对应 frag_home</td>
+</tr>
+<tr>
+<td>页面标题</td>
+<td>title_×××</td>
+<td>title_main</td>
+</tr>
+<tr>
+<td>列表Footer</td>
+<td>footer_×××</td>
+<td>footer_article</td>
+</tr>
+<tr>
+<td>列表Header</td>
+<td>header_×××</td>
+<td>header_article</td>
+</tr>
+<tr>
+<td>列表的Item</td>
+<td>item_×××</td>
+<td>item_article</td>
+</tr>
+<tr>
+<td>可重用嵌入布局</td>
+<td>include_ ×××</td>
+<td>include_navagator</td>
+</tr>
+<tr>
+<td>分割线</td>
+<td>line_+颜色+大小</td>
+<td>line_gray_1px</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】<strong>id命名</strong>：截取相关组件首个字母作为开头，然后以下划线作为分割。比如【TextView：tv_name】。</li>
+<li>【推荐】<strong>图片命名</strong>：【类别+名称+状态(如果有)】，根据图片的用途可以分类为图标「ic」，背景「bg」，前景「fg」(比较少用到)，图片「img」(比如引导图，开机页面)，如果有多个状态用同一张图，那么首选声明为 【××_selected】 。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常状态</td>
+<td>ic_login_primary</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>ic_login_checked</td>
+</tr>
+<tr>
+<td>pressed</td>
+<td>ic_login_pressed</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>ic_login_selected</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>ic_login_disable </td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】<strong>drawable命名</strong>：</li>
+</ul>
+<ol>
+<li><strong>xml定义图形</strong>：参考图片命名规则，在以上基础上添加辨识，比如: <code>bg_login_shape</code>,  <code>bg_login_vector</code>, <code>bg_login_shape_primary</code>。</li>
+<li><strong>多个状态drawable</strong>: 命名为         【××_selector】，比如<code>bg_login_selector</code>。</li>
+</ol>
+<ul>
+<li>【推荐】<strong>颜色命名</strong>：</li>
+</ul>
+<blockquote>
+<ol>
+<li>单色：命名规则为【类型+名字+状态(如果有)】，我把用到颜色的元素类型做了个归类，分别是字体「text」，背景「bg」，线「line」，还是一些常规色(比如白色，透明等)，正例：<code>text_black_primary</code>, <code>bg_black_selected</code>, <code>line_orange</code>。</li>
+<li>字体selector颜色：【名字 + text_selector】 ,比如<code>tab_item_text_selector</code></li>
+</ol>
+</blockquote>
+<ul>
+<li>【推荐】<strong>尺寸命名</strong>：通用性比较强和需要适配的在<code>dimens.xml</code>中设置，一般的可以在代码中直接写。</li>
+</ul>
+<blockquote>
+<ol>
+<li>字体大小： 【font_××】，××和设计稿保持一致的换算。</li>
+<li>间距：组件外用【××_margin】，组件内用【××_padding】, 例子: <code>app_left_margin</code>。</li>
+<li>控件大小：【宽度:××_width】，【高度:××_height】，其他【××_size】，例子: <code>login_button_height</code>。</li>
+</ol>
+<ul>
+<li>【推荐】<strong>其他</strong>：文字不得直接写到 java 代码和 layout 代码里面，应该抽离到相关的 strings 资源文件中；menu 和动画资源命名不需要加前缀或者后缀，能表达意图即可，因为 R.menu 或者 R.anim 已经携带了相关的信息。</li>
+</ul>
+</blockquote>
+<h1 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h1><ul>
+<li>【强制】大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果<br>是非空代码块则：</li>
+</ul>
+<blockquote>
+<ol>
+<li>左大括号前不换行。</li>
+<li>左大括号后换行。</li>
+<li>右大括号前换行。</li>
+<li>右大括号后还有 else 等代码则不换行；表示终止右大括号后必须换行。</li>
+</ol>
+</blockquote>
+<ul>
+<li>【强制】 左括号和后一个字符之间不出现空格；同样，右括号和前一个字符之间也不出现空格; 代码块缩进 4 个空格,如果使用 tab 缩进，请设置成 1 个 tab 为 4 个空格。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">    <span class="comment">// 缩进 4 个空格</span></div><div class="line">    String say = <span class="string">"hello"</span>;</div><div class="line">    <span class="comment">// 运算符的左右必须有一个空格</span></div><div class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内 f 与左括号，1 与右括号不需要空格</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</div><div class="line">        System.out.println(say);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</div><div class="line">        System.out.println(<span class="string">"world"</span>);</div><div class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"ok"</span>);</div><div class="line">    <span class="comment">// 右大括号做为结束，必须换行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】任何运算符左右必须加一个空格。</li>
+</ul>
+<blockquote>
+<p>说明：运算符包括赋值运算符 =、逻辑运算符 &amp;&amp;、加减乘除符号、三目运行符等。</p>
+</blockquote>
+<ul>
+<li>【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。</li>
+<li>【强制】单行字符数限制不超过 120 个，超出需要换行，换行时，遵循如下原则：</li>
+</ul>
+<blockquote>
+<ol>
+<li>换行时相对上一行缩进 4 个空格。</li>
+<li>运算符与下文一起换行。</li>
+<li>方法调用的点符号与下文一起换行。</li>
+<li>在多个参数超长，逗号后进行换行。</li>
+<li>在括号前不要换行，见反例。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，换行缩进 4 个空格，并且方法前的点符号一起换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…</div><div class="line">    .append(<span class="string">"huang"</span>);</div><div class="line"></div><div class="line">反例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，不要在括号前换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…append</div><div class="line">    (<span class="string">"huang"</span>);</div><div class="line"><span class="comment">//参数很多的方法调用也超过 120 个字符，逗号后才是换行处</span></div><div class="line">method(args1, args2, args3, ...</div><div class="line">    , argsX);</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。</li>
+</ul>
+<blockquote>
+<p>正例：下例中实参的 “a” ,后边必须要有一个空格。<code>method(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</code>; </p>
+</blockquote>
+<ul>
+<li><p>【强制】在 <code>if/else/for/while/do</code> 语句中必须使用大括号，即使只有一行代码，避免使用下面的形式：<code>if (condition) statements</code>;</p>
+</li>
+<li><p>【推荐】推荐尽量少用 else， if-else 的方式可以改写成：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">     …</div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125; </div><div class="line">说明：如果使用要 `<span class="keyword">if</span>-<span class="keyword">else</span> <span class="keyword">if</span>-<span class="keyword">else</span>` 方式表达逻辑，【强制】请勿超过 <span class="number">3</span> 层，超过请使用状态设计模式。</div></pre></td></tr></table></figure>
+<ul>
+<li>【推荐】循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量，进行不必要的 <code>try-catch</code> 操作（这个 try-catch 是否可以移至循环体外），遍历长度的提前获取；避免使用 <code>foreach</code>，迭代器，尽量采用下标的形式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">(for i=0 ;i &lt;size; ++i)</div><div class="line"></div><div class="line">反例：</div><div class="line">for(int i : items)</div></pre></td></tr></table></figure>
+<h1 id="编码规约"><a href="#编码规约" class="headerlink" title="编码规约"></a>编码规约</h1><h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><ul>
+<li>【强制】过时的类或者方法不要使用，覆盖的方法要用<code>Override</code>声明。这样当写错覆盖方法时可以得到编译错误提示。</li>
+<li>【强制】Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals。</li>
+<li>【强制】单例或者实用类构造方法应该声明为 private。</li>
+<li>【强制】如果用到 FastJson 来解析数据，必须在相关 getter 和 setter 方法上添加注解。</li>
+<li>【推荐】声明为 public 的方法要对参数进行校验，private 的可以不用。</li>
+<li>【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读。</li>
+<li>【推荐】 类内方法定义顺序依次是：公有方法或保护方法 &gt; 私有方法 &gt; getter/setter 方法。</li>
+<li>【推荐】循环体内，字符串的联接方式，使用 StringBuilder 的 append 方法进行扩展。</li>
+<li>【推荐】类成员与方法访问控制从严：</li>
+</ul>
+<blockquote>
+<ol>
+<li>如果不允许外部直接通过 new 来创建对象，那么构造方法必须是 private。</li>
+<li>工具类不允许有 public 或 default 构造方法。</li>
+<li>类非 static 成员变量并且与子类共享，必须是 protected。</li>
+<li>类非 static 成员变量并且仅在本类使用，必须是 private。</li>
+<li>类 static 成员变量如果仅在本类使用，必须是 private。</li>
+<li>若是 static 成员变量，必须考虑是否为 final。</li>
+<li>类成员方法只供类内部调用，必须是 private。</li>
+<li>类成员方法只对继承类公开，那么限制为 protected。</li>
+</ol>
+</blockquote>
+<h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ul>
+<li>【强制】不允许出现任何魔法值（即未经定义的常量）直接出现在代码中。</li>
+<li>【强制】long 或者 Long 初始赋值时，必须使用大写的 L，不能是小写的 l ，小写容易跟数字 1 混淆，造成误解。</li>
+<li>【推荐】不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存<br>相关的常量放在类：CacheConsts 下；系统配置相关的常量放在类：ConfigConsts 下。</li>
+<li>【推荐】避免使用枚举类型，用<code>@IntDef</code>进行替代。</li>
+</ul>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
+<li><p>【强制】捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">void setServerPort(String value) &#123;</div><div class="line">    try &#123;</div><div class="line">        serverPort = Integer.parseInt(value);</div><div class="line">    &#125; catch (NumberFormatException e) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【强制】异常不要用来做流程控制，条件控制，因为异常的处理效率比条件分支低。</p>
+</li>
+<li>【强制】finally 块必须对资源对象、流对象进行关闭，有异常也要做 try-catch。</li>
+<li>【强制】不能在 finally 块中使用 return，finally 块中的 return 返回后方法结束执行，不会再执行 try 块中的 return 语句。</li>
+<li>【强制】捕获异常与抛异常，必须是完全匹配，或者捕获异常是抛异常的父类。==说明==：如果预期抛的是绣球，实际接到的是铅球，就会产生意外情况。</li>
+<li><p>【推荐】不要偷懒直接捕获顶级异常，这样会把Runtime的异常也囊括进来，要明确每种异常出现的场景被给出相应的处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">try &#123;</div><div class="line">    someComplicatedIOFunction();        // may throw IOException</div><div class="line">    someComplicatedParsingFunction();   // may throw ParsingException</div><div class="line">    someComplicatedSecurityFunction();  // may throw SecurityException</div><div class="line">    // phew, made it all the way</div><div class="line">&#125; catch (Exception e) &#123;                 // I&apos;ll just catch all exceptions</div><div class="line">    handleError();                      // with one generic handler!</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【推荐】除非有充分的理由，不要捕获 Java 类库中定义的继承自 RuntimeException 的运行时异常类，如：IndexOutOfBoundsException / NullPointerException，这类异常由程序员预检查来规避，保证程序健壮性。</p>
+</li>
+</ul>
+<h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><ul>
+<li>【强制】类、类属性、类方法的注释必须使用 javadoc 规范，使用/<em>*内容</em>/格式，不得使用//xxx 方式。</li>
+<li>【强制】所有的抽象方法（包括接口中的方法）必须要用 javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能。</li>
+<li>【强制】所有的类都必须添加创建者信息。</li>
+<li><p>【强制】对那些临时性的、短期的、够棒但不完美的代码，请使用TODO注释。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// <span class="doctag">TODO:</span> Change this to use a flag instead of a constant.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>【强制】方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释使用/<em> </em>/注释，注意与代码对齐。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">// 打个招呼</span></div><div class="line">    sayHello();</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">      这里保持移动，</div><div class="line">      并不断对步数加1</div><div class="line">     */</div><div class="line">    keepMove();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【参考】好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的一<br>个极端：过多过滥的注释，代码的逻辑一旦修改，修改注释是相当大的负担。</p>
+</li>
+</ul>
+<h2 id="Android-实践"><a href="#Android-实践" class="headerlink" title="Android 实践"></a>Android 实践</h2><ul>
+<li>【强制】避免对同个 View 进行多次查找，应该缓存起来，比如列表中使用的 ViewHolder 模式。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setEnabled(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】不要使用 System.out.println() ，printf() 打印日志。</li>
+<li>【强制】调试日志要有个开关，在正式发布的时候不能出现应用日志打印。</li>
+<li>【强制】读文件，数据库，网络请求等一些耗时操作必须在异步线程中执行。</li>
+<li>【强制】不能粗暴的把 Activity, Service 对象或者一些比较重的对象直接声明为 static 变量，如果必须这么做，请注意它们的生命周期变化。</li>
+<li>【强制】每引入一个第三方库，要检查是否加入相关的混淆规则。</li>
+<li>【强制】自定义属性动画 (ObjectAnimator) 的 getter 和 setter 方法时要注意防止混淆。</li>
+<li>【强制】在 (Activity,Fragment) 组件退出时要保证相关资源得到释放，比如 EventBus 订阅的事件，注册的广播，轮播任务等。</li>
+<li>【强制】对于Api Level大于等于23的设备要进行运行时权限检查。</li>
+<li>【推荐】在使用 Thread，Handler，AsyncTask，Timer，耗时的匿名回调类，内部类时，考虑声明成静态的内部类，并且弱引用或者软引用来处理相关的大对象，并且要注意生命周期的变化，避免出现内存泄漏问题。</li>
+<li>【推荐】利用 TextView 的<code>drawableLeft</code>等来减少 ImageView 的使用。</li>
+<li>【推荐】通过使用 RelativeLayout 或者 ConstraintLayout 来减少布局的层次。</li>
+<li>【推荐】在 <code>findViewById</code> 尽可能选取一个比较近的父节点来减少查找时间。</li>
+<li>【推荐】Bundle 中的常量 Key 值统一在一个文件中，而不是直接在 Activity 或者 Fragment 中，比如 BundleKeys 文件中。</li>
+<li>【推荐】可滑动列表复用的 ViewHolder 对象中，对于一些事件对象应该尽可能地复用。</li>
+<li>【推荐】对隐式 Intent 的运行时调用 <code>resolveActivity</code> 进行检查保护。</li>
+<li>【推荐】使用 NotificationCompat 兼容包来处理消息通知。</li>
+<li>【推荐】延迟创建没有用到的对象，比如 Adapter 的列表对象，应该在请求数据取到之后再去创建，而不是提前创建好。</li>
+<li>【推荐】使用 ArrayMap，Sparse×× 系列对象来减少内存消耗和避免AutoBoxing。</li>
+<li>【推荐】更新列表局部数据避免粗暴地调用 Adapter.notifyDataSetChanged，应该只更新变化的部分。</li>
+<li>【推荐】用 @Nullable, @NonNull, @IdRes, @MainThread 等Support Annotations注解来增强代码的编译期检查和可读性。</li>
+<li>【参考】如果不用<code>getColor(int id, Theme theme)</code>等相关方法，至少使用 ContextCompat 来获取相关 Color 或者图片资源。</li>
+<li>【参考】尽可能通过 Fragment 来实现视图层，Activity 只是负责嵌入和管理。</li>
+<li>【参考】通过 Picasso，Glide 等开源组件去加载和缓存你的图片。</li>
+</ul>
+<h2 id="资料参考"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考</h2><ol>
+<li><a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a></li>
+<li><a href="http://source.android.com/source/code-style.html" target="_blank" rel="external">Android Code Style Rules</a></li>
+<li><a href="http://blog.nimbledroid.com/2016/05/23/memory-leaks-zh.html" target="_blank" rel="external">常见的八种导致 APP 内存泄漏的问题</a></li>
+<li><a href="http://hukai.me/android-dev-patterns/" target="_blank" rel="external">Android开发最佳实践</a></li>
+<li><a href="http://www.cnblogs.com/whoislcj/p/5677917.html" target="_blank" rel="external">Android Support Annotations</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android代码规范/" rel="tag">#Android代码规范</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-Learning-Team/" rel="next" title="Android团队技术成长计划">
+                <i class="fa fa-chevron-left"></i> Android团队技术成长计划
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Android-Code-Rules/"
+           data-title="Android代码规范指北" data-url="https://yedaxia.github.io/Android-Code-Rules/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Darcy" />
+          <p class="site-author-name" itemprop="name">Darcy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命名规约"><span class="nav-number">1.</span> <span class="nav-text">命名规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的命名"><span class="nav-number">1.1.</span> <span class="nav-text">类的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法命名"><span class="nav-number">1.2.</span> <span class="nav-text">方法命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量命名"><span class="nav-number">1.3.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源文件命名"><span class="nav-number">1.4.</span> <span class="nav-text">资源文件命名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码风格"><span class="nav-number">2.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编码规约"><span class="nav-number">3.</span> <span class="nav-text">编码规约</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OOP-规约"><span class="nav-number">3.1.</span> <span class="nav-text">OOP 规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量定义"><span class="nav-number">3.2.</span> <span class="nav-text">常量定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">3.3.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码注释"><span class="nav-number">3.4.</span> <span class="nav-text">代码注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-实践"><span class="nav-number">3.5.</span> <span class="nav-text">Android 实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料参考"><span class="nav-number">3.6.</span> <span class="nav-text">资料参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-11 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darcy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yedaxia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
