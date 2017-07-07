@@ -1,0 +1,646 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网页爬虫," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Darcy's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录网页爬虫注意的几个问题">
+<meta property="og:url" content="https://yedaxia.github.io/SomeWebSpiderProblem/index.html">
+<meta property="og:site_name" content="Darcy's Blog">
+<meta property="og:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+<meta property="og:updated_time" content="2017-07-07T11:43:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录网页爬虫注意的几个问题">
+<meta name="twitter:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/SomeWebSpiderProblem/"/>
+
+
+  <title> 记录网页爬虫注意的几个问题 | Darcy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darcy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                记录网页爬虫注意的几个问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-07T19:38:35+08:00" content="2017-07-07">
+              2017-07-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/SomeWebSpiderProblem/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="SomeWebSpiderProblem/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
+<a id="more"></a>
+<h1 id="设置合理的user-agent"><a href="#设置合理的user-agent" class="headerlink" title="设置合理的user-agent"></a>设置合理的user-agent</h1><p>一些站点会把这个当作很基本的过滤条件，我们就不碰壁了，直接找个浏览器粘贴一个，有些文章介绍用一些爬虫的<code>user-agent</code>，但是对方可能会有相关的爬虫服务器的 iplist，不过这种情况不多见，可以试一下。</p>
+<h1 id="设置合理的爬取间隔"><a href="#设置合理的爬取间隔" class="headerlink" title="设置合理的爬取间隔"></a>设置合理的爬取间隔</h1><p>过于频繁的流量很容易被监控到，当然除了一些没人管的站点，通常请求ip会被对方禁用一段时间，严重的可能会拉入黑名单，这就浪费掉一个 ip 地址了。如果你不是很急的话，我一般设置个 1 到 10 秒的随机访问间隔，单线程执行，慢慢爬。一般来说很多站点都能接受这样的方式，也不会给对方运维人员造成压力，如果还有限制同个 ip 的访问次数，那我们还有代理招。</p>
+<h1 id="需要登录权限"><a href="#需要登录权限" class="headerlink" title="需要登录权限"></a>需要登录权限</h1><p>有登录就有注册，以前很多注册是需要验证邮箱，通过SMTP协议读取邮件内容实现自动化是个思路，前提你也要有很多邮箱地址，牛逼的你可以自己搭建个邮件服务器，要多少有多少。现在很多是通过手机号码的验证码了，这个就麻烦了，首先要有很多设备插很多sim卡接收短信，然后还要在这些设备上把数据传到你运行的那台机子解析出验证码才能把整个流程自动化。反正我是没试过，一般我都是手工注册几个。</p>
+<p>登录的话就会简单一些，把用户名和密码post上去之后根据服务端返回的<code>Set-Cookie</code>设置好相关请求头就行了，甚至有些框架都帮你处理好了。如果需要验证码的话，出门左拐去购买破解验证码的接口或者自己实现吧，拿到凭证后就可以在相关页面里面横冲直撞了。当然，你也可以像我一样手动在浏览器上登录，拿到<code>Set-Cookie</code>之后在进行后面的操作。</p>
+<h1 id="增量爬取"><a href="#增量爬取" class="headerlink" title="增量爬取"></a>增量爬取</h1><p>如果爬的内容非常多，你永远也不知道在什么时候就 GameOver 了，因此一定要保存好你的进度，通常来说抓取工作都很重，抓到半天然后从头开始，It sucks ! 多写一点代码换来的好处是值得的。</p>
+<h1 id="代理魔法好"><a href="#代理魔法好" class="headerlink" title="代理魔法好"></a>代理魔法好</h1><p>关于拉内容，这里介绍的是终极大招了。有了代理服务器，你就相当于找到了多个帮你干活的小弟，而且还是远程指挥，被封了也不会影响到你的本尊。</p>
+<p>代理的来源：你可以自己用工具去扫描全网找到可用的免费代理，也可以像笔者一样偷懒去购买一些可用的代理。</p>
+<p>代理的使用策略：你可能拥有了便宜甚至免费的代理地址，但是这里面很多可能都没法使用，或者现在能用，待会就不能用了，因此在使用之前应该测试一下，及时移除不能用的地址，提高效率。另外，注意不要用一个代理地址连续范围，笔者的策略一般是每个请求顺序换一个代理地址，如果数量足够多的前提下，你可以尽可能地提升你的爬取线程或者进程数，由于每个 ip 的访问间隔足够长，这样也不会被封 ip 。</p>
+<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="external">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
+<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="external">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抓取信息其实是个攻与防的过程，总结规律，多测试和践行你的想法，找到合适的策略。最后，善用工具，但行好事哈～</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="external">webmagic</a></li>
+<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="external">jsoup</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网页爬虫/" rel="tag">#网页爬虫</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android-RichEditor-And-NativeHtml/" rel="next" title="Android原生简易图文编辑器和展示实现">
+                <i class="fa fa-chevron-left"></i> Android原生简易图文编辑器和展示实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="SomeWebSpiderProblem/"
+           data-title="记录网页爬虫注意的几个问题" data-url="https://yedaxia.github.io/SomeWebSpiderProblem/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Darcy" />
+          <p class="site-author-name" itemprop="name">Darcy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的user-agent"><span class="nav-number">1.</span> <span class="nav-text">设置合理的user-agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的爬取间隔"><span class="nav-number">2.</span> <span class="nav-text">设置合理的爬取间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要登录权限"><span class="nav-number">3.</span> <span class="nav-text">需要登录权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量爬取"><span class="nav-number">4.</span> <span class="nav-text">增量爬取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理魔法好"><span class="nav-number">5.</span> <span class="nav-text">代理魔法好</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容解析"><span class="nav-number">6.</span> <span class="nav-text">内容解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax异步内容"><span class="nav-number">7.</span> <span class="nav-text">Ajax异步内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-11 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Darcy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yedaxia"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
