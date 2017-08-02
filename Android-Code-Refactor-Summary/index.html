@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="网页爬虫," />
+  <meta name="keywords" content="代码重构," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+<meta name="description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录网页爬虫注意的几个问题">
-<meta property="og:url" content="https://yedaxia.github.io/SomeWebSpiderProblem/index.html">
+<meta property="og:title" content="代码重构的一点总结">
+<meta property="og:url" content="https://yedaxia.github.io/Android-Code-Refactor-Summary/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
-<meta property="og:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
-<meta property="og:updated_time" content="2017-07-07T11:43:32.000Z">
+<meta property="og:description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
+<meta property="og:updated_time" content="2017-08-02T11:54:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录网页爬虫注意的几个问题">
-<meta name="twitter:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+<meta name="twitter:title" content="代码重构的一点总结">
+<meta name="twitter:description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="https://yedaxia.github.io/SomeWebSpiderProblem/"/>
+  <link rel="canonical" href="https://yedaxia.github.io/Android-Code-Refactor-Summary/"/>
 
 
-  <title> 记录网页爬虫注意的几个问题 | Darcy's Blog </title>
+  <title> 代码重构的一点总结 | Darcy's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +258,7 @@
             
             
               
-                记录网页爬虫注意的几个问题
+                代码重构的一点总结
               
             
           </h1>
@@ -270,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-07T19:38:35+08:00" content="2017-07-07">
-              2017-07-07
+            <time itemprop="dateCreated" datetime="2017-08-02T14:12:28+08:00" content="2017-08-02">
+              2017-08-02
             </time>
           </span>
 
@@ -281,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/SomeWebSpiderProblem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="SomeWebSpiderProblem/" itemprop="commentsCount"></span>
+                <a href="/Android-Code-Refactor-Summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Code-Refactor-Summary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -305,23 +305,31 @@
       
 
       
-        <p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
-<a id="more"></a>
-<h1 id="设置合理的user-agent"><a href="#设置合理的user-agent" class="headerlink" title="设置合理的user-agent"></a>设置合理的user-agent</h1><p>一些站点会把这个当作很基本的过滤条件，我们就不碰壁了，直接找个浏览器粘贴一个，有些文章介绍用一些爬虫的<code>user-agent</code>，但是对方可能会有相关的爬虫服务器的 iplist，不过这种情况不多见，可以试一下。</p>
-<h1 id="设置合理的爬取间隔"><a href="#设置合理的爬取间隔" class="headerlink" title="设置合理的爬取间隔"></a>设置合理的爬取间隔</h1><p>过于频繁的流量很容易被监控到，当然除了一些没人管的站点，通常请求ip会被对方禁用一段时间，严重的可能会拉入黑名单，这就浪费掉一个 ip 地址了。如果你不是很急的话，我一般设置个 1 到 10 秒的随机访问间隔，单线程执行，慢慢爬。一般来说很多站点都能接受这样的方式，也不会给对方运维人员造成压力，如果还有限制同个 ip 的访问次数，那我们还有代理招。</p>
-<h1 id="需要登录权限"><a href="#需要登录权限" class="headerlink" title="需要登录权限"></a>需要登录权限</h1><p>有登录就有注册，以前很多注册是需要验证邮箱，通过SMTP协议读取邮件内容实现自动化是个思路，前提你也要有很多邮箱地址，牛逼的你可以自己搭建个邮件服务器，要多少有多少。现在很多是通过手机号码的验证码了，这个就麻烦了，首先要有很多设备插很多sim卡接收短信，然后还要在这些设备上把数据传到你运行的那台机子解析出验证码才能把整个流程自动化。反正我是没试过，一般我都是手工注册几个。</p>
-<p>登录的话就会简单一些，把用户名和密码post上去之后根据服务端返回的<code>Set-Cookie</code>设置好相关请求头就行了，甚至有些框架都帮你处理好了。如果需要验证码的话，出门左拐去购买破解验证码的接口或者自己实现吧，拿到凭证后就可以在相关页面里面横冲直撞了。当然，你也可以像我一样手动在浏览器上登录，拿到<code>Set-Cookie</code>之后在进行后面的操作。</p>
-<h1 id="增量爬取"><a href="#增量爬取" class="headerlink" title="增量爬取"></a>增量爬取</h1><p>如果爬的内容非常多，你永远也不知道在什么时候就 GameOver 了，因此一定要保存好你的进度，通常来说抓取工作都很重，抓到半天然后从头开始，It sucks ! 多写一点代码换来的好处是值得的。</p>
-<h1 id="代理魔法好"><a href="#代理魔法好" class="headerlink" title="代理魔法好"></a>代理魔法好</h1><p>关于拉内容，这里介绍的是终极大招了。有了代理服务器，你就相当于找到了多个帮你干活的小弟，而且还是远程指挥，被封了也不会影响到你的本尊。</p>
-<p>代理的来源：你可以自己用工具去扫描全网找到可用的免费代理，也可以像笔者一样偷懒去购买一些可用的代理。</p>
-<p>代理的使用策略：你可能拥有了便宜甚至免费的代理地址，但是这里面很多可能都没法使用，或者现在能用，待会就不能用了，因此在使用之前应该测试一下，及时移除不能用的地址，提高效率。另外，注意不要用一个代理地址连续范围，笔者的策略一般是每个请求顺序换一个代理地址，如果数量足够多的前提下，你可以尽可能地提升你的爬取线程或者进程数，由于每个 ip 的访问间隔足够长，这样也不会被封 ip 。</p>
-<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="external">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
-<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="external">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抓取信息其实是个攻与防的过程，总结规律，多测试和践行你的想法，找到合适的策略。最后，善用工具，但行好事哈～</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="external">webmagic</a></li>
-<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="external">jsoup</a></li>
+        <p>重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。<br><a id="more"></a></p>
+<p>这个总结比较晚了，快相隔一年了，总想挤点什么出来写一下，一方面是避免让自己懒下来，另一方面也是迫使自己复盘，思考这个过程中哪些地方做得还Ok，哪些地方做的不好。</p>
+<p>不少公司初期的项目为了快速和低成本开发产品，一开始可能会找外包或者开发能力一般的开发人员来完成，等公司业务上去了，这时候也欠了一屁股的技术债，很幸运，我刚好就当了一回接盘侠。</p>
+<p>初接手项目，闻到坏代码的味道，不要急于作出改变，重构是一件需要小心翼翼进行的一件事情，你的每一点改动都会给QA的童鞋带来额外的工作量，尽管你觉得没有问题。所以，第一步要做的就是先把整体的情况先摸个底，先把问题暴露出来，制定好你初步的重构方案。在这个过程中，你可能要先默默的利用空闲时间做好方案，毕竟可能还有很多业务代码要写的，你不得不忍受先在原来的框架上把当前的工作完成。</p>
+<p>在我审视整个项目的时候，我发现存在有如下的问题：</p>
+<ol>
+<li>多个已经不在维护的第三方库，尤其是网络库，没有进行二次封装，耦合度非常高；</li>
+<li>sdk版本也近一年没有进行更新过；</li>
+<li>一些库使用方法不恰当，可能会带来内存泄漏和组件状态不正确(比如所在的 Activity 已经销毁)导致的崩溃问题；</li>
+<li>有不少重复性很高的代码散落在各处；</li>
+<li>变量名和方法名有些随意，驼峰和下划线风格并存；</li>
+<li>逻辑过于冗长的方法，比如和 H5 页面的协议处理，近 1K 行的 <code>if else</code>；</li>
+<li>没有考虑一些边界条件，比如请求失败重试，没有数据的情况；</li>
+<li>存在不少的魔数，往往在一些关键的逻辑里面，涉及到很多状态的变化处理。</li>
+<li>没有懒加载用户还不需要的资源，页面 overdraw 的情况严重等；</li>
+<li>还有一些情况暂时回想不起来，总之情况比较恶劣，骂人的冲动都有。</li>
 </ol>
+<p>整理好问题和写好初步的重构方案之后，接下来就可以找你的老大去聊这个事情了，一般来说都会得到支持，这样也可以让上面知道你在埋头苦干的时候是在干嘛，当时的想法是想推翻重建的，做法就是一个新的项目工程和一个旧的并行开发，有新的开发任务就先在旧的工程上开发，然后新的工程就逐步赶上和替代，最后一次性把新的 app 交付给 QA 进行一次从头到尾的测试，当时评估这样应该会比在原来的基础上改耗费的时间要更少一些。但很快发现这样做行不通，一方面需求在不断变化，引起的变化两边工程都要改动；另外在开发进度上会和 iOS 端很难同步。所以很快不得改变了思路，整合新旧的代码，然后在同一条工程线上进行重构，这样一来，必然就多了很多整合的工作，重构变成了一个抽丝剥茧的过程，没那么痛快了，但好处就是每一步做的工作，都可以被看见。</p>
+<p>既然是想改善代码，那肯定要先阻断烂代码再被添加进来，因此，第一件事要先建立起代码的相关规范，有可能的话，要尽可能加入 Code Review 这一流程来驱动规范的落实。重构的思路是从底层往高层，从变化少到变化频繁，比如底层的网络请求、图片缓存处理，这是变化少的部分，而页面和相关逻辑就是变化频繁的部分，从底层到高层好理解，从变化少到变化多则是对应经常变化的需求，或许在下个版本你就可以顺便把它重新做一遍，原来的代码彻底删除掉了。这里分享一部分具体的做法，可能对你有启发：</p>
+<ol>
+<li>在改写网络层的时候，这次通过策略模式来分离了网络请求过程和数据解析过程，这样不管以后是用 okhttp 还是 volley ，是 Json 还是 Protocol Buffers 结构的数据，喜欢用 gson 还是 fastjson ， 都只需要修改少量的代码，而且对上层调用没有任何影响。另外，由于新和旧的网络库不一样，为了减少 jar 包的数量，决定对旧的接口进行完全的兼容，但底层用的还是新的网络库。改写这一层后，对于新的代码就用新的接口，以前的就可以等待合适的时机再进行替换了。</li>
+<li>这个 app 很多混合开发的地方，很多 H5 页面的点击需要调用起原生的方法，由于自定义的跳转协议数量非常多，原来的处理方法已经超过近 1K 行的代码，这样必然导致阅读和修改困难的问题，这里我采用了大家熟悉的状态模式把相关职责分散到不同的类里面了。</li>
+<li>很多页面都有相似的过程，比如从从数据加载到加载失败处理，刷新和加载更多等，这些可以通过模板方法把相关的逻辑封装到基类里面，然后让子类去实现变化的部分，比如不同的视图和数据的绑定，可以大大减少代码量。</li>
+</ol>
+<p>还有一些技巧已经回忆不起来了，整个重构过程的彻底完成花了差不多半年的时间，期间经历了好几个版本的迭代。从效果来看，重构后带来的好处是显著的：首先提升了今后的开发效率，拥有了更好的可维护性，其次 bug 的数量和崩溃率也有了大幅度的好转，最后得益于各种库的升级和优化，app 的性能也得到了不少的提升。</p>
 
       
     </div>
@@ -344,7 +352,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网页爬虫/" rel="tag">#网页爬虫</a>
+            <a href="/tags/代码重构/" rel="tag">#代码重构</a>
           
         </div>
       
@@ -353,17 +361,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android-RichEditor-And-NativeHtml/" rel="next" title="Android原生简易图文编辑器和展示实现">
-                <i class="fa fa-chevron-left"></i> Android原生简易图文编辑器和展示实现
+              <a href="/SomeWebSpiderProblem/" rel="next" title="记录网页爬虫注意的几个问题">
+                <i class="fa fa-chevron-left"></i> 记录网页爬虫注意的几个问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Android-Code-Refactor-Summary/" rel="prev" title="代码重构的一点总结">
-                代码重构的一点总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -389,8 +393,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="SomeWebSpiderProblem/"
-           data-title="记录网页爬虫注意的几个问题" data-url="https://yedaxia.github.io/SomeWebSpiderProblem/">
+      <div class="ds-thread" data-thread-key="Android-Code-Refactor-Summary/"
+           data-title="代码重构的一点总结" data-url="https://yedaxia.github.io/Android-Code-Refactor-Summary/">
       </div>
     
   </div>
@@ -492,7 +496,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的user-agent"><span class="nav-number">1.</span> <span class="nav-text">设置合理的user-agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的爬取间隔"><span class="nav-number">2.</span> <span class="nav-text">设置合理的爬取间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要登录权限"><span class="nav-number">3.</span> <span class="nav-text">需要登录权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量爬取"><span class="nav-number">4.</span> <span class="nav-text">增量爬取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理魔法好"><span class="nav-number">5.</span> <span class="nav-text">代理魔法好</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容解析"><span class="nav-number">6.</span> <span class="nav-text">内容解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax异步内容"><span class="nav-number">7.</span> <span class="nav-text">Ajax异步内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
