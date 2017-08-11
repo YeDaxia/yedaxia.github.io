@@ -281,7 +281,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-Code-Refactor-Summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Code-Refactor-Summary/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Code-Refactor-Summary/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -384,7 +384,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/SomeWebSpiderProblem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="SomeWebSpiderProblem/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="SomeWebSpiderProblem/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -487,7 +487,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-RichEditor-And-NativeHtml/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-RichEditor-And-NativeHtml/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-RichEditor-And-NativeHtml/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -590,7 +590,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-Code-Rules/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Code-Rules/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Code-Rules/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -693,7 +693,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-Learning-Team/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Learning-Team/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Learning-Team/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -796,7 +796,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/ApiDocs-Design-And-For-PlayFramework/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="ApiDocs-Design-And-For-PlayFramework/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ApiDocs-Design-And-For-PlayFramework/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -899,7 +899,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-Studio-ModelCodeGenerator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-Studio-ModelCodeGenerator/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Studio-ModelCodeGenerator/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1002,7 +1002,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Okhttp-Offline-Cache/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Okhttp-Offline-Cache/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Okhttp-Offline-Cache/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1105,7 +1105,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/Android-MediaExtractor-And-MediaCodec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="Android-MediaExtractor-And-MediaCodec/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-MediaExtractor-And-MediaCodec/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1358,30 +1358,28 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yedaxia"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yedaxia';
+      var disqus_identifier = 'index.html';
+      var disqus_title = "";
+      var disqus_url = '';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+    </script>
+  
 
 
 
