@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Darcy&#39;s Blog</title>
+  <subtitle>纸上得来终觉浅，绝知此时要躬行。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://yedaxia.github.io/"/>
+  <updated>2017-08-18T04:36:44.000Z</updated>
+  <id>https://yedaxia.github.io/</id>
+  
+  <author>
+    <name>叶大侠</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>加速前后端并行开发，JApiDocs 可以帮到你</title>
+    <link href="https://yedaxia.github.io/How-JApiDocs-Help-You/"/>
+    <id>https://yedaxia.github.io/How-JApiDocs-Help-You/</id>
+    <published>2017-08-18T04:13:20.000Z</published>
+    <updated>2017-08-18T04:36:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。</p>
+<a id="more"></a>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>一般公司的开发流程应该是这样的，产品评估会议完了之后，接着就是各就位的设计，开发了，当然这个过程中会有一些反复的交叉。我们这里主要讨论在评估完成之后，原型交给开发的这个节点。在这个节点上，如果没有接口文档，UI 稿也还在设计，那前端开发人员只能无奈的陷入等待，然后后面时间紧迫，不得不加班完成。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
+<p>接口文档非常重要，但什么时候写？谁来写呢？我的建议是接口的设计应该是交给有一定经验的后端开发人员来提前设计好，然后分给后端人员去实现，同时也交付接口协议给前端，两端并行开发。但实际情况是由于文档本身就是一个工作量，后端人员也不太关心前端的工作进度，而且提前设计的接口后面也可能会有一些小改动，对自己来说得不偿失，所以就变成了后端同学懒得去提前设计，一直等接口开发完了再去完善文档，这可能算好的了，有些团队就直接把一个 URL 贴到聊天框里面了事，前端同学只能去翻聊天记录。</p>
+<p>这里顺便提一下没有接口文档的后果，一个生命周期比较长的产品，肯定经历了多个版本的迭代，接口的数量也会变的庞大，新进来的开发已经没办法在短时间之内了解每个接口的作用了，当碰到相同功能的时候，很容易又写了个差不多的接口，重复的接口越来越多，当其中一个有问题时，你要处理的可不仅仅是一个地方；更惨的是客户端人员，这个接口对他来说就是个黑盒子，要打开这个盒子，只能不断找服务端的问问问了，极大的沟通成本啊～</p>
+<p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="external">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
+<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="external">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="external">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="external">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
+<p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="external">点击查看</a>。</p>
+<h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="external">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="external">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
+<p>这两天把想集成的 rap 功能做好了，终于可以自恋的总结了一下：</p>
+<table>
+<thead>
+<tr>
+<th>API 工具</th>
+<th>文档支持</th>
+<th>语言支持</th>
+<th>接口测试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swagger</td>
+<td>功能强大，学习成本高，维护成本高</td>
+<td>多语言</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>apidocjs</td>
+<td>学习成本一般，维护成本高</td>
+<td>多语言</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>JApiDocs</td>
+<td>代码即文档，学习和维护成本低</td>
+<td>Java</td>
+<td>支持发布到 <a href="http://rapapi.org/org/" target="_blank" rel="external">RAP</a></td>
+</tr>
+</tbody>
+</table>
+<p>对于 Java 程序员来说，JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。反正它已经成为我的首选 API 文档工具了，我希望也可以成为你的首选。</p>
+<h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>项目地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">https://github.com/YeDaxia/JApiDocs</a>，目前用不到，可以先点个星星收藏起来哇。</p>
+<p>如果你以前已经在用其他的了，积重难返，我建议你还是用以前的工具；如果你还是手工去创建文档，或者要做一个新的项目，我墙裂建议你马上开始使用 JApiDocs，记得先看文档，运行一下测试用例，5分钟就能从入门到爱不释手～ 有问题欢迎反馈，我会第一时间积极响应。</p>
+<p>另外，我创建了一个微信群，用于探讨如何用技术去创收，如果你是有经验的程序/设计师/PM/创业者，欢迎加入一起交流。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_freelancer_wechat_group_qr.jpeg?imageView2/0/w/400" alt="wechat group"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
+    
+      <category term="前后端协作" scheme="https://yedaxia.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8D%8F%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一个给 Java 程序员用的 Api 文档生成工具</title>
+    <link href="https://yedaxia.github.io/JApiDocs-Introduction-For-Java-Developer/"/>
+    <id>https://yedaxia.github.io/JApiDocs-Introduction-For-Java-Developer/</id>
+    <published>2017-08-11T05:22:17.000Z</published>
+    <updated>2017-08-11T05:29:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>api 文档作为前后端同学的沟通桥梁，其重要性是不言而喻的。目前通用的工具有像<a href="https://github.com/apidoc/apidoc" target="_blank" rel="external">apidoc/apidoc</a>，<a href="https://github.com/caixw/apidoc" target="_blank" rel="external">caixw/apidoc</a>这样的第三方库，虽然具有语言无关的特性，但是真正用起来额外多了很多工作量，而且维护起来麻烦，这也是笔者设计和开发这个工具的原因，想通过 java 本身的语言特性和结合强大的 IDE ，使得生成和维护 api 文档这件事情变的自然而美好。</p>
+<a id="more"></a>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>github地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a></p>
+<p>JApiDocs 是一个符合 Java 编程习惯的 Api 文档生成工具。最大程度地利用 Java 的语法特性，你只管用心设计好接口，添加必要的注释，JApiDocs 会帮你导出一份漂亮的 Html 文档，并生成相关的 Java 和 Object-C 相关数据模型代码，从此，Android 和 IOS 的同学可以少敲很多代码了，你也不需要费力维护接口文档的变化，只需要维护好你的代码就可以了。</p>
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ol>
+<li>以一个 Controller 作为一组接口导出到一个 Html 文件中。</li>
+<li>支持生成 Java 和 Object-C 语言的 Response 模型代码。</li>
+<li>深度支持 <a href="http://projects.spring.io/spring-boot/" target="_blank" rel="external">Spring Boot</a>， <a href="https://www.playframework.com/" target="_blank" rel="external">PlayFramework</a>，<a href="http://www.jfinal.com/" target="_blank" rel="external">JFinal</a>，不需要额外声明路由。</li>
+<li>支持一般的 Java Web 工程，需要在相关方法添加额外的路由。</li>
+<li>支持接口声明过时(<code>@Deprecated</code>)，方便的文档目录等。</li>
+<li>支持自定义代码生成模板。</li>
+</ol>
+<h1 id="5分钟集成"><a href="#5分钟集成" class="headerlink" title="5分钟集成"></a>5分钟集成</h1><p>1: 我们以 spring 为例，一张图很容易就明白了 JApidocs 是怎么工作的了，你在设计接口的时候可以顺便就把相关的注释给填好了，这和 Java 程序员的编程习惯是保持一致的。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/spring-controllers.png" alt="spring controller"></p>
+<p>这里你可能会对<code>@ApiDoc</code>注解感到迷惑，这也是唯一需要一点额外工作的地方，别急，下面马上就讲到它。</p>
+<p>2: <code>@ApiDoc</code> 是我们定义的一个注解，除非程序运行起来，否则我们是没办法知道 <code>response</code> 里面都包含有哪些内容，但是我们明明有了相关的视图类，为了解决这个问题，我们折衷设计了这个基于<code>RetentionPolicy.SOURCE</code>的注解，它不会给现有的代码造成任何的负担。由于是基于 Java 源码进行解析的，所以你不需要依赖我们的 Jar 包，你可以在你自己的工程任意地方添加这个简单的类即可，当然，如果你连这个也不愿意也是没关系的，你只需要直接添加我们的 Jar 包即可，里面已经为你准备好这个类了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD&#125;)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ApiDoc &#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * result class</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">	Class&lt;?&gt; value() <span class="keyword">default</span> Null.class;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * result class</div><div class="line">     */</div><div class="line">	Class&lt;?&gt; result() <span class="keyword">default</span> Null.class;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * request url</div><div class="line">     */</div><div class="line">	<span class="function">String <span class="title">url</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * request method</div><div class="line">     */</div><div class="line">	<span class="function">String <span class="title">method</span><span class="params">()</span> <span class="keyword">default</span> "get"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Null</span></span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你用的是我们深度支持的 MVC 框架，那么你只需要写好返回的视图模型就可以了。</p>
+<p>3: 你可以在项目的目录下找到有两个，一个是<code>all</code>结尾的，里面包含了第三方的依赖包，一个是<code>min</code>结尾的，不含第三方的依赖包。</p>
+<p><strong>命令行模式:</strong></p>
+<p>下载<code>all</code>包，然后在和这个<code>jar</code>包相同目录下创建名称是<code>docs.config</code>的配置文件，里面可以配置这几个参数：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">projectPath = 工程目录（必须）</div><div class="line">docsPath = 文档输出目录（非必须，默认是$&#123;projectPath&#125;/apidocs）</div><div class="line">codeTplPath = 代码模版目录 (非必须，如果你需要自定义生成的代码才会用到。)</div><div class="line">mvcFramework = [spring, play, jfinal, generic](非必须，代码内部有判断，如果出现误判的情况，可以通过这个强制指定)</div></pre></td></tr></table></figure>
+<p>配置好之后，运行该<code>jar</code>包就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -jar ***-all.jar</div></pre></td></tr></table></figure>
+<p><strong>代码模式</strong></p>
+<p>如果想做一些持续集成的话，代码模式还是比较方便的，根据你的需要可以选择<code>all</code>包或者<code>min</code>包，相关第三方依赖如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.google.code.gson:gson:2.8.0&apos;</div><div class="line">compile &apos;com.github.javaparser:javaparser-core:3.3.0&apos;</div></pre></td></tr></table></figure>
+<p>只需要调用下面一句代码即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Docs.buildHtmlDocs(DocsConfig config);</div></pre></td></tr></table></figure>
+<p>4: 自定义输出 Java 和 IOS 代码：</p>
+<p>你可以把工程里面相关的代码模板文件拷贝出来，然后在配置参数声明好该路径即可，具体的模板文件如下：<br><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_apidocs-code-tpls.png" alt="code template files"></p>
+<p>5: 更多的用法和不同的框架可以参考我们的示例代码。</p>
+<h1 id="注意的地方"><a href="#注意的地方" class="headerlink" title="注意的地方"></a>注意的地方</h1><p>1: 返回视图类不支持循环引用，会导致 stackoverflow。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserVO</span></span>&#123;</div><div class="line">    BookVO book;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookKVO</span></span>&#123;</div><div class="line">    UserVO user;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2: JFinal 路由配置必须在 configRoute 方法体里，否则会解析失败。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configRoute</span><span class="params">(Routes me)</span> </span>&#123;</div><div class="line">    me.add(<span class="string">"/api/v1/user"</span>, UserController.class);</div><div class="line">    me.add(<span class="string">"/api/v1/book"</span>, BookController.class);</div><div class="line">    me.add(<span class="keyword">new</span> AmdinRoutes());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="支持和反馈"><a href="#支持和反馈" class="headerlink" title="支持和反馈"></a>支持和反馈</h1><p>由于每个人写代码的习惯可能都不一样，虽然已经尽可能考虑到了多种不同的情况，但由于作者本人的认知和精力有限，难免会疏忽或者本身就存在有 bug 的情况，如果你在使用的过程中有碰到困难或者疑问，欢迎提<code>issue</code>或者加扣扣群进行反馈：70948803。</p>
+<p>如果你觉得这个项目对你有用，请动动手指给个 <a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">star</a>。</p>
+<p>你的支持是我前进的动力！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;api 文档作为前后端同学的沟通桥梁，其重要性是不言而喻的。目前通用的工具有像&lt;a href=&quot;https://github.com/apidoc/apidoc&quot;&gt;apidoc/apidoc&lt;/a&gt;，&lt;a href=&quot;https://github.com/caixw/apidoc&quot;&gt;caixw/apidoc&lt;/a&gt;这样的第三方库，虽然具有语言无关的特性，但是真正用起来额外多了很多工作量，而且维护起来麻烦，这也是笔者设计和开发这个工具的原因，想通过 java 本身的语言特性和结合强大的 IDE ，使得生成和维护 api 文档这件事情变的自然而美好。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
+    
+      <category term="Api 文档工具" scheme="https://yedaxia.github.io/tags/Api-%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码重构的一点总结</title>
+    <link href="https://yedaxia.github.io/Android-Code-Refactor-Summary/"/>
+    <id>https://yedaxia.github.io/Android-Code-Refactor-Summary/</id>
+    <published>2017-08-02T06:12:28.000Z</published>
+    <updated>2017-08-02T11:54:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。<br><a id="more"></a></p>
+<p>这个总结比较晚了，快相隔一年了，总想挤点什么出来写一下，一方面是避免让自己懒下来，另一方面也是迫使自己复盘，思考这个过程中哪些地方做得还Ok，哪些地方做的不好。</p>
+<p>不少公司初期的项目为了快速和低成本开发产品，一开始可能会找外包或者开发能力一般的开发人员来完成，等公司业务上去了，这时候也欠了一屁股的技术债，很幸运，我刚好就当了一回接盘侠。</p>
+<p>初接手项目，闻到坏代码的味道，不要急于作出改变，重构是一件需要小心翼翼进行的一件事情，你的每一点改动都会给QA的童鞋带来额外的工作量，尽管你觉得没有问题。所以，第一步要做的就是先把整体的情况先摸个底，先把问题暴露出来，制定好你初步的重构方案。在这个过程中，你可能要先默默的利用空闲时间做好方案，毕竟可能还有很多业务代码要写的，你不得不忍受先在原来的框架上把当前的工作完成。</p>
+<p>在我审视整个项目的时候，我发现存在有如下的问题：</p>
+<ol>
+<li>多个已经不在维护的第三方库，尤其是网络库，没有进行二次封装，耦合度非常高；</li>
+<li>sdk版本也近一年没有进行更新过；</li>
+<li>一些库使用方法不恰当，可能会带来内存泄漏和组件状态不正确(比如所在的 Activity 已经销毁)导致的崩溃问题；</li>
+<li>有不少重复性很高的代码散落在各处；</li>
+<li>变量名和方法名有些随意，驼峰和下划线风格并存；</li>
+<li>逻辑过于冗长的方法，比如和 H5 页面的协议处理，近 1K 行的 <code>if else</code>；</li>
+<li>没有考虑一些边界条件，比如请求失败重试，没有数据的情况；</li>
+<li>存在不少的魔数，往往在一些关键的逻辑里面，涉及到很多状态的变化处理。</li>
+<li>没有懒加载用户还不需要的资源，页面 overdraw 的情况严重等；</li>
+<li>还有一些情况暂时回想不起来，总之情况比较恶劣，骂人的冲动都有。</li>
+</ol>
+<p>整理好问题和写好初步的重构方案之后，接下来就可以找你的老大去聊这个事情了，一般来说都会得到支持，这样也可以让上面知道你在埋头苦干的时候是在干嘛，当时的想法是想推翻重建的，做法就是一个新的项目工程和一个旧的并行开发，有新的开发任务就先在旧的工程上开发，然后新的工程就逐步赶上和替代，最后一次性把新的 app 交付给 QA 进行一次从头到尾的测试，当时评估这样应该会比在原来的基础上改耗费的时间要更少一些。但很快发现这样做行不通，一方面需求在不断变化，引起的变化两边工程都要改动；另外在开发进度上会和 iOS 端很难同步。所以很快不得改变了思路，整合新旧的代码，然后在同一条工程线上进行重构，这样一来，必然就多了很多整合的工作，重构变成了一个抽丝剥茧的过程，没那么痛快了，但好处就是每一步做的工作，都可以被看见。</p>
+<p>既然是想改善代码，那肯定要先阻断烂代码再被添加进来，因此，第一件事要先建立起代码的相关规范，有可能的话，要尽可能加入 Code Review 这一流程来驱动规范的落实。重构的思路是从底层往高层，从变化少到变化频繁，比如底层的网络请求、图片缓存处理，这是变化少的部分，而页面和相关逻辑就是变化频繁的部分，从底层到高层好理解，从变化少到变化多则是对应经常变化的需求，或许在下个版本你就可以顺便把它重新做一遍，原来的代码彻底删除掉了。这里分享一部分具体的做法，可能对你有启发：</p>
+<ol>
+<li>在改写网络层的时候，这次通过策略模式来分离了网络请求过程和数据解析过程，这样不管以后是用 okhttp 还是 volley ，是 Json 还是 Protocol Buffers 结构的数据，喜欢用 gson 还是 fastjson ， 都只需要修改少量的代码，而且对上层调用没有任何影响。另外，由于新和旧的网络库不一样，为了减少 jar 包的数量，决定对旧的接口进行完全的兼容，但底层用的还是新的网络库。改写这一层后，对于新的代码就用新的接口，以前的就可以等待合适的时机再进行替换了。</li>
+<li>这个 app 很多混合开发的地方，很多 H5 页面的点击需要调用起原生的方法，由于自定义的跳转协议数量非常多，原来的处理方法已经超过近 1K 行的代码，这样必然导致阅读和修改困难的问题，这里我采用了大家熟悉的状态模式把相关职责分散到不同的类里面了。</li>
+<li>很多页面都有相似的过程，比如从从数据加载到加载失败处理，刷新和加载更多等，这些可以通过模板方法把相关的逻辑封装到基类里面，然后让子类去实现变化的部分，比如不同的视图和数据的绑定，可以大大减少代码量。</li>
+</ol>
+<p>还有一些技巧已经回忆不起来了，整个重构过程的彻底完成花了差不多半年的时间，期间经历了好几个版本的迭代。从效果来看，重构后带来的好处是显著的：首先提升了今后的开发效率，拥有了更好的可维护性，其次 bug 的数量和崩溃率也有了大幅度的好转，最后得益于各种库的升级和优化，app 的性能也得到了不少的提升。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="代码重构" scheme="https://yedaxia.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记录网页爬虫注意的几个问题</title>
+    <link href="https://yedaxia.github.io/SomeWebSpiderProblem/"/>
+    <id>https://yedaxia.github.io/SomeWebSpiderProblem/</id>
+    <published>2017-07-07T11:38:35.000Z</published>
+    <updated>2017-07-07T11:43:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
+<a id="more"></a>
+<h1 id="设置合理的user-agent"><a href="#设置合理的user-agent" class="headerlink" title="设置合理的user-agent"></a>设置合理的user-agent</h1><p>一些站点会把这个当作很基本的过滤条件，我们就不碰壁了，直接找个浏览器粘贴一个，有些文章介绍用一些爬虫的<code>user-agent</code>，但是对方可能会有相关的爬虫服务器的 iplist，不过这种情况不多见，可以试一下。</p>
+<h1 id="设置合理的爬取间隔"><a href="#设置合理的爬取间隔" class="headerlink" title="设置合理的爬取间隔"></a>设置合理的爬取间隔</h1><p>过于频繁的流量很容易被监控到，当然除了一些没人管的站点，通常请求ip会被对方禁用一段时间，严重的可能会拉入黑名单，这就浪费掉一个 ip 地址了。如果你不是很急的话，我一般设置个 1 到 10 秒的随机访问间隔，单线程执行，慢慢爬。一般来说很多站点都能接受这样的方式，也不会给对方运维人员造成压力，如果还有限制同个 ip 的访问次数，那我们还有代理招。</p>
+<h1 id="需要登录权限"><a href="#需要登录权限" class="headerlink" title="需要登录权限"></a>需要登录权限</h1><p>有登录就有注册，以前很多注册是需要验证邮箱，通过SMTP协议读取邮件内容实现自动化是个思路，前提你也要有很多邮箱地址，牛逼的你可以自己搭建个邮件服务器，要多少有多少。现在很多是通过手机号码的验证码了，这个就麻烦了，首先要有很多设备插很多sim卡接收短信，然后还要在这些设备上把数据传到你运行的那台机子解析出验证码才能把整个流程自动化。反正我是没试过，一般我都是手工注册几个。</p>
+<p>登录的话就会简单一些，把用户名和密码post上去之后根据服务端返回的<code>Set-Cookie</code>设置好相关请求头就行了，甚至有些框架都帮你处理好了。如果需要验证码的话，出门左拐去购买破解验证码的接口或者自己实现吧，拿到凭证后就可以在相关页面里面横冲直撞了。当然，你也可以像我一样手动在浏览器上登录，拿到<code>Set-Cookie</code>之后在进行后面的操作。</p>
+<h1 id="增量爬取"><a href="#增量爬取" class="headerlink" title="增量爬取"></a>增量爬取</h1><p>如果爬的内容非常多，你永远也不知道在什么时候就 GameOver 了，因此一定要保存好你的进度，通常来说抓取工作都很重，抓到半天然后从头开始，It sucks ! 多写一点代码换来的好处是值得的。</p>
+<h1 id="代理魔法好"><a href="#代理魔法好" class="headerlink" title="代理魔法好"></a>代理魔法好</h1><p>关于拉内容，这里介绍的是终极大招了。有了代理服务器，你就相当于找到了多个帮你干活的小弟，而且还是远程指挥，被封了也不会影响到你的本尊。</p>
+<p>代理的来源：你可以自己用工具去扫描全网找到可用的免费代理，也可以像笔者一样偷懒去购买一些可用的代理。</p>
+<p>代理的使用策略：你可能拥有了便宜甚至免费的代理地址，但是这里面很多可能都没法使用，或者现在能用，待会就不能用了，因此在使用之前应该测试一下，及时移除不能用的地址，提高效率。另外，注意不要用一个代理地址连续范围，笔者的策略一般是每个请求顺序换一个代理地址，如果数量足够多的前提下，你可以尽可能地提升你的爬取线程或者进程数，由于每个 ip 的访问间隔足够长，这样也不会被封 ip 。</p>
+<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="external">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
+<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="external">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抓取信息其实是个攻与防的过程，总结规律，多测试和践行你的想法，找到合适的策略。最后，善用工具，但行好事哈～</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="external">webmagic</a></li>
+<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="external">jsoup</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="网页爬虫" scheme="https://yedaxia.github.io/tags/%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android原生简易图文编辑器和展示实现</title>
+    <link href="https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/"/>
+    <id>https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/</id>
+    <published>2017-05-21T00:54:25.000Z</published>
+    <updated>2017-05-21T01:43:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。</p>
+<a id="more"></a>
+<p>talk is cheep, show you the code. <a href="https://github.com/YeDaxia/Android-YRichEditor" target="_blank" rel="external">源码参考</a></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>尽管Android设备的性能日益增强，但是通过webview来展示内容和原生的体验还是有一定的差距的，在某些情况下，我们只是需要简单的图文并排就够了，比如一些帖子，这个时候用webview就显的有点重，考虑到这一点，我们决定在客户端原生支持特定的网页标签。为了兼顾到各个平台，我们约定输出是标准的html内容，对于已有的内容，可以进行内容的重新排版，把多余的标签去掉并换成约定好的标签。</p>
+<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/editor_screenshot.jpg?imageView2/0/w/500" alt=""></p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>笔者有着多年对于markdown编辑器的使用经验，对于markdown语法的简洁有深度的喜爱，对于很多时候的编辑工作都是够用了，我更倾向于轻便够用而非周全复杂的东西，在设计编辑器的时候，不经意就想到了markdown。</p>
+<p>经过协商我们初期先支持下面的几种简单的样式：</p>
+<ol>
+<li>标题[一级] 对应 <code>&lt;h1&gt;</code> 标签。</li>
+<li>文本段落[一级] 对应 <code>&lt;p&gt;</code> 标签。</li>
+<li>文本加粗、换行[二级，嵌在<code>&lt;p&gt;</code>里面] 对应 <code>&lt;b&gt;</code> <code>&lt;br&gt;</code> 标签。</li>
+<li>图片[一级]，对应 <code>&lt;img&gt;</code> 标签。</li>
+<li>超链接[二级] 对应 <code>&lt;a&gt;</code> 标签。</li>
+</ol>
+<p><strong>约定结果：</strong></p>
+<p>正确：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落2<span class="tag">&lt;<span class="name">b</span>&gt;</span>我是加粗部分<span class="tag">&lt;/<span class="name">b</span>&gt;</span>hello<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://github.com/pic.png"</span> <span class="attr">width</span>=<span class="string">"100"</span>, <span class="attr">height</span>=<span class="string">"100"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落3<span class="tag">&lt;<span class="name">b</span>&gt;</span>加粗加粗加粗<span class="tag">&lt;<span class="name">br</span>&gt;</span>加粗加粗加粗<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>错误：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落1<span class="tag">&lt;<span class="name">p</span>&gt;</span>内部段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落3<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://github.com/pic.png"</span> <span class="attr">width</span>=<span class="string">"100"</span>, <span class="attr">height</span>=<span class="string">"100"</span>/&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>定义好支持的标签之后，接着就是由设计师设计好各个标签对应的文字样式，间距和图片的展示方式了。</p>
+<h1 id="编辑器实现"><a href="#编辑器实现" class="headerlink" title="编辑器实现"></a>编辑器实现</h1><p>通过研究几个开源项目，发现原生实现富文本编辑器主要有两个思路，一个是基于单个EditText通过组合不同的Spannable来实现，另外一个是组合EditText和ImageView等不同的控件，个人认为第二种方式更加灵活，但是加粗，链接等处理也是需要Spannable的，因此组合了两种方式。</p>
+<p>根据上面约定支持的标签，我定义了三种类型的控件：</p>
+<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/YRichEidtText.png?imageView2/0/w/500" alt="YRichEidtText"></p>
+<ol>
+<li><code>EditImageView</code>是插入编辑框的图片控件，它也负责了上传的相关工作。</li>
+<li><code>RichEditText</code>这个控件负责段落的编辑，段落内可以支持一些文字样式，比如加粗和超链接。这个控件是<a href="https://github.com/commonsguy/cwac-richedit" target="_blank" rel="external">cwac-richedit</a>的一个实现，它封装了很多的spannable实现，这里只是用到了加粗和链接，源码虽然有改动，为了尊重作者的劳动成果，决定不改动它的名字。</li>
+<li><code>HeadingEditText</code>这个控件用来处理标题的输入，其实就是字体大一些和加粗的EditText。</li>
+</ol>
+<p><code>RichTextEditor</code>是比较核心的实现，它继承了<code>ScrollView</code>，它的职责是协调控件和光标、返回键之间的交互，主要实现了下面的接口：</p>
+<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/IRichEditor-Interface.png?imageView2/0/w/350" alt=""></p>
+<p>输出：生成html的过程其实就是遍历各个控件了RichEditText里面的Spannable的过程。</p>
+<p><strong>Note:</strong> 值得一提的是笔者在看的时候，发现<a href="https://github.com/commonsguy/cwac-richedit.png" target="_blank" rel="external">cwac-richedit</a>这个项目是运行不起来的，一般情况下到这里就放弃对这个库的研究了，但是翻了下代码，发现作者的单元测试很充分，而且文档描述也算是比较清晰，仔细研究了一下，发现代码设计的有很多亮点，思路也非常清晰，于是后面就选择了这个库作为基础的文字段落样式实现，如果想基于它实现下划线，斜体，字体颜色等功能，应该是非常方便的一件事情。</p>
+<h1 id="网页内容显示实现"><a href="#网页内容显示实现" class="headerlink" title="网页内容显示实现"></a>网页内容显示实现</h1><p>我们的富文本会作未帖子的详情和评论列表中，由于是出现在列表中，我们需要考虑到控件的复用问题，所以一开始定义一个完整实现的富文本控件的思路就放弃了，而是通过按竖直方向拆分不同的Item，利用RecylerView或者ListView的复用特性来实现，尽管这样做起来会麻烦不少，但是完美地避免了列表不断滑动过程中对象不断创建和销毁带来的内存抖动问题。</p>
+<p>从下面流程图可以看出这个处理流程，首先解析html相关节点，并把其中相关的值和属性封装到不同的对象中，然后通过列表数据去驱动整个视图的显示，解析Html是通过<a href="https://jsoup.org/" target="_blank" rel="external">Jsoup</a>来实现的，接口非常友好，和用Jquery差不多。</p>
+<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/html-parser-process.png?imageView2/0/w/500" alt=""></p>
+<p>由于要处理的标签很少，在Jsoup的帮助下，整个解析代码不超过30行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Document doc = Jsoup.parseBodyFragment(htmlContent);</div><div class="line">List&lt;Node&gt; childNodeList = doc.body().childNodes();</div><div class="line"><span class="keyword">if</span> (childNodeList == <span class="keyword">null</span> || childNodeList.isEmpty()) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">final</span> <span class="keyword">int</span> size = childNodeList.size();</div><div class="line">List&lt;IHtmlElement&gt; elList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> pos = <span class="number">0</span>; pos != size; pos++) &#123;</div><div class="line">    Node childNode = childNodeList.get(pos);</div><div class="line">    String tagName = childNode.nodeName();</div><div class="line">    <span class="keyword">if</span> (tagName.equalsIgnoreCase(<span class="string">"h"</span>)) &#123;</div><div class="line">        elList.add(<span class="keyword">new</span> PElement(Html.fromHtml(((Element) childNode).html())));</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(tagName.equalsIgnoreCase(<span class="string">"h1"</span>))&#123;</div><div class="line">        elList.add(<span class="keyword">new</span> HElement(((Element) childNode).html()));</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (tagName.equalsIgnoreCase(<span class="string">"img"</span>)) &#123;</div><div class="line">        String src = childNode.attr(<span class="string">"src"</span>);</div><div class="line">        String width = childNode.attr(<span class="string">"width"</span>);</div><div class="line">        String height = childNode.attr(<span class="string">"height"</span>);</div><div class="line">        elList.add(<span class="keyword">new</span> ImgElement(src, NumberUtils.parseInt(width, <span class="number">0</span>), NumberUtils.parseInt(height, <span class="number">0</span>)));</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span> (childNode <span class="keyword">instanceof</span> Element) &#123;</div><div class="line">            elList.add(<span class="keyword">new</span> PElement(Html.fromHtml(((Element) childNode).html())));</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            elList.add(<span class="keyword">new</span> PElement(htmlContent));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>节点对象和对应的Item视图，可以看到结构还是非常清晰的，对于以后想添加一些其他的样式也是很好扩展的。</p>
+<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/rich_list_element_to_item.png?imageView2/0/w/500" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然不是一个很复杂的东西，从整个实现思路来看，还是比较好的兼顾了性能和可扩展度，也很好体现了分而治之和数据驱动视图的开发模式。不过从功能上来说还是存在一些缺陷的，比如光标不能跨段进行选择, 只能支持至上而下的排版。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>XRichText: <a href="https://github.com/sendtion/XRichText" target="_blank" rel="external">https://github.com/sendtion/XRichText</a></li>
+<li>cwac-richedit: <a href="https://github.com/commonsguy/cwac-richedit" target="_blank" rel="external">https://github.com/commonsguy/cwac-richedit</a></li>
+<li>Html解析库Jsoup：<a href="https://jsoup.org/" target="_blank" rel="external">https://jsoup.org/</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android富文本编辑器" scheme="https://yedaxia.github.io/tags/Android%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android代码规范指北</title>
+    <link href="https://yedaxia.github.io/Android-Code-Rules/"/>
+    <id>https://yedaxia.github.io/Android-Code-Rules/</id>
+    <published>2017-03-23T06:12:28.000Z</published>
+    <updated>2017-03-23T07:05:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
+<a id="more"></a>
+<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><ol>
+<li>高度有秩序的代码具有天然的美感，写代码的人心情会好很多。</li>
+<li>减低开发人员流动带来的风险。</li>
+<li>对于新人能更好地理解和参与到开发中。</li>
+<li>更好的可维护性。</li>
+<li>随之带来更好的产品质量和开发效率提升。</li>
+</ol>
+<h1 id="命名规约"><a href="#命名规约" class="headerlink" title="命名规约"></a>命名规约</h1><ul>
+<li>【强制】所有编程相关命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。</li>
+<li>【强制】所有编程相关的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。</li>
+<li>【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从驼峰形式。</li>
+</ul>
+<h2 id="类的命名"><a href="#类的命名" class="headerlink" title="类的命名"></a>类的命名</h2><ul>
+<li>【强制】抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾。</li>
+<li>【强制】相关组件类应该以组件名作为后缀以便识别。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>命名规则</th>
+<th>命名举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>×××Activity</td>
+<td>MainActivity</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>×××Fragment</td>
+<td>HomeFragment</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td>×××Dialog</td>
+<td>AlertDialog</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>×××Service</td>
+<td>DownloadService</td>
+</tr>
+<tr>
+<td>BroadcastReceiver</td>
+<td>×××Receiver</td>
+<td>LoginReceiver</td>
+</tr>
+<tr>
+<td>ContentProvider</td>
+<td>×××Provider</td>
+<td>UserProvider</td>
+</tr>
+<tr>
+<td>Adapter</td>
+<td>名字+类型+Adapter</td>
+<td>ArticleListAdapter, ImageGridAdapter</td>
+</tr>
+<tr>
+<td>AsyncTask</td>
+<td>×××Task</td>
+<td>LoginTask</td>
+</tr>
+<tr>
+<td>Handler</td>
+<td>名字+所在线程+Handler</td>
+<td>HomeUIHandler, CompressWorkHandler</td>
+</tr>
+<tr>
+<td>ViewHolder</td>
+<td>VH + 名字</td>
+<td>VHArticle</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】实用工具类命名成 <code>**Utils</code> 、<code>**Helper</code> 。</li>
+<li>【推荐】EventBus 发布的事件名命名成以 Event 结尾，比如 <code>LoginEvent</code> 。</li>
+<li>【推荐】如果使用到了设计模式，建议在类名中体现出具体模式。</li>
+<li>【推荐】接口一般以大写 <code>I</code> 开头，回调的接口一般为 <code>Listener</code> 或者 <code>Callback</code> 结尾。</li>
+</ul>
+<h2 id="方法命名"><a href="#方法命名" class="headerlink" title="方法命名"></a>方法命名</h2><ul>
+<li>【强制】POJO 类中的任何布尔类型的变量，都不要加 is，否则部分框架解析会引起序列化错误。<br>  ==反例==：定义为基本数据类型 boolean isSuccess; 的属性，它的方法也是 isSuccess() ，部分Json 框架在反向解析的时候，“以为”对应的属性名称是 success，导致属性获取不到，进而抛出异常。</li>
+<li>【强制】EventBus 回调的方法必须和相关 Event 类一致，比如LoginEvent类的方法签名为: <code>public final void onLoginEvent(LoginEvent e);</code></li>
+<li>【推荐】客户端逻辑大部分是基于事件驱动的，应该以<code>on</code>来开头，比如登录按钮的点击可以是：<code>onLoginClick()</code>。</li>
+</ul>
+<h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><ul>
+<li>【强制】常量命名全部大写，单词间用下划线隔开。</li>
+<li>【强制】局部变量和一般类变量以小写字母开头。</li>
+<li>【推荐】static 类变量名称以<code>s</code>开头，final类变量用<code>f</code>开头。</li>
+<li>【推荐】组件相关的可以用【全部首字母+名字】的命名，比如 id 是 R.id.tv_login 的控件名称是：<code>tvLogin</code>。</li>
+</ul>
+<h2 id="资源文件命名"><a href="#资源文件命名" class="headerlink" title="资源文件命名"></a>资源文件命名</h2><p>除了 attr 和 style 资源遵循驼峰命名之外，其他资源的命名统一用小写字母+下划线的风格。</p>
+<ul>
+<li>【推荐】<strong>布局文件命名</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>布局类型</th>
+<th>命名规则</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>activity_×××</td>
+<td>HomeActivity 对应 activity_home</td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td>dlg_×××</td>
+<td>LoginDialog 对应 dlg_login</td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>frag_×××</td>
+<td>HomeFragment 对应 frag_home</td>
+</tr>
+<tr>
+<td>页面标题</td>
+<td>title_×××</td>
+<td>title_main</td>
+</tr>
+<tr>
+<td>列表Footer</td>
+<td>footer_×××</td>
+<td>footer_article</td>
+</tr>
+<tr>
+<td>列表Header</td>
+<td>header_×××</td>
+<td>header_article</td>
+</tr>
+<tr>
+<td>列表的Item</td>
+<td>item_×××</td>
+<td>item_article</td>
+</tr>
+<tr>
+<td>可重用嵌入布局</td>
+<td>include_ ×××</td>
+<td>include_navagator</td>
+</tr>
+<tr>
+<td>分割线</td>
+<td>line_+颜色+大小</td>
+<td>line_gray_1px</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】<strong>id命名</strong>：截取相关组件首个字母作为开头，然后以下划线作为分割。比如【TextView：tv_name】。</li>
+<li>【推荐】<strong>图片命名</strong>：【类别+名称+状态(如果有)】，根据图片的用途可以分类为图标「ic」，背景「bg」，前景「fg」(比较少用到)，图片「img」(比如引导图，开机页面)，如果有多个状态用同一张图，那么首选声明为 【××_selected】 。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常状态</td>
+<td>ic_login_primary</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>ic_login_checked</td>
+</tr>
+<tr>
+<td>pressed</td>
+<td>ic_login_pressed</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>ic_login_selected</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>ic_login_disable </td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>【推荐】<strong>drawable命名</strong>：</li>
+</ul>
+<blockquote>
+<ol>
+<li>xml定义图形：参考图片命名规则，在以上基础上添加辨识，比如: bg_login_shape,  bg_login_vector, bg_login_shape_primary。</li>
+<li>多个状态drawable: 命名为         【××_selector】，比如 bg_login_selector。</li>
+</ol>
+</blockquote>
+<ul>
+<li>【推荐】<strong>颜色命名</strong>：</li>
+</ul>
+<blockquote>
+<ol>
+<li>单色：命名规则为【类型+名字+状态(如果有)】，我把用到颜色的元素类型做了个归类，分别是字体「text」，背景「bg」，线「line」，还是一些常规色(比如白色，透明等)，正例：text_black_primary, bg_black_selected, line_orange。</li>
+<li>字体selector颜色：【名字 + text_selector】 ,比如 tab_item_text_selector。</li>
+</ol>
+</blockquote>
+<ul>
+<li>【推荐】<strong>尺寸命名</strong>：通用性比较强和需要适配的在 dimens.xml 中设置，一般的可以在代码中直接写。</li>
+</ul>
+<blockquote>
+<ol>
+<li>字体大小： 【font_××】，××和设计稿保持一致的换算。</li>
+<li>间距：组件外用【××_margin】，组件内用【××_padding】, 例子: app_left_margin。</li>
+<li>控件大小：【宽度:××_width】，【高度:××_height】，其他【××_size】，例子: login_button_height。</li>
+</ol>
+<ul>
+<li>【推荐】<strong>其他</strong>：文字不得直接写到 java 代码和 layout 代码里面，应该抽离到相关的 strings 资源文件中；menu 和动画资源命名不需要加前缀或者后缀，能表达意图即可，因为 R.menu 或者 R.anim 已经携带了相关的信息。</li>
+</ul>
+</blockquote>
+<h1 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h1><ul>
+<li>【强制】大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果<br>是非空代码块则：</li>
+</ul>
+<blockquote>
+<ol>
+<li>左大括号前不换行。</li>
+<li>左大括号后换行。</li>
+<li>右大括号前换行。</li>
+<li>右大括号后还有 else 等代码则不换行；表示终止右大括号后必须换行。</li>
+</ol>
+</blockquote>
+<ul>
+<li>【强制】 左括号和后一个字符之间不出现空格；同样，右括号和前一个字符之间也不出现空格; 代码块缩进 4 个空格,如果使用 tab 缩进，请设置成 1 个 tab 为 4 个空格。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">    <span class="comment">// 缩进 4 个空格</span></div><div class="line">    String say = <span class="string">"hello"</span>;</div><div class="line">    <span class="comment">// 运算符的左右必须有一个空格</span></div><div class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内 f 与左括号，1 与右括号不需要空格</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</div><div class="line">        System.out.println(say);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</div><div class="line">        System.out.println(<span class="string">"world"</span>);</div><div class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"ok"</span>);</div><div class="line">    <span class="comment">// 右大括号做为结束，必须换行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】任何运算符左右必须加一个空格。</li>
+</ul>
+<blockquote>
+<p>说明：运算符包括赋值运算符 =、逻辑运算符 &amp;&amp;、加减乘除符号、三目运行符等。</p>
+</blockquote>
+<ul>
+<li>【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。</li>
+<li>【强制】单行字符数限制不超过 120 个，超出需要换行，换行时，遵循如下原则：</li>
+</ul>
+<blockquote>
+<ol>
+<li>换行时相对上一行缩进 4 个空格。</li>
+<li>运算符与下文一起换行。</li>
+<li>方法调用的点符号与下文一起换行。</li>
+<li>在多个参数超长，逗号后进行换行。</li>
+<li>在括号前不要换行，见反例。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，换行缩进 4 个空格，并且方法前的点符号一起换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…</div><div class="line">    .append(<span class="string">"huang"</span>);</div><div class="line"></div><div class="line">反例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，不要在括号前换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…append</div><div class="line">    (<span class="string">"huang"</span>);</div><div class="line"><span class="comment">//参数很多的方法调用也超过 120 个字符，逗号后才是换行处</span></div><div class="line">method(args1, args2, args3, ...</div><div class="line">    , argsX);</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。</li>
+</ul>
+<blockquote>
+<p>正例：下例中实参的 “a” ,后边必须要有一个空格。<code>method(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</code>; </p>
+</blockquote>
+<ul>
+<li><p>【强制】在 if/else/for/while/do 语句中必须使用大括号，即使只有一行代码，避免使用下面的形式：<code>if (condition) statements</code>;</p>
+</li>
+<li><p>【推荐】推荐尽量少用 else， if-else 的方式可以改写成：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">     …</div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125; </div><div class="line">说明：如果使用要 `<span class="keyword">if</span>-<span class="keyword">else</span> <span class="keyword">if</span>-<span class="keyword">else</span>` 方式表达逻辑，【强制】请勿超过 <span class="number">3</span> 层，超过请使用状态设计模式。</div></pre></td></tr></table></figure>
+<ul>
+<li>【推荐】循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量，进行不必要的 <code>try-catch</code> 操作（这个 try-catch 是否可以移至循环体外），遍历长度的提前获取；避免使用 <code>foreach</code>，迭代器，尽量采用下标的形式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">(for i=0 ;i &lt;size; ++i)</div><div class="line"></div><div class="line">反例：</div><div class="line">for(int i : items)</div></pre></td></tr></table></figure>
+<h1 id="编码规约"><a href="#编码规约" class="headerlink" title="编码规约"></a>编码规约</h1><h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><ul>
+<li>【强制】过时的类或者方法不要使用，覆盖的方法要用<code>Override</code>声明。这样当写错覆盖方法时可以得到编译错误提示。</li>
+<li>【强制】Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals。</li>
+<li>【强制】单例或者实用类构造方法应该声明为 private。</li>
+<li>【强制】如果用到 FastJson 来解析数据，必须在相关 getter 和 setter 方法上添加注解。</li>
+<li>【推荐】声明为 public 的方法要对参数进行校验，private 的可以不用。</li>
+<li>【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读。</li>
+<li>【推荐】 类内方法定义顺序依次是：公有方法或保护方法 &gt; 私有方法 &gt; getter/setter 方法。</li>
+<li>【推荐】循环体内，字符串的联接方式，使用 StringBuilder 的 append 方法进行扩展。</li>
+<li>【推荐】类成员与方法访问控制从严：</li>
+</ul>
+<blockquote>
+<ol>
+<li>如果不允许外部直接通过 new 来创建对象，那么构造方法必须是 private。</li>
+<li>工具类不允许有 public 或 default 构造方法。</li>
+<li>类非 static 成员变量并且与子类共享，必须是 protected。</li>
+<li>类非 static 成员变量并且仅在本类使用，必须是 private。</li>
+<li>类 static 成员变量如果仅在本类使用，必须是 private。</li>
+<li>若是 static 成员变量，必须考虑是否为 final。</li>
+<li>类成员方法只供类内部调用，必须是 private。</li>
+<li>类成员方法只对继承类公开，那么限制为 protected。</li>
+</ol>
+</blockquote>
+<h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ul>
+<li>【强制】不允许出现任何魔法值（即未经定义的常量）直接出现在代码中。</li>
+<li>【强制】long 或者 Long 初始赋值时，必须使用大写的 L，不能是小写的 l ，小写容易跟数字 1 混淆，造成误解。</li>
+<li>【推荐】不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存<br>相关的常量放在类：CacheConsts 下；系统配置相关的常量放在类：ConfigConsts 下。</li>
+<li>【推荐】避免使用枚举类型，用<code>@IntDef</code>进行替代。</li>
+</ul>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
+<li><p>【强制】捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">void setServerPort(String value) &#123;</div><div class="line">    try &#123;</div><div class="line">        serverPort = Integer.parseInt(value);</div><div class="line">    &#125; catch (NumberFormatException e) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【强制】异常不要用来做流程控制，条件控制，因为异常的处理效率比条件分支低。</p>
+</li>
+<li>【强制】finally 块必须对资源对象、流对象进行关闭，有异常也要做 try-catch。</li>
+<li>【强制】不能在 finally 块中使用 return，finally 块中的 return 返回后方法结束执行，不会再执行 try 块中的 return 语句。</li>
+<li>【强制】捕获异常与抛异常，必须是完全匹配，或者捕获异常是抛异常的父类。==说明==：如果预期抛的是绣球，实际接到的是铅球，就会产生意外情况。</li>
+<li><p>【推荐】不要偷懒直接捕获顶级异常，这样会把Runtime的异常也囊括进来，要明确每种异常出现的场景被给出相应的处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">try &#123;</div><div class="line">    someComplicatedIOFunction();        // may throw IOException</div><div class="line">    someComplicatedParsingFunction();   // may throw ParsingException</div><div class="line">    someComplicatedSecurityFunction();  // may throw SecurityException</div><div class="line">    // phew, made it all the way</div><div class="line">&#125; catch (Exception e) &#123;                 // I&apos;ll just catch all exceptions</div><div class="line">    handleError();                      // with one generic handler!</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【推荐】除非有充分的理由，不要捕获 Java 类库中定义的继承自 RuntimeException 的运行时异常类，如：IndexOutOfBoundsException / NullPointerException，这类异常由程序员预检查来规避，保证程序健壮性。</p>
+</li>
+</ul>
+<h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><ul>
+<li>【强制】类、类属性、类方法的注释必须使用 javadoc 规范，使用/<em>*内容</em>/格式，不得使用//xxx 方式。</li>
+<li>【强制】所有的抽象方法（包括接口中的方法）必须要用 javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能。</li>
+<li>【强制】所有的类都必须添加创建者信息。</li>
+<li><p>【强制】对那些临时性的、短期的、够棒但不完美的代码，请使用TODO注释。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// <span class="doctag">TODO:</span> Change this to use a flag instead of a constant.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>【强制】方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释使用/<em> </em>/注释，注意与代码对齐。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">// 打个招呼</span></div><div class="line">    sayHello();</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">      这里保持移动，</div><div class="line">      并不断对步数加1</div><div class="line">     */</div><div class="line">    keepMove();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>【参考】好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的一<br>个极端：过多过滥的注释，代码的逻辑一旦修改，修改注释是相当大的负担。</p>
+</li>
+</ul>
+<h2 id="Android-实践"><a href="#Android-实践" class="headerlink" title="Android 实践"></a>Android 实践</h2><ul>
+<li>【强制】避免对同个 View 进行多次查找，应该缓存起来，比如列表中使用的 ViewHolder 模式。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setEnabled(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>【强制】不要使用 System.out.println() ，printf() 打印日志。</li>
+<li>【强制】调试日志要有个开关，在正式发布的时候不能出现应用日志打印。</li>
+<li>【强制】读文件，数据库，网络请求等一些耗时操作必须在异步线程中执行。</li>
+<li>【强制】不能粗暴的把 Activity, Service 对象或者一些比较重的对象直接声明为 static 变量，如果必须这么做，请注意它们的生命周期变化。</li>
+<li>【强制】每引入一个第三方库，要检查是否加入相关的混淆规则。</li>
+<li>【强制】自定义属性动画 (ObjectAnimator) 的 getter 和 setter 方法时要注意防止混淆。</li>
+<li>【强制】在 (Activity,Fragment) 组件退出时要保证相关资源得到释放，比如 EventBus 订阅的事件，注册的广播，轮播任务等。</li>
+<li>【强制】对于Api Level大于等于23的设备要进行运行时权限检查。</li>
+<li>【推荐】在使用 Thread，Handler，AsyncTask，Timer，耗时的匿名回调类，内部类时，考虑声明成静态的内部类，并且弱引用或者软引用来处理相关的大对象，并且要注意生命周期的变化，避免出现内存泄漏问题。</li>
+<li>【推荐】利用 TextView 的<code>drawableLeft</code>等来减少 ImageView 的使用。</li>
+<li>【推荐】通过使用 RelativeLayout 或者 ConstraintLayout 来减少布局的层次。</li>
+<li>【推荐】在 <code>findViewById</code> 尽可能选取一个比较近的父节点来减少查找时间。</li>
+<li>【推荐】Bundle 中的常量 Key 值统一在一个文件中，而不是直接在 Activity 或者 Fragment 中，比如 BundleKeys 文件中。</li>
+<li>【推荐】可滑动列表复用的 ViewHolder 对象中，对于一些事件对象应该尽可能地复用。</li>
+<li>【推荐】对隐式 Intent 的运行时调用 <code>resolveActivity</code> 进行检查保护。</li>
+<li>【推荐】使用 NotificationCompat 兼容包来处理消息通知。</li>
+<li>【推荐】延迟创建没有用到的对象，比如 Adapter 的列表对象，应该在请求数据取到之后再去创建，而不是提前创建好。</li>
+<li>【推荐】使用 ArrayMap，Sparse×× 系列对象来减少内存消耗和避免AutoBoxing。</li>
+<li>【推荐】更新列表局部数据避免粗暴地调用 Adapter.notifyDataSetChanged，应该只更新变化的部分。</li>
+<li>【推荐】用 @Nullable, @NonNull, @IdRes, @MainThread 等Support Annotations注解来增强代码的编译期检查和可读性。</li>
+<li>【参考】如果不用<code>getColor(int id, Theme theme)</code>等相关方法，至少使用 ContextCompat 来获取相关 Color 或者图片资源。</li>
+<li>【参考】尽可能通过 Fragment 来实现视图层，Activity 只是负责嵌入和管理。</li>
+<li>【参考】通过 Picasso，Glide 等开源组件去加载和缓存你的图片。</li>
+</ul>
+<h1 id="资料参考"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考</h1><ol>
+<li><a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a></li>
+<li><a href="http://source.android.com/source/code-style.html" target="_blank" rel="external">Android Code Style Rules</a></li>
+<li><a href="http://blog.nimbledroid.com/2016/05/23/memory-leaks-zh.html" target="_blank" rel="external">常见的八种导致 APP 内存泄漏的问题</a></li>
+<li><a href="http://hukai.me/android-dev-patterns/" target="_blank" rel="external">Android开发最佳实践</a></li>
+<li><a href="http://www.cnblogs.com/whoislcj/p/5677917.html" target="_blank" rel="external">Android Support Annotations</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了&lt;a href=&quot;https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf&quot;&gt;阿里巴巴 JAVA 开发手册&lt;/a&gt;，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android代码规范" scheme="https://yedaxia.github.io/tags/Android%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android团队技术成长计划</title>
+    <link href="https://yedaxia.github.io/Android-Learning-Team/"/>
+    <id>https://yedaxia.github.io/Android-Learning-Team/</id>
+    <published>2017-03-15T12:35:51.000Z</published>
+    <updated>2017-03-15T12:59:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在想如何提升自己和团队成员的技术能力，其实无非就是多阅读优秀源码，优秀书籍，写技术文章等，但在查阅资料的的时候还是收获了不少东西，尤其是刘未鹏大神那篇文章，这边整理可能更多是学习相关的技能树，发表到这里当个备份了。</p>
+<a id="more"></a>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>建立一个学习型的技术团队，实现公司和个人的共赢。</p>
+<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><p>对于公司:</p>
+<ul>
+<li>更高质量的产品</li>
+<li>更快的产出</li>
+</ul>
+<p>对于个人：</p>
+<ul>
+<li>更出色的能力</li>
+<li>更高的收入</li>
+<li>更少的时间投入(少加班)</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
+<li>基于现有开发中用到的库和工具，每周向自己提一个还不是特别懂的问题，通过阅读源码和相关文章，试图找到答案，并输出一篇自己的技术博文。</li>
+<li>基于当前的业务和需求，构建团队内部的基础库, 并逐步开源到社区。</li>
+<li>每月一次内部技术分享。</li>
+</ol>
+<h1 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h1><h2 id="优秀书籍"><a href="#优秀书籍" class="headerlink" title="优秀书籍"></a>优秀书籍</h2><p><strong>基础:</strong></p>
+<ul>
+<li>《算法导论》</li>
+<li>《数学之美》</li>
+<li><a href="http://item.jd.com/11786791.html" target="_blank" rel="external">《编程之法》</a></li>
+<li>《Unix高级编程》《Unix进程间通信》</li>
+<li>《TCP／IP详解》卷1卷2</li>
+</ul>
+<p><strong>语言:</strong></p>
+<ul>
+<li>《Java编程思想》</li>
+<li>《深入理解Java虚拟机》</li>
+<li><a href="http://www.infoq.com/cn/minibooks/java_memory_model?utm_source=infoq&amp;utm_campaign=user_page&amp;utm_medium=link" target="_blank" rel="external">《深入理解Java内存模型》</a></li>
+</ul>
+<p><strong>编码和设计:</strong></p>
+<ul>
+<li>《代码整洁之道》</li>
+<li>《设计模式》</li>
+<li><a href="https://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="external">《图说设计模式》</a></li>
+</ul>
+<p>Android开发:</p>
+<ul>
+<li><a href="https://developer.android.google.cn/training/index.html" target="_blank" rel="external">Android 开发者培训</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc-lJo_RGGXL2Psr8vVCTWjM" target="_blank" rel="external">Android Development Patterns 视频集锦</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="external">Android Performance Patterns 视频集锦</a></li>
+<li>《深入理解Android》系列</li>
+</ul>
+<h2 id="优秀源码"><a href="#优秀源码" class="headerlink" title="优秀源码"></a>优秀源码</h2><p><strong>网络</strong></p>
+<ul>
+<li><a href="http://square.github.io/okhttp/" target="_blank" rel="external">okHttp</a></li>
+<li><a href="https://github.com/square/retrofit" target="_blank" rel="external">retrofit</a></li>
+<li><a href="https://github.com/google/volley" target="_blank" rel="external">volley</a></li>
+<li><a href="https://github.com/Tencent/mars" target="_blank" rel="external">tencent mars</a></li>
+</ul>
+<p><strong>数据解析</strong></p>
+<ul>
+<li><a href="https://github.com/google/gson" target="_blank" rel="external">Gson</a></li>
+<li><a href="https://github.com/alibaba/fastjson" target="_blank" rel="external">fastjson</a></li>
+</ul>
+<p><strong>图片加载</strong></p>
+<ul>
+<li><a href="https://github.com/bumptech/glide" target="_blank" rel="external">Glide</a></li>
+<li><a href="https://github.com/square/picasso" target="_blank" rel="external">Picasso</a></li>
+<li><a href="https://github.com/facebook/fresco" target="_blank" rel="external">Fresco</a></li>
+</ul>
+<p><strong>ORM</strong></p>
+<ul>
+<li><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">greenDAO</a></li>
+<li><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">ActiveAndroid</a></li>
+</ul>
+<p><strong>视频</strong></p>
+<ul>
+<li><a href="https://github.com/bbcallen/ijkplayer" target="_blank" rel="external">ijkplayer</a></li>
+<li><a href="https://github.com/google/ExoPlayer" target="_blank" rel="external">ExoPlayer</a></li>
+<li><a href="https://github.com/sannies/mp4parser" target="_blank" rel="external">mp4parser</a></li>
+</ul>
+<p><strong>图片处理</strong></p>
+<ul>
+<li><a href="https://github.com/CyberAgent/android-gpuimage" target="_blank" rel="external">GPUImage</a></li>
+</ul>
+<p><strong>依赖注入</strong></p>
+<ul>
+<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">Butter Knife</a></li>
+<li><a href="https://github.com/google/dagger" target="_blank" rel="external">Dagger(Google)</a></li>
+</ul>
+<p><strong>事件订阅</strong></p>
+<ul>
+<li><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">Event Bus</a></li>
+</ul>
+<p><strong>函数式编程</strong></p>
+<ul>
+<li><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a></li>
+</ul>
+<p><strong>热加载和插件化</strong></p>
+<ul>
+<li><a href="https://github.com/Tencent/tinker/" target="_blank" rel="external">Tinker</a></li>
+<li><a href="https://github.com/alibaba/AndFix" target="_blank" rel="external">AndFix</a></li>
+</ul>
+<p><strong>控件集合</strong></p>
+<ul>
+<li><a href="https://github.com/wasabeef/awesome-android-ui" target="_blank" rel="external">awesome-android-ui</a></li>
+</ul>
+<h2 id="质量控制"><a href="#质量控制" class="headerlink" title="质量控制"></a>质量控制</h2><ul>
+<li><a href="http://checkstyle.sourceforge.net/" target="_blank" rel="external">checkstyle</a></li>
+<li><a href="http://findbugs.sourceforge.net/" target="_blank" rel="external">findbugs</a></li>
+<li><a href="http://junit.org/junit4/" target="_blank" rel="external">junit</a></li>
+<li><a href="http://site.mockito.org/" target="_blank" rel="external">mockito</a></li>
+<li><a href="http://robolectric.org/" target="_blank" rel="external">robolectric</a></li>
+<li><a href="https://github.com/hehonghui/android-tech-frontier/tree/master/issue-7/%E4%BD%BF%E7%94%A8Robolectric%E5%92%8CAndroid%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A" target="_blank" rel="external">jacoco</a></li>
+<li><a href="https://google.github.io/android-testing-support-library/docs/espresso/" target="_blank" rel="external">Espresso</a></li>
+</ul>
+<h2 id="优秀站"><a href="#优秀站" class="headerlink" title="优秀站"></a>优秀站</h2><p>个人:</p>
+<ul>
+<li><a href="http://p.codekk.com/" target="_blank" rel="external">CodeKK</a></li>
+<li><a href="https://drakeet.me/" target="_blank" rel="external">Drakeet</a></li>
+<li><a href="http://gank.io/" target="_blank" rel="external">GankIO</a></li>
+<li><a href="http://stormzhang.com/" target="_blank" rel="external">stormzhang</a></li>
+<li><a href="http://www.trinea.cn/" target="_blank" rel="external">Trinea</a></li>
+<li><a href="https://blog.piasy.com/" target="_blank" rel="external">Piasy</a></li>
+<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">androiddevtools</a></li>
+<li><a href="http://droidyue.com/" target="_blank" rel="external">技术小黑屋</a></li>
+<li><a href="https://www.liaohuqiu.net/cn/" target="_blank" rel="external">Srain</a></li>
+<li><a href="http://gityuan.com/" target="_blank" rel="external">Gityuan</a></li>
+<li><a href="https://www.diycode.cc/" target="_blank" rel="external">diycode</a></li>
+<li><a href="http://hukai.me/" target="_blank" rel="external">胡凯</a></li>
+<li><a href="http://blog.csdn.net/luoshengyang" target="_blank" rel="external">老罗的Android之旅</a></li>
+<li><a href="http://blog.csdn.net/innost" target="_blank" rel="external">邓凡平博客</a></li>
+</ul>
+<p>团体:</p>
+<ul>
+<li><a href="">Android开发官方博客</a></li>
+<li><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a></li>
+<li><a href="https://code.facebook.com/" target="_blank" rel="external">Facebook</a></li>
+<li><a href="http://square.github.io/" target="_blank" rel="external">Square</a></li>
+<li><a href="https://yq.aliyun.com/teams/13?spm=5176.100244.0.0.B7S29p" target="_blank" rel="external">手机淘宝技术团队</a></li>
+<li><a href="https://github.com/WeMobileDev/article" target="_blank" rel="external">WeMobileDev</a></li>
+<li><a href="http://www.cnblogs.com/bugly/" target="_blank" rel="external">腾讯bugly</a></li>
+</ul>
+<h2 id="社交账号"><a href="#社交账号" class="headerlink" title="社交账号"></a>社交账号</h2><p>Google Plus: [AndroidDevelopers,Colt McAnlis]</p>
+<p>微信公众号: [WeMobileDev,AndroidDeveloper,谷歌开发者,codeKK]</p>
+<h2 id="高效工具"><a href="#高效工具" class="headerlink" title="高效工具"></a>高效工具</h2><ul>
+<li>抓包: <a href="http://blog.devtang.com/2015/11/14/charles-introduction/" target="_blank" rel="external">Charles</a>, <a href="http://www.jianshu.com/p/4903a03a3816" target="_blank" rel="external">Fiddler</a>, Wireshark</li>
+<li>编辑器: <a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="external">vim</a>,  Andoid Studio#<a href="http://weishu.me/2015/12/21/android-studio-debug-tips-you-may-not-know/" target="_blank" rel="external">调试</a>#<a href="http://zlv.me/posts/2015/07/13/14_android-studio-tips/" target="_blank" rel="external">技巧1</a>#<a href="http://blog.csdn.net/growth58/article/details/46729803" target="_blank" rel="external">技巧2</a>#, <a href="http://xianbai.me/learn-md/index.html" target="_blank" rel="external">markdown</a></li>
+<li>搜索: google,github,<a href="http://www.oschina.net/" target="_blank" rel="external">开源中国</a></li>
+<li>绘图工具: <a href="https://www.processon.com" target="_blank" rel="external">processon</a></li>
+<li>协作: <a href="http://git.oschina.net/progit/" target="_blank" rel="external">git</a></li>
+<li>构建: <a href="https://lippiouyang.gitbooks.io/gradle-in-action-cn/content/" target="_blank" rel="external">gradle</a></li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><ul>
+<li><a href="http://bxbxbai.github.io/2015/09/29/why-a-team-should-write-a-blog/" target="_blank" rel="external">为什么技术团队应该写博客？</a></li>
+<li><a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/" target="_blank" rel="external">为什么你应该（从现在开始就）写博客</a></li>
+<li><a href="http://qingmang.me/articles/1671909240046720664" target="_blank" rel="external">建立学习型组织</a></li>
+<li><a href="https://www.zhihu.com/question/19775981" target="_blank" rel="external">有哪些 Android 大牛的 blog 值得推荐</a></li>
+<li><a href="https://github.com/wasabeef/awesome-android-libraries" target="_blank" rel="external">优秀的Android开源库</a></li>
+<li><a href="https://www.diycode.cc/trends" target="_blank" rel="external">github排行榜</a></li>
+<li><a href="http://tech.youzan.com/code-coverage/" target="_blank" rel="external">浅谈测试覆盖率</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在想如何提升自己和团队成员的技术能力，其实无非就是多阅读优秀源码，优秀书籍，写技术文章等，但在查阅资料的的时候还是收获了不少东西，尤其是刘未鹏大神那篇文章，这边整理可能更多是学习相关的技能树，发表到这里当个备份了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="团队学习" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="技术成长" scheme="https://yedaxia.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>API文档生成工具设计与实现</title>
+    <link href="https://yedaxia.github.io/ApiDocs-Design-And-For-PlayFramework/"/>
+    <id>https://yedaxia.github.io/ApiDocs-Design-And-For-PlayFramework/</id>
+    <published>2017-01-15T14:09:06.000Z</published>
+    <updated>2017-01-15T14:36:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。<br><a id="more"></a></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>之前有在IDE端根据API文档生成相关接口的数据模型，这减少了客户端这边的工作量，具体可以看上一篇文章:<a href="https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/">Model代码插件开发</a>。后面想到如果直接让服务端订好接口的代码规范，那么就可以通过写个工具把API文档，Android和IOS的数据模型代码一并生成了，这样既减少了客户端的工作量，又能减少服务端人员的工作量(不用再去手工维护接口文档)。</p>
+<p>我们先来看看最终的效果:<a href="https://yedaxia.github.io/play-apidocs/">点击查看</a></p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><h2 id="服务端环境"><a href="#服务端环境" class="headerlink" title="服务端环境"></a>服务端环境</h2><p>目前服务端的API接口是通过<a href="https://www.playframework.com/documentation/1.4.x/home" target="_blank" rel="external">Play1.4版本</a>框架来写的，通过研究服务端的代码结构，不难知道它的路由是通过一个<code>conf/routes</code>配置文件来维护的，它的结构如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># api</div><div class="line">POST    /api/admin/auth    api.admin.AdminController.auth</div><div class="line">GET     /api/game/list     api.game.GameController.list</div><div class="line">GET     /api/messageList   api.MyController.messageList</div></pre></td></tr></table></figure>
+<p><code>#</code>是注释，一条路由从左到右分别是[请求方法,请求接口,具体调用所在类的方法]，结构非常清晰。</p>
+<p>我们来看一下具体某个接口代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Description</span> 消息列表接口</div><div class="line"> * <span class="doctag">@param</span> type 消息类型0是系统消息；1是回复我的；2是点赞我的；</div><div class="line"> * <span class="doctag">@param</span> page 页码 从1开始</div><div class="line"> * <span class="doctag">@author</span> yedaxia</div><div class="line"> */</div><div class="line"><span class="meta">@ApiResult</span>(name = MessageListResult.class)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">messageList</span><span class="params">(@Required <span class="keyword">int</span> type, @Required <span class="keyword">int</span> page)</span> </span>&#123;</div><div class="line">	renderJSON();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>方法的参数和请求的参数一致，注解是一些验证，如果有，表示该参数是必须要传的。</p>
+<h2 id="API描述信息"><a href="#API描述信息" class="headerlink" title="API描述信息"></a>API描述信息</h2><p>api是客户端和服务端通信的接口，一般是http或者https作为协议载体，主要包含了请求信息和返回的信息。</p>
+<p><strong>请求信息:</strong></p>
+<ul>
+<li>基本信息</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">接口作用描述</div><div class="line">接口作者: yedaxia</div><div class="line">method：POST</div><div class="line">url: api.github/updateUserinfo</div></pre></td></tr></table></figure>
+<ul>
+<li>参数列表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必需</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>true</td>
+<td>用户名</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回结果:</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"id"</span>: <span class="string">"long //用户id"</span>,</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"String //用户昵称"</span>,</div><div class="line">  <span class="attr">"gender"</span>: <span class="string">"int //用户性别（1：男；2：女;0：未知）"</span>,</div><div class="line">  <span class="attr">"avatar"</span>: <span class="string">"String //用户头像"</span>,</div><div class="line">  <span class="attr">"token"</span>: <span class="string">"String //用户token"</span>,</div><div class="line">  <span class="attr">"isNewUser"</span>: <span class="string">"int //是否是新用户"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>返回结果我们用json数据结构表示，这样在多层的数据结构中可读性更强，而且许多应用也是采用的json格式作为返回结果，我们在相应的字段后加入类型和相关的注释。有了这些信息之后，对于客户端开发人员来说就很清晰了，有问题也可以根据作者找到相关的后端人员。</p>
+<h2 id="建立关联关系"><a href="#建立关联关系" class="headerlink" title="建立关联关系"></a>建立关联关系</h2><ol>
+<li><p><code>基本信息</code> 可以读取<code>routes</code>的路由信息; <code>接口描述</code>读取方法上的<code>@Description</code>注释信息，<code>接口作者</code> 读取相关接口方法的<code>@author</code>注释。</p>
+</li>
+<li><p><code>参数列表</code>中的参数可以读取方法中参数，<code>参数名</code>和<code>类型</code>很容易就对应上，如果有注解<code>@Required</code>或者其他的就视为必传参数，相关注释读取<code>@param</code>注释，这些都和java的编程习惯保持一致。</p>
+</li>
+<li><p><code>返回结果</code>这个就不好直接知道了，通过协商，决定通过添加一个注解来完成，这可能也是唯一增加了服务端工作的一个地方，前面看到的<code>@ApiResult(name = MessageListResult.class)</code>就是我们定义返回结果了，<code>MessageListResult</code>是个简单的JavaBean对象，里面的每个字段和返回的字段一一对应。生成的结果应该支持数组或者列表，类的组合，继承等；每个字段都有类型和相关的注释信息。</p>
+</li>
+</ol>
+<h2 id="展示形式"><a href="#展示形式" class="headerlink" title="展示形式"></a>展示形式</h2><p>一开始是打算通过生成markdown的代码，后面发现从markdown转成html代码的几个java库生成效果不是特别理想，最后还是决定通过html模板来实现。</p>
+<p>每个<code>Controller</code>作为一个API集合，放在一个单独的文件中，通过锚点和目录的方式来实现方便的跳转。</p>
+<h1 id="实现结果"><a href="#实现结果" class="headerlink" title="实现结果"></a>实现结果</h1><p>最终的实现效果可以点击这里进行<a href="https://yedaxia.github.io/play-apidocs/">查看</a>，至此，我们API文档的完整性和规范性完全交给代码本身进行维护，并自动生成了相关客户端的数据模型代码，有效减少了大家的工作量，实施效果非常好。</p>
+<p>相关代码和例子已经上传到<a href="https://github.com/YeDaxia/Docs-For-PlayFramework" target="_blank" rel="external">github</a>了，由于当前只能支持<code>Play</code>框架，如果大家有兴趣可以提相关issue或者自己去研读代码，提交自己的实现，笔者有时间会考虑支持其他框架。</p>
+<h1 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h1><p>我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。虽然整个流程看起来已经比较顺畅了，但是在应付接口变化还需要进一步的努力，除了接口设计上的扩展性应该更好一些之外，在文档工具上后续会考虑加入ChangeLog。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://blog.csdn.net/viviju1989/article/details/8529453" target="_blank" rel="external">Java反射获取方法的参数名列表</a></li>
+<li><a href="https://github.com/apidoc/apidoc" target="_blank" rel="external">apidoc 开源项目</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我一直倡导项目组的开发应该接口设计先行，定下接口协议后各端就可以并行开发了。但是据我了解，还是有不少团队是服务端人员先把接口的逻辑代码写的差不多再交付给客户端接口文档的。通过这个文档生成工具，服务端人员更加愿意提前先设计好接口了，靠工具生成漂亮的文档提前交付未实现的接口给下游人员，而又没有多少增加工作量，整个开发过程会变得更加愉快。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="ApiDocs" scheme="https://yedaxia.github.io/tags/ApiDocs/"/>
+    
+      <category term="PlayFramework" scheme="https://yedaxia.github.io/tags/PlayFramework/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Studio的Model代码插件开发</title>
+    <link href="https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/"/>
+    <id>https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/</id>
+    <published>2016-12-26T05:26:21.000Z</published>
+    <updated>2016-12-28T01:26:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。<br><a id="more"></a><br><a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">源码地址</a></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>码工们做的很多工作，很多时候是为了减少这个世界上的重复工作。在为这个世界带来便捷的时候，当然也要不忘给自己的工作减负，提高工作的效率啦。在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
+<p>当前我们开发用的IDE是Android Studio， 大家都只都这个是基于intellij开发的，所以能集成在intellij里面就最好了。</p>
+<p>目前我们的api文档有两种格式(规范不好的原因)，一种是表格，字段名和类型信息都有了，如下:</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pkgFile</td>
+<td style="text-align:center">String</td>
+<td style="text-align:right">包链接</td>
+</tr>
+<tr>
+<td>gameId</td>
+<td style="text-align:center">long</td>
+<td style="text-align:right">游戏id</td>
+</tr>
+<tr>
+<td>channelName</td>
+<td style="text-align:center">String</td>
+<td style="text-align:right">渠道名</td>
+</tr>
+</tbody>
+</table>
+<p>另外一种就是偷懒的写法，直接把返回的Json贴上去:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"gameName"</span>: <span class="string">"这是游戏标题"</span>,</div><div class="line">    <span class="attr">"gameRecommendText"</span>: <span class="string">"游戏一句话推荐"</span>,</div><div class="line">    <span class="attr">"cover"</span>: <span class="string">"封面图片"</span>,</div><div class="line">    <span class="attr">"ugcTime"</span>: <span class="string">"一天前"</span>,</div><div class="line">    <span class="attr">"gameIcon"</span>: <span class="string">"这是游戏图标"</span>,</div><div class="line">    <span class="attr">"gameDownloadUrl"</span>: <span class="string">"这是游戏下载链接"</span>,</div><div class="line">    <span class="attr">"ugcTitle"</span>: <span class="string">"这是资讯标题"</span>,</div><div class="line">    <span class="attr">"style"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"ugcViewCount"</span>: <span class="number">333</span>,</div><div class="line">    <span class="attr">"ugcSource"</span>: <span class="string">"咨询来源"</span>,</div><div class="line">    <span class="attr">"videoLength"</span>: <span class="string">"12'33''"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里当然两种格式都要很好的支持啦,笔者发现表格直接在网页上复制，然后粘贴到文本输入框中的格式是非常整齐的空格隔开的,格式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pkgFile	String	包链接</div><div class="line">gameId	long	游戏id</div><div class="line">channelName	String	渠道名</div></pre></td></tr></table></figure>
+<p>因此我们的数据源就很好确定了，而且也很方便。根据这两种数据源，我们约定:</p>
+<ul>
+<li>基本类型比如<code>int</code>,<code>long</code>和对应的类类型<code>Integer</code>则返回基本类型。</li>
+<li>没有类型信息或者其他类型用String类型。</li>
+</ul>
+<p>下面我们就开始开始这个插件的开发探索吧，笔者希望能抛砖引玉，大家能在平时的工作中有意识根据自己的需要做出更多好用的工具，优化开发流程和开发效率。</p>
+<h1 id="intellij插件开发基础知识"><a href="#intellij插件开发基础知识" class="headerlink" title="intellij插件开发基础知识"></a>intellij插件开发基础知识</h1><h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><p>这里我建议大家看官方的文档,已经介绍很详细了，我在下面也会简单介绍，<a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">传送门</a></p>
+<ol>
+<li>下载安装intellij社区版: <a href="http://www.jetbrains.org/display/IJOS/Download" target="_blank" rel="external">下载地址</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/configuring-intellij-platform-plugin-sdk.html" target="_blank" rel="external">配置IntelliJ Platform Plugin SDK</a>。</li>
+<li>创建一个<a href="https://www.jetbrains.com/help/idea/2016.3/creating-a-project-for-plugin-development.html" target="_blank" rel="external">Plugin Project</a>。</li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/running-and-debugging-plugins.html" target="_blank" rel="external">运行和调试</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/preparing-plugins-for-publishing.html" target="_blank" rel="external">发布插件</a>，这里我建议大家配置Ant来构建，我发现在引入libs包的时候生成的插件主工程会少很多文件，导致无法正常运行，用<a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Ant打包</a>就正常了。</li>
+</ol>
+<p>懒人版:</p>
+<ol>
+<li>配置Intellij SDK：<br>打开Project Structure对话框[<code>Ctrl+Shift+Alt+S</code>]，选择Intellij的目录:</li>
+</ol>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-stucture.png" alt=""></p>
+<ol>
+<li>新建Plugin Project:</li>
+</ol>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intllij-platform-plugin-project.PNG" alt=""></p>
+<ol>
+<li>新建完成工程目录结构:</li>
+</ol>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-resource.png" alt=""></p>
+<p>其中plugin.xml文件就是我们注册<code>AnAction</code>的地方。</p>
+<h2 id="AnAction介绍"><a href="#AnAction介绍" class="headerlink" title="AnAction介绍"></a>AnAction介绍</h2><p>AnAction就是IDE相关位置的事件触发处理的地方，要创建一个Action,只需要简单的两个步骤:</p>
+<ol>
+<li>定义一个<code>AnAction</code>，你通常需要继承<code>AnAction</code>类，然后在<code>actionPerformed</code>方法里面实现你的操作。</li>
+<li>在plugin.xml里面注册这个<code>AnAction</code>。</li>
+</ol>
+<p>intellij社区版里面创建Action非常方便，你可以通过图像界面很容易找到自己想要放置的Action位置,比如我们要在<code>Code</code>菜单下的<code>Generate..</code>下面放置我们的Action,那么只需要在<code>Groups</code>中找到相应的位置即可:</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intellij-new-action.png" alt=""></p>
+<ul>
+<li><strong>Action ID</strong>: 每个Action都需要一个唯一的ID。</li>
+<li><strong>Class Name</strong>: Action的类名,我们是在<code>github.yedaxia.plugin.actions</code>下面建的。</li>
+<li><strong>Name</strong>: 名字，就是在界面上我们看到的名字。</li>
+<li><strong>Description</strong>: 描述信息，鼠标放在上面一小段时间可以看到的描述信息。</li>
+<li><strong>Groups</strong>: 可以理解为Action集合。</li>
+<li><strong>Keyboard Shortcuts</strong>: 快捷键设置，这里我们暂时不需要了。</li>
+</ul>
+<p>生成之后我们可以看到在<code>plugin.xml</code>里面就有对应的Action了:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">id</span>=<span class="string">"CodeGenerationPlugin.EntryAction"</span> <span class="attr">class</span>=<span class="string">"github.yedaxia.plugin.actions.EntryAction"</span></span></div><div class="line">            <span class="attr">text</span>=<span class="string">"EntryGenerator..."</span> <span class="attr">description</span>=<span class="string">"Entry Code Generator"</span>&gt;</div><div class="line">      <span class="tag">&lt;<span class="name">add-to-group</span> <span class="attr">group-id</span>=<span class="string">"CodeMenu"</span> <span class="attr">anchor</span>=<span class="string">"after"</span> <span class="attr">relative-to-action</span>=<span class="string">"Generate"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>对应的AnAction代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EntryAction</span> <span class="keyword">extends</span> <span class="title">AnAction</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(AnActionEvent e)</span> </span>&#123;</div><div class="line">        <span class="comment">//点击EntryGenerator...按钮之后调用这个方法</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="代码生成界面"><a href="#代码生成界面" class="headerlink" title="代码生成界面:"></a>代码生成界面:</h1><p>代码生成的逻辑并不复杂，我们把这个放到最后，本文还是着重介绍intellij插件的编写，现在我们已经有了程序的入口了，我们还需要一些简单的UI元素，一个对话框，一个简单的输入框[类名],比较大的文本框[数据源和生成的最终代码]。</p>
+<p>先看最后的效果:</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/model-code-generator-dialog.png" alt=""></p>
+<p>intellij本身运行在Java上面，所以java swing库支持肯定是没问题的，这个对话框我主要参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>里面的实现。</p>
+<p>里面用到了<code>com.intellij.openapi.ui.DialogBuilder</code>,相关api文档没有找到，通过源码也不难发现其用法:</p>
+<ul>
+<li><code>setTitle</code>: 标题</li>
+<li><code>setCenterPanel(JComponent centerPanel)</code>: 对话框中间面板，JComponent对于Java程序员应该就不陌生了。</li>
+<li><code>addAction</code>: 添加底部的按钮和相关事件。</li>
+</ul>
+<p>具体的代码可以看: <a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij/blob/master/src/com/morcinek/android/codegenerator/plugin/ui/CodeDialogBuilder.java" target="_blank" rel="external">CodeDialogBuilder.java</a></p>
+<h1 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h1><p>代码生成主要包括两个步骤:</p>
+<ol>
+<li>代码模板设计。</li>
+<li>代码构建。</li>
+</ol>
+<p>模板的设计也是参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>项目，根据Model数据模板的特点，我分成了以下四个代码模板:</p>
+<ol>
+<li><strong>Entry_template</strong>: 目标代码模板。</li>
+<li><strong>Entry_Field_template</strong>: 类字段模板。</li>
+<li><strong>Entry_Setter_template</strong>: setter方法模板。</li>
+<li><strong>Entry_Setter_template</strong>: getter方法模板。</li>
+</ol>
+<p>Json解析我用的是alibaba的fastjson，所以模板就是长下面的样子了，大家可以根据自己的需要去修改:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Entry:</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;CLASS_NAME&#125; implements Serializable&#123;</div><div class="line"></div><div class="line">$&#123;FIELDS&#125;</div><div class="line">$&#123;METHODS&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Field:</div><div class="line"><span class="keyword">private</span> $&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;;</div><div class="line"></div><div class="line">Getter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> $&#123;FIELD_TYPE&#125; get$&#123;CASE_FIELD_NAME&#125;()&#123;</div><div class="line">    <span class="keyword">return</span> $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Setter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> set$&#123;CASE_FIELD_NAME&#125;($&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;)&#123;</div><div class="line">    <span class="keyword">this</span>.$&#123;FIELD_NAME&#125; = $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体的代码构建过程这里就不详细讲了，大家可以移步<a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">github</a>，这个过程应该不难理解。如果觉得这个插件有用，你可以给个star。</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这个工具的开发过程比我想象中要简单很多，一天时间左右应该就差不多完成的了，后续带来的好处和省下来的时间肯定会弥补回这个时间代价，有些码工经常会觉得麻烦或者根本没有这个意识，宁愿麻烦一些也不愿意去写个工具来加速自己的工作，我觉得是不可取的，我们应该用重构和工具去避免写重复的代码，把更多的时间放到有价值和有创造性的工作上面来，从中长期来看，这样带来的好处是巨大的，更快的开发速度、鲁棒性更好的系统等，更重要的是个人也获得了成长。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">IntelliJ Plugin Development Guidelines</a></li>
+<li><a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Intellij 生成Ant工程</a></li>
+<li><a href="http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="external">IntelliJ Plugin Development Docs</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="IntelliJ Plugin" scheme="https://yedaxia.github.io/tags/IntelliJ-Plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OkHttp离线缓存实现</title>
+    <link href="https://yedaxia.github.io/Okhttp-Offline-Cache/"/>
+    <id>https://yedaxia.github.io/Okhttp-Offline-Cache/</id>
+    <published>2016-12-12T05:25:36.000Z</published>
+    <updated>2016-12-12T05:31:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。<br><a id="more"></a></p>
+<h1 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用:"></a>场景应用:</h1><p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。</p>
+<h1 id="OkHttp保存缓存的时机"><a href="#OkHttp保存缓存的时机" class="headerlink" title="OkHttp保存缓存的时机:"></a>OkHttp保存缓存的时机:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.HttpEngine:</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">maybeCache</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    InternalCache responseCache = Internal.instance.internalCache(client);</div><div class="line">    <span class="keyword">if</span> (responseCache == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Should we cache this response for this request?</span></div><div class="line">    <span class="keyword">if</span> (!CacheStrategy.isCacheable(userResponse, networkRequest)) &#123;</div><div class="line">      <span class="keyword">if</span> (HttpMethod.invalidatesCache(networkRequest.method())) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">          responseCache.remove(networkRequest);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          <span class="comment">// The cache cannot be written.</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Offer this request to the cache.</span></div><div class="line">    storeRequest = responseCache.put(stripBody(userResponse));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里我们可以看到OkHttp是否缓存请求结果其中的一个条件:<code>CacheStrategy.isCacheable()</code>, 看看这里面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.CacheStrategy:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCacheable</span><span class="params">(Response response, Request request)</span> </span>&#123;</div><div class="line">    <span class="comment">// Always go to network for uncacheable response codes (RFC 7231 section 6.1),</span></div><div class="line">    <span class="comment">// This implementation doesn't support caching partial content.</span></div><div class="line">    <span class="keyword">switch</span> (response.code()) &#123;</div><div class="line">      <span class="keyword">case</span> HTTP_OK:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_AUTHORITATIVE:</div><div class="line">      <span class="keyword">case</span> HTTP_NO_CONTENT:</div><div class="line">      <span class="keyword">case</span> HTTP_MULT_CHOICE:</div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_PERM:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_FOUND:</div><div class="line">      <span class="keyword">case</span> HTTP_BAD_METHOD:</div><div class="line">      <span class="keyword">case</span> HTTP_GONE:</div><div class="line">      <span class="keyword">case</span> HTTP_REQ_TOO_LONG:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_IMPLEMENTED:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_PERM_REDIRECT:</div><div class="line">        <span class="comment">// These codes can be cached unless headers forbid it.</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_TEMP:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_TEMP_REDIRECT:</div><div class="line">        <span class="comment">// These codes can only be cached with the right response headers.</span></div><div class="line">        <span class="comment">// http://tools.ietf.org/html/rfc7234#section-3</span></div><div class="line">        <span class="comment">// s-maxage is not checked because OkHttp is a private cache that should ignore s-maxage.</span></div><div class="line">        <span class="keyword">if</span> (response.header(<span class="string">"Expires"</span>) != <span class="keyword">null</span></div><div class="line">            || response.cacheControl().maxAgeSeconds() != -<span class="number">1</span></div><div class="line">            || response.cacheControl().isPublic()</div><div class="line">            || response.cacheControl().isPrivate()) &#123;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Fall-through.</span></div><div class="line"></div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="comment">// All other codes cannot be cached.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// A 'no-store' directive on request or response prevents the response from being cached.</span></div><div class="line">    <span class="keyword">return</span> !response.cacheControl().noStore() &amp;&amp; !request.cacheControl().noStore();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们接着回到<code>maybeCache()</code>方法往下看,最后一句<code>responseCache.put(stripBody(userResponse))</code>将会调用下面的方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache:</div><div class="line"><span class="function"><span class="keyword">private</span> CacheRequest <span class="title">put</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    String requestMethod = response.request().method();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (HttpMethod.invalidatesCache(response.request().method())) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        remove(response.request());</div><div class="line">      &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        <span class="comment">// The cache cannot be written.</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!requestMethod.equals(<span class="string">"GET"</span>)) &#123;</div><div class="line">      <span class="comment">// Don't cache non-GET responses. We're technically allowed to cache</span></div><div class="line">      <span class="comment">// HEAD requests and some POST requests, but the complexity of doing</span></div><div class="line">      <span class="comment">// so is high and the benefit is low.</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (OkHeaders.hasVaryAll(response)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Entry entry = <span class="keyword">new</span> Entry(response);</div><div class="line">    DiskLruCache.Editor editor = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      editor = cache.edit(urlToKey(response.request()));</div><div class="line">      <span class="keyword">if</span> (editor == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//缓存写入文件:</span></div><div class="line">      entry.writeTo(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CacheRequestImpl(editor);</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">      abortQuietly(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>总的来说就是只要是<code>Get</code>请求,同时请求和响应头部<code>CacheControl</code>没有设置<code>no store</code>就会把请求结果缓存了。</p>
+<h1 id="OkHttp保存缓存的格式"><a href="#OkHttp保存缓存的格式" class="headerlink" title="OkHttp保存缓存的格式:"></a>OkHttp保存缓存的格式:</h1><p>url所对应的缓存文件名规则,不难看出是url的md5值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Util.md5Hex(request.url().toString())</div></pre></td></tr></table></figure></p>
+<p>保存的代码很明显就在<code>entry.writeTo</code>里面啦。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache.Entry:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(DiskLruCache.Editor editor)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">  <span class="comment">//.0结尾的文件</span></div><div class="line">  BufferedSink sink = Okio.buffer(editor.newSink(ENTRY_METADATA));</div><div class="line"></div><div class="line">  sink.writeUtf8(url);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeUtf8(requestMethod);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(varyHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = varyHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(varyHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(varyHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  sink.writeUtf8(<span class="keyword">new</span> StatusLine(protocol, code, message).toString());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(responseHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = responseHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(responseHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(responseHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (isHttps()) &#123;</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	sink.writeUtf8(handshake.cipherSuite().javaName());</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	writeCertList(sink, handshake.peerCertificates());</div><div class="line">	writeCertList(sink, handshake.localCertificates());</div><div class="line">	<span class="comment">// The handshake’s TLS version is null on HttpsURLConnection and on older cached responses.</span></div><div class="line">	<span class="keyword">if</span> (handshake.tlsVersion() != <span class="keyword">null</span>) &#123;</div><div class="line">	  sink.writeUtf8(handshake.tlsVersion().javaName());</div><div class="line">	  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	&#125;</div><div class="line">  &#125;</div><div class="line">  sink.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们打开相应的缓存目录看一下，果然其中包含了以url的md5值作为文件名的一系列文件，还有一个<code>journal</code>文件，这个文件和DiskLruCache缓存有关，我们这里不展开分析。我们看一下.0和.1文件的内容吧，其实.0里面的东西从上面的代码已经可以知道就是和请求和响应头部的一些信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">http://www.infoq.com/cn/articles/etags</div><div class="line">GET</div><div class="line">2</div><div class="line">Accept-Encoding: gzip</div><div class="line">User-Agent: okhttp/3.2.0</div><div class="line">HTTP/1.1 200 OK</div><div class="line">15</div><div class="line">Date: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Server: Apache</div><div class="line">Sniply-Options: BLOCK</div><div class="line">Set-Cookie: JSESSIONID=7FFBDE344A66525EE343DCCC6DD23692; Path=/</div><div class="line">Last-Modified: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Vary: Accept-Encoding,User-Agent</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Accept-Ranges: none</div><div class="line">Access-Control-Allow-Origin: http://www.infoq.com</div><div class="line">Content-Encoding: gzip</div><div class="line">Connection: close</div><div class="line">Transfer-Encoding: chunked</div><div class="line">Content-Type: text/html;charset=utf-8</div><div class="line">OkHttp-Sent-Millis: 1481467841870</div><div class="line">OkHttp-Received-Millis: 1481467844412</div></pre></td></tr></table></figure></p>
+<p>md5(url).1文件很容易猜到就是response本身的内容了。读者可以自行验证，另外如果response是gzip的格式，那么这里缓存的直接就是gzip后的内容了。</p>
+<h1 id="OkHttp离线缓存实现"><a href="#OkHttp离线缓存实现" class="headerlink" title="OkHttp离线缓存实现:"></a>OkHttp离线缓存实现:</h1><p>通过以上的分析，我们的思路就很清晰了，其实就是一开始就判断是否连接网络，如果是否就直接返回缓存的内容，根据response的头部是否是<code>Content-Encoding: gzip</code>来确定是否需要解压后返回；如果请求服务端失败，那么也返回缓存的内容。</p>
+<p>通过分析OkHttp的InterceptorChain实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.RealCall.ApplicationInterceptorChain:</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">proceed</span><span class="params">(Request request)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">      <span class="comment">// If there's another interceptor in the chain, call that.</span></div><div class="line">      <span class="keyword">if</span> (index &lt; client.interceptors().size()) &#123;</div><div class="line">        Interceptor.Chain chain = <span class="keyword">new</span> ApplicationInterceptorChain(index + <span class="number">1</span>, request, forWebSocket);</div><div class="line">        Interceptor interceptor = client.interceptors().get(index);</div><div class="line">        Response interceptedResponse = interceptor.intercept(chain);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (interceptedResponse == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"application interceptor "</span> + interceptor</div><div class="line">              + <span class="string">" returned null"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> interceptedResponse;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">// No more interceptors. Do HTTP.</span></div><div class="line">      <span class="keyword">return</span> getResponse(request, forWebSocket);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不难发现只要通过一个Interceptor返回response即可中断http后续的请求动作，如果服务端错误，response将会返回相应的错误码，总结最后的实现代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheControlInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mCacheDir;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ILog mLog;</div><div class="line"></div><div class="line">    CacheControlInterceptor(ILog log, String cacheDir)&#123;</div><div class="line">        <span class="keyword">this</span>.mCacheDir = cacheDir;</div><div class="line">        <span class="keyword">this</span>.mLog = log;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        Request request = chain.request();</div><div class="line">        <span class="keyword">boolean</span> networkAvail = NetUtils.isNetworkAvailable();</div><div class="line">        <span class="keyword">if</span> (!networkAvail)&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        Response networkResponse = chain.proceed(request);</div><div class="line">        <span class="keyword">if</span>(networkAvail &amp;&amp; !networkResponse.isSuccessful())&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> networkResponse;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Response <span class="title">getCacheResponse</span><span class="params">(Request request)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(!<span class="string">"get"</span>.equalsIgnoreCase(request.method())|| mCacheDir == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String urlMd5 = Util.md5Hex(request.url().url().toString());</div><div class="line">        File headerCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".0"</span>);</div><div class="line">        Response.Builder cacheResponseBuilder = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (headerCacheFile.exists()) &#123;</div><div class="line">            cacheResponseBuilder = <span class="keyword">new</span> Response.Builder();</div><div class="line">            cacheResponseBuilder.request(request);</div><div class="line">            readCacheResponseHeaders(headerCacheFile,cacheResponseBuilder);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(cacheResponseBuilder != <span class="keyword">null</span>)&#123;</div><div class="line">            Response cacheResponse = cacheResponseBuilder.build();</div><div class="line">            File bodyCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".1"</span>);</div><div class="line">            Source cacheSource;</div><div class="line">            <span class="keyword">if</span>(!<span class="string">"gzip"</span>.equalsIgnoreCase(cacheResponse.header(<span class="string">"Content-Encoding"</span>)))&#123;</div><div class="line">                cacheSource = Okio.source(bodyCacheFile);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                cacheSource = <span class="keyword">new</span> GzipSource(Okio.source(bodyCacheFile));</div><div class="line">            &#125;</div><div class="line">            RealResponseBody responseBody = <span class="keyword">new</span> RealResponseBody(cacheResponse.headers(),Okio.buffer(cacheSource));</div><div class="line">            <span class="keyword">return</span> cacheResponse.newBuilder().body(responseBody).build();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readCacheResponseHeaders</span><span class="params">(File headerCacheFile,Response.Builder responseBuilder)</span> </span>&#123;</div><div class="line">        BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(headerCacheFile)));</div><div class="line">            String lineText;</div><div class="line">            <span class="keyword">int</span> code = <span class="number">0</span>;</div><div class="line">            <span class="keyword">boolean</span> isHeaderBegin = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span>((lineText = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(isHeaderBegin)&#123;</div><div class="line">                    <span class="keyword">int</span> sepIndex = lineText.indexOf(<span class="string">":"</span>);</div><div class="line">                    String headerName = lineText.substring(<span class="number">0</span>,sepIndex);</div><div class="line">                    String headerVal = lineText.substring(sepIndex + <span class="number">1</span>).trim();</div><div class="line">                    responseBuilder.addHeader(headerName,headerVal);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(code != <span class="number">0</span> &amp;&amp; NumberUtils.parseInt(lineText,<span class="number">0</span>) != <span class="number">0</span>)&#123;</div><div class="line">                    isHeaderBegin = <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(lineText.startsWith(<span class="string">"HTTP/1.1"</span>))&#123;</div><div class="line">                    code = Integer.valueOf(lineText.substring(lineText.indexOf(<span class="string">" "</span>)).trim());</div><div class="line">                    responseBuilder.protocol(Protocol.HTTP_1_1);</div><div class="line">                    responseBuilder.code(code);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            IOUtils.closeSilently(reader);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li>http缓存: <a href="https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn" target="_blank" rel="external">https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn</a></li>
+<li>tomcat中对客户端的缓存机制: <a href="http://blog.csdn.net/liweisnake/article/details/8524179" target="_blank" rel="external">http://blog.csdn.net/liweisnake/article/details/8524179</a></li>
+<li>Okhttp Interceptors: <a href="https://github.com/square/okhttp/wiki/Interceptors" target="_blank" rel="external">https://github.com/square/okhttp/wiki/Interceptors</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="okhttp" scheme="https://yedaxia.github.io/tags/okhttp/"/>
+    
+      <category term="okhttp缓存" scheme="https://yedaxia.github.io/tags/okhttp%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用MediaExtractor和MediaCodec实现音频编解码和混音</title>
+    <link href="https://yedaxia.github.io/Android-MediaExtractor-And-MediaCodec/"/>
+    <id>https://yedaxia.github.io/Android-MediaExtractor-And-MediaCodec/</id>
+    <published>2016-11-27T15:10:55.000Z</published>
+    <updated>2016-11-28T02:43:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。<br><a id="more"></a></p>
+<p>相关源码:<a href="https://github.com/YeDaxia/MusicPlus" target="_blank" rel="external">https://github.com/YeDaxia/MusicPlus</a></p>
+<hr>
+<h1 id="认识数字音频"><a href="#认识数字音频" class="headerlink" title="认识数字音频"></a>认识数字音频</h1><p>在实现之前，我们先来了解一下数字音频的有关属性。</p>
+<p>采样频率(Sample Rate)：每秒采集声音的数量，它用赫兹(Hz)来表示。(采样率越高越靠近原声音的波形)<br>采样精度(Bit Depth)：指记录声音的动态范围，它以位(Bit)为单位。(声音的幅度差)<br>声音通道(Channel)：声道数。比如左声道右声道。</p>
+<p>采样量化后的音频最终是一串数字,声音的大小(幅度)会体现在这个每个数字数值大小上；而声音的高低(频率)和声音的音色(Timbre)都和时间维度有关，会体现在数字之间的差异上。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png" alt="sound wav"></p>
+<p>在编码解码之前，我们先来感受一下原始的音频数据究竟是什么样的。我们知道wav文件里面放的就是原始的PCM数据，下面我们通过<a href="https://developer.android.com/reference/android/media/AudioTrack.html" target="_blank" rel="external">AudioTrack</a>来直接把这些数据write进去播放出来。下面是某个wav文件的格式，关于wav的格式内容可以看:<a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="external">WaveFormat</a> ，可以通过<a href="http://www.proxoft.com/binaryviewer.aspx" target="_blank" rel="external">Binary Viewer</a>等工具去查看一下wav文件的二进制内容。<br><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_wav_format.gif" alt="wav format"></p>
+<p>下面这段代码可用于播放原生wav文件:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> sampleRateInHz = <span class="number">44100</span>;</div><div class="line"><span class="keyword">int</span> channelConfig = AudioFormat.CHANNEL_OUT_STEREO;</div><div class="line"><span class="keyword">int</span> audioFormat = AudioFormat.ENCODING_PCM_16BIT;</div><div class="line"></div><div class="line"><span class="keyword">int</span> bufferSizeInBytes = AudioTrack.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat);</div><div class="line">AudioTrack audioTrack = <span class="keyword">new</span>  AudioTrack(AudioManager.STREAM_MUSIC, sampleRateInHz, channelConfig, audioFormat, bufferSizeInBytes, AudioTrack.MODE_STREAM);</div><div class="line">audioTrack.play();</div><div class="line">			</div><div class="line">FileInputStream audioInput = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	audioInput = <span class="keyword">new</span> FileInputStream(audioFile);<span class="comment">//put your wav file in</span></div><div class="line"></div><div class="line">	audioInput.read(<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">44</span>]);<span class="comment">//skid 44 wav header</span></div><div class="line">	</div><div class="line">	<span class="keyword">byte</span>[] audioData = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</div><div class="line">	</div><div class="line">	<span class="keyword">while</span>(audioInput.read(audioData)!= -<span class="number">1</span>)&#123;</div><div class="line">		audioTrack.write(audioData, <span class="number">0</span>, audioData.length); <span class="comment">//play raw audio bytes</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;<span class="keyword">finally</span>&#123;</div><div class="line">	audioTrack.stop();</div><div class="line">	audioTrack.release();</div><div class="line">	<span class="keyword">if</span>(audioInput != <span class="keyword">null</span>)</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			audioInput.close();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果你有试过一下上面的例子，那你应该对音频的源数据有了一个概念了。</p>
+<h1 id="音频的解码"><a href="#音频的解码" class="headerlink" title="音频的解码"></a>音频的解码</h1><p>通过上面的介绍，我们不难知道，解码的目的就是让编码后的数据恢复成wav中的源数据。<br><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_audio_decode_flow.png" alt="decode flow"><br>下面代码将利用MediaExtractor和MediaCodec来提取编码后的音频数据并解压成音频源数据:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> String encodeFile = <span class="string">"your encode audio file path"</span>;</div><div class="line">MediaExtractor extractor = <span class="keyword">new</span> MediaExtractor();</div><div class="line">extractor.setDataSource(encodeFile);</div><div class="line"></div><div class="line">MediaFormat mediaFormat = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; extractor.getTrackCount(); i++) &#123;</div><div class="line">	MediaFormat format = extractor.getTrackFormat(i);</div><div class="line">	String mime = format.getString(MediaFormat.KEY_MIME);</div><div class="line">	<span class="keyword">if</span> (mime.startsWith(<span class="string">"audio/"</span>)) &#123;</div><div class="line">		extractor.selectTrack(i);</div><div class="line">		mediaFormat = format;</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span>(mediaFormat == <span class="keyword">null</span>)&#123;</div><div class="line">	DLog.e(<span class="string">"not a valid file with audio track.."</span>);</div><div class="line">	extractor.release();</div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">FileOutputStream fosDecoder = <span class="keyword">new</span> FileOutputStream(outDecodeFile);<span class="comment">//your out file path</span></div><div class="line"></div><div class="line">String mediaMime = mediaFormat.getString(MediaFormat.KEY_MIME);</div><div class="line">MediaCodec codec = MediaCodec.createDecoderByType(mediaMime);</div><div class="line">codec.configure(mediaFormat, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">0</span>);</div><div class="line">codec.start();</div><div class="line"></div><div class="line">ByteBuffer[] codecInputBuffers = codec.getInputBuffers();</div><div class="line">ByteBuffer[] codecOutputBuffers = codec.getOutputBuffers();</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="keyword">long</span> kTimeOutUs = <span class="number">5000</span>;</div><div class="line">MediaCodec.BufferInfo info = <span class="keyword">new</span> MediaCodec.BufferInfo();</div><div class="line"><span class="keyword">boolean</span> sawInputEOS = <span class="keyword">false</span>;</div><div class="line"><span class="keyword">boolean</span> sawOutputEOS = <span class="keyword">false</span>;</div><div class="line"><span class="keyword">int</span> totalRawSize = <span class="number">0</span>;</div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">	<span class="keyword">while</span> (!sawOutputEOS) &#123;</div><div class="line">		<span class="keyword">if</span> (!sawInputEOS) &#123;</div><div class="line">			<span class="keyword">int</span> inputBufIndex = codec.dequeueInputBuffer(kTimeOutUs);</div><div class="line">			<span class="keyword">if</span> (inputBufIndex &gt;= <span class="number">0</span>) &#123;</div><div class="line">				ByteBuffer dstBuf = codecInputBuffers[inputBufIndex];</div><div class="line">				<span class="keyword">int</span> sampleSize = extractor.readSampleData(dstBuf, <span class="number">0</span>);</div><div class="line">				<span class="keyword">if</span> (sampleSize &lt; <span class="number">0</span>) &#123;</div><div class="line">					DLog.i(TAG, <span class="string">"saw input EOS."</span>);</div><div class="line">					sawInputEOS = <span class="keyword">true</span>;</div><div class="line">					codec.queueInputBuffer(inputBufIndex,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,MediaCodec.BUFFER_FLAG_END_OF_STREAM );</div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">long</span> presentationTimeUs = extractor.getSampleTime();</div><div class="line">					codec.queueInputBuffer(inputBufIndex,<span class="number">0</span>,sampleSize,presentationTimeUs,<span class="number">0</span>);</div><div class="line">					extractor.advance();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> res = codec.dequeueOutputBuffer(info, kTimeOutUs);</div><div class="line">		<span class="keyword">if</span> (res &gt;= <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">			 <span class="keyword">int</span> outputBufIndex = res;</div><div class="line">			<span class="comment">// Simply ignore codec config buffers.</span></div><div class="line">			<span class="keyword">if</span> ((info.flags &amp; MediaCodec.BUFFER_FLAG_CODEC_CONFIG)!= <span class="number">0</span>) &#123;</div><div class="line">				 DLog.i(TAG, <span class="string">"audio encoder: codec config buffer"</span>);</div><div class="line">				 codec.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</div><div class="line">				 <span class="keyword">continue</span>;</div><div class="line">			 &#125;</div><div class="line">			 </div><div class="line">			<span class="keyword">if</span>(info.size != <span class="number">0</span>)&#123;</div><div class="line">				</div><div class="line">				ByteBuffer outBuf = codecOutputBuffers[outputBufIndex];</div><div class="line">				</div><div class="line">				outBuf.position(info.offset);</div><div class="line">				outBuf.limit(info.offset + info.size);</div><div class="line">				<span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[info.size];</div><div class="line">				outBuf.get(data);</div><div class="line">				totalRawSize += data.length;</div><div class="line">				fosDecoder.write(data);</div><div class="line">				</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			codec.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</div><div class="line">			</div><div class="line">			<span class="keyword">if</span> ((info.flags &amp; MediaCodec.BUFFER_FLAG_END_OF_STREAM) != <span class="number">0</span>) &#123;</div><div class="line">				DLog.i(TAG, <span class="string">"saw output EOS."</span>);</div><div class="line">				sawOutputEOS = <span class="keyword">true</span>;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (res == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) &#123;</div><div class="line">			codecOutputBuffers = codec.getOutputBuffers();</div><div class="line">			DLog.i(TAG, <span class="string">"output buffers have changed."</span>);</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (res == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) &#123;</div><div class="line">			MediaFormat oformat = codec.getOutputFormat();</div><div class="line">			DLog.i(TAG, <span class="string">"output format has changed to "</span> + oformat);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">finally</span>&#123;</div><div class="line">	fosDecoder.close();</div><div class="line">	codec.stop();</div><div class="line">	codec.release();</div><div class="line">	extractor.release();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里解压出来的数据是不带文件的头部信息的，因此一般的播放器还不能识别播放，这里你可以用AudioTrack来播放验证一下这些解压后的数据是否正确。</p>
+<h1 id="音频的混音"><a href="#音频的混音" class="headerlink" title="音频的混音"></a>音频的混音</h1><p>音频混音的原理: 量化的语音信号的叠加等价于空气中声波的叠加。<br><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg" alt="mix audio"></p>
+<p>反应到音频数据上，也就是把同一个声道的数值进行简单的相加，但是这样同时会产生一个问题，那就是相加的结果可能会溢出，当然为了解决这个问题已经有很多方案了，在这里我们采用简单的平均算法(average audio mixing algorithm, 简称V算法)。在下面的演示程序中，我们假设音频文件是的采样率，通道和采样精度都是一样的,这样会便于处理。另外要注意的是，在源音频数据中是按照little-endian的顺序来排放的，PCM值为0表示没声音(振幅为0)。</p>
+<p>代码实现:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mixAudios</span><span class="params">(File[] rawAudioFiles)</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">final</span> <span class="keyword">int</span> fileSize = rawAudioFiles.length;</div><div class="line"></div><div class="line">	FileInputStream[] audioFileStreams = <span class="keyword">new</span> FileInputStream[fileSize];</div><div class="line">	File audioFile = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	FileInputStream inputStream;</div><div class="line">	<span class="keyword">byte</span>[][] allAudioBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[fileSize][];</div><div class="line">	<span class="keyword">boolean</span>[] streamDoneArray = <span class="keyword">new</span> <span class="keyword">boolean</span>[fileSize];</div><div class="line">	<span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</div><div class="line">	<span class="keyword">int</span> offset;</div><div class="line">	</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> fileIndex = <span class="number">0</span>; fileIndex &lt; fileSize; ++fileIndex) &#123;</div><div class="line">			audioFile = rawAudioFiles[fileIndex];</div><div class="line">			audioFileStreams[fileIndex] = <span class="keyword">new</span> FileInputStream(audioFile);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">			</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> streamIndex = <span class="number">0</span> ; streamIndex &lt; fileSize ; ++streamIndex)&#123;</div><div class="line">				</div><div class="line">				inputStream = audioFileStreams[streamIndex];</div><div class="line">				<span class="keyword">if</span>(!streamDoneArray[streamIndex] &amp;&amp; (offset = inputStream.read(buffer)) != -<span class="number">1</span>)&#123;</div><div class="line">					allAudioBytes[streamIndex] = Arrays.copyOf(buffer,buffer.length);</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					streamDoneArray[streamIndex] = <span class="keyword">true</span>;</div><div class="line">					allAudioBytes[streamIndex] = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">byte</span>[] mixBytes = mixRawAudioBytes(allAudioBytes);</div><div class="line">			</div><div class="line">			<span class="comment">//mixBytes 就是混合后的数据</span></div><div class="line">			</div><div class="line">			<span class="keyword">boolean</span> done = <span class="keyword">true</span>;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">boolean</span> streamEnd : streamDoneArray)&#123;</div><div class="line">				<span class="keyword">if</span>(!streamEnd)&#123;</div><div class="line">					done = <span class="keyword">false</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(done)&#123;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">		<span class="keyword">if</span>(mOnAudioMixListener != <span class="keyword">null</span>)</div><div class="line">			mOnAudioMixListener.onMixError(<span class="number">1</span>);</div><div class="line">	&#125;<span class="keyword">finally</span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="keyword">for</span>(FileInputStream in : audioFileStreams)&#123;</div><div class="line">				<span class="keyword">if</span>(in != <span class="keyword">null</span>)</div><div class="line">					in.close();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 每一行是一个音频的数据</div><div class="line"> */</div><div class="line"><span class="keyword">byte</span>[] averageMix(<span class="keyword">byte</span>[][] bMulRoadAudioes) &#123;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (bMulRoadAudioes == <span class="keyword">null</span> || bMulRoadAudioes.length == <span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">		<span class="keyword">byte</span>[] realMixAudio = bMulRoadAudioes[<span class="number">0</span>];</div><div class="line">		</div><div class="line">		<span class="keyword">if</span>(bMulRoadAudioes.length == <span class="number">1</span>)</div><div class="line">			<span class="keyword">return</span> realMixAudio;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> rw = <span class="number">0</span> ; rw &lt; bMulRoadAudioes.length ; ++rw)&#123;</div><div class="line">			<span class="keyword">if</span>(bMulRoadAudioes[rw].length != realMixAudio.length)&#123;</div><div class="line">				Log.e(<span class="string">"app"</span>, <span class="string">"column of the road of audio + "</span> + rw +<span class="string">" is diffrent."</span>);</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> row = bMulRoadAudioes.length;</div><div class="line">		<span class="keyword">int</span> coloum = realMixAudio.length / <span class="number">2</span>;</div><div class="line">		<span class="keyword">short</span>[][] sMulRoadAudioes = <span class="keyword">new</span> <span class="keyword">short</span>[row][coloum];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; row; ++r) &#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; coloum; ++c) &#123;</div><div class="line">				sMulRoadAudioes[r][c] = (<span class="keyword">short</span>) ((bMulRoadAudioes[r][c * <span class="number">2</span>] &amp; <span class="number">0xff</span>) | (bMulRoadAudioes[r][c * <span class="number">2</span> + <span class="number">1</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">8</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">short</span>[] sMixAudio = <span class="keyword">new</span> <span class="keyword">short</span>[coloum];</div><div class="line">		<span class="keyword">int</span> mixVal;</div><div class="line">		<span class="keyword">int</span> sr = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> sc = <span class="number">0</span>; sc &lt; coloum; ++sc) &#123;</div><div class="line">			mixVal = <span class="number">0</span>;</div><div class="line">			sr = <span class="number">0</span>;</div><div class="line">			<span class="keyword">for</span> (; sr &lt; row; ++sr) &#123;</div><div class="line">				mixVal += sMulRoadAudioes[sr][sc];</div><div class="line">			&#125;</div><div class="line">			sMixAudio[sc] = (<span class="keyword">short</span>) (mixVal / row);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (sr = <span class="number">0</span>; sr &lt; coloum; ++sr) &#123;</div><div class="line">			realMixAudio[sr * <span class="number">2</span>] = (<span class="keyword">byte</span>) (sMixAudio[sr] &amp; <span class="number">0x00FF</span>);</div><div class="line">			realMixAudio[sr * <span class="number">2</span> + <span class="number">1</span>] = (<span class="keyword">byte</span>) ((sMixAudio[sr] &amp; <span class="number">0xFF00</span>) &gt;&gt; <span class="number">8</span>);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> realMixAudio;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样，你可以把混音后的数据用AudioTrack播放出来，验证一下混音的效果。</p>
+<h1 id="音频的编码"><a href="#音频的编码" class="headerlink" title="音频的编码"></a>音频的编码</h1><p>对音频进行编码的目的用更少的空间来存储和传输，有有损编码和无损编码，其中我们常见的Mp3和ACC格式就是有损编码。在下面的例子中，我们通过MediaCodec来对混音后的数据进行编码，在这里，我们将采用ACC格式来进行。</p>
+<p>ACC音频有ADIF和ADTS两种格式，第一种适用于磁盘,优点是需要空间小, 但是不能边下载边播放;第二种则适用于流的传输，它是一种帧序列，可以逐帧播放。我们这里用ADTS这种来进行编码，首先要了解一下它的帧序列的构成:</p>
+<p><strong>ADTS的帧结构:</strong></p>
+<p>[head]:[body]</p>
+<p><strong>ADTS帧的Header组成:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Length (bits)</th>
+<th style="text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td style="text-align:right">syncword 0xFFF, all bits must be 1</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">Layer: always 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">protection absent, Warning, set to 1 if there is no CRC and 0 if there is CRC</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">profile, the MPEG-4 Audio Object Type minus 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:right">MPEG-4 Sampling Frequency Index (15 is forbidden)</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">private bit, guaranteed never to be used by MPEG, set to 0 when encoding, ignore when decoding</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">MPEG-4 Channel Configuration (in the case of 0, the channel configuration is sent via an inband PCE)</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">originality, set to 0 when encoding, ignore when decoding</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">home, set to 0 when encoding, ignore when decoding</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">copyrighted id bit, the next bit of a centrally registered copyright identifier, set to 0 when encoding, ignore when decoding</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">copyright id start, signals that this frame’s copyright id bit is the first bit of the copyright id, set to 0 when encoding, ignore when decoding</td>
+</tr>
+<tr>
+<td>13</td>
+<td style="text-align:right">frame length, this value must include 7 or 9 bytes of header length: FrameLength = (ProtectionAbsent == 1 ? 7 : 9) + size(AACFrame)</td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align:right">Buffer fullness</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">Number of AAC frames (RDBs) in ADTS frame minus 1, for maximum compatibility always use 1 AAC frame per ADTS frame</td>
+</tr>
+<tr>
+<td>16</td>
+<td style="text-align:right">CRC if protection absent is 0</td>
+</tr>
+</tbody>
+</table>
+<p>我们的思路就很明确了，把编码后的每一帧数据加上header写到文件中，保存后的.acc文件应该是可以被播放器识别播放的。为了简单，我们还是假设之前生成的混音数据源的采样率是44100Hz，通道数是2，采样精度是16Bit。</p>
+<p><strong>把音频源数据编码成ACC格式:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AACAudioEncoder</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TAG = <span class="string">"AACAudioEncoder"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String AUDIO_MIME = <span class="string">"audio/mp4a-latm"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> audioBytesPerSample = <span class="number">44100</span>*<span class="number">16</span>/<span class="number">8</span>;</div><div class="line">	<span class="keyword">private</span> String rawAudioFile；</div><div class="line">	AACAudioEncoder(String rawAudioFile) &#123;</div><div class="line">		<span class="keyword">this</span>.rawAudioFile = rawAudioFile;</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">encodeToFile</span><span class="params">(String outEncodeFile)</span> </span>&#123;</div><div class="line">		FileInputStream fisRawAudio = <span class="keyword">null</span>;</div><div class="line">		FileOutputStream fosAccAudio = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			fisRawAudio = <span class="keyword">new</span> FileInputStream(rawAudioFile);</div><div class="line">			fosAccAudio = <span class="keyword">new</span> FileOutputStream(outEncodeFile);</div><div class="line">			<span class="keyword">final</span> MediaCodec audioEncoder = createACCAudioDecoder();</div><div class="line">			audioEncoder.start();</div><div class="line">			ByteBuffer[] audioInputBuffers = audioEncoder.getInputBuffers();</div><div class="line">			ByteBuffer[] audioOutputBuffers = audioEncoder.getOutputBuffers();</div><div class="line">			<span class="keyword">boolean</span> sawInputEOS = <span class="keyword">false</span>;</div><div class="line">	        <span class="keyword">boolean</span> sawOutputEOS = <span class="keyword">false</span>;</div><div class="line">	        <span class="keyword">long</span> audioTimeUs = <span class="number">0</span> ;</div><div class="line">			BufferInfo outBufferInfo = <span class="keyword">new</span> BufferInfo();</div><div class="line">			<span class="keyword">boolean</span> readRawAudioEOS = <span class="keyword">false</span>;</div><div class="line">			<span class="keyword">byte</span>[] rawInputBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</div><div class="line">			<span class="keyword">int</span> readRawAudioCount = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> rawAudioSize = <span class="number">0</span>;</div><div class="line">			<span class="keyword">long</span> lastAudioPresentationTimeUs = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> inputBufIndex, outputBufIndex;</div><div class="line">	        <span class="keyword">while</span>(!sawOutputEOS)&#123;</div><div class="line">	        	<span class="keyword">if</span> (!sawInputEOS) &#123;</div><div class="line">	        		 inputBufIndex = audioEncoder.dequeueInputBuffer(<span class="number">10000</span>);</div><div class="line">				     <span class="keyword">if</span> (inputBufIndex &gt;= <span class="number">0</span>) &#123;</div><div class="line">				           ByteBuffer inputBuffer = audioInputBuffers[inputBufIndex];</div><div class="line">				           inputBuffer.clear();</div><div class="line">				           <span class="keyword">int</span> bufferSize = inputBuffer.remaining();</div><div class="line">				           <span class="keyword">if</span>(bufferSize != rawInputBytes.length)&#123;</div><div class="line">				        	   rawInputBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[bufferSize];</div><div class="line">				           &#125;</div><div class="line">				           <span class="keyword">if</span>(!readRawAudioEOS)&#123;</div><div class="line">				        	   readRawAudioCount = fisRawAudio.read(rawInputBytes);</div><div class="line">				        	   <span class="keyword">if</span>(readRawAudioCount == -<span class="number">1</span>)&#123;</div><div class="line">				        		   readRawAudioEOS = <span class="keyword">true</span>;</div><div class="line">				        	   &#125;</div><div class="line">				           &#125;</div><div class="line">				           <span class="keyword">if</span>(readRawAudioEOS)&#123;</div><div class="line">			        		   audioEncoder.queueInputBuffer(inputBufIndex,<span class="number">0</span> , <span class="number">0</span> , <span class="number">0</span> ,MediaCodec.BUFFER_FLAG_END_OF_STREAM);</div><div class="line">				        	   sawInputEOS = <span class="keyword">true</span>;</div><div class="line">				           &#125;<span class="keyword">else</span>&#123;</div><div class="line">				        	   inputBuffer.put(rawInputBytes, <span class="number">0</span>, readRawAudioCount);</div><div class="line">					           rawAudioSize += readRawAudioCount;</div><div class="line">					           audioEncoder.queueInputBuffer(inputBufIndex, <span class="number">0</span>, readRawAudioCount, audioTimeUs, <span class="number">0</span>);</div><div class="line">					           audioTimeUs = (<span class="keyword">long</span>) (<span class="number">1000000</span> * (rawAudioSize / <span class="number">2.0</span>) / audioBytesPerSample);</div><div class="line">				           &#125;</div><div class="line">				     &#125;</div><div class="line">	        	&#125;</div><div class="line">	        	outputBufIndex = audioEncoder.dequeueOutputBuffer(outBufferInfo, <span class="number">10000</span>);</div><div class="line">	        	<span class="keyword">if</span>(outputBufIndex &gt;= <span class="number">0</span>)&#123;</div><div class="line">	        		<span class="comment">// Simply ignore codec config buffers.</span></div><div class="line">	        		<span class="keyword">if</span> ((outBufferInfo.flags &amp; MediaCodec.BUFFER_FLAG_CODEC_CONFIG)!= <span class="number">0</span>) &#123;</div><div class="line">	                     DLog.i(TAG, <span class="string">"audio encoder: codec config buffer"</span>);</div><div class="line">	                     audioEncoder.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</div><div class="line">	                     <span class="keyword">continue</span>;</div><div class="line">	                 &#125;</div><div class="line">	        		<span class="keyword">if</span>(outBufferInfo.size != <span class="number">0</span>)&#123;</div><div class="line">		        		 ByteBuffer outBuffer = audioOutputBuffers[outputBufIndex];</div><div class="line">		        		 outBuffer.position(outBufferInfo.offset);</div><div class="line">		        		 outBuffer.limit(outBufferInfo.offset + outBufferInfo.size);</div><div class="line">		        		 DLog.i(TAG, String.format(<span class="string">" writing audio sample : size=%s , presentationTimeUs=%s"</span>, outBufferInfo.size, outBufferInfo.presentationTimeUs));</div><div class="line">		        		 <span class="keyword">if</span>(lastAudioPresentationTimeUs &lt; outBufferInfo.presentationTimeUs)&#123;</div><div class="line">			        		 lastAudioPresentationTimeUs = outBufferInfo.presentationTimeUs;</div><div class="line">			        		 <span class="keyword">int</span> outBufSize   = outBufferInfo.size;</div><div class="line">			        		 <span class="keyword">int</span> outPacketSize = outBufSize + <span class="number">7</span>;</div><div class="line">			        		 outBuffer.position(outBufferInfo.offset);</div><div class="line">			        		 outBuffer.limit(outBufferInfo.offset + outBufSize);</div><div class="line">			        		 <span class="keyword">byte</span>[] outData = <span class="keyword">new</span> <span class="keyword">byte</span>[outBufSize + <span class="number">7</span>];</div><div class="line">			        		 addADTStoPacket(outData, outPacketSize);</div><div class="line">			        		 outBuffer.get(outData, <span class="number">7</span>, outBufSize);</div><div class="line">			        		 fosAccAudio.write(outData, <span class="number">0</span>, outData.length);</div><div class="line">			                 DLog.i(TAG, outData.length + <span class="string">" bytes written."</span>);</div><div class="line">		        		 &#125;<span class="keyword">else</span>&#123;</div><div class="line">		        			 DLog.e(TAG, <span class="string">"error sample! its presentationTimeUs should not lower than before."</span>);</div><div class="line">		        		 &#125;</div><div class="line">	        		&#125;</div><div class="line">	        		audioEncoder.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</div><div class="line">	                 <span class="keyword">if</span> ((outBufferInfo.flags &amp; MediaCodec.BUFFER_FLAG_END_OF_STREAM) != <span class="number">0</span>) &#123;</div><div class="line">				           sawOutputEOS = <span class="keyword">true</span>;</div><div class="line">				     &#125;</div><div class="line">	        	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (outputBufIndex == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) &#123;</div><div class="line">	        		audioOutputBuffers = audioEncoder.getOutputBuffers();</div><div class="line">			    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (outputBufIndex == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) &#123;</div><div class="line">			    	MediaFormat audioFormat = audioEncoder.getOutputFormat();</div><div class="line">			    	DLog.i(TAG, <span class="string">"format change : "</span>+ audioFormat);</div><div class="line">			    &#125;</div><div class="line">	        &#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="keyword">if</span> (fisRawAudio != <span class="keyword">null</span>)</div><div class="line">					fisRawAudio.close();</div><div class="line">				<span class="keyword">if</span>(fosAccAudio != <span class="keyword">null</span>)</div><div class="line">					fosAccAudio.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> MediaCodec <span class="title">createACCAudioDecoder</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		MediaCodec	codec = MediaCodec.createEncoderByType(AUDIO_MIME);</div><div class="line">		MediaFormat format = <span class="keyword">new</span> MediaFormat();</div><div class="line">		format.setString(MediaFormat.KEY_MIME, AUDIO_MIME);</div><div class="line">		format.setInteger(MediaFormat.KEY_BIT_RATE, <span class="number">128000</span>);</div><div class="line">		format.setInteger(MediaFormat.KEY_CHANNEL_COUNT, <span class="number">2</span>);</div><div class="line">		format.setInteger(MediaFormat.KEY_SAMPLE_RATE, <span class="number">44100</span>);</div><div class="line">		format.setInteger(MediaFormat.KEY_AAC_PROFILE,MediaCodecInfo.CodecProfileLevel.AACObjectLC);</div><div class="line">		codec.configure(format, <span class="keyword">null</span>, <span class="keyword">null</span>, MediaCodec.CONFIGURE_FLAG_ENCODE);</div><div class="line">		<span class="keyword">return</span> codec;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">     *  Add ADTS header at the beginning of each and every AAC packet.</div><div class="line">     *  This is needed as MediaCodec encoder generates a packet of raw</div><div class="line">     *  AAC data.</div><div class="line">     *</div><div class="line">     *  Note the packetLen must count in the ADTS header itself.</div><div class="line">     **/</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addADTStoPacket</span><span class="params">(<span class="keyword">byte</span>[] packet, <span class="keyword">int</span> packetLen)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> profile = <span class="number">2</span>;  <span class="comment">//AAC LC</span></div><div class="line">        <span class="comment">//39=MediaCodecInfo.CodecProfileLevel.AACObjectELD;</span></div><div class="line">        <span class="keyword">int</span> freqIdx = <span class="number">4</span>;  <span class="comment">//44.1KHz</span></div><div class="line">        <span class="keyword">int</span> chanCfg = <span class="number">2</span>;  <span class="comment">//CPE</span></div><div class="line">        <span class="comment">// fill in ADTS data</span></div><div class="line">        packet[<span class="number">0</span>] = (<span class="keyword">byte</span>)<span class="number">0xFF</span>;</div><div class="line">        packet[<span class="number">1</span>] = (<span class="keyword">byte</span>)<span class="number">0xF9</span>;</div><div class="line">        packet[<span class="number">2</span>] = (<span class="keyword">byte</span>)(((profile-<span class="number">1</span>)&lt;&lt;<span class="number">6</span>) + (freqIdx&lt;&lt;<span class="number">2</span>) +(chanCfg&gt;&gt;<span class="number">2</span>));</div><div class="line">        packet[<span class="number">3</span>] = (<span class="keyword">byte</span>)(((chanCfg&amp;<span class="number">3</span>)&lt;&lt;<span class="number">6</span>) + (packetLen&gt;&gt;<span class="number">11</span>));</div><div class="line">        packet[<span class="number">4</span>] = (<span class="keyword">byte</span>)((packetLen&amp;<span class="number">0x7FF</span>) &gt;&gt; <span class="number">3</span>);</div><div class="line">        packet[<span class="number">5</span>] = (<span class="keyword">byte</span>)(((packetLen&amp;<span class="number">7</span>)&lt;&lt;<span class="number">5</span>) + <span class="number">0x1F</span>);</div><div class="line">        packet[<span class="number">6</span>] = (<span class="keyword">byte</span>)<span class="number">0xFC</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><p>数字音频: <a href="http://en.flossmanuals.net/pure-data/ch003_what-is-digital-audio/" target="_blank" rel="external">http://en.flossmanuals.net/pure-data/ch003_what-is-digital-audio/</a></p>
+</li>
+<li><p>WAV文件格式: <a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="external">http://soundfile.sapp.org/doc/WaveFormat/</a></p>
+</li>
+<li><p>ACC文件格式: <a href="http://www.cnblogs.com/caosiyang/archive/2012/07/16/2594029.html" target="_blank" rel="external">http://www.cnblogs.com/caosiyang/archive/2012/07/16/2594029.html</a></p>
+</li>
+<li><p>有关Android Media编程的一些CTS: <a href="https://android.googlesource.com/platform/cts/+/jb-mr2-release/tests/tests/media/src/android/media/cts" target="_blank" rel="external">https://android.googlesource.com/platform/cts/+/jb-mr2-release/tests/tests/media/src/android/media/cts</a></p>
+</li>
+<li><p>WAV转ACC相关问题: <a href="http://stackoverflow.com/questions/18862715/how-to-generate-the-aac-adts-elementary-stream-with-android-mediacodec" target="_blank" rel="external">http://stackoverflow.com/questions/18862715/how-to-generate-the-aac-adts-elementary-stream-with-android-mediacodec</a></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="MediaExtractor" scheme="https://yedaxia.github.io/tags/MediaExtractor/"/>
+    
+      <category term="MediaCodec" scheme="https://yedaxia.github.io/tags/MediaCodec/"/>
+    
+  </entry>
+  
+</feed>
