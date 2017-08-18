@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="代码重构," />
+  <meta name="keywords" content="JApiDocs,前后端协作," />
 
 
 
@@ -86,16 +86,19 @@
 
 
 
-<meta name="description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
+<meta name="description" content="JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码重构的一点总结">
-<meta property="og:url" content="https://yedaxia.github.io/Android-Code-Refactor-Summary/index.html">
+<meta property="og:title" content="加速前后端并行开发，JApiDocs 可以帮到你">
+<meta property="og:url" content="https://yedaxia.github.io/How-JApiDocs-Help-You/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
-<meta property="og:description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
-<meta property="og:updated_time" content="2017-08-02T11:54:38.000Z">
+<meta property="og:description" content="JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600">
+<meta property="og:updated_time" content="2017-08-18T04:21:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码重构的一点总结">
-<meta name="twitter:description" content="重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。">
+<meta name="twitter:title" content="加速前后端并行开发，JApiDocs 可以帮到你">
+<meta name="twitter:description" content="JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。">
+<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png">
 
 
 
@@ -116,10 +119,10 @@
 
 
 
-  <link rel="canonical" href="https://yedaxia.github.io/Android-Code-Refactor-Summary/"/>
+  <link rel="canonical" href="https://yedaxia.github.io/How-JApiDocs-Help-You/"/>
 
 
-  <title> 代码重构的一点总结 | Darcy's Blog </title>
+  <title> 加速前后端并行开发，JApiDocs 可以帮到你 | Darcy's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +261,7 @@
             
             
               
-                代码重构的一点总结
+                加速前后端并行开发，JApiDocs 可以帮到你
               
             
           </h1>
@@ -270,8 +273,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-02T14:12:28+08:00" content="2017-08-02">
-              2017-08-02
+            <time itemprop="dateCreated" datetime="2017-08-18T12:13:20+08:00" content="2017-08-18">
+              2017-08-18
             </time>
           </span>
 
@@ -281,8 +284,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/Android-Code-Refactor-Summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Code-Refactor-Summary/" itemprop="commentsCount"></span>
+                <a href="/How-JApiDocs-Help-You/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="How-JApiDocs-Help-You/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -305,31 +308,51 @@
       
 
       
-        <p>重构是一件春天播种，秋天收获的事情，要有耐心；正确的方法很重要，循序渐进可能比推翻重来更科学。<br><a id="more"></a></p>
-<p>这个总结比较晚了，快相隔一年了，总想挤点什么出来写一下，一方面是避免让自己懒下来，另一方面也是迫使自己复盘，思考这个过程中哪些地方做得还Ok，哪些地方做的不好。</p>
-<p>不少公司初期的项目为了快速和低成本开发产品，一开始可能会找外包或者开发能力一般的开发人员来完成，等公司业务上去了，这时候也欠了一屁股的技术债，很幸运，我刚好就当了一回接盘侠。</p>
-<p>初接手项目，闻到坏代码的味道，不要急于作出改变，重构是一件需要小心翼翼进行的一件事情，你的每一点改动都会给QA的童鞋带来额外的工作量，尽管你觉得没有问题。所以，第一步要做的就是先把整体的情况先摸个底，先把问题暴露出来，制定好你初步的重构方案。在这个过程中，你可能要先默默的利用空闲时间做好方案，毕竟可能还有很多业务代码要写的，你不得不忍受先在原来的框架上把当前的工作完成。</p>
-<p>在我审视整个项目的时候，我发现存在有如下的问题：</p>
-<ol>
-<li>多个已经不在维护的第三方库，尤其是网络库，没有进行二次封装，耦合度非常高；</li>
-<li>sdk版本也近一年没有进行更新过；</li>
-<li>一些库使用方法不恰当，可能会带来内存泄漏和组件状态不正确(比如所在的 Activity 已经销毁)导致的崩溃问题；</li>
-<li>有不少重复性很高的代码散落在各处；</li>
-<li>变量名和方法名有些随意，驼峰和下划线风格并存；</li>
-<li>逻辑过于冗长的方法，比如和 H5 页面的协议处理，近 1K 行的 <code>if else</code>；</li>
-<li>没有考虑一些边界条件，比如请求失败重试，没有数据的情况；</li>
-<li>存在不少的魔数，往往在一些关键的逻辑里面，涉及到很多状态的变化处理。</li>
-<li>没有懒加载用户还不需要的资源，页面 overdraw 的情况严重等；</li>
-<li>还有一些情况暂时回想不起来，总之情况比较恶劣，骂人的冲动都有。</li>
-</ol>
-<p>整理好问题和写好初步的重构方案之后，接下来就可以找你的老大去聊这个事情了，一般来说都会得到支持，这样也可以让上面知道你在埋头苦干的时候是在干嘛，当时的想法是想推翻重建的，做法就是一个新的项目工程和一个旧的并行开发，有新的开发任务就先在旧的工程上开发，然后新的工程就逐步赶上和替代，最后一次性把新的 app 交付给 QA 进行一次从头到尾的测试，当时评估这样应该会比在原来的基础上改耗费的时间要更少一些。但很快发现这样做行不通，一方面需求在不断变化，引起的变化两边工程都要改动；另外在开发进度上会和 iOS 端很难同步。所以很快不得改变了思路，整合新旧的代码，然后在同一条工程线上进行重构，这样一来，必然就多了很多整合的工作，重构变成了一个抽丝剥茧的过程，没那么痛快了，但好处就是每一步做的工作，都可以被看见。</p>
-<p>既然是想改善代码，那肯定要先阻断烂代码再被添加进来，因此，第一件事要先建立起代码的相关规范，有可能的话，要尽可能加入 Code Review 这一流程来驱动规范的落实。重构的思路是从底层往高层，从变化少到变化频繁，比如底层的网络请求、图片缓存处理，这是变化少的部分，而页面和相关逻辑就是变化频繁的部分，从底层到高层好理解，从变化少到变化多则是对应经常变化的需求，或许在下个版本你就可以顺便把它重新做一遍，原来的代码彻底删除掉了。这里分享一部分具体的做法，可能对你有启发：</p>
-<ol>
-<li>在改写网络层的时候，这次通过策略模式来分离了网络请求过程和数据解析过程，这样不管以后是用 okhttp 还是 volley ，是 Json 还是 Protocol Buffers 结构的数据，喜欢用 gson 还是 fastjson ， 都只需要修改少量的代码，而且对上层调用没有任何影响。另外，由于新和旧的网络库不一样，为了减少 jar 包的数量，决定对旧的接口进行完全的兼容，但底层用的还是新的网络库。改写这一层后，对于新的代码就用新的接口，以前的就可以等待合适的时机再进行替换了。</li>
-<li>这个 app 很多混合开发的地方，很多 H5 页面的点击需要调用起原生的方法，由于自定义的跳转协议数量非常多，原来的处理方法已经超过近 1K 行的代码，这样必然导致阅读和修改困难的问题，这里我采用了大家熟悉的状态模式把相关职责分散到不同的类里面了。</li>
-<li>很多页面都有相似的过程，比如从从数据加载到加载失败处理，刷新和加载更多等，这些可以通过模板方法把相关的逻辑封装到基类里面，然后让子类去实现变化的部分，比如不同的视图和数据的绑定，可以大大减少代码量。</li>
-</ol>
-<p>还有一些技巧已经回忆不起来了，整个重构过程的彻底完成花了差不多半年的时间，期间经历了好几个版本的迭代。从效果来看，重构后带来的好处是显著的：首先提升了今后的开发效率，拥有了更好的可维护性，其次 bug 的数量和崩溃率也有了大幅度的好转，最后得益于各种库的升级和优化，app 的性能也得到了不少的提升。</p>
+        <p>JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。</p>
+<a id="more"></a>
+<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>一般公司的开发流程应该是这样的，产品评估会议完了之后，接着就是各就位的设计，开发了，当然这个过程中会有一些反复的交叉。我们这里主要讨论在评估完成之后，原型交给开发的这个节点。在这个节点上，如果没有接口文档，UI 稿也还在设计，那前端开发人员只能无奈的陷入等待，然后后面时间紧迫，不得不加班完成。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
+<p>接口文档非常重要，但什么时候写？谁来写呢？我的建议是接口的设计应该是交给有一定经验的后端开发人员来提前设计好，然后分给后端人员去实现，同时也交付接口协议给前端，两端并行开发。但实际情况是由于文档本身就是一个工作量，后端人员也不太关心前端的工作进度，而且提前设计的接口后面也可能会有一些小改动，对自己来说得不偿失，所以就变成了后端同学懒得去提前设计，一直等接口开发完了再去完善文档，这可能算好的了，有些团队就直接把一个 URL 贴到聊天框里面了事，前端同学只能去翻聊天记录。</p>
+<p>这里顺便提一下没有接口文档的后果，一个生命周期比较长的产品，肯定经历了多个版本的迭代，接口的数量也会变的庞大，新进来的开发已经没办法在短时间之内了解每个接口的作用了，当碰到相同功能的时候，很容易又写了个差不多的接口，重复的接口越来越多，当其中一个有问题时，你要处理的可不仅仅是一个地方；更惨的是客户端人员，这个接口对他来说就是个黑盒子，要打开这个盒子，只能不断找服务端的问问问了，极大的沟通成本啊～</p>
+<p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="external">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
+<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="external">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="external">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="external">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
+<p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="external">点击查看</a>。</p>
+<h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="external">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="external">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
+<p>这两天把想集成的 rap 功能做好了，终于可以自恋的总结了一下：</p>
+<table>
+<thead>
+<tr>
+<th>API 工具</th>
+<th>文档支持</th>
+<th>语言支持</th>
+<th>接口测试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swagger</td>
+<td>功能强大，学习成本高，维护成本高</td>
+<td>多语言</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>apidocjs</td>
+<td>学习成本一般，维护成本高</td>
+<td>多语言</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>JApiDocs</td>
+<td>代码即文档，学习和维护成本低</td>
+<td>Java</td>
+<td>支持发布到 <a href="http://rapapi.org/org/" target="_blank" rel="external">RAP</a></td>
+</tr>
+</tbody>
+</table>
+<p>对于 Java 程序员来说，JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。反正它已经成为我的首选 API 文档工具了，我希望也可以成为你的首选。</p>
+<h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>项目地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">https://github.com/YeDaxia/JApiDocs</a>，目前用不到，可以先点个星星收藏起来哇。</p>
+<p>如果你以前已经在用其他的了，积重难返，我建议你还是用以前的工具；如果你还是手工去创建文档，或者要做一个新的项目，我墙裂建议你马上开始使用 JApiDocs，记得先看文档，运行一下测试用例，5分钟就能从入门到爱不释手～ 有问题欢迎反馈，我会第一时间积极响应。</p>
 
       
     </div>
@@ -352,7 +375,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/代码重构/" rel="tag">#代码重构</a>
+            <a href="/tags/JApiDocs/" rel="tag">#JApiDocs</a>
+          
+            <a href="/tags/前后端协作/" rel="tag">#前后端协作</a>
           
         </div>
       
@@ -361,17 +386,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SomeWebSpiderProblem/" rel="next" title="记录网页爬虫注意的几个问题">
-                <i class="fa fa-chevron-left"></i> 记录网页爬虫注意的几个问题
+              <a href="/JApiDocs-Introduction-For-Java-Developer/" rel="next" title="一个给 Java 程序员用的 Api 文档生成工具">
+                <i class="fa fa-chevron-left"></i> 一个给 Java 程序员用的 Api 文档生成工具
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/JApiDocs-Introduction-For-Java-Developer/" rel="prev" title="一个给 Java 程序员用的 Api 文档生成工具">
-                一个给 Java 程序员用的 Api 文档生成工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +524,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频介绍"><span class="nav-number">2.</span> <span class="nav-text">视频介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和其他工具的对比"><span class="nav-number">3.</span> <span class="nav-text">和其他工具的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何开始"><span class="nav-number">4.</span> <span class="nav-text">如何开始</span></a></li></ol></div>
             
           </div>
         </section>
@@ -623,9 +644,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'yedaxia';
-      var disqus_identifier = 'Android-Code-Refactor-Summary/';
-      var disqus_title = "代码重构的一点总结";
-      var disqus_url = 'https://yedaxia.github.io/Android-Code-Refactor-Summary/';
+      var disqus_identifier = 'How-JApiDocs-Help-You/';
+      var disqus_title = "加速前后端并行开发，JApiDocs 可以帮到你";
+      var disqus_url = 'https://yedaxia.github.io/How-JApiDocs-Help-You/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
