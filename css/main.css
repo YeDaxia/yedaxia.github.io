@@ -1678,7 +1678,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b40b3b;
+  background: #cff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2728,4 +2728,30 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+.vex-tab-container {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #554;
+  white-space: pre;
+  background-color: #fff;
+}
+.vex-tab-container .editor {
+  background: #dfd;
+  border: 0 solid 0;
+  border-left: 6px solid #afa;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 12px;
+}
+.vex-tab-container .editor-error .text {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 12px;
+  color: #f00;
+  padding: 3px;
+}
+.vex-tab-container .title {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px;
+  color: #554;
 }

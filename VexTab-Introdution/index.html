@@ -1,0 +1,1052 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="音乐,音乐编程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Darcy's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VexTab介绍 - 一种即时可视的web乐谱语言 | 译文">
+<meta property="og:url" content="https://yedaxia.github.io/VexTab-Introdution/index.html">
+<meta property="og:site_name" content="Darcy's Blog">
+<meta property="og:description" content="VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。">
+<meta property="og:image" content="http://yedaxia.oss-cn-shanghai.aliyuncs.com/personal/piano-pitches3-1024x375.jpg?x-oss-process=image/resize,w_500">
+<meta property="og:updated_time" content="2018-02-03T03:57:44.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VexTab介绍 - 一种即时可视的web乐谱语言 | 译文">
+<meta name="twitter:description" content="VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。">
+<meta name="twitter:image" content="http://yedaxia.oss-cn-shanghai.aliyuncs.com/personal/piano-pitches3-1024x375.jpg?x-oss-process=image/resize,w_500">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/VexTab-Introdution/"/>
+
+
+  <title> VexTab介绍 - 一种即时可视的web乐谱语言 | 译文 | Darcy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Darcy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                VexTab介绍 - 一种即时可视的web乐谱语言 | 译文
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-03T00:26:15+08:00" content="2018-02-03">
+              2018-02-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/VexTab-Introdution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="VexTab-Introdution/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。</p>
+<a id="more"></a>
+<p>英文原文：<a href="http://www.vexflow.com/vextab/tutorial.html" target="_blank" rel="external">vextab tutorial</a><br>在线体验：<a href="http://52cmajor.com/tab/editor" target="_blank" rel="external">vextab 编辑器</a></p>
+<h1 id="什么是-VexTab"><a href="#什么是-VexTab" class="headerlink" title="什么是 VexTab ?"></a>什么是 VexTab ?</h1><p>VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。</p>
+<p>下面就让我们开始学习书写这漂亮而美好的音符吧。</p>
+<h2 id="第一步：谱表"><a href="#第一步：谱表" class="headerlink" title="第一步：谱表"></a>第一步：谱表</h2><p>关键字<code>tabstave</code>用于创建一行谱表，下面的编辑框都是可以进行编辑的，赶紧试一下在新的一行添加<code>tabstave</code>看看效果吧。</p>
+<p><code>tabstave</code> 后面可以跟一些参数，比如<code>tabstave notation=true</code>的意思是显示一张标准的谱表(上面是五线谱，下面是六线谱)。别只看啊！动手试一下。</p>
+<pre class="vex-tab-container">tabstave
+</pre>
+
+<h2 id="第二步：添加一些音符"><a href="#第二步：添加一些音符" class="headerlink" title="第二步：添加一些音符"></a>第二步：添加一些音符</h2><p>关键字<code>notes</code>可以用于添加音符。你可以通过在钢琴上的位置(<code>note/octave</code>)或者吉他指板的位置(<code>fret/string</code>)来表示。如果需要在同一根弦或者同个音区添加多个音符，可以通过这种表达式：<code>fret-fret-fret/string</code> (或者 <code>note-note-note/octave</code>)。根据你个人的喜爱来选择即可。</p>
+<p>试着编辑一下下面的音符，留意它们在谱上的位置变化，结合下面的音区图去理解语法的作用。音符后可以跟随<code>#</code>, <code>##</code>, <code>@</code>, <code>@@</code>, 和 <code>n</code> 这几种记号，它们分别表示升半音，升全音，降半音，降全音和<a href="https://zh.wikipedia.org/wiki/%E8%BF%98%E5%8E%9F%E5%8F%B7" target="_blank" rel="external">还原音</a>。</p>
+<pre class="vex-tab-container">tabstave notation=true tablature=false
+notes Cn-D-E/4 F#/5</pre>
+
+<p>盗一张图，结合这个图就明白<code>note/octave</code>方式了。</p>
+<p><img src="http://yedaxia.oss-cn-shanghai.aliyuncs.com/personal/piano-pitches3-1024x375.jpg?x-oss-process=image/resize,w_500" alt="image"></p>
+<p>下面是吉他谱：</p>
+<pre class="vex-tab-container">tabstave notation=true
+notes 4-5-6/3 10/4</pre>
+
+<h2 id="第三步：谱表关键字"><a href="#第三步：谱表关键字" class="headerlink" title="第三步：谱表关键字"></a>第三步：谱表关键字</h2><p><code>tabstave</code> 可以跟随下面的参数：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>值/例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notation</td>
+<td>true/false</td>
+</tr>
+<tr>
+<td>tablature</td>
+<td>true/false</td>
+</tr>
+<tr>
+<td>clef</td>
+<td>treble, alto, tenor, bass, percussion</td>
+</tr>
+<tr>
+<td>key</td>
+<td>C, Am, F, Dm, Bb, Gm, Eb, Cm, Ab, Fm, Db, Bbm, Gb, Ebm, Cb, Abm, G, Em, D, Bm, A, F#m, E, C#m, B, G#m, F#, D#m, C#, A#m</td>
+</tr>
+<tr>
+<td>time</td>
+<td>C, C│, #/#</td>
+</tr>
+<tr>
+<td>tuning</td>
+<td>standard, dropd, eb, E/5,B/4,G/4,D/4,A/3,E/3</td>
+</tr>
+</tbody>
+</table>
+<p>例子：</p>
+<ul>
+<li><code>tabstave notation=true</code> 代表显示标准五线谱和六线谱。</li>
+<li><code>tabstave notation=true tablature=false</code> 代表只显示五线谱。</li>
+<li><code>tabstave notation=true clef=alto</code> 表示女低音谱号。</li>
+<li><code>tabstave notation=true clef=bass key=C# time=C|</code> 表示 4/4 拍的低音谱，同时包含五线谱和六线谱。</li>
+</ul>
+<p>来试一下吧：</p>
+<pre class="vex-tab-container">tabstave notation=true clef=bass key=Ab time=C|
+notes 4-5/6</pre>
+
+<h2 id="第四步：休止符和添加小节"><a href="#第四步：休止符和添加小节" class="headerlink" title="第四步：休止符和添加小节"></a>第四步：休止符和添加小节</h2><p><code>##</code> 表示休止符，默认会自动排好位置，你也可以通过在中间加个数字来改变所在的谱线，格式是<code>#4#</code>，值的范围是 0 到 9 。</p>
+<p>小节的分隔符是<code>|</code>, 你可以在谱表中任意添加。</p>
+<pre class="vex-tab-container">tabstave notation=true
+notes 4-5-6/3 ## | 5-4-2/3 2/2
+
+tabstave notation=true tablature=false
+notes C-D-E/4 #0# | C-D-E-F/4</pre>
+
+<p>另外，还有一些特殊的小节线。</p>
+<ul>
+<li><code>=||</code>  复纵线，表示乐曲告一段落，两条小节线是同样大小的</li>
+<li><code>=|:</code>  重复开始</li>
+<li><code>=:|</code>  重复结束</li>
+<li><code>=::</code>  重复开始和结束</li>
+<li><code>=|=</code>  终止线</li>
+</ul>
+<pre class="vex-tab-container">tabstave notation=true tablature=false
+notes 4-5-6/3 ## =|: 5-4-2/3 2/2 =:|
+
+tabstave notation=true tablature=false
+notes C-D-E/4 #0# =:: C-D-E-F/4 =|=
+</pre>
+
+<h2 id="第五步：推弦音"><a href="#第五步：推弦音" class="headerlink" title="第五步：推弦音"></a>第五步：推弦音</h2><p>吉他演奏中常用的技巧，通过在指板数后添加<code>b</code>，就可以表示推弦音了。比如<code>10b12</code>表示一个全音推弦，<code>10b11</code>表示半音推弦，不难猜到<code>b</code>后面跟的是音的步值。那如何表示推高之后返回原来的音呢？答案就是 <code>10b12b10</code>，是不是很好理解。</p>
+<pre class="vex-tab-container">tabstave
+notes 4-5-6b7/3 10/4 | 5-4-2/3 2/2
+
+tabstave
+notes 6-7b9b7/3 7/4 | 9-8-7-6/2</pre>
+
+
+<h2 id="第六步：哑音、上下拨弦和颤音"><a href="#第六步：哑音、上下拨弦和颤音" class="headerlink" title="第六步：哑音、上下拨弦和颤音"></a>第六步：哑音、上下拨弦和颤音</h2><p><code>X</code> 表示哑音，在音名后加小<code>v</code>表示颤音，大<code>V</code>则表示强颤音，同时你也可以推弦音后面加颤音，看下面的例子如何表示。</p>
+<p><code>u</code> 和 <code>d</code> 分别表示上拨弦和下拨弦。</p>
+<pre class="vex-tab-container">tabstave notation=true
+notes 4-5-6b7v/3 10/1 | 5d-4u-Xd/3 2v/2</pre>
+
+<h2 id="第七步：添加和弦"><a href="#第七步：添加和弦" class="headerlink" title="第七步：添加和弦"></a>第七步：添加和弦</h2><p>上面讲的都是单个音的表示，终于轮到和弦了。在谱上和弦是通过括号<code>()</code>和<code>.</code>来连接表示的，比如 C 和弦：<code>(C/4.E/4.G/4)</code>，当然也可以用指版数字的方法：<code>(1/2.2/4.3/5)</code>。</p>
+<pre class="vex-tab-container">tabstave notation=true tablature=false
+notes (C/4.E/4.G/4) C-E-G/4
+
+tabstave notation=true
+notes (8/2.7b9b7/3) (5b6/2.5b6/3) 7/4 |
+notes (5/2.6/3.7/4)</pre>
+
+
+<h2 id="第八步：击弦、勾弦、點弦-和-滑弦"><a href="#第八步：击弦、勾弦、點弦-和-滑弦" class="headerlink" title="第八步：击弦、勾弦、點弦 和 滑弦"></a>第八步：击弦、勾弦、點弦 和 滑弦</h2><p>这四种技巧分别用<code>h</code>, <code>p</code>, <code>t</code> or <code>s</code>,这个和一般吉他谱的表示是一样的。比如你要从6击弦到8然后再勾弦回6，就可以用<code>6h8p6</code>，你也可以在和弦上使用这些符号。</p>
+<pre class="vex-tab-container">tabstave
+notes (5/2.5/3.7/4) 5h6/3 7/4 |
+notes t12p7p5h7/4 7/5 5s3/5
+
+tabstave
+notes (8/2.7b9b7/3) (5b6/2.5b6/3)v 7s0/4 |
+notes (5/2.6/3.7/4)v
+
+tabstave
+notes (5/4.5/5)s(7/4.7/5)s(5/4.5/5) (5/4.5/5)h(7/5) |
+notes t(12/5.12/4)s(5/5.5/4) 3b4/5 5V/6</pre>
+
+
+<h2 id="第九步：加入音长-拍子-和连音"><a href="#第九步：加入音长-拍子-和连音" class="headerlink" title="第九步：加入音长(拍子)和连音"></a>第九步：加入音长(拍子)和连音</h2><p>默认都是4分音符(1/4拍)，你可以通过冒号<code>:</code>去改变它。</p>
+<p>比如，<code>:w</code> 表示一个全音符。目前支持的音长有：全音符，二分音符，四分音符，8分音符，16分音符和32分音符，它们分别对于的符号是<code>w</code> <code>h</code> <code>q</code> <code>8</code> <code>16</code> <code>32</code>。如果要表示附点音符，则可以在相应的符号后面加<code>d</code>，例如：<code>:qd</code>。</p>
+<p>连音的符号是<code>^</code>，比如八分音符的三连音表示为：<code>:8 4-5-6/4 ^3^</code>。</p>
+<pre class="vex-tab-container">tabstave notation=true time=4/4 key=Ab tuning=eb
+notes :8 5s7s8/5 ^3^ :q (5/2.6/3)h(7/3) :8d 5/4 :16 5/5</pre>
+
+<p>下面是更复杂的例子，它演示了如何在滑音，推弦音等其他技巧音上使用音长。请你认真体会。</p>
+<pre class="vex-tab-container">tabstave notation=true
+notes :q (8/2.7b9b7/3) (5b6/2.5b6/3)v :8 7s12/4
+notes t:16:9s:8:3s:16:0/4</pre>
+
+<h2 id="第十步：歌词，注释或者其他文本"><a href="#第十步：歌词，注释或者其他文本" class="headerlink" title="第十步：歌词，注释或者其他文本"></a>第十步：歌词，注释或者其他文本</h2><p>你可以通过美元符号 $  中间附上逗号<code>,</code>来分隔文本来添加注释。你可以用于歌词，和弦提示，或者一些弹奏提示中。</p>
+<p>$.top.$ 表示在注释在谱线上面，$.bottom.$ 表示在下面。</p>
+<pre class="vex-tab-container">tabstave notation=true time=4/4 key=Ab tuning=eb
+    notes :q 5/5 5/4 5/3 ^3^ $Fi,Ga,Ro!$ :h 4/4 $.top.$ $Blah!$</pre>
+
+<p>有两种方式去改变注释样式，一种是用预设的样式，一种是自定义的样式。对于预设的方式，你只需要在美元符号中添加<code>.style.</code> + 预设的样式就可以了，比如 $.big.C Major$ 表示大码的<code>C Major</code>显示。</p>
+<p>目前预设的样式有<code>big</code>、 <code>medium</code> 和 <code>italic</code>。</p>
+<p>对于自定义的方式，语法是这样的：<code>.face.size.style</code> ，<code>face</code>表示字体，<code>size</code>表示字体大小，<code>style</code> 是字体样式（斜体：italic，加粗：bold）。例如  $.Times-14-italic.Blah$ 表示 14pt 大小、斜体、Italic Times Roman 字体的文本注释文本 Blah。</p>
+<pre class="vex-tab-container">tabstave notation=true key=A
+notes :q (5/2.5/3.7/4) $.big.A7#9$ 5h6/3 7/4 |
+notes :8 7/4 $.italic.sweep$ 6/3 5/2 3v/1 :q 7v/5 $.Arial-10-bold.P.H$ :8 3s5/5</pre>
+
+<h2 id="第十一步：断音-Staccatos-，延音-Fermatas-等更多衔接音。"><a href="#第十一步：断音-Staccatos-，延音-Fermatas-等更多衔接音。" class="headerlink" title="第十一步：断音(Staccatos)，延音(Fermatas)等更多衔接音。"></a>第十一步：断音(Staccatos)，延音(Fermatas)等更多衔接音。</h2><p>你可以通过  $.articulation/position.$ 这种语法来添加衔接音。不同的衔接音有不同的符号表示。 <code>a.</code> 代表 staccato,<code>a@a</code> 代表 up-fermata，它们可以放置在谱线的上面或者下面。</p>
+<p>下面的列表展示了所有支持的衔接音。</p>
+<pre class="vex-tab-container">options space=20 font-style=italic
+font-face=times font-size=10
+
+tabstave notation=true tablature=false
+notes :q
+notes C/4 $.a./bottom.$
+notes E/4 $.av/bottom.$
+notes G/4 $.a>/bottom.$
+notes B/4 $.a-/bottom.$
+notes C/5 $.a^/top.$
+notes E/5 $.a+/top.$
+notes G/5 $.ao/top.$
+
+text :q,.-1,.strict,Stacatto,Staccatissimo
+text Accent,Tenuto,Marcato,LH pizzicato,Snap pizzicato
+text ++,.12,.font=courier-12-,:q,a.,av,a>,a-,a^,a+,ao
+
+options space=120 font-style=italic
+font-face=times font-size=10
+
+tabstave notation=true tablature=false
+notes :q
+notes C/4 $.ah/bottom.$
+notes E/4 $.a@a/top.$
+notes G/4 $.a@u/bottom.$
+notes B/4 $.a|/bottom.$
+notes C/5 $.am/top.$
+
+text :q,.-1,.strict,Open Note,Up Fermata
+text Down Fermata,Bow Up,Bow Down
+text ++,.12,.font=courier-12-,:q,ah,a@a,a@u,a|,am
+
+options space=40
+</pre>
+
+<h2 id="第十二步：更多的文本"><a href="#第十二步：更多的文本" class="headerlink" title="第十二步：更多的文本"></a>第十二步：更多的文本</h2><p>VexTab 还提供了一种非常灵活添加文本的方式，利用<code>text</code>关键字可以创建和音符垂直对齐的文本，这种方式非常合适于放置和弦的名称。</p>
+<p>在下面的示例中，我创建了两个文本块， “G Minor” 和 “A Major”，每个都是二分音符。注意这里文本块的音长间隔之间使用逗号隔开的，除了这一点，音长规则表示也是和音符一样的。</p>
+<pre class="vex-tab-container">options space=12 font-size=14
+
+tabstave notation=true time=4/4 key=Ab tuning=eb
+notes :q 5/5 5/4 5/3 ^3^ :h 4/4
+text :h,G Minor,A Major</pre>
+
+<p>可以通过<code>.数字</code>这种方式来跳转文块在垂直方向上的位置，默认是0，表示在谱的上面，这个值越大，表示越往下，如果值是负数，则越小越往上面。</p>
+<pre class="vex-tab-container">options space=10
+
+tabstave notation=true tablature=false time=4/4 key=Ab tuning=eb
+notes :8 C-D-E-F-G-A-B/4 C/5
+text :8,.1,Do,Re,Me,.10,Fa,So,La,Ti,.1,Do
+
+options space=10</pre>
+
+<p>像音符一样，你也可以通过<code>|</code>来分隔文本小节，这样可以更好的对齐，另外，你还可以通过<code>++</code>语法来在同一行谱线上创建新的一行文本。简直太强大有木有～</p>
+<pre class="vex-tab-container">options space=10 font-size=12
+
+tabstave notation=true tablature=false
+time=4/4 key=Ab tuning=eb
+notes :q C-D-E-F/4 | G-A-B/4 C/5
+text :h,.1,C,Em,|
+text :h,G7,C
+text ++, .11, :w, This is a new text line.
+
+options space=15
+</pre>
+
+<p>还没完，你还能在文本上添加很多音乐符号，比如结尾和重复。只需要在关键字前面加上<code>#</code>就可以了，e.g., <code>text #coda</code>。</p>
+<pre class="vex-tab-container">options space=20 font-size=12
+
+tabstave notation=true tablature=false
+time=4/4 key=Ab tuning=eb
+notes :q =|: C-D-E-F/4 =:| G-A-B/4 C/5
+text |#coda, :hd, , :q, #tr, |#segno
+text ++, .11, |, #f
+text ++, .0, .font=Times-12-italic, |, :w, ,|, :q, ,D.S. al coda
+
+options space=25</pre>
+
+<h2 id="第十三步：旋律斜线记法"><a href="#第十三步：旋律斜线记法" class="headerlink" title="第十三步：旋律斜线记法"></a>第十三步：旋律斜线记法</h2><p>在音长符号前面加上大写<code>S</code>就可以变成斜线的记法了。在下面的示例中，你可以尝试改一下音名看看效果。你也可以通过 <code>u</code> 或 <code>d</code> 来表示动作的上下。</p>
+<pre class="vex-tab-container">options font-size=14 space=15
+
+tabstave notation=true tablature=false
+time=4/4 clef=percussion
+notes :2S Bd/4 :qS Bd/4 :q ## | :8S Bd/4 Bu/4 :qS Bd-Bu-Bd/4 ^3^
+text :w, G Maj7, |, Am
+
+options space=10</pre>
+
+<h2 id="第十四步：定义外观"><a href="#第十四步：定义外观" class="headerlink" title="第十四步：定义外观"></a>第十四步：定义外观</h2><p>定义外观主要是通过<code>options</code>的参数来完成的，你可以根据喜好更改字体，谱的大小和美化谱线距离等。比如 <code>options width=400</code> 表示谱的宽度是 400 像素。</p>
+<p>下面是相关的参数列表。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>谱的宽度，单位是像素</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>缩放系数，默认是1</td>
+</tr>
+<tr>
+<td>space</td>
+<td>和下一行谱线的距离，单位是像素</td>
+</tr>
+<tr>
+<td>stave-distance</td>
+<td>五线谱和六线谱之间的距离，单位是像素</td>
+</tr>
+<tr>
+<td>font-face/font-style/font-size</td>
+<td>注释字体的默认参数</td>
+</tr>
+</tbody>
+</table>
+<p>加多一些空间给在谱线比较高位置的音：</p>
+<pre class="vex-tab-container">options width=100 scale=2.0
+tabstave notation=true tablature=false
+notes :q 5/5</pre>
+
+<p>加多一些空间给在谱线比较高位置的音：</p>
+<pre class="vex-tab-container">options space=40 font-size=14
+tabstave notation=true key=A
+notes :q (5/2.5/3.7/4) $A7#9$ 15h16/1 20/1
+</pre>
+
+<p>让五线谱和六线谱距离更远：</p>
+<pre class="vex-tab-container">options stave-distance=50
+tabstave notation=true key=A
+notes :q (5/2.5/3.7/4) ## 0h1/6 0/1
+</pre>
+
+
+<h2 id="第十五步：六线谱也可以带拍号"><a href="#第十五步：六线谱也可以带拍号" class="headerlink" title="第十五步：六线谱也可以带拍号"></a>第十五步：六线谱也可以带拍号</h2><p>添加 <code>tab-stems</code> 参数就可以在六线谱上显示拍号了。对于单独的人声旋律谱，你可以通过 <code>tab-stem-direction</code> 参数来指定拍号的方向。</p>
+<p>注意你需要改变一下 <code>space</code> 和 <code>stave-distance</code> 参数值来避免出现重叠。</p>
+<pre class="vex-tab-container">options space=12 font-size=14
+tab-stems=true tab-stem-direction=up
+
+tabstave time=4/4 key=A
+notes :8 5/5 5/4 5/3 ^3^ :16 5-6-7-8/1 :8 9s10/1 :h s9v/1</pre>
+
+<h2 id="第十六步：播放你的音符"><a href="#第十六步：播放你的音符" class="headerlink" title="第十六步：播放你的音符"></a>第十六步：播放你的音符</h2><p>添加 <code>player</code> 参数等于 <code>true</code>，还要指定拍子的速度<code>tempo</code>，就可以立即播放你写的音符了。</p>
+<pre class="vex-tab-container">options space=20 player=true  tempo=80
+
+tabstave
+notation=true
+key=A time=4/4
+
+notes :q =|: (5/2.5/3.7/4) :8 7-5h6/3 ^3^ 5h6-7/5 ^3^ :q 7V/4 |
+notes :8 t12p7/4 s5s3/4 :8 3s:16:5-7/5 :h p5/4
+text :w, |#segno, ,|, :hd, , #tr</pre>
+
+<h1 id="词汇表："><a href="#词汇表：" class="headerlink" title="词汇表："></a>词汇表：</h1><ol>
+<li>stave: 谱表</li>
+<li>note: 音符</li>
+<li>octave: 八度音阶</li>
+<li>fret: 指板</li>
+<li>natural: <a href="https://zh.wikipedia.org/wiki/%E5%8F%98%E9%9F%B3%E8%AE%B0%E5%8F%B7" target="_blank" rel="external">还原音</a></li>
+<li>time：节拍</li>
+<li>tuning: 起音</li>
+<li>clef: 谱号</li>
+<li>tablature: 谱式，记谱法</li>
+<li>treble: 最高声部，高音部</li>
+<li>alto: 女低音，中音部</li>
+<li>tenor: 男高音</li>
+<li>bass: 男低音，低音部</li>
+<li>percussion: 打击乐器</li>
+<li>common time: 4/4 拍。</li>
+<li>rest: 休止符</li>
+<li>double bar: <a href="https://zhidao.baidu.com/question/281000868.html" target="_blank" rel="external">复纵线</a></li>
+<li>mute note: 哑音</li>
+<li>vibrato: 颤音</li>
+<li>chord: 和弦</li>
+<li>hammer-on: 击弦</li>
+<li>pull-off: 勾弦</li>
+<li>tap: <a href="https://www.bilibili.com/video/av9756522/" target="_blank" rel="external">點弦</a>，轻敲吉他</li>
+<li>slide: 滑弦</li>
+<li>lyrics: 歌词</li>
+<li>articulation: <a href="https://zh.wikipedia.org/wiki/%E9%8A%9C%E6%8E%A5_(%E9%9F%B3%E6%A8%82" target="_blank" rel="external">衔接</a>)，是音乐上的方向或技术。它影响到乐曲里音符之间的过渡或连续性。</li>
+<li>staccato: (意大利语) <a href="https://zh.wikipedia.org/wiki/%E6%96%B7%E5%A5%8F" target="_blank" rel="external">断音</a>，断奏，指音符的实际时值比谱上所示的短，而减短的部分则可不作声，并于音符上加上一小点表示。</li>
+<li>fermata: 延音</li>
+<li>staccatissimo: 特断音</li>
+<li>accent: 重音</li>
+<li>codas: 尾奏</li>
+<li>segno: 连续记号</li>
+</ol>
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script src="/js/src/vextab/paper.min.js"></script>
+<script src="/js/src/vextab/underscore-min.js"></script>
+<script src="/js/src/vextab/vexflow-min.81.js"></script>
+<script src="/js/src/vextab/tabdiv-min.81.js"></script>
+<script src="/js/src/vextab/vextab-support.js"></script>
+<script>
+    $('.vex-tab-container').each(function(index, el) {
+        $this = $(el);
+        var width = $('.post-body').width() * 0.9;
+        var scale = 0.8;
+
+
+        $this.attr('editor', "true");
+        $this.attr('editor_height', "120");
+
+
+        $this.attr('width', width / scale);
+        $this.attr('editor_width', width);
+        $this.attr('scale', scale);
+
+        opts = {};
+        opts.soundfont_url = '/soundfont/';
+
+        new Vex.Flow.TabDiv(this,opts);
+    });
+</script>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/音乐/" rel="tag">#音乐</a>
+          
+            <a href="/tags/音乐编程/" rel="tag">#音乐编程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Story-Of-A-Guitarist/" rel="next" title="一个会弹吉他の人, 他的一生 | 9个视频拼成的故事">
+                <i class="fa fa-chevron-left"></i> 一个会弹吉他の人, 他的一生 | 9个视频拼成的故事
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
+               alt="叶大侠" />
+          <p class="site-author-name" itemprop="name">叶大侠</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/da-xia-35-40" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sopu.52cmajor.com/" title="为你搜谱" target="_blank">为你搜谱</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是-VexTab"><span class="nav-number">1.</span> <span class="nav-text">什么是 VexTab ?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：谱表"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：谱表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：添加一些音符"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：添加一些音符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：谱表关键字"><span class="nav-number">1.3.</span> <span class="nav-text">第三步：谱表关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步：休止符和添加小节"><span class="nav-number">1.4.</span> <span class="nav-text">第四步：休止符和添加小节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步：推弦音"><span class="nav-number">1.5.</span> <span class="nav-text">第五步：推弦音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六步：哑音、上下拨弦和颤音"><span class="nav-number">1.6.</span> <span class="nav-text">第六步：哑音、上下拨弦和颤音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七步：添加和弦"><span class="nav-number">1.7.</span> <span class="nav-text">第七步：添加和弦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八步：击弦、勾弦、點弦-和-滑弦"><span class="nav-number">1.8.</span> <span class="nav-text">第八步：击弦、勾弦、點弦 和 滑弦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九步：加入音长-拍子-和连音"><span class="nav-number">1.9.</span> <span class="nav-text">第九步：加入音长(拍子)和连音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十步：歌词，注释或者其他文本"><span class="nav-number">1.10.</span> <span class="nav-text">第十步：歌词，注释或者其他文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十一步：断音-Staccatos-，延音-Fermatas-等更多衔接音。"><span class="nav-number">1.11.</span> <span class="nav-text">第十一步：断音(Staccatos)，延音(Fermatas)等更多衔接音。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十二步：更多的文本"><span class="nav-number">1.12.</span> <span class="nav-text">第十二步：更多的文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十三步：旋律斜线记法"><span class="nav-number">1.13.</span> <span class="nav-text">第十三步：旋律斜线记法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十四步：定义外观"><span class="nav-number">1.14.</span> <span class="nav-text">第十四步：定义外观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十五步：六线谱也可以带拍号"><span class="nav-number">1.15.</span> <span class="nav-text">第十五步：六线谱也可以带拍号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十六步：播放你的音符"><span class="nav-number">1.16.</span> <span class="nav-text">第十六步：播放你的音符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词汇表："><span class="nav-number">2.</span> <span class="nav-text">词汇表：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-12 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶大侠</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yedaxia';
+      var disqus_identifier = 'VexTab-Introdution/';
+      var disqus_title = "VexTab介绍 - 一种即时可视的web乐谱语言 | 译文";
+      var disqus_url = 'https://yedaxia.github.io/VexTab-Introdution/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
