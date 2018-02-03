@@ -247,6 +247,109 @@
             
               
                 
+                <a class="post-title-link" href="/Android-Code-Rules/" itemprop="url">
+                  Android代码规范指北
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T13:57:03+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Android-Code-Rules/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Android-Code-Rules/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/Android-Code-Rules/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/Android-Learning-Team/" itemprop="url">
                   Android团队技术成长计划
                 </a>
@@ -454,7 +557,7 @@
               
                 
                 <a class="post-title-link" href="/Android-Studio-ModelCodeGenerator/" itemprop="url">
-                  Android Studio的Model代码插件开发
+                  Android Studio 的代码插件开发
                 </a>
               
             
@@ -467,8 +570,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-26T13:26:21+08:00" content="2016-12-26">
-              2016-12-26
+            <time itemprop="dateCreated" datetime="2016-12-25T13:40:05+08:00" content="2016-12-25">
+              2016-12-25
             </time>
           </span>
 
@@ -503,7 +606,8 @@
 
       
         
-          <p>在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。<br>
+          <p>在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
+<p><a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator">源码地址</a></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/Android-Studio-ModelCodeGenerator/#more" rel="contents">
               阅读全文 &raquo;
@@ -557,7 +661,7 @@
               
                 
                 <a class="post-title-link" href="/Okhttp-Offline-Cache/" itemprop="url">
-                  OkHttp离线缓存实现
+                  OkHttp 离线缓存实现
                 </a>
               
             
@@ -570,8 +674,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-12T13:25:36+08:00" content="2016-12-12">
-              2016-12-12
+            <time itemprop="dateCreated" datetime="2016-12-13T13:03:53+08:00" content="2016-12-13">
+              2016-12-13
             </time>
           </span>
 
@@ -606,7 +710,7 @@
 
       
         
-          <p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。<br>
+          <p>Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/Okhttp-Offline-Cache/#more" rel="contents">
               阅读全文 &raquo;
@@ -660,7 +764,7 @@
               
                 
                 <a class="post-title-link" href="/Android-MediaExtractor-And-MediaCodec/" itemprop="url">
-                  利用MediaExtractor和MediaCodec实现音频编解码和混音
+                  MediaExtractor和MediaCodec实现音频编解码和混音
                 </a>
               
             
@@ -673,8 +777,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T23:10:55+08:00" content="2016-11-27">
-              2016-11-27
+            <time itemprop="dateCreated" datetime="2016-12-12T13:03:53+08:00" content="2016-12-12">
+              2016-12-12
             </time>
           </span>
 
@@ -709,7 +813,8 @@
 
       
         
-          <p>本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。<br>
+          <p>本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。</p>
+<p>相关源码: <a href="相关源码:https://github.com/YeDaxia/MusicPlus">https://github.com/YeDaxia/MusicPlus</a></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/Android-MediaExtractor-And-MediaCodec/#more" rel="contents">
               阅读全文 &raquo;
@@ -786,7 +891,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -796,7 +901,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

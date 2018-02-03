@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="网页爬虫," />
+  <meta name="keywords" content="网络爬虫," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:url" content="https://yedaxia.github.io/SomeWebSpiderProblem/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
 <meta property="og:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
-<meta property="og:updated_time" content="2017-07-07T11:43:32.000Z">
+<meta property="og:updated_time" content="2018-02-03T06:52:16.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录网页爬虫注意的几个问题">
 <meta name="twitter:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
@@ -262,7 +262,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-07T19:38:35+08:00" content="2017-07-07">
+            <time itemprop="dateCreated" datetime="2017-07-07T14:37:19+08:00" content="2017-07-07">
               2017-07-07
             </time>
           </span>
@@ -299,6 +299,7 @@
       
         <p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
 <a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
 <h1 id="设置合理的user-agent"><a href="#设置合理的user-agent" class="headerlink" title="设置合理的user-agent"></a>设置合理的user-agent</h1><p>一些站点会把这个当作很基本的过滤条件，我们就不碰壁了，直接找个浏览器粘贴一个，有些文章介绍用一些爬虫的<code>user-agent</code>，但是对方可能会有相关的爬虫服务器的 iplist，不过这种情况不多见，可以试一下。</p>
 <h1 id="设置合理的爬取间隔"><a href="#设置合理的爬取间隔" class="headerlink" title="设置合理的爬取间隔"></a>设置合理的爬取间隔</h1><p>过于频繁的流量很容易被监控到，当然除了一些没人管的站点，通常请求ip会被对方禁用一段时间，严重的可能会拉入黑名单，这就浪费掉一个 ip 地址了。如果你不是很急的话，我一般设置个 1 到 10 秒的随机访问间隔，单线程执行，慢慢爬。一般来说很多站点都能接受这样的方式，也不会给对方运维人员造成压力，如果还有限制同个 ip 的访问次数，那我们还有代理招。</p>
 <h1 id="需要登录权限"><a href="#需要登录权限" class="headerlink" title="需要登录权限"></a>需要登录权限</h1><p>有登录就有注册，以前很多注册是需要验证邮箱，通过SMTP协议读取邮件内容实现自动化是个思路，前提你也要有很多邮箱地址，牛逼的你可以自己搭建个邮件服务器，要多少有多少。现在很多是通过手机号码的验证码了，这个就麻烦了，首先要有很多设备插很多sim卡接收短信，然后还要在这些设备上把数据传到你运行的那台机子解析出验证码才能把整个流程自动化。反正我是没试过，一般我都是手工注册几个。</p>
@@ -357,7 +358,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网页爬虫/" rel="tag">#网页爬虫</a>
+            <a href="/tags/网络爬虫/" rel="tag">#网络爬虫</a>
           
         </div>
       
@@ -366,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android-RichEditor-And-NativeHtml/" rel="next" title="Android原生简易图文编辑器和展示实现">
-                <i class="fa fa-chevron-left"></i> Android原生简易图文编辑器和展示实现
+              <a href="/Android-RichEditor-And-NativeHtml/" rel="next" title="Android原生简易图文编辑器和富文本显示实现">
+                <i class="fa fa-chevron-left"></i> Android原生简易图文编辑器和富文本显示实现
               </a>
             
           </div>
@@ -451,7 +452,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -461,7 +462,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -537,7 +538,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的user-agent"><span class="nav-number">1.</span> <span class="nav-text">设置合理的user-agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的爬取间隔"><span class="nav-number">2.</span> <span class="nav-text">设置合理的爬取间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要登录权限"><span class="nav-number">3.</span> <span class="nav-text">需要登录权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量爬取"><span class="nav-number">4.</span> <span class="nav-text">增量爬取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理魔法好"><span class="nav-number">5.</span> <span class="nav-text">代理魔法好</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容解析"><span class="nav-number">6.</span> <span class="nav-text">内容解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax异步内容"><span class="nav-number">7.</span> <span class="nav-text">Ajax异步内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的user-agent"><span class="nav-number">2.</span> <span class="nav-text">设置合理的user-agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置合理的爬取间隔"><span class="nav-number">3.</span> <span class="nav-text">设置合理的爬取间隔</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需要登录权限"><span class="nav-number">4.</span> <span class="nav-text">需要登录权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量爬取"><span class="nav-number">5.</span> <span class="nav-text">增量爬取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理魔法好"><span class="nav-number">6.</span> <span class="nav-text">代理魔法好</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内容解析"><span class="nav-number">7.</span> <span class="nav-text">内容解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax异步内容"><span class="nav-number">8.</span> <span class="nav-text">Ajax异步内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
         </section>

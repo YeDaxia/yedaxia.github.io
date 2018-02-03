@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="okhttp,okhttp缓存," />
+  <meta name="keywords" content="Android,网络编程," />
 
 
 
@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
+<meta name="description" content="Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OkHttp离线缓存实现">
+<meta property="og:title" content="OkHttp 离线缓存实现">
 <meta property="og:url" content="https://yedaxia.github.io/Okhttp-Offline-Cache/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
-<meta property="og:description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
-<meta property="og:updated_time" content="2016-12-12T05:31:38.000Z">
+<meta property="og:description" content="Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。">
+<meta property="og:updated_time" content="2018-02-03T05:38:27.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OkHttp离线缓存实现">
-<meta name="twitter:description" content="OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。">
+<meta name="twitter:title" content="OkHttp 离线缓存实现">
+<meta name="twitter:description" content="Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。">
 
 
 
@@ -119,7 +119,7 @@
   <link rel="canonical" href="https://yedaxia.github.io/Okhttp-Offline-Cache/"/>
 
 
-  <title> OkHttp离线缓存实现 | Darcy's Blog </title>
+  <title> OkHttp 离线缓存实现 | Darcy's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +250,7 @@
             
             
               
-                OkHttp离线缓存实现
+                OkHttp 离线缓存实现
               
             
           </h1>
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-12T13:25:36+08:00" content="2016-12-12">
-              2016-12-12
+            <time itemprop="dateCreated" datetime="2016-12-13T13:03:53+08:00" content="2016-12-13">
+              2016-12-13
             </time>
           </span>
 
@@ -297,10 +297,11 @@
       
 
       
-        <p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。<br><a id="more"></a></p>
-<h1 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用:"></a>场景应用:</h1><p>OkHttp内部已经支持了标准的Http协议缓存策略，如Last-Modified, Etag, Cache-Control等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。</p>
-<h1 id="OkHttp保存缓存的时机"><a href="#OkHttp保存缓存的时机" class="headerlink" title="OkHttp保存缓存的时机:"></a>OkHttp保存缓存的时机:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.HttpEngine:</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">maybeCache</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    InternalCache responseCache = Internal.instance.internalCache(client);</div><div class="line">    <span class="keyword">if</span> (responseCache == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Should we cache this response for this request?</span></div><div class="line">    <span class="keyword">if</span> (!CacheStrategy.isCacheable(userResponse, networkRequest)) &#123;</div><div class="line">      <span class="keyword">if</span> (HttpMethod.invalidatesCache(networkRequest.method())) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">          responseCache.remove(networkRequest);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          <span class="comment">// The cache cannot be written.</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Offer this request to the cache.</span></div><div class="line">    storeRequest = responseCache.put(stripBody(userResponse));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里我们可以看到OkHttp是否缓存请求结果其中的一个条件:<code>CacheStrategy.isCacheable()</code>, 看看这里面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.CacheStrategy:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCacheable</span><span class="params">(Response response, Request request)</span> </span>&#123;</div><div class="line">    <span class="comment">// Always go to network for uncacheable response codes (RFC 7231 section 6.1),</span></div><div class="line">    <span class="comment">// This implementation doesn't support caching partial content.</span></div><div class="line">    <span class="keyword">switch</span> (response.code()) &#123;</div><div class="line">      <span class="keyword">case</span> HTTP_OK:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_AUTHORITATIVE:</div><div class="line">      <span class="keyword">case</span> HTTP_NO_CONTENT:</div><div class="line">      <span class="keyword">case</span> HTTP_MULT_CHOICE:</div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_PERM:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_FOUND:</div><div class="line">      <span class="keyword">case</span> HTTP_BAD_METHOD:</div><div class="line">      <span class="keyword">case</span> HTTP_GONE:</div><div class="line">      <span class="keyword">case</span> HTTP_REQ_TOO_LONG:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_IMPLEMENTED:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_PERM_REDIRECT:</div><div class="line">        <span class="comment">// These codes can be cached unless headers forbid it.</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_TEMP:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_TEMP_REDIRECT:</div><div class="line">        <span class="comment">// These codes can only be cached with the right response headers.</span></div><div class="line">        <span class="comment">// http://tools.ietf.org/html/rfc7234#section-3</span></div><div class="line">        <span class="comment">// s-maxage is not checked because OkHttp is a private cache that should ignore s-maxage.</span></div><div class="line">        <span class="keyword">if</span> (response.header(<span class="string">"Expires"</span>) != <span class="keyword">null</span></div><div class="line">            || response.cacheControl().maxAgeSeconds() != -<span class="number">1</span></div><div class="line">            || response.cacheControl().isPublic()</div><div class="line">            || response.cacheControl().isPrivate()) &#123;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Fall-through.</span></div><div class="line"></div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="comment">// All other codes cannot be cached.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// A 'no-store' directive on request or response prevents the response from being cached.</span></div><div class="line">    <span class="keyword">return</span> !response.cacheControl().noStore() &amp;&amp; !request.cacheControl().noStore();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。</p>
+<a id="more"></a>
+<h1 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用:"></a>场景应用:</h1><p>OkHttp 内部已经支持了标准的 Http 协议缓存策略，如 Last-Modified, Etag, Cache-Control 等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。</p>
+<h1 id="OkHttp-保存缓存的时机"><a href="#OkHttp-保存缓存的时机" class="headerlink" title="OkHttp 保存缓存的时机:"></a>OkHttp 保存缓存的时机:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.HttpEngine:</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">maybeCache</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    InternalCache responseCache = Internal.instance.internalCache(client);</div><div class="line">    <span class="keyword">if</span> (responseCache == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Should we cache this response for this request?</span></div><div class="line">    <span class="keyword">if</span> (!CacheStrategy.isCacheable(userResponse, networkRequest)) &#123;</div><div class="line">      <span class="keyword">if</span> (HttpMethod.invalidatesCache(networkRequest.method())) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">          responseCache.remove(networkRequest);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          <span class="comment">// The cache cannot be written.</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Offer this request to the cache.</span></div><div class="line">    storeRequest = responseCache.put(stripBody(userResponse));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里我们可以看到 OkHttp 是否缓存请求结果其中的一个条件:<code>CacheStrategy.isCacheable()</code>, 看看这里面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.CacheStrategy:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCacheable</span><span class="params">(Response response, Request request)</span> </span>&#123;</div><div class="line">    <span class="comment">// Always go to network for uncacheable response codes (RFC 7231 section 6.1),</span></div><div class="line">    <span class="comment">// This implementation doesn't support caching partial content.</span></div><div class="line">    <span class="keyword">switch</span> (response.code()) &#123;</div><div class="line">      <span class="keyword">case</span> HTTP_OK:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_AUTHORITATIVE:</div><div class="line">      <span class="keyword">case</span> HTTP_NO_CONTENT:</div><div class="line">      <span class="keyword">case</span> HTTP_MULT_CHOICE:</div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_PERM:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_FOUND:</div><div class="line">      <span class="keyword">case</span> HTTP_BAD_METHOD:</div><div class="line">      <span class="keyword">case</span> HTTP_GONE:</div><div class="line">      <span class="keyword">case</span> HTTP_REQ_TOO_LONG:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_IMPLEMENTED:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_PERM_REDIRECT:</div><div class="line">        <span class="comment">// These codes can be cached unless headers forbid it.</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_TEMP:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_TEMP_REDIRECT:</div><div class="line">        <span class="comment">// These codes can only be cached with the right response headers.</span></div><div class="line">        <span class="comment">// http://tools.ietf.org/html/rfc7234#section-3</span></div><div class="line">        <span class="comment">// s-maxage is not checked because OkHttp is a private cache that should ignore s-maxage.</span></div><div class="line">        <span class="keyword">if</span> (response.header(<span class="string">"Expires"</span>) != <span class="keyword">null</span></div><div class="line">            || response.cacheControl().maxAgeSeconds() != -<span class="number">1</span></div><div class="line">            || response.cacheControl().isPublic()</div><div class="line">            || response.cacheControl().isPrivate()) &#123;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Fall-through.</span></div><div class="line"></div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="comment">// All other codes cannot be cached.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// A 'no-store' directive on request or response prevents the response from being cached.</span></div><div class="line">    <span class="keyword">return</span> !response.cacheControl().noStore() &amp;&amp; !request.cacheControl().noStore();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们接着回到<code>maybeCache()</code>方法往下看,最后一句<code>responseCache.put(stripBody(userResponse))</code>将会调用下面的方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache:</div><div class="line"><span class="function"><span class="keyword">private</span> CacheRequest <span class="title">put</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    String requestMethod = response.request().method();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (HttpMethod.invalidatesCache(response.request().method())) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        remove(response.request());</div><div class="line">      &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        <span class="comment">// The cache cannot be written.</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!requestMethod.equals(<span class="string">"GET"</span>)) &#123;</div><div class="line">      <span class="comment">// Don't cache non-GET responses. We're technically allowed to cache</span></div><div class="line">      <span class="comment">// HEAD requests and some POST requests, but the complexity of doing</span></div><div class="line">      <span class="comment">// so is high and the benefit is low.</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (OkHeaders.hasVaryAll(response)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Entry entry = <span class="keyword">new</span> Entry(response);</div><div class="line">    DiskLruCache.Editor editor = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      editor = cache.edit(urlToKey(response.request()));</div><div class="line">      <span class="keyword">if</span> (editor == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//缓存写入文件:</span></div><div class="line">      entry.writeTo(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CacheRequestImpl(editor);</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">      abortQuietly(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>总的来说就是只要是<code>Get</code>请求,同时请求和响应头部<code>CacheControl</code>没有设置<code>no store</code>就会把请求结果缓存了。</p>
 <h1 id="OkHttp保存缓存的格式"><a href="#OkHttp保存缓存的格式" class="headerlink" title="OkHttp保存缓存的格式:"></a>OkHttp保存缓存的格式:</h1><p>url所对应的缓存文件名规则,不难看出是url的md5值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Util.md5Hex(request.url().toString())</div></pre></td></tr></table></figure></p>
@@ -361,9 +362,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/okhttp/" rel="tag">#okhttp</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/okhttp缓存/" rel="tag">#okhttp缓存</a>
+            <a href="/tags/网络编程/" rel="tag">#网络编程</a>
           
         </div>
       
@@ -372,16 +373,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Android-MediaExtractor-And-MediaCodec/" rel="next" title="利用MediaExtractor和MediaCodec实现音频编解码和混音">
-                <i class="fa fa-chevron-left"></i> 利用MediaExtractor和MediaCodec实现音频编解码和混音
+              <a href="/Android-MediaExtractor-And-MediaCodec/" rel="next" title="MediaExtractor和MediaCodec实现音频编解码和混音">
+                <i class="fa fa-chevron-left"></i> MediaExtractor和MediaCodec实现音频编解码和混音
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Android-Studio-ModelCodeGenerator/" rel="prev" title="Android Studio的Model代码插件开发">
-                Android Studio的Model代码插件开发 <i class="fa fa-chevron-right"></i>
+              <a href="/Android-Studio-ModelCodeGenerator/" rel="prev" title="Android Studio 的代码插件开发">
+                Android Studio 的代码插件开发 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -467,7 +468,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -543,7 +544,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#场景应用"><span class="nav-number">1.</span> <span class="nav-text">场景应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp保存缓存的时机"><span class="nav-number">2.</span> <span class="nav-text">OkHttp保存缓存的时机:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp保存缓存的格式"><span class="nav-number">3.</span> <span class="nav-text">OkHttp保存缓存的格式:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp离线缓存实现"><span class="nav-number">4.</span> <span class="nav-text">OkHttp离线缓存实现:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#场景应用"><span class="nav-number">1.</span> <span class="nav-text">场景应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp-保存缓存的时机"><span class="nav-number">2.</span> <span class="nav-text">OkHttp 保存缓存的时机:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp保存缓存的格式"><span class="nav-number">3.</span> <span class="nav-text">OkHttp保存缓存的格式:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp离线缓存实现"><span class="nav-number">4.</span> <span class="nav-text">OkHttp离线缓存实现:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
         </section>
@@ -664,7 +665,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'yedaxia';
       var disqus_identifier = 'Okhttp-Offline-Cache/';
-      var disqus_title = "OkHttp离线缓存实现";
+      var disqus_title = "OkHttp 离线缓存实现";
       var disqus_url = 'https://yedaxia.github.io/Okhttp-Offline-Cache/';
 
       function run_disqus_script(disqus_script){

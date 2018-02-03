@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android富文本编辑器," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -86,21 +86,24 @@
 
 
 
-<meta name="description" content="文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。">
+<meta name="description" content="文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。
+talk is cheep, show you the code. 源码参考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android原生简易图文编辑器和展示实现">
+<meta property="og:title" content="Android原生简易图文编辑器和富文本显示实现">
 <meta property="og:url" content="https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/index.html">
 <meta property="og:site_name" content="Darcy's Blog">
-<meta property="og:description" content="文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。">
+<meta property="og:description" content="文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。
+talk is cheep, show you the code. 源码参考">
 <meta property="og:image" content="http://7ktocj.com1.z0.glb.clouddn.com/editor_screenshot.jpg?imageView2/0/w/500">
 <meta property="og:image" content="http://7ktocj.com1.z0.glb.clouddn.com/YRichEidtText.png?imageView2/0/w/500">
 <meta property="og:image" content="http://7ktocj.com1.z0.glb.clouddn.com/IRichEditor-Interface.png?imageView2/0/w/350">
 <meta property="og:image" content="http://7ktocj.com1.z0.glb.clouddn.com/html-parser-process.png?imageView2/0/w/500">
 <meta property="og:image" content="http://7ktocj.com1.z0.glb.clouddn.com/rich_list_element_to_item.png?imageView2/0/w/500">
-<meta property="og:updated_time" content="2017-05-21T01:43:02.000Z">
+<meta property="og:updated_time" content="2018-02-03T06:08:10.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android原生简易图文编辑器和展示实现">
-<meta name="twitter:description" content="文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。">
+<meta name="twitter:title" content="Android原生简易图文编辑器和富文本显示实现">
+<meta name="twitter:description" content="文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。
+talk is cheep, show you the code. 源码参考">
 <meta name="twitter:image" content="http://7ktocj.com1.z0.glb.clouddn.com/editor_screenshot.jpg?imageView2/0/w/500">
 
 
@@ -125,7 +128,7 @@
   <link rel="canonical" href="https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/"/>
 
 
-  <title> Android原生简易图文编辑器和展示实现 | Darcy's Blog </title>
+  <title> Android原生简易图文编辑器和富文本显示实现 | Darcy's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +259,7 @@
             
             
               
-                Android原生简易图文编辑器和展示实现
+                Android原生简易图文编辑器和富文本显示实现
               
             
           </h1>
@@ -268,7 +271,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-21T08:54:25+08:00" content="2017-05-21">
+            <time itemprop="dateCreated" datetime="2017-05-21T13:57:03+08:00" content="2017-05-21">
               2017-05-21
             </time>
           </span>
@@ -303,10 +306,11 @@
       
 
       
-        <p>文章介绍了如何在Android实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码demo实现，读者可以先把demo运行起来，对照代码和文章阅读应该不难弄懂。</p>
-<a id="more"></a>
+        <p>文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。</p>
 <p>talk is cheep, show you the code. <a href="https://github.com/YeDaxia/Android-YRichEditor" target="_blank" rel="external">源码参考</a></p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>尽管Android设备的性能日益增强，但是通过webview来展示内容和原生的体验还是有一定的差距的，在某些情况下，我们只是需要简单的图文并排就够了，比如一些帖子，这个时候用webview就显的有点重，考虑到这一点，我们决定在客户端原生支持特定的网页标签。为了兼顾到各个平台，我们约定输出是标准的html内容，对于已有的内容，可以进行内容的重新排版，把多余的标签去掉并换成约定好的标签。</p>
+<a id="more"></a>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>尽管Android设备的性能日益增强，但是通过webview来展示内容和原生的体验还是有一定的差距的，在某些情况下，我们只是需要简单的图文并排就够了，比如一些帖子，这个时候用webview就显的有点重，考虑到这一点，我们决定在客户端原生支持特定的网页标签。</p>
+<p>为了兼顾到各个平台，我们约定输出是标准的html内容，对于已有的内容，可以进行内容的重新排版，把多余的标签去掉并换成约定好的标签。</p>
 <p><img src="http://7ktocj.com1.z0.glb.clouddn.com/editor_screenshot.jpg?imageView2/0/w/500" alt=""></p>
 <h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>笔者有着多年对于markdown编辑器的使用经验，对于markdown语法的简洁有深度的喜爱，对于很多时候的编辑工作都是够用了，我更倾向于轻便够用而非周全复杂的东西，在设计编辑器的时候，不经意就想到了markdown。</p>
 <p>经过协商我们初期先支持下面的几种简单的样式：</p>
@@ -390,7 +394,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android富文本编辑器/" rel="tag">#Android富文本编辑器</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -484,7 +488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -494,7 +498,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -691,7 +695,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'yedaxia';
       var disqus_identifier = 'Android-RichEditor-And-NativeHtml/';
-      var disqus_title = "Android原生简易图文编辑器和展示实现";
+      var disqus_title = "Android原生简易图文编辑器和富文本显示实现";
       var disqus_url = 'https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/';
 
       function run_disqus_script(disqus_script){
