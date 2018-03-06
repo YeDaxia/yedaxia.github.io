@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-02-03T03:58:50.494Z</updated>
+  <updated>2018-03-06T17:23:23.416Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写给小白的音频认识基础</title>
+    <link href="https://yedaxia.github.io/Android-Audio-Mixing/"/>
+    <id>https://yedaxia.github.io/Android-Audio-Mixing/</id>
+    <published>2018-03-06T14:24:24.000Z</published>
+    <updated>2018-03-06T17:23:23.416Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然从初中物理就认识声音是一种波，但在真正用代码去表达的时候我才建立了深刻的认识。</p>
+<a id="more"></a>
+<h1 id="初识音频"><a href="#初识音频" class="headerlink" title="初识音频"></a>初识音频</h1><p>从初中物理上我们就学到，声音是一种波。计算机只能处理离散的信号，通过收集足够多的离散的信号，来不断逼近波形，这个过程我们叫做采样。怎么样才能更好的还原声音信息呢？这里很自然引出两个概念了。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png?imageView2/0/w/400" alt="声音波形图"></p>
+<p><strong>采样频率(Sample Rate)</strong>：每秒采集声音的数量，它用赫兹(Hz)来表示。</p>
+<p>采样率越高越靠近原声音的波形，常见的采样率有以下几种：</p>
+<ul>
+<li>8khz：电话等使用，对于记录人声已经足够使用。</li>
+<li>22.05khz：广播使用频率。</li>
+<li>44.1kb：音频CD。</li>
+<li>48khz：DVD、数字电视中使用。</li>
+<li>96khz-192khz：DVD-Audio、蓝光高清等使用。</li>
+</ul>
+<p><strong>采样精度(Bit Depth)</strong>: 它表示每次采样的精度，位数越多，能记录的范围就越大。</p>
+<p>采样精度常用范围为8bit-32bit，而CD中一般都使用16bit。</p>
+<p>把声音记录下来之后，通过喇叭的震动把波再还给空气传到你的耳朵就完成了这个完美的循环了。但是富有创造力的人类不会限制于此就结束了，很快人们发现，当把不同的声音传递到不同的喇叭的时候，竟然会惊奇地让声音变得有<strong>空间感</strong>了，即时是同一个声音，也比单个通道能获得更好的体验，于是就出现了什么立体声，5.1 环绕等看起来很高大上的东西。所以，音频又多了一个东西：</p>
+<p><strong>声音通道(Channel)</strong>: 你知道每个通道存储的声音会从其中的一个喇叭出来就好了，不过可以通过算法的模拟来让没有那么多喇叭也能出来类似的效果。</p>
+<p>有了声音通道，乐队在录音的时候就可以每个人插一条音轨了，然后每一个声音可以写到不同的通道里面，当然，实际录音当然都是后期混音而成的。下面介绍的其中一个混音算法会用到声音通道这个特性。</p>
+<p>最后再介绍一个大家经常看到的概念：</p>
+<p><strong>比特率(bps [bits per second])</strong>: 其实看单位就很容易知道它要表达的意思了，就是每秒钟要播放多少 bit 的数据。公式一目了然：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">比特率 = 采样率 × 采样深度 × 通道。</div></pre></td></tr></table></figure></p>
+<p>比如 采样率 = 44100，采样深度 = 16，通道 = 2 的音频的的比特率就是 44100 <em> 16 </em> 2 = 1411200 bps。</p>
+<p>一般来说，比特率越高，音频质量越好。要注意一些比特率的换算不是 1024 作为一个级别换算的哈。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1,000 bps	= 【1 kbps】 =	1,000 bit/s</div><div class="line">1,000,000 bps	= 【1 Mbps】 =	1,000,000 bit/s	</div><div class="line">1,000,000,000 bps	= 【1 Gbps】 =	1,000,000,000 bit/s</div></pre></td></tr></table></figure>
+<h1 id="音频在计算机中的表示"><a href="#音频在计算机中的表示" class="headerlink" title="音频在计算机中的表示"></a>音频在计算机中的表示</h1><p>我们来看一下真实音频在计算机中究竟是怎样的表示状态，这里指的是原始的数据表示，而非编码(Mp3,Acc等)后的表示，平时我们看到的<code>.wav</code>后缀的音频，把前面 44 个字节用于记录采样率、通道等的头部信息去掉后就是就是原始的音频数据了。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_wav_format.gif" alt="WAV表示图"></p>
+<p>在理解了上面的概念之后，我们再来看这张图。对于文件头部信息我们就不详细介绍了，不影响我们理解介绍的混音处理方式，需要了解的可以点击<a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="external">这里</a>。</p>
+<p>我们抽取其中的一个采样来看，这里我加多了一个通道，便于大家理解通道的存储位置。</p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/98udab8shdhvy2ncidbo.png?imageView2/0/w/390" alt="音频采样图"></p>
+<p>不难理解，这个采样中有三个通道，每通道采样精度是 16 比特。每个采样值的排序是 Little-Endian 低位在前的方式，比如通道 1 的采样值就是 <code>AB03</code>, 每个采样值的大小表示的是幅度信息。</p>
+<p>好了，先介绍到这里，希望对你有帮助，如果文章有理解错误的地方，请给我留言指出，感谢你的阅读，下一篇将会介绍有关音频混音的相关知识。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="external">WAV文件格式</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%AF%94%E7%89%B9%E7%8E%87" target="_blank" rel="external">维基百科-比特率</a></li>
+</ol>
+<p>不玩音乐的看到这里可以关闭了。</p>
+<p><strong>色彩浓重的广告时间：</strong></p>
+<p>如果你有玩音乐，我做了一个音乐学习和记录的辅助工具。刚在 Google Play 发布，<a href="https://play.google.com/store/apps/details?id=io.github.yedaxia.musicnote&amp;rdid=io.github.yedaxia.musicnote" target="_blank" rel="external">音乐笔记+</a>。我平时会用它来作即兴练习和合奏练习，这是个付费应用，你可以通过购买它对我表示支持。</p>
+<p>以下是免费的：</p>
+<ul>
+<li><a href="http://sopu.52cmajor.com/" target="_blank" rel="external">Lucene + 爬虫 做的搜谱的网站：为你搜谱</a></li>
+<li><a href="http://52cmajor.com/tab/tools/open-gtp" target="_blank" rel="external">不需要 Guitar Pro，在线就能打开 gtp 吉他谱</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然从初中物理就认识声音是一种波，但在真正用代码去表达的时候我才建立了深刻的认识。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>VexTab介绍 - 一种即时可视的web乐谱语言 | 译文</title>
@@ -1891,9 +1953,9 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
       <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   
