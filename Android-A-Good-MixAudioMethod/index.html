@@ -94,7 +94,7 @@
 <meta property="og:description" content="本文将对几种音频混音的方法进行详细的介绍和比较，读完之后你应该可以对混音有个基本的认识，针对不同情形知道应该采用哪种具体的处理方法了。">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/digital-audio-mix-theory.png?imageView2/0/w/500">
-<meta property="og:updated_time" content="2018-03-10T18:17:42.526Z">
+<meta property="og:updated_time" content="2018-03-10T18:34:53.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android上一种效果奇好的混音方法介绍">
 <meta name="twitter:description" content="本文将对几种音频混音的方法进行详细的介绍和比较，读完之后你应该可以对混音有个基本的认识，针对不同情形知道应该采用哪种具体的处理方法了。">
@@ -348,7 +348,7 @@
 </li>
 </ul>
 <h1 id="采样频率、采样精度和通道数不同的情况如何处理？"><a href="#采样频率、采样精度和通道数不同的情况如何处理？" class="headerlink" title="采样频率、采样精度和通道数不同的情况如何处理？"></a>采样频率、采样精度和通道数不同的情况如何处理？</h1><p>不同采样频率需要算法进行重新采样处理，让所有音轨在同一采样率下进行混音，这个比较复杂，等有机会再写篇文章介绍。</p>
-<p>采样精度不同比较好处理，向上取精度较高的作为基准即可，高位补0；如果是需要取向下精度作为基准的，那么就要把最大通道值和基准最大值取个倍数，然后把低位移除。</p>
+<p>采样精度不同比较好处理，向上取精度较高的作为基准即可，高位补0；如果是需要取向下精度作为基准的，那么就要把最大通道值和基准最大值取个倍数，把数值都降到最大基准数以下，然后把低位移除。</p>
 <p>通道数不同的情况也和精度不同的情况相似处理。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
 <li><a href="http://www.jos.org.cn/1000-9825/16/108.pdf" target="_blank" rel="external">多媒体会议中的快速实时自适应混音方案研究</a> </li>
