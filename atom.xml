@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-03-10T18:34:53.583Z</updated>
+  <updated>2018-03-14T08:47:14.331Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个人如何像一支乐队一样练琴 | 工具推荐</title>
+    <link href="https://yedaxia.github.io/How-To-Play-Music-Like-A-Bank/"/>
+    <id>https://yedaxia.github.io/How-To-Play-Music-Like-A-Bank/</id>
+    <published>2018-03-14T08:38:54.000Z</published>
+    <updated>2018-03-14T08:47:14.331Z</updated>
+    
+    <content type="html"><![CDATA[<p>开发了一个小工具，为你的音乐学习之路赋能。</p>
+<a id="more"></a>
+<h1 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h1><p>近段时间想学习一下即兴伴奏，但是平时有很难找到人一起练习，又没找到合适的辅助工具，所以就做了这个小工具。它的名字改来改去，最后取了个：声音笔记+。记录声音，并且声音和另一个声音相加。嗯，大概就是这个含义。</p>
+<h1 id="它可以做什么？"><a href="#它可以做什么？" class="headerlink" title="它可以做什么？"></a>它可以做什么？</h1><p>有了它的辅助，一个人也可以是一只乐队了。是进行多重合奏练习，即兴练习的利器；另外顺带了一个字节级精准的节拍器，练琴必备。</p>
+<h1 id="声明和反馈"><a href="#声明和反馈" class="headerlink" title="声明和反馈"></a>声明和反馈</h1><p>目前功能还很原始，但我相信一直对于苦苦寻找一个合适相关工具的你肯定会有相见恨晚的感觉。一个好用的音频处理的应用开发是一件有挑战的事，需要你的支持，发现有什么问题或者建议，请反馈给我（微信号：yedaxia2017），我们可以一起让它变得更好用一些。</p>
+<p>App 没有携带任何的后台程序，不会浪费你设备额外的电量。收集 bug 和统计使用了腾讯 Bugly 服务，除此之外没有任何的第三方服务在里面，根据 bugly 的声明，我想应该可以放心跟你说，我们没有收集你相关的任何隐私信息。</p>
+<p>以下是 bugly 的声明：</p>
+<blockquote>
+<p>Bugly收集的信息都是为了更真实地为开发者还原Crash场景服务的，并不涉及用户隐私信息：<br>Crash环境：Crash信息及线程堆栈，ROM/RAM/SD卡容量、网络/语言等状态<br>App信息：包名、版本、所属进程名<br>设备信息：IMEI等设备识别，用于判断Crash设备统计。</p>
+</blockquote>
+<h1 id="如何获取？"><a href="#如何获取？" class="headerlink" title="如何获取？"></a>如何获取？</h1><p>目前只在 Google Play 上架了，国内市场还在审核。点击<a href="http://52cmajor.com/app/musicNote" target="_blank" rel="external">这里</a>跳到下载页面，微信内是要跳到外部浏览器才能下载的。Google Play 是需要付费的，国内用户也无法进行访问下载，从原文进去的下载是可以获得免费版的。</p>
+<p>我录了个很丑的视频，不知道你们看不看的懂～</p>
+<iframe frameborder="0" width="400" height="250" src="https://v.qq.com/iframe/player.html?vid=z0567cqxyfr&tiny=0&auto=0" allowfullscreen></iframe>
+
+<p>使用是一种支持，欢迎你分享给身边需要的朋友。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开发了一个小工具，为你的音乐学习之路赋能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="音乐" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Android上一种效果奇好的混音方法介绍</title>
@@ -839,13 +874,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -917,13 +952,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -1846,9 +1881,9 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
