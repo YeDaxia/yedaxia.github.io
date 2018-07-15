@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-03-18T07:06:23.250Z</updated>
+  <updated>2018-06-03T05:20:16.300Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://yedaxia.github.io/Android-Sync-Audio-Record-With-Play/"/>
     <id>https://yedaxia.github.io/Android-Sync-Audio-Record-With-Play/</id>
     <published>2018-03-17T17:17:50.000Z</published>
-    <updated>2018-03-18T07:06:23.250Z</updated>
+    <updated>2018-06-03T05:20:16.300Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章可以为你提供一个解决录音和播放的同步的思路，而且解决了声音从手机传输到耳机上的延时的问题。</p>
 <a id="more"></a>
@@ -78,15 +78,6 @@
 <li><p><a href="https://android.googlesource.com/platform/cts/+/b36beae93fd074e908d74acca86940186066c2a0/tests/tests/media/src/android/media/cts/AudioRecordTest.java" target="_blank" rel="external">MediaSyncEvent TestCase: </a></p>
 </li>
 </ol>
-<p>技术交流群：70948803，大部分时间群里都是安静的，只交流技术相关，很少发言，不欢迎广告喷子。</p>
-<p>不玩音乐的看到这里可以关闭了。</p>
-<p><strong>色彩浓重的广告时间：</strong></p>
-<p>如果你有玩音乐，我做了一个音乐学习和记录的辅助工具。终于可以在 App 市场下载了: <a href="http://www.wandoujia.com/apps/com.cmajor.musicnote" target="_blank" rel="external">声音笔记+</a>，虽然还比较粗糙，期待你的支持～</p>
-<p>还有这些好用的工具：</p>
-<ul>
-<li><a href="http://sopu.52cmajor.com/" target="_blank" rel="external">Lucene + 爬虫 做的搜谱的网站：为你搜谱</a></li>
-<li><a href="http://52cmajor.com/tab/tools/open-gtp" target="_blank" rel="external">不需要 Guitar Pro，在线就能打开 gtp 吉他谱</a></li>
-</ul>
 ]]></content>
     
     <summary type="html">
@@ -961,13 +952,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -1039,13 +1030,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -1969,9 +1960,9 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
