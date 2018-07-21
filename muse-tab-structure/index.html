@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。">
+<meta name="description" content="这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Muse 乐谱数据结构解析">
 <meta property="og:url" content="https://yedaxia.github.io/muse-tab-structure/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
-<meta property="og:description" content="本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。">
-<meta property="og:updated_time" content="2018-07-21T02:55:24.845Z">
+<meta property="og:description" content="这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png">
+<meta property="og:updated_time" content="2018-07-21T03:12:00.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Muse 乐谱数据结构解析">
-<meta name="twitter:description" content="本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。">
+<meta name="twitter:description" content="这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。">
+<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png">
 
 
 
@@ -297,7 +299,7 @@
       
 
       
-        <p>本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。</p>
+        <p>这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。</p>
 <a id="more"></a>
 <h2 id="描述信息"><a href="#描述信息" class="headerlink" title="描述信息"></a>描述信息</h2><p><strong>主标题：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">语法：T: 单身情歌 （第一个）</div><div class="line">字段：metaText.title</div></pre></td></tr></table></figure>
@@ -455,64 +457,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((a3b2d2)b1)</div></pre></td></tr></table></figure>
 <h2 id="小节线和重复线"><a href="#小节线和重复线" class="headerlink" title="小节线和重复线"></a>小节线和重复线</h2><p>数据结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    el_type:&apos;bar&apos;,</div><div class="line">    type: &apos;bar_thin&apos; //bar类型</div><div class="line">    startEnding: &apos;&apos; //重复段落数字和开始标志</div><div class="line">    endEnding: &apos;&apos;  //重复结束标志</div><div class="line">    barNumber: &apos;&apos; //忽略</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>语法</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>bar_thin</td>
-<td>\</td>
-<td></td>
-<td>小节线</td>
-</tr>
-<tr>
-<td>bar_left_repeat</td>
-<td>:\</td>
-<td></td>
-<td>重复左侧</td>
-</tr>
-<tr>
-<td>bar_right_repeat</td>
-<td>\</td>
-<td>:</td>
-<td>重复右侧</td>
-</tr>
-<tr>
-<td>bar_dbl_repeat</td>
-<td>::</td>
-<td>两边重复</td>
-</tr>
-<tr>
-<td>bar_thick_thin</td>
-<td>[\</td>
-<td></td>
-<td>左粗右细</td>
-</tr>
-<tr>
-<td>bar_thin_thick</td>
-<td>\</td>
-<td>[</td>
-<td>左细右粗</td>
-</tr>
-<tr>
-<td>bar_thin_thin</td>
-<td>\</td>
-<td>\</td>
-<td></td>
-<td>两条细线</td>
-</tr>
-<tr>
-<td>bar_invisible</td>
-<td>[:]</td>
-<td>虚小节线</td>
-</tr>
-</tbody>
-</table>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png" alt="abc bar"></p>
 <h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><p>英文歌词以空格断字，中文单字断字。</p>
 <table>
 <thead>
