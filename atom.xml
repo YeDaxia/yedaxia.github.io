@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-07-21T03:17:09.790Z</updated>
+  <updated>2018-07-21T04:51:42.764Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://yedaxia.github.io/muse-tab-structure/"/>
     <id>https://yedaxia.github.io/muse-tab-structure/</id>
     <published>2018-07-21T02:05:02.000Z</published>
-    <updated>2018-07-21T03:17:09.790Z</updated>
+    <updated>2018-07-21T04:51:42.764Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。</p>
 <a id="more"></a>
@@ -208,7 +208,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><p><a href="https://abcjs.net/" target="_blank" rel="external">abcjs</a>: javascript for rendering abc music notation.</p>
 </li>
 <li><p>muse 2.7 制谱软件帮助文档。</p>
@@ -344,9 +344,9 @@
     </summary>
     
     
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
       <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   
@@ -454,9 +454,9 @@
     </summary>
     
     
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
       <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   
@@ -1209,13 +1209,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -1287,13 +1287,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -2217,9 +2217,9 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
