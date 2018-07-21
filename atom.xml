@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-07-21T03:12:00.334Z</updated>
+  <updated>2018-07-21T03:17:09.790Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://yedaxia.github.io/muse-tab-structure/"/>
     <id>https://yedaxia.github.io/muse-tab-structure/</id>
     <published>2018-07-21T02:05:02.000Z</published>
-    <updated>2018-07-21T03:12:00.334Z</updated>
+    <updated>2018-07-21T03:17:09.790Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。</p>
 <a id="more"></a>
@@ -180,7 +180,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((a3b2d2)b1)</div></pre></td></tr></table></figure>
 <h2 id="小节线和重复线"><a href="#小节线和重复线" class="headerlink" title="小节线和重复线"></a>小节线和重复线</h2><p>数据结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    el_type:&apos;bar&apos;,</div><div class="line">    type: &apos;bar_thin&apos; //bar类型</div><div class="line">    startEnding: &apos;&apos; //重复段落数字和开始标志</div><div class="line">    endEnding: &apos;&apos;  //重复结束标志</div><div class="line">    barNumber: &apos;&apos; //忽略</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png" alt="abc bar"></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400" alt="abc bar"></p>
 <h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><p>英文歌词以空格断字，中文单字断字。</p>
 <table>
 <thead>
@@ -344,9 +344,9 @@
     </summary>
     
     
-      <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
-    
       <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
+    
+      <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -454,9 +454,9 @@
     </summary>
     
     
-      <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
-    
       <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
+    
+      <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -1209,13 +1209,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -1287,13 +1287,13 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
       <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
       <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
     
       <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
@@ -2217,9 +2217,9 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     </summary>
     
     
-      <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
       <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
