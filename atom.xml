@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-07-17T00:57:04.696Z</updated>
+  <updated>2018-07-21T02:55:24.845Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,275 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Muse 乐谱数据结构解析</title>
+    <link href="https://yedaxia.github.io/muse-tab-structure/"/>
+    <id>https://yedaxia.github.io/muse-tab-structure/</id>
+    <published>2018-07-21T02:05:02.000Z</published>
+    <updated>2018-07-21T02:55:24.845Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。</p>
+<a id="more"></a>
+<h2 id="描述信息"><a href="#描述信息" class="headerlink" title="描述信息"></a>描述信息</h2><p><strong>主标题：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">语法：T: 单身情歌 （第一个）</div><div class="line">字段：metaText.title</div></pre></td></tr></table></figure>
+<p><strong>副标题：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">语法：T: 演唱 林志炫（第n个,n 大于等于2）</div><div class="line">字段：metaText.subtitle</div></pre></td></tr></table></figure></p>
+<p><strong>作者：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">语法：C: 陈耀川</div><div class="line">字段：metaText.composer</div></pre></td></tr></table></figure></p>
+<p>当有多个 C 出现的时候，在<code>composer</code>用换行符分隔。</p>
+<h2 id="调号、拍号和速度"><a href="#调号、拍号和速度" class="headerlink" title="调号、拍号和速度"></a>调号、拍号和速度</h2><p><strong>调号:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">语法：K: C</div><div class="line">字段：key</div><div class="line">&#123;</div><div class="line">    acc:&apos;&apos;, //升降调 （#/b)</div><div class="line">    accidentals:[],// 忽略</div><div class="line">    mode:&apos;&apos;, // 忽略</div><div class="line">    root:&apos;C&apos; //调名</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>拍号：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">语法：M: 3/8</div><div class="line">字段：meter</div><div class="line">&#123;</div><div class="line">    type: &apos;specified&apos;, //可忽略</div><div class="line">    value: [</div><div class="line">        &#123;num:&apos;3&apos;,den:&apos;8&apos;&#125; </div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>速度：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：Q: 1/4=120 &quot;Slowly&quot;</div><div class="line">字段：metaText.tempo</div><div class="line">&#123;</div><div class="line">    bpm: 120, </div><div class="line">    duration:[0.25], </div><div class="line">    postString: &apos;Slowly&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面表示 一分钟 120 个 1/4 拍。</p>
+<h2 id="音符、和弦"><a href="#音符、和弦" class="headerlink" title="音符、和弦"></a>音符、和弦</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">字段：staffs[i].voices[i]:</div><div class="line">&#123;</div><div class="line">    chord: [&#123;</div><div class="line">        name: &quot;C/E&quot;, //和弦名称，查询和弦表</div><div class="line">        position: &apos;&apos;// 忽略</div><div class="line">    &#125;], </div><div class="line">    duration: 0.0625, //音长</div><div class="line">    el_type: &apos;note&apos;,</div><div class="line">    pitches: [&#123;</div><div class="line">        fret:1, //品数，或者&apos;x&apos;</div><div class="line">        string: 5, //第几弦:&#123;a:1, b:2, c:3, d:4, e:5, f:6&#125;</div><div class="line">        pitch: 2 //简谱用到</div><div class="line">        accidental: &apos;sharp&apos; //升半音：sharp, 降半音：flat</div><div class="line">    &#125;], //多个的时候表示和声，需要在同一线上绘制，可能是扫弦。</div><div class="line">    decoration: [&apos;staccato&apos;,&apos;downstrum&apos;]//装饰音</div><div class="line">    gracenotes: &#123;&#125;,//倚音</div><div class="line">    rest: &#123;//休止符</div><div class="line">       type: rest/multimeasure</div><div class="line">    &#125;,</div><div class="line">    startTie: &#123;//延长音开始</div><div class="line">        //&#123;&apos;S&apos;:&apos;shift slide&apos;, &apos;H&apos;:&apos;hammer on&apos;, &apos;P&apos;:&apos;pull off&apos;&#125;</div><div class="line">        effect: &quot;shift slide&quot; //滑音等一下效果音会有这个字段，</div><div class="line">    &#125;</div><div class="line">    endTie: //延长音结束</div><div class="line">    startSlur: //连音</div><div class="line">    endSlur: //连音</div><div class="line">    startTriplet: 3 // n连音开始标识位，表示 3 连音</div><div class="line">    endTriplet: // n连音结束标识位</div><div class="line">    tripletMultiplier: //连音音长</div><div class="line">    lyric:[&#123; //歌词, 可能有多行歌词</div><div class="line">        divider:&apos;&apos;,</div><div class="line">        syllable:&apos;&apos;, </div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>tie 表示的是同相同的延音</li>
+<li>slur 则是两个不同音高的连音</li>
+<li>triplet 表示3连音，n连音等，在音长上面比较特殊</li>
+</ul>
+<h3 id="音高"><a href="#音高" class="headerlink" title="音高"></a>音高</h3><p><strong>四/六线谱</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     fret:1, //品数，或者&apos;x&apos;</div><div class="line">     string: 5, //第几弦:&#123;a:1, b:2, c:3, d:4, e:5, f:6&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>a: 是谱线最上面的一根，以此类推。</li>
+<li>如果是扫弦或者琶音的话，那只要关注最上面和最下面的弦就可以了。</li>
+</ul>
+<p><strong>简谱</strong></p>
+<p>在 muse 中，中央 <code>C</code> 代表 <code>1</code>, 小 <code>c</code> 代表高八度的 <code>1</code>，<code>C&#39;</code> 则表示小八度的 <code>1</code>，<code>C&#39;&#39;</code> 则必<code>C&#39;</code>更小，<code>c&#39;</code> 则是比 <code>c</code> 高八度。</p>
+<p>如下按音从低到高，其顺序和五线谱的表示法是一致的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C&apos;&apos;, C&apos;, C, c, c&apos;, c&apos;&apos;</div></pre></td></tr></table></figure>
+<p>对应在<code>pitch</code>字段中的值是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;A: 5, B: 6, C: 0, D: 1, E: 2, F: 3, G: 4, a: 12, b: 13, c: 7, d: 8, e: 9, f: 10, g: 11&#125;</div><div class="line"></div><div class="line">C&apos; = C(0) - 7 = -7</div><div class="line">c&apos; = c(7) + 7 = 14 </div><div class="line">依此类推...</div></pre></td></tr></table></figure>
+<p><strong>变音记号</strong></p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^b1</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>语法记号</th>
+<th>字段名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>sharp</td>
+<td>表示升半音</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>natural</td>
+<td>表示还原音</td>
+</tr>
+<tr>
+<td><code>_</code></td>
+<td>flat</td>
+<td>降半音</td>
+</tr>
+<tr>
+<td><code>^^</code></td>
+<td>double sharp</td>
+<td>升全音(暂不考虑)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="音长"><a href="#音长" class="headerlink" title="音长"></a>音长</h3><p>默认音长：<code>L: 1/4</code></p>
+<p>语法：</p>
+<ul>
+<li><code>/</code>、<code>/2</code>  默认音长一半0.5</li>
+<li><code>//</code> 默认音长 1/4（0.25）</li>
+<li><code>2</code>  默认音长 2 倍</li>
+<li><code>&gt;</code>  前付点 3/2 倍，后减音长 1/2 </li>
+<li><code>&lt;</code>  后付点，前减音长</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">弹唱谱例子：c1/, c1/2, cx//, a2*2</div><div class="line">简谱例子：A/, C// ,c1</div></pre></td></tr></table></figure>
+<p>弹唱谱需要表示把位，所以需要用<code>/</code>表示倍减，<code>*</code>表示倍增。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">音长计算的值 = 默认音长 * 音长的倍数，</div></pre></td></tr></table></figure>
+<h3 id="和弦图"><a href="#和弦图" class="headerlink" title="和弦图"></a>和弦图</h3><p>所有和弦包括默认的和弦在和弦表字段<code>gchords</code>当中，如果不存在在和弦表中，则绘制和弦名称即可。</p>
+<p><strong>语法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">语法：&lt;和弦名称&gt;=&lt;起始品数&gt;;&lt;第n弦品位&gt;(手指),&lt;第n-1弦品位&gt;(手指),...&lt;第1弦品位&gt;(手指)</div><div class="line"></div><div class="line">例子： %%gchord C=1;X,3,2,0,1,0</div></pre></td></tr></table></figure>
+<p>其中手指是可选的。<code>X</code>代表和弦外音。</p>
+<p><strong>数据结构：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    name: &quot;C&quot;, //和弦名</div><div class="line">    chord: [[1, 0],[2, 1], [3, 0], [4, 2], [5,3], [6, &quot;X&quot;]], //[&lt;第几品&gt;:&lt;手指&gt;]，数组的长度是弦的数量，数组下标按弦从上往下（从粗到细）， x 代表和弦外音</div><div class="line">    position: 3, //开始品数</div><div class="line">    bars: [&#123;from_string: 5, to_string: 1, fret: 1&#125;] //大横按，from_string: 开始弦， to_string：结束弦，fret：品数(相对position)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中 <code>bars</code> 是扩展字段，没有声明不需要绘制；position 没有声明也不需要绘制，</p>
+<h3 id="装饰音"><a href="#装饰音" class="headerlink" title="装饰音"></a>装饰音</h3><p>用法：在音符前添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例子：u[b1*2-e3/]</div></pre></td></tr></table></figure>
+<p>下面是可能出现的装饰音：</p>
+<table>
+<thead>
+<tr>
+<th>语法符号</th>
+<th>对应字段</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>staccato</td>
+<td>断音、切音</td>
+</tr>
+<tr>
+<td>V</td>
+<td>upstrum</td>
+<td>上扫弦</td>
+</tr>
+<tr>
+<td>U</td>
+<td>downstrum</td>
+<td>下扫弦</td>
+</tr>
+<tr>
+<td>A</td>
+<td>uparpeggio</td>
+<td>上琶音</td>
+</tr>
+<tr>
+<td>B</td>
+<td>downarpeggio</td>
+<td>下琶音</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>accent</td>
+<td>加重</td>
+</tr>
+<tr>
+<td>T</td>
+<td>trill</td>
+<td>颤音</td>
+</tr>
+<tr>
+<td>H</td>
+<td>fermata</td>
+<td>延长音</td>
+</tr>
+<tr>
+<td>P</td>
+<td>pralltriller</td>
+<td>延长</td>
+</tr>
+</tbody>
+</table>
+<h3 id="倚音："><a href="#倚音：" class="headerlink" title="倚音："></a>倚音：</h3><p>用法：在音符前添加。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例子：&#123;a1b1&#125;[c2//d2//]</div></pre></td></tr></table></figure></p>
+<p>数据结构：和音符是一样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    accidental:&apos;sharp&apos;,</div><div class="line">    duration: 0.5,</div><div class="line">    el_type:&apos;note&apos;,</div><div class="line">    pitch: 12,</div><div class="line">    fret:1,</div><div class="line">    string:1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二连音、三连音和n连音"><a href="#二连音、三连音和n连音" class="headerlink" title="二连音、三连音和n连音"></a>二连音、三连音和n连音</h3><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(n</div><div class="line">简单连音例子：(2aC1</div><div class="line">(p:q:r</div><div class="line">复杂连音例子：(3:2:4G2A2B1</div></pre></td></tr></table></figure></p>
+<p>对应数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">startTriplet: 开始标识位</div><div class="line">endTriplet:  结束标识位</div><div class="line">tripletMultiplier: 每个音音长 绘制不需要关心这个？</div></pre></td></tr></table></figure></p>
+<h3 id="休止符"><a href="#休止符" class="headerlink" title="休止符"></a>休止符</h3><p>表示符号：<code>z</code> 和 <code>Z</code>，音长方面表示和音符是一样的。</p>
+<ul>
+<li>z : rest 休止符</li>
+<li>Z : multimeasure 多小节休止符，暂时不用考虑</li>
+</ul>
+<h3 id="连音线-滑弦、敲弦、勾弦"><a href="#连音线-滑弦、敲弦、勾弦" class="headerlink" title="连音线(滑弦、敲弦、勾弦)"></a>连音线(滑弦、敲弦、勾弦)</h3><p>语法：</p>
+<p>tie : </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ex-ex 、[^b1*2-e3/]-S-[b2*5/2e4*5/2]</div></pre></td></tr></table></figure>
+<p>slur: 可以嵌套</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((a3b2d2)b1)</div></pre></td></tr></table></figure>
+<h2 id="小节线和重复线"><a href="#小节线和重复线" class="headerlink" title="小节线和重复线"></a>小节线和重复线</h2><p>数据结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    el_type:&apos;bar&apos;,</div><div class="line">    type: &apos;bar_thin&apos; //bar类型</div><div class="line">    startEnding: &apos;&apos; //重复段落数字和开始标志</div><div class="line">    endEnding: &apos;&apos;  //重复结束标志</div><div class="line">    barNumber: &apos;&apos; //忽略</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>语法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bar_thin</td>
+<td>\</td>
+<td></td>
+<td>小节线</td>
+</tr>
+<tr>
+<td>bar_left_repeat</td>
+<td>:\</td>
+<td></td>
+<td>重复左侧</td>
+</tr>
+<tr>
+<td>bar_right_repeat</td>
+<td>\</td>
+<td>:</td>
+<td>重复右侧</td>
+</tr>
+<tr>
+<td>bar_dbl_repeat</td>
+<td>::</td>
+<td>两边重复</td>
+</tr>
+<tr>
+<td>bar_thick_thin</td>
+<td>[\</td>
+<td></td>
+<td>左粗右细</td>
+</tr>
+<tr>
+<td>bar_thin_thick</td>
+<td>\</td>
+<td>[</td>
+<td>左细右粗</td>
+</tr>
+<tr>
+<td>bar_thin_thin</td>
+<td>\</td>
+<td>\</td>
+<td></td>
+<td>两条细线</td>
+</tr>
+<tr>
+<td>bar_invisible</td>
+<td>[:]</td>
+<td>虚小节线</td>
+</tr>
+</tbody>
+</table>
+<h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><p>英文歌词以空格断字，中文单字断字。</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>数据表示</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> -</td>
+<td></td>
+<td>英文单词断开 </td>
+</tr>
+<tr>
+<td> *</td>
+<td></td>
+<td>跳过一个音符</td>
+</tr>
+<tr>
+<td> ~</td>
+<td></td>
+<td>链接连个字，对齐同个音符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><p><a href="https://abcjs.net/" target="_blank" rel="external">abcjs</a>: javascript for rendering abc music notation.</p>
+</li>
+<li><p>muse 2.7 制谱软件帮助文档。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文是基于abc 乐谱数据结构的基础上进行部分优化，支持到 tab 谱[六线谱、四线谱]、简谱的数据结构。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="音乐编程" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E4%B9%90%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>我的时间清单</title>
@@ -2008,50 +2277,6 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
       <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
       <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OkHttp 离线缓存实现</title>
-    <link href="https://yedaxia.github.io/Okhttp-Offline-Cache/"/>
-    <id>https://yedaxia.github.io/Okhttp-Offline-Cache/</id>
-    <published>2016-12-13T05:03:53.000Z</published>
-    <updated>2018-02-03T05:38:27.646Z</updated>
-    
-    <content type="html"><![CDATA[<p>Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。</p>
-<a id="more"></a>
-<h1 id="场景应用"><a href="#场景应用" class="headerlink" title="场景应用:"></a>场景应用:</h1><p>OkHttp 内部已经支持了标准的 Http 协议缓存策略，如 Last-Modified, Etag, Cache-Control 等方式，看起来已经是非常够用了，但是我们还想让缓存在这样的场景下得到使用: 当客户端设备网络中断或者服务端出现了错误，但是本地存在缓存副本的时候，我们依然想取用这部分缓存。</p>
-<h1 id="OkHttp-保存缓存的时机"><a href="#OkHttp-保存缓存的时机" class="headerlink" title="OkHttp 保存缓存的时机:"></a>OkHttp 保存缓存的时机:</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.HttpEngine:</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">maybeCache</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    InternalCache responseCache = Internal.instance.internalCache(client);</div><div class="line">    <span class="keyword">if</span> (responseCache == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Should we cache this response for this request?</span></div><div class="line">    <span class="keyword">if</span> (!CacheStrategy.isCacheable(userResponse, networkRequest)) &#123;</div><div class="line">      <span class="keyword">if</span> (HttpMethod.invalidatesCache(networkRequest.method())) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">          responseCache.remove(networkRequest);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">          <span class="comment">// The cache cannot be written.</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Offer this request to the cache.</span></div><div class="line">    storeRequest = responseCache.put(stripBody(userResponse));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里我们可以看到 OkHttp 是否缓存请求结果其中的一个条件:<code>CacheStrategy.isCacheable()</code>, 看看这里面的代码:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">okhttp3.internal.http.CacheStrategy:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCacheable</span><span class="params">(Response response, Request request)</span> </span>&#123;</div><div class="line">    <span class="comment">// Always go to network for uncacheable response codes (RFC 7231 section 6.1),</span></div><div class="line">    <span class="comment">// This implementation doesn't support caching partial content.</span></div><div class="line">    <span class="keyword">switch</span> (response.code()) &#123;</div><div class="line">      <span class="keyword">case</span> HTTP_OK:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_AUTHORITATIVE:</div><div class="line">      <span class="keyword">case</span> HTTP_NO_CONTENT:</div><div class="line">      <span class="keyword">case</span> HTTP_MULT_CHOICE:</div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_PERM:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_FOUND:</div><div class="line">      <span class="keyword">case</span> HTTP_BAD_METHOD:</div><div class="line">      <span class="keyword">case</span> HTTP_GONE:</div><div class="line">      <span class="keyword">case</span> HTTP_REQ_TOO_LONG:</div><div class="line">      <span class="keyword">case</span> HTTP_NOT_IMPLEMENTED:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_PERM_REDIRECT:</div><div class="line">        <span class="comment">// These codes can be cached unless headers forbid it.</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> HTTP_MOVED_TEMP:</div><div class="line">      <span class="keyword">case</span> StatusLine.HTTP_TEMP_REDIRECT:</div><div class="line">        <span class="comment">// These codes can only be cached with the right response headers.</span></div><div class="line">        <span class="comment">// http://tools.ietf.org/html/rfc7234#section-3</span></div><div class="line">        <span class="comment">// s-maxage is not checked because OkHttp is a private cache that should ignore s-maxage.</span></div><div class="line">        <span class="keyword">if</span> (response.header(<span class="string">"Expires"</span>) != <span class="keyword">null</span></div><div class="line">            || response.cacheControl().maxAgeSeconds() != -<span class="number">1</span></div><div class="line">            || response.cacheControl().isPublic()</div><div class="line">            || response.cacheControl().isPrivate()) &#123;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Fall-through.</span></div><div class="line"></div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="comment">// All other codes cannot be cached.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// A 'no-store' directive on request or response prevents the response from being cached.</span></div><div class="line">    <span class="keyword">return</span> !response.cacheControl().noStore() &amp;&amp; !request.cacheControl().noStore();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们接着回到<code>maybeCache()</code>方法往下看,最后一句<code>responseCache.put(stripBody(userResponse))</code>将会调用下面的方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache:</div><div class="line"><span class="function"><span class="keyword">private</span> CacheRequest <span class="title">put</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    String requestMethod = response.request().method();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (HttpMethod.invalidatesCache(response.request().method())) &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">        remove(response.request());</div><div class="line">      &#125; <span class="keyword">catch</span> (IOException ignored) &#123;</div><div class="line">        <span class="comment">// The cache cannot be written.</span></div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!requestMethod.equals(<span class="string">"GET"</span>)) &#123;</div><div class="line">      <span class="comment">// Don't cache non-GET responses. We're technically allowed to cache</span></div><div class="line">      <span class="comment">// HEAD requests and some POST requests, but the complexity of doing</span></div><div class="line">      <span class="comment">// so is high and the benefit is low.</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (OkHeaders.hasVaryAll(response)) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Entry entry = <span class="keyword">new</span> Entry(response);</div><div class="line">    DiskLruCache.Editor editor = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      editor = cache.edit(urlToKey(response.request()));</div><div class="line">      <span class="keyword">if</span> (editor == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="comment">//缓存写入文件:</span></div><div class="line">      entry.writeTo(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CacheRequestImpl(editor);</div><div class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">      abortQuietly(editor);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>总的来说就是只要是<code>Get</code>请求,同时请求和响应头部<code>CacheControl</code>没有设置<code>no store</code>就会把请求结果缓存了。</p>
-<h1 id="OkHttp保存缓存的格式"><a href="#OkHttp保存缓存的格式" class="headerlink" title="OkHttp保存缓存的格式:"></a>OkHttp保存缓存的格式:</h1><p>url所对应的缓存文件名规则,不难看出是url的md5值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Util.md5Hex(request.url().toString())</div></pre></td></tr></table></figure></p>
-<p>保存的代码很明显就在<code>entry.writeTo</code>里面啦。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">okhttp3.Cache.Entry:</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(DiskLruCache.Editor editor)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">  <span class="comment">//.0结尾的文件</span></div><div class="line">  BufferedSink sink = Okio.buffer(editor.newSink(ENTRY_METADATA));</div><div class="line"></div><div class="line">  sink.writeUtf8(url);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeUtf8(requestMethod);</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(varyHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = varyHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(varyHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(varyHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  sink.writeUtf8(<span class="keyword">new</span> StatusLine(protocol, code, message).toString());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  sink.writeDecimalLong(responseHeaders.size());</div><div class="line">  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = responseHeaders.size(); i &lt; size; i++) &#123;</div><div class="line">	sink.writeUtf8(responseHeaders.name(i));</div><div class="line">	sink.writeUtf8(<span class="string">": "</span>);</div><div class="line">	sink.writeUtf8(responseHeaders.value(i));</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (isHttps()) &#123;</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	sink.writeUtf8(handshake.cipherSuite().javaName());</div><div class="line">	sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	writeCertList(sink, handshake.peerCertificates());</div><div class="line">	writeCertList(sink, handshake.localCertificates());</div><div class="line">	<span class="comment">// The handshake’s TLS version is null on HttpsURLConnection and on older cached responses.</span></div><div class="line">	<span class="keyword">if</span> (handshake.tlsVersion() != <span class="keyword">null</span>) &#123;</div><div class="line">	  sink.writeUtf8(handshake.tlsVersion().javaName());</div><div class="line">	  sink.writeByte(<span class="string">'\n'</span>);</div><div class="line">	&#125;</div><div class="line">  &#125;</div><div class="line">  sink.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们打开相应的缓存目录看一下，果然其中包含了以url的md5值作为文件名的一系列文件，还有一个<code>journal</code>文件，这个文件和DiskLruCache缓存有关，我们这里不展开分析。我们看一下.0和.1文件的内容吧，其实.0里面的东西从上面的代码已经可以知道就是和请求和响应头部的一些信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">http://www.infoq.com/cn/articles/etags</div><div class="line">GET</div><div class="line">2</div><div class="line">Accept-Encoding: gzip</div><div class="line">User-Agent: okhttp/3.2.0</div><div class="line">HTTP/1.1 200 OK</div><div class="line">15</div><div class="line">Date: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Server: Apache</div><div class="line">Sniply-Options: BLOCK</div><div class="line">Set-Cookie: JSESSIONID=7FFBDE344A66525EE343DCCC6DD23692; Path=/</div><div class="line">Last-Modified: Sun, 11 Dec 2016 14:50:36 GMT</div><div class="line">Vary: Accept-Encoding,User-Agent</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Accept-Ranges: none</div><div class="line">Access-Control-Allow-Origin: http://www.infoq.com</div><div class="line">Content-Encoding: gzip</div><div class="line">Connection: close</div><div class="line">Transfer-Encoding: chunked</div><div class="line">Content-Type: text/html;charset=utf-8</div><div class="line">OkHttp-Sent-Millis: 1481467841870</div><div class="line">OkHttp-Received-Millis: 1481467844412</div></pre></td></tr></table></figure></p>
-<p>md5(url).1文件很容易猜到就是response本身的内容了。读者可以自行验证，另外如果response是gzip的格式，那么这里缓存的直接就是gzip后的内容了。</p>
-<h1 id="OkHttp离线缓存实现"><a href="#OkHttp离线缓存实现" class="headerlink" title="OkHttp离线缓存实现:"></a>OkHttp离线缓存实现:</h1><p>通过以上的分析，我们的思路就很清晰了，其实就是一开始就判断是否连接网络，如果是否就直接返回缓存的内容，根据response的头部是否是<code>Content-Encoding: gzip</code>来确定是否需要解压后返回；如果请求服务端失败，那么也返回缓存的内容。</p>
-<p>通过分析OkHttp的InterceptorChain实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">okhttp3.RealCall.ApplicationInterceptorChain:</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> Response <span class="title">proceed</span><span class="params">(Request request)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">      <span class="comment">// If there's another interceptor in the chain, call that.</span></div><div class="line">      <span class="keyword">if</span> (index &lt; client.interceptors().size()) &#123;</div><div class="line">        Interceptor.Chain chain = <span class="keyword">new</span> ApplicationInterceptorChain(index + <span class="number">1</span>, request, forWebSocket);</div><div class="line">        Interceptor interceptor = client.interceptors().get(index);</div><div class="line">        Response interceptedResponse = interceptor.intercept(chain);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (interceptedResponse == <span class="keyword">null</span>) &#123;</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"application interceptor "</span> + interceptor</div><div class="line">              + <span class="string">" returned null"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> interceptedResponse;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">// No more interceptors. Do HTTP.</span></div><div class="line">      <span class="keyword">return</span> getResponse(request, forWebSocket);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>不难发现只要通过一个Interceptor返回response即可中断http后续的请求动作，如果服务端错误，response将会返回相应的错误码，总结最后的实现代码如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheControlInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mCacheDir;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ILog mLog;</div><div class="line"></div><div class="line">    CacheControlInterceptor(ILog log, String cacheDir)&#123;</div><div class="line">        <span class="keyword">this</span>.mCacheDir = cacheDir;</div><div class="line">        <span class="keyword">this</span>.mLog = log;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        Request request = chain.request();</div><div class="line">        <span class="keyword">boolean</span> networkAvail = NetUtils.isNetworkAvailable();</div><div class="line">        <span class="keyword">if</span> (!networkAvail)&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        Response networkResponse = chain.proceed(request);</div><div class="line">        <span class="keyword">if</span>(networkAvail &amp;&amp; !networkResponse.isSuccessful())&#123;</div><div class="line">            Response cacheResponse = getCacheResponse(request);</div><div class="line">            <span class="keyword">if</span>(cacheResponse != <span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">return</span> cacheResponse;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> networkResponse;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> Response <span class="title">getCacheResponse</span><span class="params">(Request request)</span> <span class="keyword">throws</span> FileNotFoundException</span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(!<span class="string">"get"</span>.equalsIgnoreCase(request.method())|| mCacheDir == <span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String urlMd5 = Util.md5Hex(request.url().url().toString());</div><div class="line">        File headerCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".0"</span>);</div><div class="line">        Response.Builder cacheResponseBuilder = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (headerCacheFile.exists()) &#123;</div><div class="line">            cacheResponseBuilder = <span class="keyword">new</span> Response.Builder();</div><div class="line">            cacheResponseBuilder.request(request);</div><div class="line">            readCacheResponseHeaders(headerCacheFile,cacheResponseBuilder);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(cacheResponseBuilder != <span class="keyword">null</span>)&#123;</div><div class="line">            Response cacheResponse = cacheResponseBuilder.build();</div><div class="line">            File bodyCacheFile = <span class="keyword">new</span> File(<span class="keyword">new</span> File(mCacheDir), urlMd5 + <span class="string">".1"</span>);</div><div class="line">            Source cacheSource;</div><div class="line">            <span class="keyword">if</span>(!<span class="string">"gzip"</span>.equalsIgnoreCase(cacheResponse.header(<span class="string">"Content-Encoding"</span>)))&#123;</div><div class="line">                cacheSource = Okio.source(bodyCacheFile);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                cacheSource = <span class="keyword">new</span> GzipSource(Okio.source(bodyCacheFile));</div><div class="line">            &#125;</div><div class="line">            RealResponseBody responseBody = <span class="keyword">new</span> RealResponseBody(cacheResponse.headers(),Okio.buffer(cacheSource));</div><div class="line">            <span class="keyword">return</span> cacheResponse.newBuilder().body(responseBody).build();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readCacheResponseHeaders</span><span class="params">(File headerCacheFile,Response.Builder responseBuilder)</span> </span>&#123;</div><div class="line">        BufferedReader reader = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(headerCacheFile)));</div><div class="line">            String lineText;</div><div class="line">            <span class="keyword">int</span> code = <span class="number">0</span>;</div><div class="line">            <span class="keyword">boolean</span> isHeaderBegin = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">while</span>((lineText = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(isHeaderBegin)&#123;</div><div class="line">                    <span class="keyword">int</span> sepIndex = lineText.indexOf(<span class="string">":"</span>);</div><div class="line">                    String headerName = lineText.substring(<span class="number">0</span>,sepIndex);</div><div class="line">                    String headerVal = lineText.substring(sepIndex + <span class="number">1</span>).trim();</div><div class="line">                    responseBuilder.addHeader(headerName,headerVal);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(code != <span class="number">0</span> &amp;&amp; NumberUtils.parseInt(lineText,<span class="number">0</span>) != <span class="number">0</span>)&#123;</div><div class="line">                    isHeaderBegin = <span class="keyword">true</span>;</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(lineText.startsWith(<span class="string">"HTTP/1.1"</span>))&#123;</div><div class="line">                    code = Integer.valueOf(lineText.substring(lineText.indexOf(<span class="string">" "</span>)).trim());</div><div class="line">                    responseBuilder.protocol(Protocol.HTTP_1_1);</div><div class="line">                    responseBuilder.code(code);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            IOUtils.closeSilently(reader);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
-<li>http缓存: <a href="https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn" target="_blank" rel="external">https://developers.google.cn/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn</a></li>
-<li>tomcat中对客户端的缓存机制: <a href="http://blog.csdn.net/liweisnake/article/details/8524179" target="_blank" rel="external">http://blog.csdn.net/liweisnake/article/details/8524179</a></li>
-<li>Okhttp Interceptors: <a href="https://github.com/square/okhttp/wiki/Interceptors" target="_blank" rel="external">https://github.com/square/okhttp/wiki/Interceptors</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Okhttp 本身已经支持标准的 http 协议缓存策略了， 本文将进一步压榨OkHttp，让它在实现离线缓存。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
-      <category term="网络编程" scheme="https://yedaxia.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
