@@ -1,0 +1,735 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="个人成长," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击这里。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次邮件采访">
+<meta property="og:url" content="https://yedaxia.github.io/osc-email-interview/index.html">
+<meta property="og:site_name" content="叶大侠的主页">
+<meta property="og:description" content="有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击这里。">
+<meta property="og:updated_time" content="2018-08-08T14:59:05.816Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次邮件采访">
+<meta name="twitter:description" content="有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击这里。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/osc-email-interview/"/>
+
+
+  <title> 记一次邮件采访 | 叶大侠的主页 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">叶大侠的主页</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                记一次邮件采访
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-08T22:25:46+08:00" content="2018-08-08">
+              2018-08-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/osc-email-interview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="osc-email-interview/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击<a href="https://www.oschina.net/question/3820517_2284423" target="_blank" rel="external">这里</a>。</p>
+<a id="more"></a>
+<blockquote>
+<p>看到您开源了不少项目，结合开源经历简单介绍一下其中几个比较酷的吧。</p>
+</blockquote>
+<p>其实大部分开源出来的东西都是在工作中‘顺便’提取出来的小东西，我简单介绍其中几个的背景，希望对大家有所启发。</p>
+<p><strong>1.<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a>: </strong></p>
+<p>这个是基于 Java 语言特点实现的一个 API 接口文档生成工具，可以让大家在写代码的同时就写好了接口文档。在决定开始做这个工具的时候之前，我主要还是在负责 Android 端的开发工作，开发组里面的后端程序员们总是代码写好之后，然后才手工地把接口信息再一次写在相关文档上面，如果接口有改动，他们代码和文档都得改。这种协作方式会有几个问题，一是前端程序员要等接口文档，二是如果接口设计不合理后面大家又要改。从后端的接口到接口文档到客户端的请求，其实可以合并成一步的工作，因为它们需要的信息都是等价的。我知道后台他们用的是 Java 语言，基于对 Java 语言的了解，我开始动手设计这个东西，那时候还是挺忙的，这个小工具基本都是挤时间来完成的，前后大概花了 2 周时间，刚做好的时候蛮激动的，点击运行就哗啦啦把该有的东西一次性输出，后端程序员们很快就爱上了这个小工具。最初的版本其实蛮简单的，而且也只是考虑了 <a href="https://www.playframework.com/" target="_blank" rel="external">playframework</a> 这个开发框架。后来打算开源出去，所以才进一步去完善，目前也是我最多人关注的一个开源项目。</p>
+<p><strong>2.<a href="https://github.com/YeDaxia/SQLiteUtils" target="_blank" rel="external">SQLiteUtils</a>: </strong></p>
+<p>这是对 Android SQLite 数据库操作接口的一个很简单的封装，尽管没什么人关注，不过它是我第一个整理出来的开源作品。刚工作接触到的第一个项目很多业务都是在基于本地数据数据库实现的，因此整个项目代码到处都是拼接的 sql 代码，看起来很头疼，这时突然想起大学的时候用过 Hibernate，虽然没有仔细研究过它的具体原理，但它大概长什么样子我是有印象的，因此想到能不能做个类似的东西，那以后的日子就好过很多了。那会刚毕业，没什么经验，也不知道有其他更好的库，就这样瞎捣鼓起来，最后实现的效果居然还不错，而且总的开发时间并没有花很多，后面都赚回来了。虽然现在看来是个还是一个比较幼稚的东西，但当时正是因为这个做这个事情得到了不少锻炼。</p>
+<p>分享和互助，这是程序员这个群体最纯粹的精神之一。和大部分程序员一样，我也是面向 github 和谷歌编程的。当你感受到社区的帮助，你也会慢慢开始反馈社区。</p>
+<p>有些人觉得开源是一件很难的事情，我觉得一方面要结合现有的工作，在你能掌控的时间内想办法做的更好一些，而不仅仅是完成任务；另外一方面是要有‘偷懒’的思维，是否有很多枯燥或重复性的工作？这些能不能通过花点时间写个程序搞定？</p>
+<p>当你做的东西得到了同行的认可，除了能让你收获满满的成就感，也有助于你的职业生涯。另外你把自己的思考和成果和别人分享的时候，你就会对自己做的东西有更高的要求了，它会进一步去促使你提升自己。</p>
+<blockquote>
+<p>您开源了多个项目，包括自己的博客，其中比较多的是关于音乐的内容，您也创办了个人音乐网站，目前还在研发音乐产品，似乎音乐和开发是您生活中占比较大的东西。您是一名程序员，但是却对音乐有较深的想法与能力，音乐和程序这本来是两个完全不相关的东西，那么最开始你是怎么在音乐与程序两者之间游走的，怎么将两者结合起来的呢？（比如有些人是从小喜欢吉他之类的乐器，后来从事开发。。。介绍一下你的这个历程，包括开发音乐相关的开源项目的背景啥的）</p>
+</blockquote>
+<p>我是在农村长大的，小时候，我堂哥偶尔会坐在他家门口用一把破烂的吉他弹一些 beyond 的歌，那时候我就觉得一个个音符从他指尖流淌出来是一件很奇妙的事情。初中的时候有部队来我们那训练，寄住在我家，有一天，一个兵哥晚饭后，拿把吉他坐在门口的小凳子上，弹起了《丁香花》，那时候觉得特别动听，我问他能不能教我一下，可惜还没开始学部队就离开了村子。上高中后生活变得特别枯燥，幸运的是，班上有几个会玩吉他的，最开心的事情，莫过于偶尔能和三两好友在拥挤的宿舍里弹琴唱歌了，那时候经常就是盯着看谁的琴空闲，就问他能不能借回来玩一下，当你热爱一件事情，就像玩游戏一样，你总能找到法子来学着玩起来。</p>
+<p>大学读的是计算机专业，在此之前对计算机的了解几乎为零，除了小时候沉迷过一段时间的小霸王，我完美地错过了《大话西游》《泡泡堂》… 直到现在也没有玩过一个网络游戏，成了青春时期的一大憾事。幸好有吉他可以打发一下闲暇时光，我上大学后买了第一把琴，那时候也知道可以在互联网找乐谱了，通过了 youtube 知道了郑成河（韩国一个有名的指弹吉他手），通过他知道了 fingerstyle，知道原来吉他还能这样玩。那时候学了很多曲子，很奇妙的是一些乐理的东西尽管没人教自己也慢慢懂了。</p>
+<p>毕业后，工作赚到一点钱我就跑到香港给自己买了把马丁（一个美国吉他品牌），但遗憾的是，一方面工作的忙碌，一方面是到了遇到了瓶颈，跟着别人写好的乐谱来弹没什么动力，又找不到人教，所以在很长的时间里都没怎么玩了，以至于琴弦都生了铜锈。后来一次搬家回到大学城，在住的附近有一家音乐主题的咖啡馆，我有空就过去听别人弹，偶尔自己也上去玩一下，慢慢又认识了一些玩音乐的朋友，有时候大家兴致来了也会去路演（卖唱），就这样又重新拿起了沉睡已久的吉他，并尝试去自学一些乐理的东西。后面在壹心理（一家心理学互联网平台）任职的时候，我和另外一个同事在里面创立了个吉他俱乐部，中午的休息时候我们经常聚在一个小会议室里面玩琴，虽然后来不在那里了，但我们这群人也还是会经常聚在一起玩，也不断有一些新的小伙伴加进来。</p>
+<p>上一次工作是在一个游戏创业公司里面当移动端的技术负责人，虽然在技术层面可以把工作做好，但因为骨子里面根本没有游戏基因，缺乏内驱的动力，除了赚钱也找不到什么理由了，所以当在利益层面没有得到预期的满足时，我便不愿意这样混日子下去了。在离开这家公司后，我慢慢地开始深入去思考自己未来的方向，在选择方向上我的逻辑是很简单的：如果选一件能坚持五年，十年甚至更久的事情，那么我必须热爱这个事情。我的答案就是做一件和音乐有关的事情，音乐人这个方向离现实可能还有点远，而编程是我熟悉的一个领域，那很自然就想到用技术去为音乐去做点事情了。</p>
+<p>如果只是有想法，那愿意和你聊的人可能都很少，如果你真的把一些东西做出来了，那很多人都会去仔细倾听。所以我首先是做了个找搜谱引擎，它通过爬虫定期的抓取国内外的乐谱网站，目前是国内最全的乐谱数据库了。然后通过网络和朋友圈，不断和相关领域的人进行交流，一方面是进一步了解音乐这个行业，试图去找到一个突破口，另一方面是寻找潜在志同道合的小伙伴。技术方面也没落下，继续在音频、midi和乐谱渲染等和音乐相关的核心技术去不断探索，做了一些小工具。没想到一晃半年就过去了，正当我在为找不到一个合适的合伙人发愁的时候，甚至一度很焦虑：钱花光了人都还没找到怎么办？所幸的是，两个月前一个炎热的下午，在母校图书馆的咖啡馆里，本来只是想让约的音乐人朋友帮忙做点内容，结果对方抛过来的第一句话却是：我想加入！我们一拍即合，决定一起来做这个事情。我们总的愿景是：让音乐爱好者花更低的成本学会一门乐器，让音乐老师能赚更多的钱。未来，我们会朝着这个方向慢慢去努力。</p>
+<p>对了，我们正在努力上线一个让音乐爱好者有眼前一亮的产品，可以关注我们的网站 <a href="https://www.52cmajor.com/" target="_blank" rel="external">C大调音乐网</a>，目前在寻求融资，我们非常欢迎志同道合的你前来勾搭，有机会我们可以一起干一票大的。</p>
+<blockquote>
+<p>从你的 timelist  上看，其中有学习音乐、学习感兴趣的技术、国外旅游、写文章、扒吉他谱、游泳、跑步、读书等项目，再结合您一系列经历来看，你是很佛系的程序员，而我们也疑惑，这些活动应该是占用了一些时间的，那你是开发工作很轻松吗？介绍一下你的开发工作（现在好像是在创业？那讲讲自己之前的开发工作）。这些活动和开发工作你又是怎么安排时间和精力的呢？</p>
+</blockquote>
+<p>我之前的工作基本都是在做 Android 应用开发，所在公司基本还是有双休的，工作日一般都会有一定的加班，也有偶尔空闲和提前搞定的情况，就会早点下班。为了节省一些时间，我一般会住在离公司的骑行 10 分钟范围内，早上有时跑个步再去上班都是来的及的。我经常鼓励身边的程序员去写技术文章，去总结和输出，这样无论对知识和影响力的积累都是有好处的。文章我一般都是结合现有的工作去写的，这样也会促使我把工作做的更好，写技术文章其实蛮耗时间的，有时候我会用周末的一整天时间，有时候会分开多个章节，有空就填一点，我不逼迫自己要定期产出，而是等到真的有东西可写的时候再去动笔。</p>
+<p>15 年开始，我逐渐喜欢上了一项比较 cool 的运动：徒步，一开始是跟着一些周末出行的俱乐部去一些地方，比如麦理浩径、武功山；再后面离职后，我决定独自背包出去看看这个世界，这次出走了差不多 1 个月的时间，时间是 12 月份，看了很多风景，遇见了很多有趣的人。其中印象比较深刻的有在香格里拉梅里雪山下的雨崩村遇到 60 岁的韩国老爷爷，独自一人，我陪他在雨崩走了两天，他说明年还要去四川看看；在四川牛背山碰到一个还没毕业的江南姑娘，她纤细的身姿，和接下来要将近 8 个小时的体力消耗是联想不到一块的，她走的很慢，半路我们还遭遇了暴雪的袭击，第二天下山后我们一起去了海螺沟冰川，在分别时，我问她你接下来去哪，她说会去大理一边做义工，一边继续旅行。有时候我会想，从大爆炸到地球的形成到生命的出现到现在的我，有 99.99…% 的概率是不应该出现的，但奇迹就这样发生了，只有好好把握好时光，浪费在美好的事物上，才配得上这份弥足珍贵的幸运。</p>
+<p>曾经在一个<a href="https://paulrosen.net/about-me/" target="_blank" rel="external">博客</a>上看到这么一段话：</p>
+<blockquote>
+<p>Find three hobbies you love: one to make you money, one to keep you in shape, and one to be creative.<br>（找到你热爱的三个爱好：一个可以帮你赚钱，一个让你保持健康，一个让你有创造力。）</p>
+</blockquote>
+<p>我很喜欢这段话，这个理念和我的想法不谋而合，编程可以让我赚到钱，游泳和跑步则是很好的减压方式，创造力是我欠缺的部分，我很期待音乐可以帮我补上这一部分。</p>
+<p>如果你经常觉得自己很忙，没时间做自己想做的一些事情，你不妨按照程序员的习惯，按照“性能优化”的思路：先给自己的时间使用打一小段时间的“log”，看时间都花在哪里了，接着看哪里有优化的空间，尤其着重耗时比较多的地方和循环次数比较多的地方。我很早就培养了这样一个意识，如果差不多的一件事情反复出现，那就应该用工具或一段程序去让它自动化。一个优秀的程序员，应该去不断打磨和优化自己的技能、工具和流程，这样就会逐步变得高效起来，也能省出更多属于自己的时间。</p>
+<blockquote>
+<p>现在有些企业觉得不加班的程序员不是他们要的（没有表现出工作量很大的程序员），他们想要的是完全接受 996，甚至能够进一步为公司加班的人，巴不得人家 24 小时工作（虽然表面上是说不提倡加班文化），结合你的经历与周边程序员以及他们公司的制度，分享一下你眼中看到的当国内国外程序员的工作与生活现状吧。你是怎么看待生活与工作的关系的呢？</p>
+</blockquote>
+<p>国内确实比较少没有加班的互联网企业，我了解到的身边的同行包括我自己经历过的公司，无论大小，基本都会有加班。我觉得加班是没有问题的，但是要提前信息告知，比如入职的时候要清楚地告知加班的情况，待遇给到位了，对方是否能接受这种上班的强度，那就看个人的选择了。我个人是不喜欢无缘由的加班的，尤其那种明明没什么工作，下班后却没一个人敢走，你要自己先走，领导就觉得你工作没饱和，这种氛围下只会生产出越来越多的老油条和低效程序员，以工作时间和代码行数来衡量程序员的工作，这是很愚蠢的评估方式。另外作为程序员自己，也要学会往内看，比如对任务的完成时间评估不够合理？代码质量太差，bug多，可扩展性差，应对需求变化的能力差等，经常也是因为一些技术债务问题导致的加班。</p>
+<p>我是属于基本可以自主掌控自己的工作生活的人，我觉得很大部分原因和我的家庭是有关系的，我家人基本对我是一个信任和支持的态度，不会给我压力和过多干预。我觉得工作最终还是回归到自己喜欢的一件事情上为好，尽管前面你为了积累资金、人脉而做一些自己并不喜欢的事情。毕竟工作会占用你生命的大半时间啊，一生都只为赚钱的工作那得留下多少遗憾。我觉得保持对这个世界的好奇心，去探索她，去感知她，这点很重要。</p>
+<blockquote>
+<p>如今不少媒体喜欢炒作焦虑，什么“第一批90后已经老了”、“第一批90后已经出家了”、“第一批90后已经离婚了”、“年薪200万的人被裁掉了，月薪5000的你该怎么办？”、“你以为你是在学习，其实你只是在感动自己”、“**你都还不知道，你已经 out 了”、“你的安全感，正在毁掉你”……其实生活压力确实存在，但是这些文章现象级地出现，让原本已经身心俱疲的程序员承担更多压力。这些能够产生焦虑的信息不同于打鸡血，如果把打鸡血看作谆谆善诱，那么这些焦虑信息就好比来自成功者的嘲讽。你觉得这些东西我们应该接受吗，程序员如何在这样一种氛围中保持该有的态度？</p>
+</blockquote>
+<p>我是 90 年出生的，我和我的同龄人应该就是他们说的第一批 90 后了吧，除了那个出家的，其他的还没怎么了解，哈哈，吓得脱离群众的我果断 google 了一下。看了几篇文章，说不定这些文章就是 90 后自己写的。我觉得程序员是一个很优秀的群体，普遍进取心和学习意愿都很强，不过技术的进化也是日新月异的，也有人认为程序员是碗青春饭，这也不是不无道理的，如果你停止学习，那不久的将来被替代也是很有可能的。我觉得有一定危机感是好事，但也没有必要过度焦虑，很多新的技术它都是有延续性和共性的，你的经验和积累的知识会让你更快地掌握新的东西。</p>
+<p>另外一点我想谈的是如职业生涯中能有一次机会能站在浪潮之巅，也许就能完成资本的积累，而程序员是其中最有希望一个群体，持续学习和精进，等待机会的到来，这就是我们该做的事。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/个人成长/" rel="tag">#个人成长</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/muse-tab-structure/" rel="next" title="Muse 乐谱数据结构解析">
+                <i class="fa fa-chevron-left"></i> Muse 乐谱数据结构解析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
+               alt="叶大侠" />
+          <p class="site-author-name" itemprop="name">叶大侠</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/da-xia-35-40" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.oschina.net/daxia" target="_blank" title="开源中国">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  开源中国
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sopu.52cmajor.com/" title="为你搜谱" target="_blank">为你搜谱</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://52cmajor.com/app/musicNote/" title="音乐笔记+" target="_blank">音乐笔记+</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-12 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶大侠</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yedaxia';
+      var disqus_identifier = 'osc-email-interview/';
+      var disqus_title = "记一次邮件采访";
+      var disqus_url = 'https://yedaxia.github.io/osc-email-interview/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

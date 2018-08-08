@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-07-21T04:51:42.764Z</updated>
+  <updated>2018-08-08T14:59:05.816Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次邮件采访</title>
+    <link href="https://yedaxia.github.io/osc-email-interview/"/>
+    <id>https://yedaxia.github.io/osc-email-interview/</id>
+    <published>2018-08-08T14:25:46.000Z</published>
+    <updated>2018-08-08T14:59:05.816Z</updated>
+    
+    <content type="html"><![CDATA[<p>有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击<a href="https://www.oschina.net/question/3820517_2284423" target="_blank" rel="external">这里</a>。</p>
+<a id="more"></a>
+<blockquote>
+<p>看到您开源了不少项目，结合开源经历简单介绍一下其中几个比较酷的吧。</p>
+</blockquote>
+<p>其实大部分开源出来的东西都是在工作中‘顺便’提取出来的小东西，我简单介绍其中几个的背景，希望对大家有所启发。</p>
+<p><strong>1.<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a>: </strong></p>
+<p>这个是基于 Java 语言特点实现的一个 API 接口文档生成工具，可以让大家在写代码的同时就写好了接口文档。在决定开始做这个工具的时候之前，我主要还是在负责 Android 端的开发工作，开发组里面的后端程序员们总是代码写好之后，然后才手工地把接口信息再一次写在相关文档上面，如果接口有改动，他们代码和文档都得改。这种协作方式会有几个问题，一是前端程序员要等接口文档，二是如果接口设计不合理后面大家又要改。从后端的接口到接口文档到客户端的请求，其实可以合并成一步的工作，因为它们需要的信息都是等价的。我知道后台他们用的是 Java 语言，基于对 Java 语言的了解，我开始动手设计这个东西，那时候还是挺忙的，这个小工具基本都是挤时间来完成的，前后大概花了 2 周时间，刚做好的时候蛮激动的，点击运行就哗啦啦把该有的东西一次性输出，后端程序员们很快就爱上了这个小工具。最初的版本其实蛮简单的，而且也只是考虑了 <a href="https://www.playframework.com/" target="_blank" rel="external">playframework</a> 这个开发框架。后来打算开源出去，所以才进一步去完善，目前也是我最多人关注的一个开源项目。</p>
+<p><strong>2.<a href="https://github.com/YeDaxia/SQLiteUtils" target="_blank" rel="external">SQLiteUtils</a>: </strong></p>
+<p>这是对 Android SQLite 数据库操作接口的一个很简单的封装，尽管没什么人关注，不过它是我第一个整理出来的开源作品。刚工作接触到的第一个项目很多业务都是在基于本地数据数据库实现的，因此整个项目代码到处都是拼接的 sql 代码，看起来很头疼，这时突然想起大学的时候用过 Hibernate，虽然没有仔细研究过它的具体原理，但它大概长什么样子我是有印象的，因此想到能不能做个类似的东西，那以后的日子就好过很多了。那会刚毕业，没什么经验，也不知道有其他更好的库，就这样瞎捣鼓起来，最后实现的效果居然还不错，而且总的开发时间并没有花很多，后面都赚回来了。虽然现在看来是个还是一个比较幼稚的东西，但当时正是因为这个做这个事情得到了不少锻炼。</p>
+<p>分享和互助，这是程序员这个群体最纯粹的精神之一。和大部分程序员一样，我也是面向 github 和谷歌编程的。当你感受到社区的帮助，你也会慢慢开始反馈社区。</p>
+<p>有些人觉得开源是一件很难的事情，我觉得一方面要结合现有的工作，在你能掌控的时间内想办法做的更好一些，而不仅仅是完成任务；另外一方面是要有‘偷懒’的思维，是否有很多枯燥或重复性的工作？这些能不能通过花点时间写个程序搞定？</p>
+<p>当你做的东西得到了同行的认可，除了能让你收获满满的成就感，也有助于你的职业生涯。另外你把自己的思考和成果和别人分享的时候，你就会对自己做的东西有更高的要求了，它会进一步去促使你提升自己。</p>
+<blockquote>
+<p>您开源了多个项目，包括自己的博客，其中比较多的是关于音乐的内容，您也创办了个人音乐网站，目前还在研发音乐产品，似乎音乐和开发是您生活中占比较大的东西。您是一名程序员，但是却对音乐有较深的想法与能力，音乐和程序这本来是两个完全不相关的东西，那么最开始你是怎么在音乐与程序两者之间游走的，怎么将两者结合起来的呢？（比如有些人是从小喜欢吉他之类的乐器，后来从事开发。。。介绍一下你的这个历程，包括开发音乐相关的开源项目的背景啥的）</p>
+</blockquote>
+<p>我是在农村长大的，小时候，我堂哥偶尔会坐在他家门口用一把破烂的吉他弹一些 beyond 的歌，那时候我就觉得一个个音符从他指尖流淌出来是一件很奇妙的事情。初中的时候有部队来我们那训练，寄住在我家，有一天，一个兵哥晚饭后，拿把吉他坐在门口的小凳子上，弹起了《丁香花》，那时候觉得特别动听，我问他能不能教我一下，可惜还没开始学部队就离开了村子。上高中后生活变得特别枯燥，幸运的是，班上有几个会玩吉他的，最开心的事情，莫过于偶尔能和三两好友在拥挤的宿舍里弹琴唱歌了，那时候经常就是盯着看谁的琴空闲，就问他能不能借回来玩一下，当你热爱一件事情，就像玩游戏一样，你总能找到法子来学着玩起来。</p>
+<p>大学读的是计算机专业，在此之前对计算机的了解几乎为零，除了小时候沉迷过一段时间的小霸王，我完美地错过了《大话西游》《泡泡堂》… 直到现在也没有玩过一个网络游戏，成了青春时期的一大憾事。幸好有吉他可以打发一下闲暇时光，我上大学后买了第一把琴，那时候也知道可以在互联网找乐谱了，通过了 youtube 知道了郑成河（韩国一个有名的指弹吉他手），通过他知道了 fingerstyle，知道原来吉他还能这样玩。那时候学了很多曲子，很奇妙的是一些乐理的东西尽管没人教自己也慢慢懂了。</p>
+<p>毕业后，工作赚到一点钱我就跑到香港给自己买了把马丁（一个美国吉他品牌），但遗憾的是，一方面工作的忙碌，一方面是到了遇到了瓶颈，跟着别人写好的乐谱来弹没什么动力，又找不到人教，所以在很长的时间里都没怎么玩了，以至于琴弦都生了铜锈。后来一次搬家回到大学城，在住的附近有一家音乐主题的咖啡馆，我有空就过去听别人弹，偶尔自己也上去玩一下，慢慢又认识了一些玩音乐的朋友，有时候大家兴致来了也会去路演（卖唱），就这样又重新拿起了沉睡已久的吉他，并尝试去自学一些乐理的东西。后面在壹心理（一家心理学互联网平台）任职的时候，我和另外一个同事在里面创立了个吉他俱乐部，中午的休息时候我们经常聚在一个小会议室里面玩琴，虽然后来不在那里了，但我们这群人也还是会经常聚在一起玩，也不断有一些新的小伙伴加进来。</p>
+<p>上一次工作是在一个游戏创业公司里面当移动端的技术负责人，虽然在技术层面可以把工作做好，但因为骨子里面根本没有游戏基因，缺乏内驱的动力，除了赚钱也找不到什么理由了，所以当在利益层面没有得到预期的满足时，我便不愿意这样混日子下去了。在离开这家公司后，我慢慢地开始深入去思考自己未来的方向，在选择方向上我的逻辑是很简单的：如果选一件能坚持五年，十年甚至更久的事情，那么我必须热爱这个事情。我的答案就是做一件和音乐有关的事情，音乐人这个方向离现实可能还有点远，而编程是我熟悉的一个领域，那很自然就想到用技术去为音乐去做点事情了。</p>
+<p>如果只是有想法，那愿意和你聊的人可能都很少，如果你真的把一些东西做出来了，那很多人都会去仔细倾听。所以我首先是做了个找搜谱引擎，它通过爬虫定期的抓取国内外的乐谱网站，目前是国内最全的乐谱数据库了。然后通过网络和朋友圈，不断和相关领域的人进行交流，一方面是进一步了解音乐这个行业，试图去找到一个突破口，另一方面是寻找潜在志同道合的小伙伴。技术方面也没落下，继续在音频、midi和乐谱渲染等和音乐相关的核心技术去不断探索，做了一些小工具。没想到一晃半年就过去了，正当我在为找不到一个合适的合伙人发愁的时候，甚至一度很焦虑：钱花光了人都还没找到怎么办？所幸的是，两个月前一个炎热的下午，在母校图书馆的咖啡馆里，本来只是想让约的音乐人朋友帮忙做点内容，结果对方抛过来的第一句话却是：我想加入！我们一拍即合，决定一起来做这个事情。我们总的愿景是：让音乐爱好者花更低的成本学会一门乐器，让音乐老师能赚更多的钱。未来，我们会朝着这个方向慢慢去努力。</p>
+<p>对了，我们正在努力上线一个让音乐爱好者有眼前一亮的产品，可以关注我们的网站 <a href="https://www.52cmajor.com/" target="_blank" rel="external">C大调音乐网</a>，目前在寻求融资，我们非常欢迎志同道合的你前来勾搭，有机会我们可以一起干一票大的。</p>
+<blockquote>
+<p>从你的 timelist  上看，其中有学习音乐、学习感兴趣的技术、国外旅游、写文章、扒吉他谱、游泳、跑步、读书等项目，再结合您一系列经历来看，你是很佛系的程序员，而我们也疑惑，这些活动应该是占用了一些时间的，那你是开发工作很轻松吗？介绍一下你的开发工作（现在好像是在创业？那讲讲自己之前的开发工作）。这些活动和开发工作你又是怎么安排时间和精力的呢？</p>
+</blockquote>
+<p>我之前的工作基本都是在做 Android 应用开发，所在公司基本还是有双休的，工作日一般都会有一定的加班，也有偶尔空闲和提前搞定的情况，就会早点下班。为了节省一些时间，我一般会住在离公司的骑行 10 分钟范围内，早上有时跑个步再去上班都是来的及的。我经常鼓励身边的程序员去写技术文章，去总结和输出，这样无论对知识和影响力的积累都是有好处的。文章我一般都是结合现有的工作去写的，这样也会促使我把工作做的更好，写技术文章其实蛮耗时间的，有时候我会用周末的一整天时间，有时候会分开多个章节，有空就填一点，我不逼迫自己要定期产出，而是等到真的有东西可写的时候再去动笔。</p>
+<p>15 年开始，我逐渐喜欢上了一项比较 cool 的运动：徒步，一开始是跟着一些周末出行的俱乐部去一些地方，比如麦理浩径、武功山；再后面离职后，我决定独自背包出去看看这个世界，这次出走了差不多 1 个月的时间，时间是 12 月份，看了很多风景，遇见了很多有趣的人。其中印象比较深刻的有在香格里拉梅里雪山下的雨崩村遇到 60 岁的韩国老爷爷，独自一人，我陪他在雨崩走了两天，他说明年还要去四川看看；在四川牛背山碰到一个还没毕业的江南姑娘，她纤细的身姿，和接下来要将近 8 个小时的体力消耗是联想不到一块的，她走的很慢，半路我们还遭遇了暴雪的袭击，第二天下山后我们一起去了海螺沟冰川，在分别时，我问她你接下来去哪，她说会去大理一边做义工，一边继续旅行。有时候我会想，从大爆炸到地球的形成到生命的出现到现在的我，有 99.99…% 的概率是不应该出现的，但奇迹就这样发生了，只有好好把握好时光，浪费在美好的事物上，才配得上这份弥足珍贵的幸运。</p>
+<p>曾经在一个<a href="https://paulrosen.net/about-me/" target="_blank" rel="external">博客</a>上看到这么一段话：</p>
+<blockquote>
+<p>Find three hobbies you love: one to make you money, one to keep you in shape, and one to be creative.<br>（找到你热爱的三个爱好：一个可以帮你赚钱，一个让你保持健康，一个让你有创造力。）</p>
+</blockquote>
+<p>我很喜欢这段话，这个理念和我的想法不谋而合，编程可以让我赚到钱，游泳和跑步则是很好的减压方式，创造力是我欠缺的部分，我很期待音乐可以帮我补上这一部分。</p>
+<p>如果你经常觉得自己很忙，没时间做自己想做的一些事情，你不妨按照程序员的习惯，按照“性能优化”的思路：先给自己的时间使用打一小段时间的“log”，看时间都花在哪里了，接着看哪里有优化的空间，尤其着重耗时比较多的地方和循环次数比较多的地方。我很早就培养了这样一个意识，如果差不多的一件事情反复出现，那就应该用工具或一段程序去让它自动化。一个优秀的程序员，应该去不断打磨和优化自己的技能、工具和流程，这样就会逐步变得高效起来，也能省出更多属于自己的时间。</p>
+<blockquote>
+<p>现在有些企业觉得不加班的程序员不是他们要的（没有表现出工作量很大的程序员），他们想要的是完全接受 996，甚至能够进一步为公司加班的人，巴不得人家 24 小时工作（虽然表面上是说不提倡加班文化），结合你的经历与周边程序员以及他们公司的制度，分享一下你眼中看到的当国内国外程序员的工作与生活现状吧。你是怎么看待生活与工作的关系的呢？</p>
+</blockquote>
+<p>国内确实比较少没有加班的互联网企业，我了解到的身边的同行包括我自己经历过的公司，无论大小，基本都会有加班。我觉得加班是没有问题的，但是要提前信息告知，比如入职的时候要清楚地告知加班的情况，待遇给到位了，对方是否能接受这种上班的强度，那就看个人的选择了。我个人是不喜欢无缘由的加班的，尤其那种明明没什么工作，下班后却没一个人敢走，你要自己先走，领导就觉得你工作没饱和，这种氛围下只会生产出越来越多的老油条和低效程序员，以工作时间和代码行数来衡量程序员的工作，这是很愚蠢的评估方式。另外作为程序员自己，也要学会往内看，比如对任务的完成时间评估不够合理？代码质量太差，bug多，可扩展性差，应对需求变化的能力差等，经常也是因为一些技术债务问题导致的加班。</p>
+<p>我是属于基本可以自主掌控自己的工作生活的人，我觉得很大部分原因和我的家庭是有关系的，我家人基本对我是一个信任和支持的态度，不会给我压力和过多干预。我觉得工作最终还是回归到自己喜欢的一件事情上为好，尽管前面你为了积累资金、人脉而做一些自己并不喜欢的事情。毕竟工作会占用你生命的大半时间啊，一生都只为赚钱的工作那得留下多少遗憾。我觉得保持对这个世界的好奇心，去探索她，去感知她，这点很重要。</p>
+<blockquote>
+<p>如今不少媒体喜欢炒作焦虑，什么“第一批90后已经老了”、“第一批90后已经出家了”、“第一批90后已经离婚了”、“年薪200万的人被裁掉了，月薪5000的你该怎么办？”、“你以为你是在学习，其实你只是在感动自己”、“**你都还不知道，你已经 out 了”、“你的安全感，正在毁掉你”……其实生活压力确实存在，但是这些文章现象级地出现，让原本已经身心俱疲的程序员承担更多压力。这些能够产生焦虑的信息不同于打鸡血，如果把打鸡血看作谆谆善诱，那么这些焦虑信息就好比来自成功者的嘲讽。你觉得这些东西我们应该接受吗，程序员如何在这样一种氛围中保持该有的态度？</p>
+</blockquote>
+<p>我是 90 年出生的，我和我的同龄人应该就是他们说的第一批 90 后了吧，除了那个出家的，其他的还没怎么了解，哈哈，吓得脱离群众的我果断 google 了一下。看了几篇文章，说不定这些文章就是 90 后自己写的。我觉得程序员是一个很优秀的群体，普遍进取心和学习意愿都很强，不过技术的进化也是日新月异的，也有人认为程序员是碗青春饭，这也不是不无道理的，如果你停止学习，那不久的将来被替代也是很有可能的。我觉得有一定危机感是好事，但也没有必要过度焦虑，很多新的技术它都是有延续性和共性的，你的经验和积累的知识会让你更快地掌握新的东西。</p>
+<p>另外一点我想谈的是如职业生涯中能有一次机会能站在浪潮之巅，也许就能完成资本的积累，而程序员是其中最有希望一个群体，持续学习和精进，等待机会的到来，这就是我们该做的事。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有幸收到开源中国的一次邮件采访，乱七八糟写了一大堆，这里是原来的回答，在这里记录一下，整理后发表的文章点击&lt;a href=&quot;https://www.oschina.net/question/3820517_2284423&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="个人成长" scheme="https://yedaxia.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>Muse 乐谱数据结构解析</title>
@@ -2092,134 +2155,6 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
       <category term="ApiDocs" scheme="https://yedaxia.github.io/tags/ApiDocs/"/>
     
       <category term="PlayFramework" scheme="https://yedaxia.github.io/tags/PlayFramework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Studio 的代码插件开发</title>
-    <link href="https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/"/>
-    <id>https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/</id>
-    <published>2016-12-25T05:40:05.000Z</published>
-    <updated>2018-04-18T08:18:30.863Z</updated>
-    
-    <content type="html"><![CDATA[<p>在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
-<p><a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">源码地址</a></p>
-<a id="more"></a>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>码工们做的很多工作，很多时候是为了减少这个世界上的重复工作。在为这个世界带来便捷的时候，当然也要不忘给自己的工作减负，提高工作的效率啦。在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
-<p>当前我们开发用的IDE是Android Studio， 大家都只都这个是基于intellij开发的，所以能集成在intellij里面就最好了。</p>
-<p>目前我们的api文档有两种格式(规范不好的原因)，一种是表格，字段名和类型信息都有了，如下:</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th style="text-align:center">类型</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pkgFile</td>
-<td style="text-align:center">String</td>
-<td style="text-align:right">包链接</td>
-</tr>
-<tr>
-<td>gameId</td>
-<td style="text-align:center">long</td>
-<td style="text-align:right">游戏id</td>
-</tr>
-<tr>
-<td>channelName</td>
-<td style="text-align:center">String</td>
-<td style="text-align:right">渠道名</td>
-</tr>
-</tbody>
-</table>
-<p>另外一种就是偷懒的写法，直接把返回的Json贴上去:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"gameName"</span>: <span class="string">"这是游戏标题"</span>,</div><div class="line">    <span class="attr">"gameRecommendText"</span>: <span class="string">"游戏一句话推荐"</span>,</div><div class="line">    <span class="attr">"cover"</span>: <span class="string">"封面图片"</span>,</div><div class="line">    <span class="attr">"ugcTime"</span>: <span class="string">"一天前"</span>,</div><div class="line">    <span class="attr">"gameIcon"</span>: <span class="string">"这是游戏图标"</span>,</div><div class="line">    <span class="attr">"gameDownloadUrl"</span>: <span class="string">"这是游戏下载链接"</span>,</div><div class="line">    <span class="attr">"ugcTitle"</span>: <span class="string">"这是资讯标题"</span>,</div><div class="line">    <span class="attr">"style"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"ugcViewCount"</span>: <span class="number">333</span>,</div><div class="line">    <span class="attr">"ugcSource"</span>: <span class="string">"咨询来源"</span>,</div><div class="line">    <span class="attr">"videoLength"</span>: <span class="string">"12'33''"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里当然两种格式都要很好的支持啦,笔者发现表格直接在网页上复制，然后粘贴到文本输入框中的格式是非常整齐的空格隔开的,格式如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pkgFile String  包链接</div><div class="line">gameId  long    游戏id</div><div class="line">channelName String  渠道名</div></pre></td></tr></table></figure>
-<p>因此我们的数据源就很好确定了，而且也很方便。根据这两种数据源，我们约定:</p>
-<ul>
-<li>基本类型比如<code>int</code>,<code>long</code>和对应的类类型<code>Integer</code>则返回基本类型。</li>
-<li>没有类型信息或者其他类型用String类型。</li>
-</ul>
-<p>下面我们就开始开始这个插件的开发探索吧，笔者希望能抛砖引玉，大家能在平时的工作中有意识根据自己的需要做出更多好用的工具，优化开发流程和开发效率。</p>
-<h1 id="intellij插件开发基础知识"><a href="#intellij插件开发基础知识" class="headerlink" title="intellij插件开发基础知识"></a>intellij插件开发基础知识</h1><h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><p>这里我建议大家看官方的文档,已经介绍很详细了，我在下面也会简单介绍，<a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">传送门</a></p>
-<ol>
-<li>下载安装intellij社区版: <a href="http://www.jetbrains.org/display/IJOS/Download" target="_blank" rel="external">下载地址</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/configuring-intellij-platform-plugin-sdk.html" target="_blank" rel="external">配置IntelliJ Platform Plugin SDK</a>。</li>
-<li>创建一个<a href="https://www.jetbrains.com/help/idea/2016.3/creating-a-project-for-plugin-development.html" target="_blank" rel="external">Plugin Project</a>。</li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/running-and-debugging-plugins.html" target="_blank" rel="external">运行和调试</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/preparing-plugins-for-publishing.html" target="_blank" rel="external">发布插件</a>，这里我建议大家配置Ant来构建，我发现在引入libs包的时候生成的插件主工程会少很多文件，导致无法正常运行，用<a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Ant打包</a>就正常了。</li>
-</ol>
-<p>懒人版:</p>
-<ol>
-<li>配置Intellij SDK：<br>打开Project Structure对话框[<code>Ctrl+Shift+Alt+S</code>]，选择Intellij的目录:</li>
-</ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-stucture.png" alt=""></p>
-<ol>
-<li>新建Plugin Project:</li>
-</ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intllij-platform-plugin-project.PNG" alt=""></p>
-<ol>
-<li>新建完成工程目录结构:</li>
-</ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-resource.png" alt=""></p>
-<p>其中plugin.xml文件就是我们注册<code>AnAction</code>的地方。</p>
-<h2 id="AnAction介绍"><a href="#AnAction介绍" class="headerlink" title="AnAction介绍"></a>AnAction介绍</h2><p>AnAction就是IDE相关位置的事件触发处理的地方，要创建一个Action,只需要简单的两个步骤:</p>
-<ol>
-<li>定义一个<code>AnAction</code>，你通常需要继承<code>AnAction</code>类，然后在<code>actionPerformed</code>方法里面实现你的操作。</li>
-<li>在plugin.xml里面注册这个<code>AnAction</code>。</li>
-</ol>
-<p>intellij社区版里面创建Action非常方便，你可以通过图像界面很容易找到自己想要放置的Action位置,比如我们要在<code>Code</code>菜单下的Generate..<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intellij-new-action.png)</div><div class="line"></div><div class="line">- **Action ID**: 每个Action都需要一个唯一的ID.</div><div class="line">- **Class Name**: Action的类名,我们是在`ithub.yedaxia.plugin.actions`下面建的。</div><div class="line">- **Name**: 名字，就是在界面上我们看到的名字。</div><div class="line">- **Description**: 描述信息，鼠标放在上面一小段时间可以看到的描述信息。</div><div class="line">- **Groups**: 可以理解为Action集合。</div><div class="line">- **Keyboard Shortcuts**: 快捷键设置，这里我们暂时不需要了。</div><div class="line"></div><div class="line">生成之后我们可以看到在`plugin.xml`里面就有对应的Action了:</div><div class="line"></div><div class="line">```xml</div><div class="line">&lt;action id=&quot;CodeGenerationPlugin.EntryAction&quot; class=&quot;github.yedaxia.plugin.actions.EntryAction&quot;</div><div class="line">            text=&quot;EntryGenerator...&quot; description=&quot;Entry Code Generator&quot;&gt;</div><div class="line">      &lt;add-to-group group-id=&quot;CodeMenu&quot; anchor=&quot;after&quot; relative-to-action=&quot;Generate&quot;/&gt;</div><div class="line">&lt;/action&gt;</div></pre></td></tr></table></figure></p>
-<p>对应的AnAction代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EntryAction</span> <span class="keyword">extends</span> <span class="title">AnAction</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(AnActionEvent e)</span> </span>&#123;</div><div class="line">        <span class="comment">//点击EntryGenerator...按钮之后调用这个方法</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="代码生成界面"><a href="#代码生成界面" class="headerlink" title="代码生成界面:"></a>代码生成界面:</h1><p>代码生成的逻辑并不复杂，我们把这个放到最后，本文还是着重介绍intellij插件的编写，现在我们已经有了程序的入口了，我们还需要一些简单的UI元素，一个对话框，一个简单的输入框[类名],比较大的文本框[数据源和生成的最终代码]。</p>
-<p>先看最后的效果:</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/model-code-generator-dialog.png" alt=""></p>
-<p>intellij本身运行在Java上面，所以java swing库支持肯定是没问题的，这个对话框我主要参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>里面的实现。</p>
-<p>里面用到了<code>com.intellij.openapi.ui.DialogBuilder</code>,相关api文档没有找到，通过源码也不难发现其用法:</p>
-<ul>
-<li><code>setTitle</code>: 标题</li>
-<li><code>setCenterPanel(JComponent centerPanel)</code>: 对话框中间面板，JComponent对于Java程序员应该就不陌生了。</li>
-<li><code>addAction</code>: 添加底部的按钮和相关事件。</li>
-</ul>
-<p>具体的代码可以看: <a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij/blob/master/src/com/morcinek/android/codegenerator/plugin/ui/CodeDialogBuilder.java" target="_blank" rel="external">CodeDialogBuilder.java</a></p>
-<h1 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h1><p>代码生成主要包括两个步骤:</p>
-<ol>
-<li>代码模板设计。</li>
-<li>代码构建。</li>
-</ol>
-<p>模板的设计也是参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>项目，根据Model数据模板的特点，我分成了以下四个代码模板:</p>
-<ol>
-<li><strong>Entry_template</strong>: 目标代码模板。</li>
-<li><strong>Entry_Field_template</strong>: 类字段模板。</li>
-<li><strong>Entry_Setter_template</strong>: setter方法模板。</li>
-<li><strong>Entry_Setter_template</strong>: getter方法模板。</li>
-</ol>
-<p>Json解析我用的是alibaba的fastjson，所以模板就是长下面的样子了，大家可以根据自己的需要去修改:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Entry:</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;CLASS_NAME&#125; implements Serializable&#123;</div><div class="line"></div><div class="line">$&#123;FIELDS&#125;</div><div class="line">$&#123;METHODS&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Field:</div><div class="line"><span class="keyword">private</span> $&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;;</div><div class="line"></div><div class="line">Getter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> $&#123;FIELD_TYPE&#125; get$&#123;CASE_FIELD_NAME&#125;()&#123;</div><div class="line">    <span class="keyword">return</span> $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Setter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> set$&#123;CASE_FIELD_NAME&#125;($&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;)&#123;</div><div class="line">    <span class="keyword">this</span>.$&#123;FIELD_NAME&#125; = $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>具体的代码构建过程这里就不详细讲了，大家可以移步<a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">github</a>，这个过程应该不难理解。如果觉得这个插件有用，你可以给个star。</p>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这个工具的开发过程比我想象中要简单很多，一天时间左右应该就差不多完成的了，后续带来的好处和省下来的时间肯定会弥补回这个时间代价，有些码工经常会觉得麻烦或者根本没有这个意识，宁愿麻烦一些也不愿意去写个工具来加速自己的工作，我觉得是不可取的，我们应该用重构和工具去避免写重复的代码，把更多的时间放到有价值和有创造性的工作上面来，从中长期来看，这样带来的好处是巨大的，更快的开发速度、鲁棒性更好的系统等，更重要的是个人也获得了成长。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">IntelliJ Plugin Development Guidelines</a></li>
-<li><a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Intellij 生成Ant工程</a></li>
-<li><a href="http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="external">IntelliJ Plugin Development Docs</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/YeDaxia/Android-Studio-ModelGenerator&quot;&gt;源码地址&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="插件开发" scheme="https://yedaxia.github.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
