@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="开发工具,团队协作,JApiDocs,文档工具," />
+  <meta name="keywords" content="团队协作,JApiDocs,文档工具,开发工具," />
 
 
 
@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。">
+<meta name="keywords" content="团队协作,JApiDocs,文档工具,开发工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="加速前后端并行开发，JApiDocs 可以帮到你">
 <meta property="og:url" content="https://yedaxia.github.io/How-JApiDocs-Help-You/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600">
 <meta property="og:updated_time" content="2018-02-03T06:47:00.950Z">
@@ -306,10 +308,10 @@
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
 <p>接口文档非常重要，但什么时候写？谁来写呢？我的建议是接口的设计应该是交给有一定经验的后端开发人员来提前设计好，然后分给后端人员去实现，同时也交付接口协议给前端，两端并行开发。但实际情况是由于文档本身就是一个工作量，后端人员也不太关心前端的工作进度，而且提前设计的接口后面也可能会有一些小改动，对自己来说得不偿失，所以就变成了后端同学懒得去提前设计，一直等接口开发完了再去完善文档，这可能算好的了，有些团队就直接把一个 URL 贴到聊天框里面了事，前端同学只能去翻聊天记录。</p>
 <p>这里顺便提一下没有接口文档的后果，一个生命周期比较长的产品，肯定经历了多个版本的迭代，接口的数量也会变的庞大，新进来的开发已经没办法在短时间之内了解每个接口的作用了，当碰到相同功能的时候，很容易又写了个差不多的接口，重复的接口越来越多，当其中一个有问题时，你要处理的可不仅仅是一个地方；更惨的是客户端人员，这个接口对他来说就是个黑盒子，要打开这个盒子，只能不断找服务端的问问问了，极大的沟通成本啊～</p>
-<p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="external">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
-<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="external">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="external">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="external">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
-<p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="external">点击查看</a>。</p>
-<h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="external">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="external">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
+<p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="noopener">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
+<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="noopener">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="noopener">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="noopener">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
+<p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="noopener">点击查看</a>。</p>
+<h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="noopener">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="noopener">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
 <p>这两天把想集成的 rap 功能做好了，终于可以自恋的总结了一下：</p>
 <table>
@@ -338,12 +340,12 @@
 <td>JApiDocs</td>
 <td>代码即文档，学习和维护成本低</td>
 <td>Java</td>
-<td>支持发布到 <a href="http://rapapi.org/org/" target="_blank" rel="external">RAP</a></td>
+<td>支持发布到 <a href="http://rapapi.org/org/" target="_blank" rel="noopener">RAP</a></td>
 </tr>
 </tbody>
 </table>
 <p>对于 Java 程序员来说，JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。反正它已经成为我的首选 API 文档工具了，我希望也可以成为你的首选。</p>
-<h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>项目地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="external">https://github.com/YeDaxia/JApiDocs</a>，目前用不到，可以先点个星星收藏起来哇。</p>
+<h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>项目地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="noopener">https://github.com/YeDaxia/JApiDocs</a>，目前用不到，可以先点个星星收藏起来哇。</p>
 <p>如果你以前已经在用其他的了，积重难返，我建议你还是用以前的工具；如果你还是手工去创建文档，或者要做一个新的项目，我墙裂建议你马上开始使用 JApiDocs，记得先看文档，运行一下测试用例，5分钟就能从入门到爱不释手～ 有问题欢迎反馈，我会第一时间积极响应。</p>
 
       
@@ -388,13 +390,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
-          
             <a href="/tags/团队协作/" rel="tag">#团队协作</a>
           
             <a href="/tags/JApiDocs/" rel="tag">#JApiDocs</a>
           
             <a href="/tags/文档工具/" rel="tag">#文档工具</a>
+          
+            <a href="/tags/开发工具/" rel="tag">#开发工具</a>
           
         </div>
       
@@ -488,7 +490,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -87,12 +87,14 @@
 
 
 <meta name="description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
+<meta name="keywords" content="网络爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记录网页爬虫注意的几个问题">
 <meta property="og:url" content="https://yedaxia.github.io/SomeWebSpiderProblem/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
-<meta property="og:updated_time" content="2018-02-03T06:52:16.799Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-03T06:52:16.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录网页爬虫注意的几个问题">
 <meta name="twitter:description" content="能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。">
@@ -308,12 +310,12 @@
 <h1 id="代理魔法好"><a href="#代理魔法好" class="headerlink" title="代理魔法好"></a>代理魔法好</h1><p>关于拉内容，这里介绍的是终极大招了。有了代理服务器，你就相当于找到了多个帮你干活的小弟，而且还是远程指挥，被封了也不会影响到你的本尊。</p>
 <p>代理的来源：你可以自己用工具去扫描全网找到可用的免费代理，也可以像笔者一样偷懒去购买一些可用的代理。</p>
 <p>代理的使用策略：你可能拥有了便宜甚至免费的代理地址，但是这里面很多可能都没法使用，或者现在能用，待会就不能用了，因此在使用之前应该测试一下，及时移除不能用的地址，提高效率。另外，注意不要用一个代理地址连续范围，笔者的策略一般是每个请求顺序换一个代理地址，如果数量足够多的前提下，你可以尽可能地提升你的爬取线程或者进程数，由于每个 ip 的访问间隔足够长，这样也不会被封 ip 。</p>
-<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="external">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
-<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="external">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
+<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="noopener">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
+<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="noopener">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抓取信息其实是个攻与防的过程，总结规律，多测试和践行你的想法，找到合适的策略。最后，善用工具，但行好事哈～</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="external">webmagic</a></li>
-<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="external">jsoup</a></li>
+<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a></li>
+<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="noopener">jsoup</a></li>
 </ol>
 
       
@@ -452,7 +454,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

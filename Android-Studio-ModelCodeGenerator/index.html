@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="插件开发,开发工具," />
+  <meta name="keywords" content="开发工具,插件开发," />
 
 
 
@@ -86,23 +86,22 @@
 
 
 
-<meta name="description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。
-源码地址">
+<meta name="description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。 源码地址">
+<meta name="keywords" content="开发工具,插件开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio 的代码插件开发">
 <meta property="og:url" content="https://yedaxia.github.io/Android-Studio-ModelCodeGenerator/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
-<meta property="og:description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。
-源码地址">
+<meta property="og:description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。 源码地址">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/intellij-project-stucture.png">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intllij-platform-plugin-project.PNG">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/intellij-project-resource.png">
 <meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/model-code-generator-dialog.png">
-<meta property="og:updated_time" content="2018-04-18T08:18:30.863Z">
+<meta property="og:updated_time" content="2018-04-18T08:18:30.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 的代码插件开发">
-<meta name="twitter:description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。
-源码地址">
+<meta name="twitter:description" content="在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。 源码地址">
 <meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/intellij-project-stucture.png">
 
 
@@ -306,7 +305,7 @@
 
       
         <p>在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
-<p><a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">源码地址</a></p>
+<p><a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="noopener">源码地址</a></p>
 <a id="more"></a>
 <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>码工们做的很多工作，很多时候是为了减少这个世界上的重复工作。在为这个世界带来便捷的时候，当然也要不忘给自己的工作减负，提高工作的效率啦。在对接API的时候，我们要根据出来的字段定义相关的数据模型，在复制粘贴几次之后，我开始厌倦这种没有半点技术含量的重复性工作，所以开始思考怎么把这个工作自动化，砍柴不误磨刀工，我相信额外的一点付出会带来效率的提升。</p>
 <p>当前我们开发用的IDE是Android Studio， 大家都只都这个是基于intellij开发的，所以能集成在intellij里面就最好了。</p>
@@ -338,33 +337,33 @@
 </tbody>
 </table>
 <p>另外一种就是偷懒的写法，直接把返回的Json贴上去:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"gameName"</span>: <span class="string">"这是游戏标题"</span>,</div><div class="line">    <span class="attr">"gameRecommendText"</span>: <span class="string">"游戏一句话推荐"</span>,</div><div class="line">    <span class="attr">"cover"</span>: <span class="string">"封面图片"</span>,</div><div class="line">    <span class="attr">"ugcTime"</span>: <span class="string">"一天前"</span>,</div><div class="line">    <span class="attr">"gameIcon"</span>: <span class="string">"这是游戏图标"</span>,</div><div class="line">    <span class="attr">"gameDownloadUrl"</span>: <span class="string">"这是游戏下载链接"</span>,</div><div class="line">    <span class="attr">"ugcTitle"</span>: <span class="string">"这是资讯标题"</span>,</div><div class="line">    <span class="attr">"style"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"ugcViewCount"</span>: <span class="number">333</span>,</div><div class="line">    <span class="attr">"ugcSource"</span>: <span class="string">"咨询来源"</span>,</div><div class="line">    <span class="attr">"videoLength"</span>: <span class="string">"12'33''"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"gameName"</span>: <span class="string">"这是游戏标题"</span>,</span><br><span class="line">    <span class="attr">"gameRecommendText"</span>: <span class="string">"游戏一句话推荐"</span>,</span><br><span class="line">    <span class="attr">"cover"</span>: <span class="string">"封面图片"</span>,</span><br><span class="line">    <span class="attr">"ugcTime"</span>: <span class="string">"一天前"</span>,</span><br><span class="line">    <span class="attr">"gameIcon"</span>: <span class="string">"这是游戏图标"</span>,</span><br><span class="line">    <span class="attr">"gameDownloadUrl"</span>: <span class="string">"这是游戏下载链接"</span>,</span><br><span class="line">    <span class="attr">"ugcTitle"</span>: <span class="string">"这是资讯标题"</span>,</span><br><span class="line">    <span class="attr">"style"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"ugcViewCount"</span>: <span class="number">333</span>,</span><br><span class="line">    <span class="attr">"ugcSource"</span>: <span class="string">"咨询来源"</span>,</span><br><span class="line">    <span class="attr">"videoLength"</span>: <span class="string">"12'33''"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里当然两种格式都要很好的支持啦,笔者发现表格直接在网页上复制，然后粘贴到文本输入框中的格式是非常整齐的空格隔开的,格式如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pkgFile String  包链接</div><div class="line">gameId  long    游戏id</div><div class="line">channelName String  渠道名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pkgFile String  包链接</span><br><span class="line">gameId  long    游戏id</span><br><span class="line">channelName String  渠道名</span><br></pre></td></tr></table></figure>
 <p>因此我们的数据源就很好确定了，而且也很方便。根据这两种数据源，我们约定:</p>
 <ul>
 <li>基本类型比如<code>int</code>,<code>long</code>和对应的类类型<code>Integer</code>则返回基本类型。</li>
 <li>没有类型信息或者其他类型用String类型。</li>
 </ul>
 <p>下面我们就开始开始这个插件的开发探索吧，笔者希望能抛砖引玉，大家能在平时的工作中有意识根据自己的需要做出更多好用的工具，优化开发流程和开发效率。</p>
-<h1 id="intellij插件开发基础知识"><a href="#intellij插件开发基础知识" class="headerlink" title="intellij插件开发基础知识"></a>intellij插件开发基础知识</h1><h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><p>这里我建议大家看官方的文档,已经介绍很详细了，我在下面也会简单介绍，<a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">传送门</a></p>
+<h1 id="intellij插件开发基础知识"><a href="#intellij插件开发基础知识" class="headerlink" title="intellij插件开发基础知识"></a>intellij插件开发基础知识</h1><h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><p>这里我建议大家看官方的文档,已经介绍很详细了，我在下面也会简单介绍，<a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="noopener">传送门</a></p>
 <ol>
-<li>下载安装intellij社区版: <a href="http://www.jetbrains.org/display/IJOS/Download" target="_blank" rel="external">下载地址</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/configuring-intellij-platform-plugin-sdk.html" target="_blank" rel="external">配置IntelliJ Platform Plugin SDK</a>。</li>
-<li>创建一个<a href="https://www.jetbrains.com/help/idea/2016.3/creating-a-project-for-plugin-development.html" target="_blank" rel="external">Plugin Project</a>。</li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/running-and-debugging-plugins.html" target="_blank" rel="external">运行和调试</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/preparing-plugins-for-publishing.html" target="_blank" rel="external">发布插件</a>，这里我建议大家配置Ant来构建，我发现在引入libs包的时候生成的插件主工程会少很多文件，导致无法正常运行，用<a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Ant打包</a>就正常了。</li>
+<li>下载安装intellij社区版: <a href="http://www.jetbrains.org/display/IJOS/Download" target="_blank" rel="noopener">下载地址</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/configuring-intellij-platform-plugin-sdk.html" target="_blank" rel="noopener">配置IntelliJ Platform Plugin SDK</a>。</li>
+<li>创建一个<a href="https://www.jetbrains.com/help/idea/2016.3/creating-a-project-for-plugin-development.html" target="_blank" rel="noopener">Plugin Project</a>。</li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/running-and-debugging-plugins.html" target="_blank" rel="noopener">运行和调试</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/preparing-plugins-for-publishing.html" target="_blank" rel="noopener">发布插件</a>，这里我建议大家配置Ant来构建，我发现在引入libs包的时候生成的插件主工程会少很多文件，导致无法正常运行，用<a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="noopener">Ant打包</a>就正常了。</li>
 </ol>
 <p>懒人版:</p>
 <ol>
 <li>配置Intellij SDK：<br>打开Project Structure对话框[<code>Ctrl+Shift+Alt+S</code>]，选择Intellij的目录:</li>
 </ol>
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-stucture.png" alt=""></p>
-<ol>
+<ol start="2">
 <li>新建Plugin Project:</li>
 </ol>
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intllij-platform-plugin-project.PNG" alt=""></p>
-<ol>
+<ol start="3">
 <li>新建完成工程目录结构:</li>
 </ol>
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/intellij-project-resource.png" alt=""></p>
@@ -374,26 +373,26 @@
 <li>定义一个<code>AnAction</code>，你通常需要继承<code>AnAction</code>类，然后在<code>actionPerformed</code>方法里面实现你的操作。</li>
 <li>在plugin.xml里面注册这个<code>AnAction</code>。</li>
 </ol>
-<p>intellij社区版里面创建Action非常方便，你可以通过图像界面很容易找到自己想要放置的Action位置,比如我们要在<code>Code</code>菜单下的Generate..<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![](http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intellij-new-action.png)</div><div class="line"></div><div class="line">- **Action ID**: 每个Action都需要一个唯一的ID.</div><div class="line">- **Class Name**: Action的类名,我们是在`ithub.yedaxia.plugin.actions`下面建的。</div><div class="line">- **Name**: 名字，就是在界面上我们看到的名字。</div><div class="line">- **Description**: 描述信息，鼠标放在上面一小段时间可以看到的描述信息。</div><div class="line">- **Groups**: 可以理解为Action集合。</div><div class="line">- **Keyboard Shortcuts**: 快捷键设置，这里我们暂时不需要了。</div><div class="line"></div><div class="line">生成之后我们可以看到在`plugin.xml`里面就有对应的Action了:</div><div class="line"></div><div class="line">```xml</div><div class="line">&lt;action id=&quot;CodeGenerationPlugin.EntryAction&quot; class=&quot;github.yedaxia.plugin.actions.EntryAction&quot;</div><div class="line">            text=&quot;EntryGenerator...&quot; description=&quot;Entry Code Generator&quot;&gt;</div><div class="line">      &lt;add-to-group group-id=&quot;CodeMenu&quot; anchor=&quot;after&quot; relative-to-action=&quot;Generate&quot;/&gt;</div><div class="line">&lt;/action&gt;</div></pre></td></tr></table></figure></p>
+<p>intellij社区版里面创建Action非常方便，你可以通过图像界面很容易找到自己想要放置的Action位置,比如我们要在<code>Code</code>菜单下的Generate..<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](http://ohb4y25jk.bkt.clouddn.com/darcy_blog_intellij-new-action.png)</span><br><span class="line"></span><br><span class="line">- **Action ID**: 每个Action都需要一个唯一的ID.</span><br><span class="line">- **Class Name**: Action的类名,我们是在`ithub.yedaxia.plugin.actions`下面建的。</span><br><span class="line">- **Name**: 名字，就是在界面上我们看到的名字。</span><br><span class="line">- **Description**: 描述信息，鼠标放在上面一小段时间可以看到的描述信息。</span><br><span class="line">- **Groups**: 可以理解为Action集合。</span><br><span class="line">- **Keyboard Shortcuts**: 快捷键设置，这里我们暂时不需要了。</span><br><span class="line"></span><br><span class="line">生成之后我们可以看到在`plugin.xml`里面就有对应的Action了:</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;action id=&quot;CodeGenerationPlugin.EntryAction&quot; class=&quot;github.yedaxia.plugin.actions.EntryAction&quot;</span><br><span class="line">            text=&quot;EntryGenerator...&quot; description=&quot;Entry Code Generator&quot;&gt;</span><br><span class="line">      &lt;add-to-group group-id=&quot;CodeMenu&quot; anchor=&quot;after&quot; relative-to-action=&quot;Generate&quot;/&gt;</span><br><span class="line">&lt;/action&gt;</span><br></pre></td></tr></table></figure></p>
 <p>对应的AnAction代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EntryAction</span> <span class="keyword">extends</span> <span class="title">AnAction</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(AnActionEvent e)</span> </span>&#123;</div><div class="line">        <span class="comment">//点击EntryGenerator...按钮之后调用这个方法</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EntryAction</span> <span class="keyword">extends</span> <span class="title">AnAction</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(AnActionEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//点击EntryGenerator...按钮之后调用这个方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="代码生成界面"><a href="#代码生成界面" class="headerlink" title="代码生成界面:"></a>代码生成界面:</h1><p>代码生成的逻辑并不复杂，我们把这个放到最后，本文还是着重介绍intellij插件的编写，现在我们已经有了程序的入口了，我们还需要一些简单的UI元素，一个对话框，一个简单的输入框[类名],比较大的文本框[数据源和生成的最终代码]。</p>
 <p>先看最后的效果:</p>
 <p><img src="http://ohb4y25jk.bkt.clouddn.com/model-code-generator-dialog.png" alt=""></p>
-<p>intellij本身运行在Java上面，所以java swing库支持肯定是没问题的，这个对话框我主要参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>里面的实现。</p>
+<p>intellij本身运行在Java上面，所以java swing库支持肯定是没问题的，这个对话框我主要参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="noopener">android-codegenerator-plugin-intellij</a>里面的实现。</p>
 <p>里面用到了<code>com.intellij.openapi.ui.DialogBuilder</code>,相关api文档没有找到，通过源码也不难发现其用法:</p>
 <ul>
 <li><code>setTitle</code>: 标题</li>
 <li><code>setCenterPanel(JComponent centerPanel)</code>: 对话框中间面板，JComponent对于Java程序员应该就不陌生了。</li>
 <li><code>addAction</code>: 添加底部的按钮和相关事件。</li>
 </ul>
-<p>具体的代码可以看: <a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij/blob/master/src/com/morcinek/android/codegenerator/plugin/ui/CodeDialogBuilder.java" target="_blank" rel="external">CodeDialogBuilder.java</a></p>
+<p>具体的代码可以看: <a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij/blob/master/src/com/morcinek/android/codegenerator/plugin/ui/CodeDialogBuilder.java" target="_blank" rel="noopener">CodeDialogBuilder.java</a></p>
 <h1 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h1><p>代码生成主要包括两个步骤:</p>
 <ol>
 <li>代码模板设计。</li>
 <li>代码构建。</li>
 </ol>
-<p>模板的设计也是参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a>项目，根据Model数据模板的特点，我分成了以下四个代码模板:</p>
+<p>模板的设计也是参考了<a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="noopener">android-codegenerator-plugin-intellij</a>项目，根据Model数据模板的特点，我分成了以下四个代码模板:</p>
 <ol>
 <li><strong>Entry_template</strong>: 目标代码模板。</li>
 <li><strong>Entry_Field_template</strong>: 类字段模板。</li>
@@ -401,14 +400,14 @@
 <li><strong>Entry_Setter_template</strong>: getter方法模板。</li>
 </ol>
 <p>Json解析我用的是alibaba的fastjson，所以模板就是长下面的样子了，大家可以根据自己的需要去修改:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Entry:</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;CLASS_NAME&#125; implements Serializable&#123;</div><div class="line"></div><div class="line">$&#123;FIELDS&#125;</div><div class="line">$&#123;METHODS&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Field:</div><div class="line"><span class="keyword">private</span> $&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;;</div><div class="line"></div><div class="line">Getter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> $&#123;FIELD_TYPE&#125; get$&#123;CASE_FIELD_NAME&#125;()&#123;</div><div class="line">    <span class="keyword">return</span> $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Setter:</div><div class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> set$&#123;CASE_FIELD_NAME&#125;($&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;)&#123;</div><div class="line">    <span class="keyword">this</span>.$&#123;FIELD_NAME&#125; = $&#123;FIELD_NAME&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>具体的代码构建过程这里就不详细讲了，大家可以移步<a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="external">github</a>，这个过程应该不难理解。如果觉得这个插件有用，你可以给个star。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Entry:</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;CLASS_NAME&#125; implements Serializable&#123;</span><br><span class="line"></span><br><span class="line">$&#123;FIELDS&#125;</span><br><span class="line">$&#123;METHODS&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Field:</span><br><span class="line"><span class="keyword">private</span> $&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;;</span><br><span class="line"></span><br><span class="line">Getter:</span><br><span class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> $&#123;FIELD_TYPE&#125; get$&#123;CASE_FIELD_NAME&#125;()&#123;</span><br><span class="line">    <span class="keyword">return</span> $&#123;FIELD_NAME&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Setter:</span><br><span class="line"><span class="meta">@JSONField</span>(name=<span class="string">"$&#123;REMOTE_FIELD_NAME&#125;"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> set$&#123;CASE_FIELD_NAME&#125;($&#123;FIELD_TYPE&#125; $&#123;FIELD_NAME&#125;)&#123;</span><br><span class="line">    <span class="keyword">this</span>.$&#123;FIELD_NAME&#125; = $&#123;FIELD_NAME&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的代码构建过程这里就不详细讲了，大家可以移步<a href="https://github.com/YeDaxia/Android-Studio-ModelGenerator" target="_blank" rel="noopener">github</a>，这个过程应该不难理解。如果觉得这个插件有用，你可以给个star。</p>
 <h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这个工具的开发过程比我想象中要简单很多，一天时间左右应该就差不多完成的了，后续带来的好处和省下来的时间肯定会弥补回这个时间代价，有些码工经常会觉得麻烦或者根本没有这个意识，宁愿麻烦一些也不愿意去写个工具来加速自己的工作，我觉得是不可取的，我们应该用重构和工具去避免写重复的代码，把更多的时间放到有价值和有创造性的工作上面来，从中长期来看，这样带来的好处是巨大的，更快的开发速度、鲁棒性更好的系统等，更重要的是个人也获得了成长。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="external">IntelliJ Plugin Development Guidelines</a></li>
-<li><a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="external">android-codegenerator-plugin-intellij</a></li>
-<li><a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="external">Intellij 生成Ant工程</a></li>
-<li><a href="http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="external">IntelliJ Plugin Development Docs</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/plugin-development-guidelines.html" target="_blank" rel="noopener">IntelliJ Plugin Development Guidelines</a></li>
+<li><a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="noopener">android-codegenerator-plugin-intellij</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/generating-ant-build-file.html" target="_blank" rel="noopener">Intellij 生成Ant工程</a></li>
+<li><a href="http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="noopener">IntelliJ Plugin Development Docs</a></li>
 </ol>
 
       
@@ -453,9 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/插件开发/" rel="tag">#插件开发</a>
-          
             <a href="/tags/开发工具/" rel="tag">#开发工具</a>
+          
+            <a href="/tags/插件开发/" rel="tag">#插件开发</a>
           
         </div>
       
@@ -549,7 +548,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

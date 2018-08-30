@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
+<meta name="keywords" content="代码规范,团队合作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android代码规范指北">
 <meta property="og:url" content="https://yedaxia.github.io/Android-Code-Rules/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了阿里巴巴 JAVA 开发手册，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-02-03T06:02:39.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android代码规范指北">
@@ -297,7 +299,7 @@
       
 
       
-        <p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
+        <p>统一的代码风格在多人协作开发中的作用是不言而喻的，通过参考一些比较优秀的实践，这里大量参考了<a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="noopener">阿里巴巴 JAVA 开发手册</a>，再结合了个人的思考，制定了这么一套规范，由于个人的认识是非常有限的，本规范也肯定存在很多不合理和需要补充的东西，在这里恳请大家根据自己的实践和工作中，提出一些中肯的建议和修改意见。</p>
 <a id="more"></a>
 <h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><ol>
 <li>高度有秩序的代码具有天然的美感，写代码的人心情会好很多。</li>
@@ -514,10 +516,10 @@
 <li>间距：组件外用【××_margin】，组件内用【××_padding】, 例子: app_left_margin。</li>
 <li>控件大小：【宽度:××_width】，【高度:××_height】，其他【××_size】，例子: login_button_height。</li>
 </ol>
+</blockquote>
 <ul>
 <li>【推荐】<strong>其他</strong>：文字不得直接写到 java 代码和 layout 代码里面，应该抽离到相关的 strings 资源文件中；menu 和动画资源命名不需要加前缀或者后缀，能表达意图即可，因为 R.menu 或者 R.anim 已经携带了相关的信息。</li>
 </ul>
-</blockquote>
 <h1 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h1><ul>
 <li>【强制】大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果<br>是非空代码块则：</li>
 </ul>
@@ -532,7 +534,7 @@
 <ul>
 <li>【强制】 左括号和后一个字符之间不出现空格；同样，右括号和前一个字符之间也不出现空格; 代码块缩进 4 个空格,如果使用 tab 缩进，请设置成 1 个 tab 为 4 个空格。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">    <span class="comment">// 缩进 4 个空格</span></div><div class="line">    String say = <span class="string">"hello"</span>;</div><div class="line">    <span class="comment">// 运算符的左右必须有一个空格</span></div><div class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内 f 与左括号，1 与右括号不需要空格</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</div><div class="line">        System.out.println(say);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</div><div class="line">        System.out.println(<span class="string">"world"</span>);</div><div class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"ok"</span>);</div><div class="line">    <span class="comment">// 右大括号做为结束，必须换行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">正例：</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 缩进 4 个空格</span></span><br><span class="line">    String say = <span class="string">"hello"</span>;</span><br><span class="line">    <span class="comment">// 运算符的左右必须有一个空格</span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内 f 与左括号，1 与右括号不需要空格</span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(say);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行</span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"world"</span>);</span><br><span class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">    <span class="comment">// 右大括号做为结束，必须换行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>【强制】任何运算符左右必须加一个空格。</li>
 </ul>
@@ -552,7 +554,7 @@
 <li>在括号前不要换行，见反例。</li>
 </ol>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，换行缩进 4 个空格，并且方法前的点符号一起换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…</div><div class="line">    .append(<span class="string">"huang"</span>);</div><div class="line"></div><div class="line">反例：</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下，不要在括号前换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…append</div><div class="line">    (<span class="string">"huang"</span>);</div><div class="line"><span class="comment">//参数很多的方法调用也超过 120 个字符，逗号后才是换行处</span></div><div class="line">method(args1, args2, args3, ...</div><div class="line">    , argsX);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">正例：</span><br><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="comment">//超过 120 个字符的情况下，换行缩进 4 个空格，并且方法前的点符号一起换行</span></span><br><span class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…</span><br><span class="line">    .append(<span class="string">"huang"</span>);</span><br><span class="line"></span><br><span class="line">反例：</span><br><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="comment">//超过 120 个字符的情况下，不要在括号前换行</span></span><br><span class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)…append</span><br><span class="line">    (<span class="string">"huang"</span>);</span><br><span class="line"><span class="comment">//参数很多的方法调用也超过 120 个字符，逗号后才是换行处</span></span><br><span class="line">method(args1, args2, args3, ...</span><br><span class="line">    , argsX);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。</li>
 </ul>
@@ -565,11 +567,11 @@
 <li><p>【推荐】推荐尽量少用 else， if-else 的方式可以改写成：</p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">     …</div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125; </div><div class="line">说明：如果使用要 `<span class="keyword">if</span>-<span class="keyword">else</span> <span class="keyword">if</span>-<span class="keyword">else</span>` 方式表达逻辑，【强制】请勿超过 <span class="number">3</span> 层，超过请使用状态设计模式。</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(condition)&#123;</span><br><span class="line">     …</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125; </span><br><span class="line">说明：如果使用要 `<span class="keyword">if</span>-<span class="keyword">else</span> <span class="keyword">if</span>-<span class="keyword">else</span>` 方式表达逻辑，【强制】请勿超过 <span class="number">3</span> 层，超过请使用状态设计模式。</span><br></pre></td></tr></table></figure>
 <ul>
 <li>【推荐】循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量，进行不必要的 <code>try-catch</code> 操作（这个 try-catch 是否可以移至循环体外），遍历长度的提前获取；避免使用 <code>foreach</code>，迭代器，尽量采用下标的形式</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">正例：</div><div class="line">(for i=0 ;i &lt;size; ++i)</div><div class="line"></div><div class="line">反例：</div><div class="line">for(int i : items)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">正例：</span><br><span class="line">(for i=0 ;i &lt;size; ++i)</span><br><span class="line"></span><br><span class="line">反例：</span><br><span class="line">for(int i : items)</span><br></pre></td></tr></table></figure>
 <h1 id="编码规约"><a href="#编码规约" class="headerlink" title="编码规约"></a>编码规约</h1><h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><ul>
 <li>【强制】过时的类或者方法不要使用，覆盖的方法要用<code>Override</code>声明。这样当写错覆盖方法时可以得到编译错误提示。</li>
 <li>【强制】Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals。</li>
@@ -601,7 +603,7 @@
 </ul>
 <h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
 <li><p>【强制】捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">void setServerPort(String value) &#123;</div><div class="line">    try &#123;</div><div class="line">        serverPort = Integer.parseInt(value);</div><div class="line">    &#125; catch (NumberFormatException e) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">反例：</span><br><span class="line">void setServerPort(String value) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; catch (NumberFormatException e) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>【强制】异常不要用来做流程控制，条件控制，因为异常的处理效率比条件分支低。</p>
 </li>
@@ -609,20 +611,20 @@
 <li>【强制】不能在 finally 块中使用 return，finally 块中的 return 返回后方法结束执行，不会再执行 try 块中的 return 语句。</li>
 <li>【强制】捕获异常与抛异常，必须是完全匹配，或者捕获异常是抛异常的父类。==说明==：如果预期抛的是绣球，实际接到的是铅球，就会产生意外情况。</li>
 <li><p>【推荐】不要偷懒直接捕获顶级异常，这样会把Runtime的异常也囊括进来，要明确每种异常出现的场景被给出相应的处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">try &#123;</div><div class="line">    someComplicatedIOFunction();        // may throw IOException</div><div class="line">    someComplicatedParsingFunction();   // may throw ParsingException</div><div class="line">    someComplicatedSecurityFunction();  // may throw SecurityException</div><div class="line">    // phew, made it all the way</div><div class="line">&#125; catch (Exception e) &#123;                 // I&apos;ll just catch all exceptions</div><div class="line">    handleError();                      // with one generic handler!</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">反例：</span><br><span class="line">try &#123;</span><br><span class="line">    someComplicatedIOFunction();        // may throw IOException</span><br><span class="line">    someComplicatedParsingFunction();   // may throw ParsingException</span><br><span class="line">    someComplicatedSecurityFunction();  // may throw SecurityException</span><br><span class="line">    // phew, made it all the way</span><br><span class="line">&#125; catch (Exception e) &#123;                 // I&apos;ll just catch all exceptions</span><br><span class="line">    handleError();                      // with one generic handler!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>【推荐】除非有充分的理由，不要捕获 Java 类库中定义的继承自 RuntimeException 的运行时异常类，如：IndexOutOfBoundsException / NullPointerException，这类异常由程序员预检查来规避，保证程序健壮性。</p>
 </li>
 </ul>
 <h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><ul>
-<li>【强制】类、类属性、类方法的注释必须使用 javadoc 规范，使用/<em>*内容</em>/格式，不得使用//xxx 方式。</li>
+<li>【强制】类、类属性、类方法的注释必须使用 javadoc 规范，使用/*<em>内容</em>/格式，不得使用//xxx 方式。</li>
 <li>【强制】所有的抽象方法（包括接口中的方法）必须要用 javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能。</li>
 <li>【强制】所有的类都必须添加创建者信息。</li>
 <li><p>【强制】对那些临时性的、短期的、够棒但不完美的代码，请使用TODO注释。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// <span class="doctag">TODO:</span> Change this to use a flag instead of a constant.</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Change this to use a flag instead of a constant.</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>【强制】方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释使用/<em> </em>/注释，注意与代码对齐。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">// 打个招呼</span></div><div class="line">    sayHello();</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">      这里保持移动，</div><div class="line">      并不断对步数加1</div><div class="line">     */</div><div class="line">    keepMove();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 打个招呼</span></span><br><span class="line">    sayHello();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">      这里保持移动，</span></span><br><span class="line"><span class="comment">      并不断对步数加1</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    keepMove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>【参考】好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的一<br>个极端：过多过滥的注释，代码的逻辑一旦修改，修改注释是相当大的负担。</p>
 </li>
@@ -630,7 +632,7 @@
 <h2 id="Android-实践"><a href="#Android-实践" class="headerlink" title="Android 实践"></a>Android 实践</h2><ul>
 <li>【强制】避免对同个 View 进行多次查找，应该缓存起来，比如列表中使用的 ViewHolder 模式。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">反例：</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setOnClickListener(<span class="keyword">this</span>);</div><div class="line">view.findViewById(R.id.iv_toolbar_right).setEnabled(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">反例：</span><br><span class="line">view.findViewById(R.id.iv_toolbar_right).setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">view.findViewById(R.id.iv_toolbar_right).setEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>【强制】不要使用 System.out.println() ，printf() 打印日志。</li>
 <li>【强制】调试日志要有个开关，在正式发布的时候不能出现应用日志打印。</li>
@@ -657,11 +659,11 @@
 <li>【参考】通过 Picasso，Glide 等开源组件去加载和缓存你的图片。</li>
 </ul>
 <h1 id="资料参考"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考</h1><ol>
-<li><a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="external">阿里巴巴 JAVA 开发手册</a></li>
-<li><a href="http://source.android.com/source/code-style.html" target="_blank" rel="external">Android Code Style Rules</a></li>
-<li><a href="http://blog.nimbledroid.com/2016/05/23/memory-leaks-zh.html" target="_blank" rel="external">常见的八种导致 APP 内存泄漏的问题</a></li>
-<li><a href="http://hukai.me/android-dev-patterns/" target="_blank" rel="external">Android开发最佳实践</a></li>
-<li><a href="http://www.cnblogs.com/whoislcj/p/5677917.html" target="_blank" rel="external">Android Support Annotations</a></li>
+<li><a href="https://img.hacpai.com/file/2017/1/eb0998bac7664496b2f1af98e07b08e5-Java.pdf" target="_blank" rel="noopener">阿里巴巴 JAVA 开发手册</a></li>
+<li><a href="http://source.android.com/source/code-style.html" target="_blank" rel="noopener">Android Code Style Rules</a></li>
+<li><a href="http://blog.nimbledroid.com/2016/05/23/memory-leaks-zh.html" target="_blank" rel="noopener">常见的八种导致 APP 内存泄漏的问题</a></li>
+<li><a href="http://hukai.me/android-dev-patterns/" target="_blank" rel="noopener">Android开发最佳实践</a></li>
+<li><a href="http://www.cnblogs.com/whoislcj/p/5677917.html" target="_blank" rel="noopener">Android Support Annotations</a></li>
 </ol>
 
       
@@ -802,7 +804,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="音乐,音乐编程," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="很难用的软件，但语法还是有可取的地方，仔细研究了一下，顺便出了个针对吉他谱和简谱的快速入门教程。">
+<meta name="keywords" content="音乐,音乐编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="muse 2.7 乐谱脚本快速入门">
+<meta property="og:url" content="https://yedaxia.github.io/Muse27-Quick-Start/index.html">
+<meta property="og:site_name" content="叶大侠的主页">
+<meta property="og:description" content="很难用的软件，但语法还是有可取的地方，仔细研究了一下，顺便出了个针对吉他谱和简谱的快速入门教程。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822230808.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822230610.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822172644.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822201209.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822202137.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822204038.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822212046.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822213355.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822213844.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822215041.png">
+<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400">
+<meta property="og:updated_time" content="2018-08-30T17:20:03.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="muse 2.7 乐谱脚本快速入门">
+<meta name="twitter:description" content="很难用的软件，但语法还是有可取的地方，仔细研究了一下，顺便出了个针对吉他谱和简谱的快速入门教程。">
+<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/20180822230808.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/Muse27-Quick-Start/"/>
+
+
+  <title> muse 2.7 乐谱脚本快速入门 | 叶大侠的主页 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">叶大侠的主页</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                muse 2.7 乐谱脚本快速入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-31T00:25:43+08:00" content="2018-08-31">
+              2018-08-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Muse27-Quick-Start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Muse27-Quick-Start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>很难用的软件，但语法还是有可取的地方，仔细研究了一下，顺便出了个针对吉他谱和简谱的快速入门教程。</p>
+<a id="more"></a>
+<h1 id="软件下载和安装"><a href="#软件下载和安装" class="headerlink" title="软件下载和安装"></a>软件下载和安装</h1><ol>
+<li><a href="https://pan.baidu.com/s/1Xnb6tKkkYD5OgWlESu8i8g" target="_blank" rel="noopener">下载</a>。</li>
+<li>安装后把注册机放到安装目录下，然后双击打开注册机，复制注册码。</li>
+</ol>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822230808.png" alt=""></p>
+<ol start="3">
+<li>打开软件【帮助】菜单 -》输入注册码，把获取到的注册码输入即可。</li>
+</ol>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822230610.png" alt=""></p>
+<blockquote>
+<p>注意：这个软件 09 年就不维护了，杀毒软件会会提示木马，仅供研究，风险自担～</p>
+</blockquote>
+<p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T: 暖暖</span><br><span class="line">T: 演唱 梁静茹</span><br><span class="line">C: C大调音乐网</span><br><span class="line">M: 4/4</span><br><span class="line">Q: 60</span><br><span class="line">K: C</span><br><span class="line">L: 1/4</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822172644.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<ol>
+<li>T： 第一个标题是大标题，第二个 T 是小标题。</li>
+<li>C：composer 的缩写，对应在右边的描述，可以有多个 C 。</li>
+<li>M：meter 的缩写，节拍。</li>
+<li>Q：每分钟有多少拍。</li>
+<li>K：调号</li>
+<li>L：默认拍长，就是音符单独出现的时候表示的拍长，如下代码和图：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[V:1]</span><br><span class="line">L: 1/4</span><br><span class="line">C</span><br><span class="line"></span><br><span class="line">[V:2]</span><br><span class="line">L: 1/8</span><br><span class="line">CD</span><br></pre></td></tr></table></figure>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822201209.png" alt=""></p>
+<h1 id="音轨信息"><a href="#音轨信息" class="headerlink" title="音轨信息"></a>音轨信息</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">V:1 style=tab clef=standardtab ins=24 vol=40 bracket=2</span><br><span class="line">V:2 style=jianpu ins=1 vol=100</span><br><span class="line">[V:1]</span><br><span class="line">ax</span><br><span class="line">[V:2]</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822202137.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<p>知道 style=tab 代表六线谱，style=jianpu 代表简谱就可以了。[V:1] 表示下面写的是 V:1 style=tab 六线谱相关的音符信息，[V:2] 则对应的是简谱。</p>
+<h1 id="音符"><a href="#音符" class="headerlink" title="音符"></a>音符</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">T: 音名</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">a1b1c1d1f1 | axbxcxdxfx | [axbxcx][bxcxdx]V[axbxcx]U[bxcxdx] |z z/ z// |</span><br><span class="line">[V: 2]</span><br><span class="line">CDEFGAB | C,D,E,F,G,A,B, | C,,D,,E,,F,,G,,A,,B,, | cdefgab | c&apos;d&apos;e&apos;f&apos;g&apos;a&apos;b&apos; | ^C=C_C z |</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822204038.png" alt=""></p>
+<p><strong>tab （六线）谱音符解释：</strong></p>
+<ol>
+<li>a 代表最下面的弦（吉他最细的弦），f 代表最上面的弦，abcdef 依次类推；</li>
+<li>a1 表示 a 弦的 1 品；ax 表示 a 弦是 x 符号。</li>
+<li>[axbxcx] 表示同时多个音。</li>
+<li>V 和 U 是修饰符，表示下扫弦和上扫弦，更多修饰符看【修饰符】小节。</li>
+<li>z 是休止符，同简谱</li>
+</ol>
+<p><strong>简谱音符解释：</strong></p>
+<ol>
+<li>CDEFGAB 对应 1234567。</li>
+<li>cdefgab 对应高八度的 1234567。</li>
+<li>C, 下标表示低八度，C‘ 上标表示高八度。</li>
+<li>^ 是升半音，= 是还原音，_ 是降半音。</li>
+</ol>
+<h1 id="音长"><a href="#音长" class="headerlink" title="音长"></a>音长</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">T: 节奏型</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">ax*4|ax*2b1*2|ex/[axbxcx/]ex/[axbxcx/] | ex[axbxcx/][axbxcx/]ex [axbxcx] | [axex/]cx//bx// dx//ax//cx//bx// |  ex//bx/cx// ex//bx/cx// |</span><br><span class="line">ex/&gt;dx/ [cxbxax/]d/ ex/&lt;dx/  | ex/cx//&gt;dx// ex/cx//&lt;dx// | </span><br><span class="line">ex/ [cxbxax] [cxbxax/] [cxbxax] [cxbxax] | ex// [cxbxax]  ex// |</span><br><span class="line">(3axbxcx(3ax/bx/cx/|</span><br><span class="line"></span><br><span class="line">[V: 2]</span><br><span class="line">C4 | D3B | D2B2 | DB3 | C/D/E/F/ | C/D//F// C//D//F/ | D// C F// | C&gt;F C/&gt;F/ | C// F/ D//  C/D/ | (3CDE (3C/D/E/ |</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822212046.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<ol>
+<li>tab 谱 <em> 号表示乘以默认时长（L: 1/4），比如 ax</em>4 表示全音符；简谱则不需要加 * 号，C4 表示全音符。</li>
+<li>/ 表示默认时长的一半，比如 ax/ 表示 半拍，ax// 表示 1/4 拍。</li>
+<li>>表示付点音符，为前音符时长的 1.5 倍，&lt; 则表示后音符为1.5倍。</li>
+<li>(3 表示三连音。</li>
+</ol>
+<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">T: 装饰音和倚音</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">V[axbxcx]V[bxcx]U[axbxcxdx]U[bxcxdx] | A[axbxcx]A[bxcx]B[axbxcxdx]B[bxcxdx]  |.[axbxcx] &apos;[axbxcx] T[axbxcx] H[axbxcx] | S[axbxcx]  PV[axbxcx]  S|</span><br><span class="line">[V:2]</span><br><span class="line">.C &apos;D TD HE | &#123;C&#125;C SG S|</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822213355.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<table>
+<thead>
+<tr>
+<th>语法符号</th>
+<th>对应字段</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>staccato</td>
+<td>断音、切音</td>
+</tr>
+<tr>
+<td>V</td>
+<td>upstrum</td>
+<td>上扫弦</td>
+</tr>
+<tr>
+<td>U</td>
+<td>downstrum</td>
+<td>下扫弦</td>
+</tr>
+<tr>
+<td>A</td>
+<td>uparpeggio</td>
+<td>上琶音</td>
+</tr>
+<tr>
+<td>B</td>
+<td>downarpeggio</td>
+<td>下琶音</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>accent</td>
+<td>加重</td>
+</tr>
+<tr>
+<td>T</td>
+<td>trill</td>
+<td>颤音</td>
+</tr>
+<tr>
+<td>H</td>
+<td>fermata</td>
+<td>延长音</td>
+</tr>
+<tr>
+<td>P</td>
+<td>pralltriller</td>
+<td>延长</td>
+</tr>
+</tbody>
+</table>
+<h1 id="连音"><a href="#连音" class="headerlink" title="连音"></a>连音</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">T: 连音线用例</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">a1-a1[c1-d1]c1 | a1-S-a2-P-a3-H-a4 | [ax-bxcx]a4 [axbxcx]-S-a4 | (axbx)cx(ax |</span><br><span class="line">ax)bxcxdx | axbx(cxdx | axax)cxdx | ((axbx)cx)dx |  (ax(bxcx))((dx | ax)bx)cxax |</span><br><span class="line">[V: 2]</span><br><span class="line">CC-C-C | (CC)(CC) | CC(CC |  CC)CC |  ((CC)C)C |  (C(CC))C | CC(C(C | C)C)CC |</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822213844.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<ol>
+<li>相邻的可以用 - 来连接。</li>
+<li>相邻两个音连接技巧支持 S（滑弦）、H（击弦）、P（勾弦）。</li>
+<li>() 可以用于不相邻的连接。</li>
+</ol>
+<h1 id="小节线和重复段"><a href="#小节线和重复段" class="headerlink" title="小节线和重复段"></a>小节线和重复段</h1><p><strong>脚本代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T: 小节线</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">[V: 1]</span><br><span class="line">a1b1c1d1f1 | axbxcxdxfx :| axbxcxdxfx |: axbxcxdxfx :: axbxcxdxfx |</span><br><span class="line">axbxcxdxfx ]| axbxcxdxfx |[  axbxcxdxfx |1 axbxcxdxfx |2 axbxcxdxfx ||</span><br></pre></td></tr></table></figure>
+<p><strong>对应的效果图：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822215041.png" alt=""></p>
+<p><strong>解释：</strong></p>
+<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/音乐/" rel="tag">#音乐</a>
+          
+            <a href="/tags/音乐编程/" rel="tag">#音乐编程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/osc-email-interview/" rel="next" title="记一次邮件采访">
+                <i class="fa fa-chevron-left"></i> 记一次邮件采访
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
+               alt="叶大侠" />
+          <p class="site-author-name" itemprop="name">叶大侠</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/da-xia-35-40" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.oschina.net/daxia" target="_blank" title="开源中国">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  开源中国
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sopu.52cmajor.com/" title="为你搜谱" target="_blank">为你搜谱</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://52cmajor.com/app/musicNote/" title="音乐笔记+" target="_blank">音乐笔记+</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件下载和安装"><span class="nav-number">1.</span> <span class="nav-text">软件下载和安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音轨信息"><span class="nav-number">2.</span> <span class="nav-text">音轨信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音符"><span class="nav-number">3.</span> <span class="nav-text">音符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音长"><span class="nav-number">4.</span> <span class="nav-text">音长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修饰符"><span class="nav-number">5.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连音"><span class="nav-number">6.</span> <span class="nav-text">连音</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小节线和重复段"><span class="nav-number">7.</span> <span class="nav-text">小节线和重复段</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016-12 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶大侠</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yedaxia';
+      var disqus_identifier = 'Muse27-Quick-Start/';
+      var disqus_title = "muse 2.7 乐谱脚本快速入门";
+      var disqus_url = 'https://yedaxia.github.io/Muse27-Quick-Start/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

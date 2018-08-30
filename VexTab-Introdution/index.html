@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。">
+<meta name="keywords" content="音乐,音乐编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VexTab介绍 - 一种即时可视的web乐谱语言 | 译文">
 <meta property="og:url" content="https://yedaxia.github.io/VexTab-Introdution/index.html">
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yedaxia.oss-cn-shanghai.aliyuncs.com/personal/piano-pitches3-1024x375.jpg?x-oss-process=image/resize,w_500">
 <meta property="og:updated_time" content="2018-02-03T03:58:50.494Z">
 <meta name="twitter:card" content="summary">
@@ -301,7 +303,7 @@
       
         <p>VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。</p>
 <a id="more"></a>
-<p>英文原文：<a href="http://www.vexflow.com/vextab/tutorial.html" target="_blank" rel="external">vextab tutorial</a><br>在线体验：<a href="http://52cmajor.com/tab/editor" target="_blank" rel="external">vextab 编辑器</a></p>
+<p>英文原文：<a href="http://www.vexflow.com/vextab/tutorial.html" target="_blank" rel="noopener">vextab tutorial</a><br>在线体验：<a href="http://52cmajor.com/tab/editor" target="_blank" rel="noopener">vextab 编辑器</a></p>
 <h2 id="什么是-VexTab"><a href="#什么是-VexTab" class="headerlink" title="什么是 VexTab ?"></a>什么是 VexTab ?</h2><p>VexTab 是一种用于书写音乐的语言，你只需要花非常少的时间学习一下，就可以用它来创建，编辑和分享非常好看的五线谱和六线谱了。和 ASCII 谱的设计目标为易于阅读不一样，VexTab 是为了可方便书写而诞生的。</p>
 <p>下面就让我们开始学习书写这漂亮而美好的音符吧。</p>
 <h2 id="第一步：谱表"><a href="#第一步：谱表" class="headerlink" title="第一步：谱表"></a>第一步：谱表</h2><p>关键字<code>tabstave</code>用于创建一行谱表，下面的编辑框都是可以进行编辑的，赶紧试一下在新的一行添加<code>tabstave</code>看看效果吧。</p>
@@ -310,7 +312,7 @@
 </pre>
 
 <h2 id="第二步：添加一些音符"><a href="#第二步：添加一些音符" class="headerlink" title="第二步：添加一些音符"></a>第二步：添加一些音符</h2><p>关键字<code>notes</code>可以用于添加音符。你可以通过在钢琴上的位置(<code>note/octave</code>)或者吉他指板的位置(<code>fret/string</code>)来表示。如果需要在同一根弦或者同个音区添加多个音符，可以通过这种表达式：<code>fret-fret-fret/string</code> (或者 <code>note-note-note/octave</code>)。根据你个人的喜爱来选择即可。</p>
-<p>试着编辑一下下面的音符，留意它们在谱上的位置变化，结合下面的音区图去理解语法的作用。音符后可以跟随<code>#</code>, <code>##</code>, <code>@</code>, <code>@@</code>, 和 <code>n</code> 这几种记号，它们分别表示升半音，升全音，降半音，降全音和<a href="https://zh.wikipedia.org/wiki/%E8%BF%98%E5%8E%9F%E5%8F%B7" target="_blank" rel="external">还原音</a>。</p>
+<p>试着编辑一下下面的音符，留意它们在谱上的位置变化，结合下面的音区图去理解语法的作用。音符后可以跟随<code>#</code>, <code>##</code>, <code>@</code>, <code>@@</code>, 和 <code>n</code> 这几种记号，它们分别表示升半音，升全音，降半音，降全音和<a href="https://zh.wikipedia.org/wiki/%E8%BF%98%E5%8E%9F%E5%8F%B7" target="_blank" rel="noopener">还原音</a>。</p>
 <pre class="vex-tab-container">tabstave notation=true tablature=false
 notes Cn-D-E/4 F#/5</pre>
 
@@ -611,7 +613,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
 <li>note: 音符</li>
 <li>octave: 八度音阶</li>
 <li>fret: 指板</li>
-<li>natural: <a href="https://zh.wikipedia.org/wiki/%E5%8F%98%E9%9F%B3%E8%AE%B0%E5%8F%B7" target="_blank" rel="external">还原音</a></li>
+<li>natural: <a href="https://zh.wikipedia.org/wiki/%E5%8F%98%E9%9F%B3%E8%AE%B0%E5%8F%B7" target="_blank" rel="noopener">还原音</a></li>
 <li>time：节拍</li>
 <li>tuning: 起音</li>
 <li>clef: 谱号</li>
@@ -623,17 +625,17 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
 <li>percussion: 打击乐器</li>
 <li>common time: 4/4 拍。</li>
 <li>rest: 休止符</li>
-<li>double bar: <a href="https://zhidao.baidu.com/question/281000868.html" target="_blank" rel="external">复纵线</a></li>
+<li>double bar: <a href="https://zhidao.baidu.com/question/281000868.html" target="_blank" rel="noopener">复纵线</a></li>
 <li>mute note: 哑音</li>
 <li>vibrato: 颤音</li>
 <li>chord: 和弦</li>
 <li>hammer-on: 击弦</li>
 <li>pull-off: 勾弦</li>
-<li>tap: <a href="https://www.bilibili.com/video/av9756522/" target="_blank" rel="external">點弦</a>，轻敲吉他</li>
+<li>tap: <a href="https://www.bilibili.com/video/av9756522/" target="_blank" rel="noopener">點弦</a>，轻敲吉他</li>
 <li>slide: 滑弦</li>
 <li>lyrics: 歌词</li>
-<li>articulation: <a href="https://zh.wikipedia.org/wiki/%E9%8A%9C%E6%8E%A5_(%E9%9F%B3%E6%A8%82" target="_blank" rel="external">衔接</a>)，是音乐上的方向或技术。它影响到乐曲里音符之间的过渡或连续性。</li>
-<li>staccato: (意大利语) <a href="https://zh.wikipedia.org/wiki/%E6%96%B7%E5%A5%8F" target="_blank" rel="external">断音</a>，断奏，指音符的实际时值比谱上所示的短，而减短的部分则可不作声，并于音符上加上一小点表示。</li>
+<li>articulation: <a href="https://zh.wikipedia.org/wiki/%E9%8A%9C%E6%8E%A5_(%E9%9F%B3%E6%A8%82" target="_blank" rel="noopener">衔接</a>)，是音乐上的方向或技术。它影响到乐曲里音符之间的过渡或连续性。</li>
+<li>staccato: (意大利语) <a href="https://zh.wikipedia.org/wiki/%E6%96%B7%E5%A5%8F" target="_blank" rel="noopener">断音</a>，断奏，指音符的实际时值比谱上所示的短，而减短的部分则可不作声，并于音符上加上一小点表示。</li>
 <li>fermata: 延音</li>
 <li>staccatissimo: 特断音</li>
 <li>accent: 重音</li>
@@ -807,7 +809,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
