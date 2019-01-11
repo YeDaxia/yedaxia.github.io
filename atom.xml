@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2018-08-30T17:20:03.980Z</updated>
+  <updated>2019-01-10T16:08:19.575Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://yedaxia.github.io/Muse27-Quick-Start/"/>
     <id>https://yedaxia.github.io/Muse27-Quick-Start/</id>
     <published>2018-08-30T16:25:43.000Z</published>
-    <updated>2018-08-30T17:20:03.980Z</updated>
+    <updated>2019-01-10T16:08:19.575Z</updated>
     
     <content type="html"><![CDATA[<p>很难用的软件，但语法还是有可取的地方，仔细研究了一下，顺便出了个针对吉他谱和简谱的快速入门教程。</p>
 <a id="more"></a>
@@ -28,18 +28,18 @@
 <li><a href="https://pan.baidu.com/s/1Xnb6tKkkYD5OgWlESu8i8g" target="_blank" rel="noopener">下载</a>。</li>
 <li>安装后把注册机放到安装目录下，然后双击打开注册机，复制注册码。</li>
 </ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822230808.png" alt=""></p>
+<p><img src="/assets/20180822230808.png" alt=""></p>
 <ol start="3">
 <li>打开软件【帮助】菜单 -》输入注册码，把获取到的注册码输入即可。</li>
 </ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822230610.png" alt=""></p>
+<p><img src="/assets/20180822230610.png" alt=""></p>
 <blockquote>
 <p>注意：这个软件 09 年就不维护了，杀毒软件会会提示木马，仅供研究，风险自担～</p>
 </blockquote>
 <p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T: 暖暖</span><br><span class="line">T: 演唱 梁静茹</span><br><span class="line">C: C大调音乐网</span><br><span class="line">M: 4/4</span><br><span class="line">Q: 60</span><br><span class="line">K: C</span><br><span class="line">L: 1/4</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822172644.png" alt=""></p>
+<p><img src="/assets/20180822172644.png" alt=""></p>
 <p><strong>解释：</strong></p>
 <ol>
 <li>T： 第一个标题是大标题，第二个 T 是小标题。</li>
@@ -50,17 +50,17 @@
 <li>L：默认拍长，就是音符单独出现的时候表示的拍长，如下代码和图：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[V:1]</span><br><span class="line">L: 1/4</span><br><span class="line">C</span><br><span class="line"></span><br><span class="line">[V:2]</span><br><span class="line">L: 1/8</span><br><span class="line">CD</span><br></pre></td></tr></table></figure>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822201209.png" alt=""></p>
+<p><img src="/assets/20180822201209.png" alt=""></p>
 <h1 id="音轨信息"><a href="#音轨信息" class="headerlink" title="音轨信息"></a>音轨信息</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">V:1 style=tab clef=standardtab ins=24 vol=40 bracket=2</span><br><span class="line">V:2 style=jianpu ins=1 vol=100</span><br><span class="line">[V:1]</span><br><span class="line">ax</span><br><span class="line">[V:2]</span><br><span class="line">C</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822202137.png" alt=""></p>
+<p><img src="/assets/20180822202137.png" alt=""></p>
 <p><strong>解释：</strong></p>
 <p>知道 style=tab 代表六线谱，style=jianpu 代表简谱就可以了。[V:1] 表示下面写的是 V:1 style=tab 六线谱相关的音符信息，[V:2] 则对应的是简谱。</p>
 <h1 id="音符"><a href="#音符" class="headerlink" title="音符"></a>音符</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">T: 音名</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">a1b1c1d1f1 | axbxcxdxfx | [axbxcx][bxcxdx]V[axbxcx]U[bxcxdx] |z z/ z// |</span><br><span class="line">[V: 2]</span><br><span class="line">CDEFGAB | C,D,E,F,G,A,B, | C,,D,,E,,F,,G,,A,,B,, | cdefgab | c&apos;d&apos;e&apos;f&apos;g&apos;a&apos;b&apos; | ^C=C_C z |</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822204038.png" alt=""></p>
+<p><img src="/assets/20180822204038.png" alt=""></p>
 <p><strong>tab （六线）谱音符解释：</strong></p>
 <ol>
 <li>a 代表最下面的弦（吉他最细的弦），f 代表最上面的弦，abcdef 依次类推；</li>
@@ -79,7 +79,7 @@
 <h1 id="音长"><a href="#音长" class="headerlink" title="音长"></a>音长</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">T: 节奏型</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">ax*4|ax*2b1*2|ex/[axbxcx/]ex/[axbxcx/] | ex[axbxcx/][axbxcx/]ex [axbxcx] | [axex/]cx//bx// dx//ax//cx//bx// |  ex//bx/cx// ex//bx/cx// |</span><br><span class="line">ex/&gt;dx/ [cxbxax/]d/ ex/&lt;dx/  | ex/cx//&gt;dx// ex/cx//&lt;dx// | </span><br><span class="line">ex/ [cxbxax] [cxbxax/] [cxbxax] [cxbxax] | ex// [cxbxax]  ex// |</span><br><span class="line">(3axbxcx(3ax/bx/cx/|</span><br><span class="line"></span><br><span class="line">[V: 2]</span><br><span class="line">C4 | D3B | D2B2 | DB3 | C/D/E/F/ | C/D//F// C//D//F/ | D// C F// | C&gt;F C/&gt;F/ | C// F/ D//  C/D/ | (3CDE (3C/D/E/ |</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822212046.png" alt=""></p>
+<p><img src="/assets/20180822212046.png" alt=""></p>
 <p><strong>解释：</strong></p>
 <ol>
 <li>tab 谱 <em> 号表示乘以默认时长（L: 1/4），比如 ax</em>4 表示全音符；简谱则不需要加 * 号，C4 表示全音符。</li>
@@ -90,7 +90,7 @@
 <h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">T: 装饰音和倚音</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">V[axbxcx]V[bxcx]U[axbxcxdx]U[bxcxdx] | A[axbxcx]A[bxcx]B[axbxcxdx]B[bxcxdx]  |.[axbxcx] &apos;[axbxcx] T[axbxcx] H[axbxcx] | S[axbxcx]  PV[axbxcx]  S|</span><br><span class="line">[V:2]</span><br><span class="line">.C &apos;D TD HE | &#123;C&#125;C SG S|</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822213355.png" alt=""></p>
+<p><img src="/assets/20180822213355.png" alt=""></p>
 <p><strong>解释：</strong></p>
 <table>
 <thead>
@@ -151,7 +151,7 @@
 <h1 id="连音"><a href="#连音" class="headerlink" title="连音"></a>连音</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">T: 连音线用例</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">V:2 style=jianpu</span><br><span class="line">[V: 1]</span><br><span class="line">a1-a1[c1-d1]c1 | a1-S-a2-P-a3-H-a4 | [ax-bxcx]a4 [axbxcx]-S-a4 | (axbx)cx(ax |</span><br><span class="line">ax)bxcxdx | axbx(cxdx | axax)cxdx | ((axbx)cx)dx |  (ax(bxcx))((dx | ax)bx)cxax |</span><br><span class="line">[V: 2]</span><br><span class="line">CC-C-C | (CC)(CC) | CC(CC |  CC)CC |  ((CC)C)C |  (C(CC))C | CC(C(C | C)C)CC |</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822213844.png" alt=""></p>
+<p><img src="/assets/20180822213844.png" alt=""></p>
 <p><strong>解释：</strong></p>
 <ol>
 <li>相邻的可以用 - 来连接。</li>
@@ -161,9 +161,9 @@
 <h1 id="小节线和重复段"><a href="#小节线和重复段" class="headerlink" title="小节线和重复段"></a>小节线和重复段</h1><p><strong>脚本代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">T: 小节线</span><br><span class="line">K:C</span><br><span class="line">M:4/4</span><br><span class="line">L:1/4</span><br><span class="line">V:1  style=tab</span><br><span class="line">[V: 1]</span><br><span class="line">a1b1c1d1f1 | axbxcxdxfx :| axbxcxdxfx |: axbxcxdxfx :: axbxcxdxfx |</span><br><span class="line">axbxcxdxfx ]| axbxcxdxfx |[  axbxcxdxfx |1 axbxcxdxfx |2 axbxcxdxfx ||</span><br></pre></td></tr></table></figure>
 <p><strong>对应的效果图：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180822215041.png" alt=""></p>
+<p><img src="/assets/20180822215041.png" alt=""></p>
 <p><strong>解释：</strong></p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400" alt=""></p>
+<p><img src="/assets/tab_abc_line_bar.png?imageView2/0/w/400" alt=""></p>
 ]]></content>
     
     <summary type="html">
@@ -247,7 +247,7 @@
     <link href="https://yedaxia.github.io/muse-tab-structure/"/>
     <id>https://yedaxia.github.io/muse-tab-structure/</id>
     <published>2018-07-21T02:05:02.000Z</published>
-    <updated>2018-07-21T04:51:42.765Z</updated>
+    <updated>2019-01-10T16:08:19.589Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。</p>
 <a id="more"></a>
@@ -407,7 +407,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((a3b2d2)b1)</span><br></pre></td></tr></table></figure>
 <h2 id="小节线和重复线"><a href="#小节线和重复线" class="headerlink" title="小节线和重复线"></a>小节线和重复线</h2><p>数据结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    el_type:&apos;bar&apos;,</span><br><span class="line">    type: &apos;bar_thin&apos; //bar类型</span><br><span class="line">    startEnding: &apos;&apos; //重复段落数字和开始标志</span><br><span class="line">    endEnding: &apos;&apos;  //重复结束标志</span><br><span class="line">    barNumber: &apos;&apos; //忽略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400" alt="abc bar"></p>
+<p><img src="/assets/tab_abc_line_bar.png?imageView2/0/w/400" alt="abc bar"></p>
 <h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><p>英文歌词以空格断字，中文单字断字。</p>
 <table>
 <thead>
@@ -504,7 +504,7 @@
     <link href="https://yedaxia.github.io/Android-Sync-Audio-Record-With-Play/"/>
     <id>https://yedaxia.github.io/Android-Sync-Audio-Record-With-Play/</id>
     <published>2018-03-17T17:17:50.000Z</published>
-    <updated>2018-06-03T05:20:16.300Z</updated>
+    <updated>2019-01-10T16:08:19.587Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文章可以为你提供一个解决录音和播放的同步的思路，而且解决了声音从手机传输到耳机上的延时的问题。</p>
 <a id="more"></a>
@@ -529,13 +529,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// play 和 record 两个同步线程</span></span><br><span class="line">CyclicBarrier recordBarrier = <span class="keyword">new</span> CyclicBarrier(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">AudioTrack audioTrack;</span><br><span class="line">AudioRecord audioRecord;</span><br><span class="line"></span><br><span class="line"><span class="comment">// UI Thread</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>&#123;</span><br><span class="line">    recordBarrier.reset();</span><br><span class="line">    audioTrack.play();</span><br><span class="line">    audioRecord.startRecording();</span><br><span class="line">    <span class="keyword">new</span> RecordThread().start();</span><br><span class="line">    <span class="keyword">new</span> PlayThread().start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecordThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//等play线程开始写的时候read</span></span><br><span class="line">        recordBarrier.await();</span><br><span class="line">        audioRecord.read();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//等reacord线程开始读的时候write</span></span><br><span class="line">        recordBarrier.await();</span><br><span class="line">        audioTrack.write();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面通过<code>CyclicBarrier</code>让 <code>AudioTrack</code>的 <code>write</code> 和 <code>AudioRecord</code> 的 <code>read</code> 在同一起跑线上，似乎事情已经解决了，然而并没有。虽然你开始往耳机<code>write</code>数据，但是耳机接收到信号真正发出声音还要一段时间。</p>
 <h1 id="处理录音延时问题"><a href="#处理录音延时问题" class="headerlink" title="处理录音延时问题"></a>处理录音延时问题</h1><p>我们回到用户真实的使用场景中，来看看问题是如何发生的？</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/WX20180318-10194.png?imageView2/0/w/400" alt="录音延时"></p>
+<p><img src="/assets/WX20180318-10194.png?imageView2/0/w/400" alt="录音延时"></p>
 <p>播放源是真实的数据源，比如位于 1ms 的伴奏数据块从写入<code>AudioTrack</code>开始到耳机播放可能已经是 100ms 后的事情了，而用户这个时候才开始录入自己的声音，这里还可能会有从设备开始采集声音到缓冲区的一个延时，如果是使用蓝牙耳机的话，那延时的问题就会更加突出了。</p>
 <p>我们来感受一下延时的情况，在咖啡馆录的音，杂音比较多，但是不难听出来录音是比原来的声音要延迟了。</p>
-<audio controls="controls" height="40" width="100"><br>  <source src="http://ohb4y25jk.bkt.clouddn.com/audio-sync-test-1.mp3"><br></audio>
+<audio controls="controls" height="40" width="100"><br>  <source src="/assets/audio-sync-test-1.mp3"><br></audio>
 
 <p>看下声波图：</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/WX20180318-125342.png?imageView2/0/w/400" alt="延迟声波图"></p>
+<p><img src="/assets/WX20180318-125342.png?imageView2/0/w/400" alt="延迟声波图"></p>
 <p><strong>解决方案：</strong></p>
 <p>当录音和播放开始之后，它们就会在同一时域中平行演绎，根据延时的特点，我们不难得出：</p>
 <blockquote>
@@ -547,13 +547,13 @@
 <li>让用户带上耳机，根据固定节奏的节拍器(要有一定时间间隔)声音进行录音，简单的<code>啦..啦..啦..</code>就好。</li>
 <li>根据获取到的录音数据和原始的节拍器声音进行比较, 我取的是 8 个波峰区间数据进行比较，如果延迟误差都在一个小范围内，那就认为是正确的。</li>
 </ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/WX20180318-133238.png?imageView/0/w/400" alt=""></p>
+<p><img src="/assets/WX20180318-133238.png?imageView/0/w/400" alt=""></p>
 <p>具体的算法大概如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ANALYZE_BEAT_LEN = 8</span></span><br><span class="line"><span class="keyword">int</span>[] maxPositions = <span class="keyword">new</span> <span class="keyword">int</span>[ANALYZE_BEAT_LEN];</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i != maxPositions.length; i++)&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] segBytes = getSegBytes(); <span class="comment">//获取一拍时长的数据</span></span><br><span class="line">    maxPositions[i] = getMaxSamplePos(segBytes);<span class="comment">// 获取拍中波峰所在的大致位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//按小到大排序</span></span><br><span class="line">Arrays.sort(maxPositions);</span><br><span class="line"></span><br><span class="line"><span class="comment">//取中间一半的值，如果平均值误差在 10 毫秒内，就认为是正确的</span></span><br><span class="line"><span class="keyword">int</span> sampleTotalValue = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> sampleLen = ANALYZE_BEAT_LEN / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span>[] sampleValues = <span class="keyword">new</span> <span class="keyword">int</span>[sampleLen];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> beginIndex = sampleLen / <span class="number">2</span>, i=<span class="number">0</span>; i != sampleLen; i++)&#123;</span><br><span class="line">    sampleValues[i] = maxPositions[ i + beginIndex];</span><br><span class="line">    sampleTotalValue += sampleValues[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> averSampleValue = sampleTotalValue / sampleLen;</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> isValid = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> sampleValue : sampleValues)&#123;</span><br><span class="line">    <span class="comment">//errorRangeByteLen : 10 毫秒的 byte 长度</span></span><br><span class="line">    <span class="keyword">if</span>(Math.abs(averSampleValue - sampleValue) &gt; errorRangeByteLen)&#123;</span><br><span class="line">        isValid = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(isValid)&#123;</span><br><span class="line">    stopPlay = <span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">// 结果</span></span><br><span class="line">    <span class="keyword">int</span> result = averSampleValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p>波形图：</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/20180318-141515-adjust.png?imageView2/0/w/400" alt=""></p>
+<p><img src="/assets/20180318-141515-adjust.png?imageView2/0/w/400" alt=""></p>
 <p>声音结果：</p>
-<audio controls="controls" height="40" width="100"><br>  <source src="http://ohb4y25jk.bkt.clouddn.com/audio-sync-test-2.mp3"><br></audio>
+<audio controls="controls" height="40" width="100"><br>  <source src="/assets/audio-sync-test-2.mp3"><br></audio>
 
 <p>调整之后情况就改善多了，听觉上基本感受不到延迟了。但是这样会给用户带来一些不方便，换耳机的时候需要重新调整。个人的认知实在有限，虽然这可能是个有效的方法，但肯定不是最佳的做法，同时好奇像唱吧这种软件是如何处理的？欢迎大牛们交流一下想法～</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
@@ -617,16 +617,16 @@
     <link href="https://yedaxia.github.io/Android-A-Good-MixAudioMethod/"/>
     <id>https://yedaxia.github.io/Android-A-Good-MixAudioMethod/</id>
     <published>2018-03-10T17:11:45.000Z</published>
-    <updated>2018-03-10T18:34:53.584Z</updated>
+    <updated>2019-01-10T16:08:19.590Z</updated>
     
     <content type="html"><![CDATA[<p>本文将对几种音频混音的方法进行详细的介绍和比较，读完之后你应该可以对混音有个基本的认识，针对不同情形知道应该采用哪种具体的处理方法了。</p>
 <a id="more"></a>
 <p>如果对音频的一些基础知识还不是很了解的建议先去阅读一下上一篇文章：<a href="http://yedaxia.me/Android-Audio-Basic/" target="_blank" rel="noopener">写给小白的音频认识基础
 </a>。</p>
 <h1 id="混音的原理"><a href="#混音的原理" class="headerlink" title="混音的原理"></a>混音的原理</h1><p>音频混音的原理: 空气中声波的叠加等价于量化的语音信号的叠加。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg" alt="混音原理图"></p>
+<p><img src="/assets/darcy_blog_mix_audio_theory.jpg" alt="混音原理图"></p>
 <p>这句话可能有点拗口，我们从程序员的角度去观察就不难理解了。下图是两条音轨的数据，将每个通道的值做线性叠加后的值就是混音的结果了。比如音轨A和音轨B的叠加，<code>A.1</code> 表示 A 音轨的 1 通道的值 <code>AB03</code> , <code>B.1</code> 表示 B 音轨的 1 通道的值 <code>1122</code> , 结果是 <code>bc25</code>，然后按照低位在前的方式排列，在合成音轨中就是 <code>25bc</code>，这里的表示都是 16 进制的。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/digital-audio-mix-theory.png?imageView2/0/w/500" alt="音轨合成图"></p>
+<p><img src="/assets/digital-audio-mix-theory.png?imageView2/0/w/500" alt="音轨合成图"></p>
 <p>直接加起来就可以了？事情如果这么简单就好了。音频设备支持的采样精度肯定都是有限的，一般为 8 位或者 16 位，大一些的为 32 位。在音轨数据叠加的过程中，肯定会导致溢出的问题。为了解决这个问题，人们找了不少的办法。这里我主要介绍几种我用过的，并给出相关代码实现和最终的混音效果对比结果。</p>
 <h1 id="线性叠加平均"><a href="#线性叠加平均" class="headerlink" title="线性叠加平均"></a>线性叠加平均</h1><p>这种办法的原理非常简单粗暴，也不会引入噪音。原理就是把不同音轨的通道值叠加之后取平均值，这样就不会有溢出的问题了。但是会带来的后果就是某一路或几路音量特别小那么整个混音结果的音量会被拉低。</p>
 <p>以下的的单路音轨的音频参数我们假定为采样频率一致，通道数一致，通道采样精度统一为 16 位。</p>
@@ -650,19 +650,19 @@
 <p>下面是我录的两路音轨：</p>
 <ul>
 <li><p>音轨一：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/feb3bfa6-0984-4fa6-a406-228bf5ecb6ad.wav" type="audio/wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/feb3bfa6-0984-4fa6-a406-228bf5ecb6ad.wav" type="audio/wav"><br></audio>
 </li>
 <li><p>音轨二：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/8ac76e2a-792d-4716-907e-63fe602b54f1.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/8ac76e2a-792d-4716-907e-63fe602b54f1.wav"><br></audio>
 </li>
 <li><p>线性叠加平均法：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/Average-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/Average-audio.wav"><br></audio>
 </li>
 <li><p>自适应混音法：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/AutoAlign-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/AutoAlign-audio.wav"><br></audio>
 </li>
 <li><p>多通道混音：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/ChannelAlign-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/ChannelAlign-audio.wav"><br></audio>
 
 </li>
 </ul>
@@ -692,12 +692,12 @@
     <link href="https://yedaxia.github.io/Android-Audio-Basic/"/>
     <id>https://yedaxia.github.io/Android-Audio-Basic/</id>
     <published>2018-03-06T14:24:24.000Z</published>
-    <updated>2018-03-14T05:33:34.014Z</updated>
+    <updated>2019-01-10T16:08:19.582Z</updated>
     
     <content type="html"><![CDATA[<p>虽然从初中物理就认识声音是一种波，但在真正用代码去表达的时候我才建立了深刻的认识。</p>
 <a id="more"></a>
 <h1 id="初识音频"><a href="#初识音频" class="headerlink" title="初识音频"></a>初识音频</h1><p>从初中物理上我们就学到，声音是一种波。计算机只能处理离散的信号，通过收集足够多的离散的信号，来不断逼近波形，这个过程我们叫做采样。怎么样才能更好的还原声音信息呢？这里很自然引出两个概念了。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png?imageView2/0/w/400" alt="声音波形图"></p>
+<p><img src="/assets/darcy_blog_sound_wav.png?imageView2/0/w/400" alt="声音波形图"></p>
 <p><strong>采样频率(Sample Rate)</strong>：每秒采集声音的数量，它用赫兹(Hz)来表示。</p>
 <p>采样率越高越靠近原声音的波形，常见的采样率有以下几种：</p>
 <ul>
@@ -718,10 +718,10 @@
 <p>一般来说，比特率越高，音频质量越好。要注意一些比特率的换算不是 1024 作为一个级别换算的哈。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,000 bps	= 【1 kbps】 =	1,000 bit/s</span><br><span class="line">1,000,000 bps	= 【1 Mbps】 =	1,000,000 bit/s	</span><br><span class="line">1,000,000,000 bps	= 【1 Gbps】 =	1,000,000,000 bit/s</span><br></pre></td></tr></table></figure>
 <h1 id="音频在计算机中的表示"><a href="#音频在计算机中的表示" class="headerlink" title="音频在计算机中的表示"></a>音频在计算机中的表示</h1><p>我们来看一下真实音频在计算机中究竟是怎样的表示状态，这里指的是原始的数据表示，而非编码(Mp3,Acc等)后的表示，平时我们看到的<code>.wav</code>后缀的音频，把前面 44 个字节用于记录采样率、通道等的头部信息去掉后就是就是原始的音频数据了。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_wav_format.gif" alt="WAV表示图"></p>
+<p><img src="/assets/darcy_blog_wav_format.gif" alt="WAV表示图"></p>
 <p>在理解了上面的概念之后，我们再来看这张图。对于文件头部信息我们就不详细介绍了，不影响我们理解介绍的混音处理方式，需要了解的可以点击<a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="noopener">这里</a>。</p>
 <p>我们抽取其中的一个采样来看，这里我加多了一个通道，便于大家理解通道的存储位置。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/98udab8shdhvy2ncidbo.png?imageView2/0/w/390" alt="音频采样图"></p>
+<p><img src="/assets/98udab8shdhvy2ncidbo.png?imageView2/0/w/390" alt="音频采样图"></p>
 <p>不难理解，这个采样中有三个通道，每通道采样精度是 16 比特。每个采样值的排序是 Little-Endian 低位在前的方式，比如通道 1 的采样值就是 <code>AB03</code>, 每个采样值的大小表示的是幅度信息。</p>
 <p>好了，先介绍到这里，希望对你有帮助，如果文章有理解错误的地方，请给我留言指出，感谢你的阅读，下一篇将会介绍有关音频混音的相关知识。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
@@ -1223,11 +1223,11 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     <link href="https://yedaxia.github.io/how-to-prepare-a-busking/"/>
     <id>https://yedaxia.github.io/how-to-prepare-a-busking/</id>
     <published>2018-01-10T06:56:14.000Z</published>
-    <updated>2018-02-03T06:58:58.754Z</updated>
+    <updated>2019-01-10T16:08:19.581Z</updated>
     
     <content type="html"><![CDATA[<p>作为一个 busker，你要对得起这个身份，你对自己的要求不能低！</p>
 <a id="more"></a>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_photo-1486994816305-105a487dac3b.jpeg" alt=""></p>
+<p><img src="/assets/darcy_blog_photo-1486994816305-105a487dac3b.jpeg" alt=""></p>
 <h1 id="什么是busking"><a href="#什么是busking" class="headerlink" title="什么是busking?"></a>什么是busking?</h1><p>维基百科的释义：</p>
 <p>街头表演艺术 (英文: Busking)，是一种在街头上的表演艺术，此类艺术表演可能是即兴，也可是表演者每天的谋生活动， 通常在爱才者或欣赏者观点，相信此类谋生表演者是“街头艺术家”，或者尊称为街头艺人，他们跟乞丐的行为明显不同，前者的重点是展现自我才华的行为，后者目的是恳求捐赠。</p>
 <p>在音乐方面，我们通常把这种行为成为卖唱。</p>
@@ -1301,7 +1301,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     <link href="https://yedaxia.github.io/Some-Recommend-Skills-For-Primary-Programmer/"/>
     <id>https://yedaxia.github.io/Some-Recommend-Skills-For-Primary-Programmer/</id>
     <published>2017-08-28T06:36:42.000Z</published>
-    <updated>2018-02-03T06:50:32.842Z</updated>
+    <updated>2019-01-10T16:08:19.591Z</updated>
     
     <content type="html"><![CDATA[<p>每个程序员应该精挑细选和打磨他的工具箱，这里推荐的东西都是本人使用频次比较高的，不是奇淫巧技，也不需要花很多时间，但是会让你收益超额的，至少对我来说是这样的。</p>
 <p>这是很有诚意的一篇文章，你可以选择一笑而过，也可以默默收藏。</p>
@@ -1350,7 +1350,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
 <h1 id="Chrome-Bookmark"><a href="#Chrome-Bookmark" class="headerlink" title="Chrome Bookmark"></a>Chrome Bookmark</h1><p>你用什么来收集那些小的知识点和一些不错的站点呢？我的答案就是 Chrome 自带的书签了。注册一个 Google 账号，它会同步好你的书签，永不丢失。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://bookmarks</span><br></pre></td></tr></table></figure>
 <p>用这个命令可以进入书签管理器，定期清理，有价值的留下，这样你的个人知识库了就越来越丰富了。亮一下我的书签:</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxix_chrome_bookmark.png?imageView2/0/w/500" alt="my bookmark"></p>
+<p><img src="/assets/yedaxix_chrome_bookmark.png?imageView2/0/w/500" alt="my bookmark"></p>
 <p>好吧，就先介绍到这吧，夜已深。</p>
 <hr>
 <p>另外，近期打算在 GitChat 做一次分享，手把手教大家去用好上面的工具，如果你有兴趣，可以先加一下这个 Q 群：70948803， 我定用心准备好，不负期待，让大家学到东西，欢迎围观！前 10 名有福利哦 :-) !</p>
@@ -1380,19 +1380,19 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     <link href="https://yedaxia.github.io/How-JApiDocs-Help-You/"/>
     <id>https://yedaxia.github.io/How-JApiDocs-Help-You/</id>
     <published>2017-08-18T05:57:03.000Z</published>
-    <updated>2018-02-03T06:47:00.950Z</updated>
+    <updated>2019-01-10T16:08:19.577Z</updated>
     
     <content type="html"><![CDATA[<p>JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。</p>
 <a id="more"></a>
 <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>一般公司的开发流程应该是这样的，产品评估会议完了之后，接着就是各就位的设计，开发了，当然这个过程中会有一些反复的交叉。我们这里主要讨论在评估完成之后，原型交给开发的这个节点。在这个节点上，如果没有接口文档，UI 稿也还在设计，那前端开发人员只能无奈的陷入等待，然后后面时间紧迫，不得不加班完成。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
+<p><img src="/assets/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
 <p>接口文档非常重要，但什么时候写？谁来写呢？我的建议是接口的设计应该是交给有一定经验的后端开发人员来提前设计好，然后分给后端人员去实现，同时也交付接口协议给前端，两端并行开发。但实际情况是由于文档本身就是一个工作量，后端人员也不太关心前端的工作进度，而且提前设计的接口后面也可能会有一些小改动，对自己来说得不偿失，所以就变成了后端同学懒得去提前设计，一直等接口开发完了再去完善文档，这可能算好的了，有些团队就直接把一个 URL 贴到聊天框里面了事，前端同学只能去翻聊天记录。</p>
 <p>这里顺便提一下没有接口文档的后果，一个生命周期比较长的产品，肯定经历了多个版本的迭代，接口的数量也会变的庞大，新进来的开发已经没办法在短时间之内了解每个接口的作用了，当碰到相同功能的时候，很容易又写了个差不多的接口，重复的接口越来越多，当其中一个有问题时，你要处理的可不仅仅是一个地方；更惨的是客户端人员，这个接口对他来说就是个黑盒子，要打开这个盒子，只能不断找服务端的问问问了，极大的沟通成本啊～</p>
 <p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="noopener">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
 <h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="noopener">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="noopener">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="noopener">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
 <p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="noopener">点击查看</a>。</p>
 <h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="noopener">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="noopener">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
+<p><img src="/assets/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
 <p>这两天把想集成的 rap 功能做好了，终于可以自恋的总结了一下：</p>
 <table>
 <thead>
@@ -1451,7 +1451,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     <link href="https://yedaxia.github.io/JApiDocs-Introduction-For-Java-Developer/"/>
     <id>https://yedaxia.github.io/JApiDocs-Introduction-For-Java-Developer/</id>
     <published>2017-08-11T06:36:42.000Z</published>
-    <updated>2018-02-03T06:56:05.670Z</updated>
+    <updated>2019-01-10T16:08:19.578Z</updated>
     
     <content type="html"><![CDATA[<p>api 文档作为前后端同学的沟通桥梁，其重要性是不言而喻的。目前通用的工具有像<a href="https://github.com/apidoc/apidoc" target="_blank" rel="noopener">apidoc/apidoc</a>，<a href="https://github.com/caixw/apidoc" target="_blank" rel="noopener">caixw/apidoc</a>这样的第三方库，虽然具有语言无关的特性，但是真正用起来额外多了很多工作量，而且维护起来麻烦，这也是笔者设计和开发这个工具的原因，想通过 java 本身的语言特性和结合强大的 IDE ，使得生成和维护 api 文档这件事情变的自然而美好。</p>
 <a id="more"></a>
@@ -1468,7 +1468,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
 <h1 id="5分钟集成"><a href="#5分钟集成" class="headerlink" title="5分钟集成"></a>5分钟集成</h1><ol>
 <li>我们以 spring 为例，一张图很容易就明白了 JApidocs 是怎么工作的了，你在设计接口的时候可以顺便就把相关的注释给填好了，这和 Java 程序员的编程习惯是保持一致的。</li>
 </ol>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/spring-controllers.png" alt="spring controller"></p>
+<p><img src="/assets/spring-controllers.png" alt="spring controller"></p>
 <p>这里你可能会对<code>@ApiDoc</code>注解感到迷惑，这也是唯一需要一点额外工作的地方，别急，下面马上就讲到它。</p>
 <ol start="2">
 <li><code>@ApiDoc</code> 是我们定义的一个注解，除非程序运行起来，否则我们是没办法知道 <code>response</code> 里面都包含有哪些内容，但是我们明明有了相关的视图类，为了解决这个问题，我们折衷设计了这个基于<code>RetentionPolicy.SOURCE</code>的注解，它不会给现有的代码造成任何的负担。由于是基于 Java 源码进行解析的，所以你不需要依赖我们的 Jar 包，你可以在你自己的工程任意地方添加这个简单的类即可，当然，如果你连这个也不愿意也是没关系的，你只需要直接添加我们的 Jar 包即可，里面已经为你准备好这个类了。</li>
@@ -1491,7 +1491,7 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
 <ol start="4">
 <li>自定义输出 Java 和 IOS 代码：</li>
 </ol>
-<p>你可以把工程里面相关的代码模板文件拷贝出来，然后在配置参数声明好该路径即可，具体的模板文件如下：<br><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_apidocs-code-tpls.png" alt="code template files"></p>
+<p>你可以把工程里面相关的代码模板文件拷贝出来，然后在配置参数声明好该路径即可，具体的模板文件如下：<br><img src="/assets/darcy_blog_apidocs-code-tpls.png" alt="code template files"></p>
 <ol start="5">
 <li>更多的用法和不同的框架可以参考我们的示例代码。</li>
 </ol>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,23 +63,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="音频处理,Android," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml" />
+  <meta name="keywords" content="音频处理,Android,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
@@ -94,13 +94,13 @@
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="本文将对几种音频混音的方法进行详细的介绍和比较，读完之后你应该可以对混音有个基本的认识，针对不同情形知道应该采用哪种具体的处理方法了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/digital-audio-mix-theory.png?imageView2/0/w/500">
-<meta property="og:updated_time" content="2018-03-10T18:34:53.584Z">
+<meta property="og:image" content="https://yedaxia.github.io/assets/darcy_blog_mix_audio_theory.jpg">
+<meta property="og:image" content="https://yedaxia.github.io/assets/digital-audio-mix-theory.png?imageView2/0/w/500">
+<meta property="og:updated_time" content="2019-01-10T16:08:19.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android上一种效果奇好的混音方法介绍">
 <meta name="twitter:description" content="本文将对几种音频混音的方法进行详细的介绍和比较，读完之后你应该可以对混音有个基本的认识，针对不同情形知道应该采用哪种具体的处理方法了。">
-<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg">
+<meta name="twitter:image" content="https://yedaxia.github.io/assets/darcy_blog_mix_audio_theory.jpg">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://yedaxia.github.io/Android-A-Good-MixAudioMethod/"/>
+  <link rel="canonical" href="https://yedaxia.github.io/Android-A-Good-MixAudioMethod/">
 
 
   <title> Android上一种效果奇好的混音方法介绍 | 叶大侠的主页 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -157,12 +157,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">叶大侠的主页</span>
       <span class="logo-line-after"><i></i></span>
@@ -244,7 +244,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -307,9 +307,9 @@
 <p>如果对音频的一些基础知识还不是很了解的建议先去阅读一下上一篇文章：<a href="http://yedaxia.me/Android-Audio-Basic/" target="_blank" rel="noopener">写给小白的音频认识基础
 </a>。</p>
 <h1 id="混音的原理"><a href="#混音的原理" class="headerlink" title="混音的原理"></a>混音的原理</h1><p>音频混音的原理: 空气中声波的叠加等价于量化的语音信号的叠加。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg" alt="混音原理图"></p>
+<p><img src="/assets/darcy_blog_mix_audio_theory.jpg" alt="混音原理图"></p>
 <p>这句话可能有点拗口，我们从程序员的角度去观察就不难理解了。下图是两条音轨的数据，将每个通道的值做线性叠加后的值就是混音的结果了。比如音轨A和音轨B的叠加，<code>A.1</code> 表示 A 音轨的 1 通道的值 <code>AB03</code> , <code>B.1</code> 表示 B 音轨的 1 通道的值 <code>1122</code> , 结果是 <code>bc25</code>，然后按照低位在前的方式排列，在合成音轨中就是 <code>25bc</code>，这里的表示都是 16 进制的。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/digital-audio-mix-theory.png?imageView2/0/w/500" alt="音轨合成图"></p>
+<p><img src="/assets/digital-audio-mix-theory.png?imageView2/0/w/500" alt="音轨合成图"></p>
 <p>直接加起来就可以了？事情如果这么简单就好了。音频设备支持的采样精度肯定都是有限的，一般为 8 位或者 16 位，大一些的为 32 位。在音轨数据叠加的过程中，肯定会导致溢出的问题。为了解决这个问题，人们找了不少的办法。这里我主要介绍几种我用过的，并给出相关代码实现和最终的混音效果对比结果。</p>
 <h1 id="线性叠加平均"><a href="#线性叠加平均" class="headerlink" title="线性叠加平均"></a>线性叠加平均</h1><p>这种办法的原理非常简单粗暴，也不会引入噪音。原理就是把不同音轨的通道值叠加之后取平均值，这样就不会有溢出的问题了。但是会带来的后果就是某一路或几路音量特别小那么整个混音结果的音量会被拉低。</p>
 <p>以下的的单路音轨的音频参数我们假定为采样频率一致，通道数一致，通道采样精度统一为 16 位。</p>
@@ -333,19 +333,19 @@
 <p>下面是我录的两路音轨：</p>
 <ul>
 <li><p>音轨一：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/feb3bfa6-0984-4fa6-a406-228bf5ecb6ad.wav" type="audio/wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/feb3bfa6-0984-4fa6-a406-228bf5ecb6ad.wav" type="audio/wav"><br></audio>
 </li>
 <li><p>音轨二：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/8ac76e2a-792d-4716-907e-63fe602b54f1.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/8ac76e2a-792d-4716-907e-63fe602b54f1.wav"><br></audio>
 </li>
 <li><p>线性叠加平均法：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/Average-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/Average-audio.wav"><br></audio>
 </li>
 <li><p>自适应混音法：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/AutoAlign-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/AutoAlign-audio.wav"><br></audio>
 </li>
 <li><p>多通道混音：</p>
-<audio controls="controls" height="40" width="100"><br><source src="http://ohb4y25jk.bkt.clouddn.com/ChannelAlign-audio.wav"><br></audio>
+<audio controls="controls" height="40" width="100"><br><source src="/assets/ChannelAlign-audio.wav"><br></audio>
 
 </li>
 </ul>
@@ -377,13 +377,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <img id="wechat_qr" src="/assets/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <img id="alipay_qr" src="/assets/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -474,7 +474,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -484,10 +484,8 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
-               alt="叶大侠" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/yedaxia_avatar.jpeg" alt="叶大侠">
           <p class="site-author-name" itemprop="name">叶大侠</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
@@ -558,7 +556,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -609,10 +607,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2016-12 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

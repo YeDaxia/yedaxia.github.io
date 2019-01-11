@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,23 +63,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="音频处理,Android," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml" />
+  <meta name="keywords" content="音频处理,Android,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
@@ -94,15 +94,15 @@
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。 相关源码: https://github.com/YeDaxia/MusicPlus">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_wav_format.gif">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_audio_decode_flow.png">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg">
-<meta property="og:updated_time" content="2018-02-03T05:29:15.209Z">
+<meta property="og:image" content="https://yedaxia.github.io/assets/darcy_blog_sound_wav.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/darcy_blog_wav_format.gif">
+<meta property="og:image" content="https://yedaxia.github.io/assets/darcy_blog_audio_decode_flow.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/darcy_blog_mix_audio_theory.jpg">
+<meta property="og:updated_time" content="2019-01-10T16:08:19.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MediaExtractor和MediaCodec实现音频编解码和混音">
 <meta name="twitter:description" content="本文将介绍利用MediaExtractor和MediaCodec来解码音频，然后和其他音频实现混音，再编码成需要的音频格式。 相关源码: https://github.com/YeDaxia/MusicPlus">
-<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png">
+<meta name="twitter:image" content="https://yedaxia.github.io/assets/darcy_blog_sound_wav.png">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://yedaxia.github.io/Android-MediaExtractor-And-MediaCodec/"/>
+  <link rel="canonical" href="https://yedaxia.github.io/Android-MediaExtractor-And-MediaCodec/">
 
 
   <title> MediaExtractor和MediaCodec实现音频编解码和混音 | 叶大侠的主页 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -159,12 +159,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">叶大侠的主页</span>
       <span class="logo-line-after"><i></i></span>
@@ -246,7 +246,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -310,19 +310,19 @@
 <h1 id="认识数字音频"><a href="#认识数字音频" class="headerlink" title="认识数字音频"></a>认识数字音频</h1><p>在实现之前，我们先来了解一下数字音频的有关属性。</p>
 <p>采样频率(Sample Rate)：每秒采集声音的数量，它用赫兹(Hz)来表示。(采样率越高越靠近原声音的波形)<br>采样精度(Bit Depth)：指记录声音的动态范围，它以位(Bit)为单位。(声音的幅度差)<br>声音通道(Channel)：声道数。比如左声道右声道。</p>
 <p>采样量化后的音频最终是一串数字,声音的大小(幅度)会体现在这个每个数字数值大小上；而声音的高低(频率)和声音的音色(Timbre)都和时间维度有关，会体现在数字之间的差异上。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_sound_wav.png" alt=""></p>
+<p><img src="/assets/darcy_blog_sound_wav.png" alt=""></p>
 <p>在编码解码之前，我们先来感受一下原始的音频数据究竟是什么样的。我们知道 wav 文件里面放的就是原始的 PCM 数据，下面我们通过 <a href="https://developer.android.com/reference/android/media/AudioTrack.html" target="_blank" rel="noopener">AudioTrack</a> 来直接把这些数据 write 进去播放出来。下面是某个wav文件的格式，关于 wav 的格式内容可以看: <a href="http://soundfile.sapp.org/doc/WaveFormat/" target="_blank" rel="noopener">WaveFormat</a> ，可以通过 <a href="http://www.proxoft.com/binaryviewer.aspx" target="_blank" rel="noopener">Binary Viewer</a> 等工具去查看一下 wav 文件的二进制内容。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_wav_format.gif" alt=""></p>
+<p><img src="/assets/darcy_blog_wav_format.gif" alt=""></p>
 <p>下面这段代码可用于播放原生wav文件，请用它来试着播放一段 wav 格式的音频:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sampleRateInHz = <span class="number">44100</span>;</span><br><span class="line"><span class="keyword">int</span> channelConfig = AudioFormat.CHANNEL_OUT_STEREO;</span><br><span class="line"><span class="keyword">int</span> audioFormat = AudioFormat.ENCODING_PCM_16BIT;</span><br><span class="line"><span class="keyword">int</span> bufferSizeInBytes = AudioTrack.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat);</span><br><span class="line">AudioTrack audioTrack = <span class="keyword">new</span>  AudioTrack(AudioManager.STREAM_MUSIC, sampleRateInHz, channelConfig, audioFormat, bufferSizeInBytes, AudioTrack.MODE_STREAM);</span><br><span class="line">audioTrack.play();</span><br><span class="line">			</span><br><span class="line">FileInputStream audioInput = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	audioInput = <span class="keyword">new</span> FileInputStream(audioFile);<span class="comment">//put your wav file in</span></span><br><span class="line">	audioInput.read(<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">44</span>]);<span class="comment">//skid 44 wav header</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">byte</span>[] audioData = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(audioInput.read(audioData)!= -<span class="number">1</span>)&#123;</span><br><span class="line">		audioTrack.write(audioData, <span class="number">0</span>, audioData.length); <span class="comment">//play raw audio bytes</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	audioTrack.stop();</span><br><span class="line">	audioTrack.release();</span><br><span class="line">	<span class="keyword">if</span>(audioInput != <span class="keyword">null</span>)</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			audioInput.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果你有试过一下上面的例子，那你应该对音频的源数据有了一个概念了。</p>
 <h1 id="音频的解码"><a href="#音频的解码" class="headerlink" title="音频的解码"></a>音频的解码</h1><p>通过上面的介绍，我们不难知道，解码的目的就是让编码后的数据恢复成 wav 中的源数据。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_audio_decode_flow.png" alt=""></p>
+<p><img src="/assets/darcy_blog_audio_decode_flow.png" alt=""></p>
 <p>下面代码将利用 MediaExtractor 和 MediaCodec 来提取编码后的音频数据并解压成音频源数据:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> String encodeFile = <span class="string">"your encode audio file path"</span>;</span><br><span class="line">MediaExtractor extractor = <span class="keyword">new</span> MediaExtractor();</span><br><span class="line">extractor.setDataSource(encodeFile);</span><br><span class="line">MediaFormat mediaFormat = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; extractor.getTrackCount(); i++) &#123;</span><br><span class="line">	MediaFormat format = extractor.getTrackFormat(i);</span><br><span class="line">	String mime = format.getString(MediaFormat.KEY_MIME);</span><br><span class="line">	<span class="keyword">if</span> (mime.startsWith(<span class="string">"audio/"</span>)) &#123;</span><br><span class="line">		extractor.selectTrack(i);</span><br><span class="line">		mediaFormat = format;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(mediaFormat == <span class="keyword">null</span>)&#123;</span><br><span class="line">	DLog.e(<span class="string">"not a valid file with audio track.."</span>);</span><br><span class="line">	extractor.release();</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line">FileOutputStream fosDecoder = <span class="keyword">new</span> FileOutputStream(outDecodeFile);<span class="comment">//your out file path</span></span><br><span class="line">String mediaMime = mediaFormat.getString(MediaFormat.KEY_MIME);</span><br><span class="line">MediaCodec codec = MediaCodec.createDecoderByType(mediaMime);</span><br><span class="line">codec.configure(mediaFormat, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">0</span>);</span><br><span class="line">codec.start();</span><br><span class="line">ByteBuffer[] codecInputBuffers = codec.getInputBuffers();</span><br><span class="line">ByteBuffer[] codecOutputBuffers = codec.getOutputBuffers();</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">long</span> kTimeOutUs = <span class="number">5000</span>;</span><br><span class="line">MediaCodec.BufferInfo info = <span class="keyword">new</span> MediaCodec.BufferInfo();</span><br><span class="line"><span class="keyword">boolean</span> sawInputEOS = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">boolean</span> sawOutputEOS = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> totalRawSize = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (!sawOutputEOS) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!sawInputEOS) &#123;</span><br><span class="line">			<span class="keyword">int</span> inputBufIndex = codec.dequeueInputBuffer(kTimeOutUs);</span><br><span class="line">			<span class="keyword">if</span> (inputBufIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">				ByteBuffer dstBuf = codecInputBuffers[inputBufIndex];</span><br><span class="line">				<span class="keyword">int</span> sampleSize = extractor.readSampleData(dstBuf, <span class="number">0</span>);</span><br><span class="line">				<span class="keyword">if</span> (sampleSize &lt; <span class="number">0</span>) &#123;</span><br><span class="line">					DLog.i(TAG, <span class="string">"saw input EOS."</span>);</span><br><span class="line">					sawInputEOS = <span class="keyword">true</span>;</span><br><span class="line">					codec.queueInputBuffer(inputBufIndex,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,MediaCodec.BUFFER_FLAG_END_OF_STREAM );</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">long</span> presentationTimeUs = extractor.getSampleTime();</span><br><span class="line">					codec.queueInputBuffer(inputBufIndex,<span class="number">0</span>,sampleSize,presentationTimeUs,<span class="number">0</span>);</span><br><span class="line">					extractor.advance();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> res = codec.dequeueOutputBuffer(info, kTimeOutUs);</span><br><span class="line">		<span class="keyword">if</span> (res &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">			 <span class="keyword">int</span> outputBufIndex = res;</span><br><span class="line">			<span class="comment">// Simply ignore codec config buffers.</span></span><br><span class="line">			<span class="keyword">if</span> ((info.flags &amp; MediaCodec.BUFFER_FLAG_CODEC_CONFIG)!= <span class="number">0</span>) &#123;</span><br><span class="line">				 DLog.i(TAG, <span class="string">"audio encoder: codec config buffer"</span>);</span><br><span class="line">				 codec.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</span><br><span class="line">				 <span class="keyword">continue</span>;</span><br><span class="line">			 &#125;</span><br><span class="line">			 </span><br><span class="line">			<span class="keyword">if</span>(info.size != <span class="number">0</span>)&#123;</span><br><span class="line">				</span><br><span class="line">				ByteBuffer outBuf = codecOutputBuffers[outputBufIndex];</span><br><span class="line">				</span><br><span class="line">				outBuf.position(info.offset);</span><br><span class="line">				outBuf.limit(info.offset + info.size);</span><br><span class="line">				<span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[info.size];</span><br><span class="line">				outBuf.get(data);</span><br><span class="line">				totalRawSize += data.length;</span><br><span class="line">				fosDecoder.write(data);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			codec.releaseOutputBuffer(outputBufIndex, <span class="keyword">false</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> ((info.flags &amp; MediaCodec.BUFFER_FLAG_END_OF_STREAM) != <span class="number">0</span>) &#123;</span><br><span class="line">				DLog.i(TAG, <span class="string">"saw output EOS."</span>);</span><br><span class="line">				sawOutputEOS = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (res == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) &#123;</span><br><span class="line">			codecOutputBuffers = codec.getOutputBuffers();</span><br><span class="line">			DLog.i(TAG, <span class="string">"output buffers have changed."</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (res == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) &#123;</span><br><span class="line">			MediaFormat oformat = codec.getOutputFormat();</span><br><span class="line">			DLog.i(TAG, <span class="string">"output format has changed to "</span> + oformat);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	fosDecoder.close();</span><br><span class="line">	codec.stop();</span><br><span class="line">	codec.release();</span><br><span class="line">	extractor.release();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里解压出来的数据是不带文件的头部信息的，因此一般的播放器还不能识别播放，这里你可以用 AudioTrack 来播放验证一下这些解压后的数据是否正确。</p>
 <h1 id="音频的混音"><a href="#音频的混音" class="headerlink" title="音频的混音"></a>音频的混音</h1><p>音频混音的原理: 量化的语音信号的叠加等价于空气中声波的叠加。</p>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/darcy_blog_mix_audio_theory.jpg" alt="音频混音的原理图"></p>
+<p><img src="/assets/darcy_blog_mix_audio_theory.jpg" alt="音频混音的原理图"></p>
 <p>反应到音频数据上，也就是把同一个声道的数值进行简单的相加，但是这样同时会产生一个问题，那就是相加的结果可能会溢出，当然为了解决这个问题已经有很多方案了，在这里我们采用简单的平均算法(average audio mixing algorithm, 简称 V 算法)。在下面的演示程序中，我们假设音频文件是的采样率，通道和采样精度都是一样的,这样会便于处理。另外要注意的是，在源音频数据中是按照 little-endian 的顺序来排放的，PCM 值为 0 表示没声音(振幅为 0 )。</p>
 <p>代码实现:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mixAudios</span><span class="params">(File[] rawAudioFiles)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">int</span> fileSize = rawAudioFiles.length;</span><br><span class="line">	FileInputStream[] audioFileStreams = <span class="keyword">new</span> FileInputStream[fileSize];</span><br><span class="line">	File audioFile = <span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	FileInputStream inputStream;</span><br><span class="line">	<span class="keyword">byte</span>[][] allAudioBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[fileSize][];</span><br><span class="line">	<span class="keyword">boolean</span>[] streamDoneArray = <span class="keyword">new</span> <span class="keyword">boolean</span>[fileSize];</span><br><span class="line">	<span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">	<span class="keyword">int</span> offset;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> fileIndex = <span class="number">0</span>; fileIndex &lt; fileSize; ++fileIndex) &#123;</span><br><span class="line">			audioFile = rawAudioFiles[fileIndex];</span><br><span class="line">			audioFileStreams[fileIndex] = <span class="keyword">new</span> FileInputStream(audioFile);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> streamIndex = <span class="number">0</span> ; streamIndex &lt; fileSize ; ++streamIndex)&#123;</span><br><span class="line">				</span><br><span class="line">				inputStream = audioFileStreams[streamIndex];</span><br><span class="line">				<span class="keyword">if</span>(!streamDoneArray[streamIndex] &amp;&amp; (offset = inputStream.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">					allAudioBytes[streamIndex] = Arrays.copyOf(buffer,buffer.length);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					streamDoneArray[streamIndex] = <span class="keyword">true</span>;</span><br><span class="line">					allAudioBytes[streamIndex] = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">byte</span>[] mixBytes = mixRawAudioBytes(allAudioBytes);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//mixBytes 就是混合后的数据</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">boolean</span> done = <span class="keyword">true</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">boolean</span> streamEnd : streamDoneArray)&#123;</span><br><span class="line">				<span class="keyword">if</span>(!streamEnd)&#123;</span><br><span class="line">					done = <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(done)&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span>(mOnAudioMixListener != <span class="keyword">null</span>)</span><br><span class="line">			mOnAudioMixListener.onMixError(<span class="number">1</span>);</span><br><span class="line">	&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">for</span>(FileInputStream in : audioFileStreams)&#123;</span><br><span class="line">				<span class="keyword">if</span>(in != <span class="keyword">null</span>)</span><br><span class="line">					in.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 每一行是一个音频的数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">byte</span>[] averageMix(<span class="keyword">byte</span>[][] bMulRoadAudioes) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (bMulRoadAudioes == <span class="keyword">null</span> || bMulRoadAudioes.length == <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] realMixAudio = bMulRoadAudioes[<span class="number">0</span>];</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(bMulRoadAudioes.length == <span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> realMixAudio;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> rw = <span class="number">0</span> ; rw &lt; bMulRoadAudioes.length ; ++rw)&#123;</span><br><span class="line">			<span class="keyword">if</span>(bMulRoadAudioes[rw].length != realMixAudio.length)&#123;</span><br><span class="line">				Log.e(<span class="string">"app"</span>, <span class="string">"column of the road of audio + "</span> + rw +<span class="string">" is diffrent."</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> row = bMulRoadAudioes.length;</span><br><span class="line">		<span class="keyword">int</span> coloum = realMixAudio.length / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">short</span>[][] sMulRoadAudioes = <span class="keyword">new</span> <span class="keyword">short</span>[row][coloum];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; row; ++r) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; coloum; ++c) &#123;</span><br><span class="line">				sMulRoadAudioes[r][c] = (<span class="keyword">short</span>) ((bMulRoadAudioes[r][c * <span class="number">2</span>] &amp; <span class="number">0xff</span>) | (bMulRoadAudioes[r][c * <span class="number">2</span> + <span class="number">1</span>] &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">short</span>[] sMixAudio = <span class="keyword">new</span> <span class="keyword">short</span>[coloum];</span><br><span class="line">		<span class="keyword">int</span> mixVal;</span><br><span class="line">		<span class="keyword">int</span> sr = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> sc = <span class="number">0</span>; sc &lt; coloum; ++sc) &#123;</span><br><span class="line">			mixVal = <span class="number">0</span>;</span><br><span class="line">			sr = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (; sr &lt; row; ++sr) &#123;</span><br><span class="line">				mixVal += sMulRoadAudioes[sr][sc];</span><br><span class="line">			&#125;</span><br><span class="line">			sMixAudio[sc] = (<span class="keyword">short</span>) (mixVal / row);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (sr = <span class="number">0</span>; sr &lt; coloum; ++sr) &#123;</span><br><span class="line">			realMixAudio[sr * <span class="number">2</span>] = (<span class="keyword">byte</span>) (sMixAudio[sr] &amp; <span class="number">0x00FF</span>);</span><br><span class="line">			realMixAudio[sr * <span class="number">2</span> + <span class="number">1</span>] = (<span class="keyword">byte</span>) ((sMixAudio[sr] &amp; <span class="number">0xFF00</span>) &gt;&gt; <span class="number">8</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> realMixAudio;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -433,13 +433,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <img id="wechat_qr" src="/assets/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <img id="alipay_qr" src="/assets/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -526,7 +526,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -536,10 +536,8 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
-               alt="叶大侠" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/yedaxia_avatar.jpeg" alt="叶大侠">
           <p class="site-author-name" itemprop="name">叶大侠</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
@@ -610,7 +608,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -661,10 +659,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2016-12 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

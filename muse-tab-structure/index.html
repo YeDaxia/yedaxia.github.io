@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,23 +63,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="音乐编程," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml" />
+  <meta name="keywords" content="音乐编程,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
@@ -94,12 +94,12 @@
 <meta property="og:site_name" content="叶大侠的主页">
 <meta property="og:description" content="这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400">
-<meta property="og:updated_time" content="2018-07-21T04:51:42.765Z">
+<meta property="og:image" content="https://yedaxia.github.io/assets/tab_abc_line_bar.png?imageView2/0/w/400">
+<meta property="og:updated_time" content="2019-01-10T16:08:19.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Muse 乐谱数据结构解析">
 <meta name="twitter:description" content="这篇文章提出了一个支持 muse 乐谱语法的数据结构，是基于abc 乐谱数据结构的基础上进行部分优化，并支持了 tab 谱[六线谱、四线谱]、简谱。">
-<meta name="twitter:image" content="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400">
+<meta name="twitter:image" content="https://yedaxia.github.io/assets/tab_abc_line_bar.png?imageView2/0/w/400">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://yedaxia.github.io/muse-tab-structure/"/>
+  <link rel="canonical" href="https://yedaxia.github.io/muse-tab-structure/">
 
 
   <title> Muse 乐谱数据结构解析 | 叶大侠的主页 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -156,12 +156,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">叶大侠的主页</span>
       <span class="logo-line-after"><i></i></span>
@@ -243,7 +243,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -459,7 +459,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((a3b2d2)b1)</span><br></pre></td></tr></table></figure>
 <h2 id="小节线和重复线"><a href="#小节线和重复线" class="headerlink" title="小节线和重复线"></a>小节线和重复线</h2><p>数据结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    el_type:&apos;bar&apos;,</span><br><span class="line">    type: &apos;bar_thin&apos; //bar类型</span><br><span class="line">    startEnding: &apos;&apos; //重复段落数字和开始标志</span><br><span class="line">    endEnding: &apos;&apos;  //重复结束标志</span><br><span class="line">    barNumber: &apos;&apos; //忽略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ohb4y25jk.bkt.clouddn.com/tab_abc_line_bar.png?imageView2/0/w/400" alt="abc bar"></p>
+<p><img src="/assets/tab_abc_line_bar.png?imageView2/0/w/400" alt="abc bar"></p>
 <h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><p>英文歌词以空格断字，中文单字断字。</p>
 <table>
 <thead>
@@ -515,13 +515,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay"/>
+          <img id="wechat_qr" src="/assets/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="http://ohb4y25jk.bkt.clouddn.com/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay"/>
+          <img id="alipay_qr" src="/assets/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -610,7 +610,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -620,10 +620,8 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://ohb4y25jk.bkt.clouddn.com/yedaxia_avatar.jpeg"
-               alt="叶大侠" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/yedaxia_avatar.jpeg" alt="叶大侠">
           <p class="site-author-name" itemprop="name">叶大侠</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
@@ -694,7 +692,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -745,10 +743,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2016-12 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
