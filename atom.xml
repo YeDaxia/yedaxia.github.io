@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2019-01-10T16:08:19.575Z</updated>
+  <updated>2019-01-13T16:25:14.725Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://yedaxia.github.io/my-2018-summary/"/>
+    <id>https://yedaxia.github.io/my-2018-summary/</id>
+    <published>2019-01-13T07:25:38.000Z</published>
+    <updated>2019-01-13T16:25:14.725Z</updated>
+    
+    <content type="html"><![CDATA[<p>依我看，你所有的问题都可以通过多挣点钱来解决 – 生活大爆炸</p>
+<a id="more"></a>
+<p><img src="/assets/2018-art-calendar-775779.jpg" alt=""></p>
+<p>2019，数了下年轮，不敢相信离30这个数字已经这么近了，无情岁月增中减，一丝惶恐。</p>
+<p>29岁，没房没车没女朋友，存款为零。</p>
+<p>过得太差，上年的总结迟迟不想写，拖到今天，提醒自己还是要守约，为60岁的自己提供一份回顾人生的蛛丝马迹。</p>
+<p>18年初年迈的外婆因癌症离世，有关和童年记忆美好的人和事，似乎都慢慢在逝去，记忆里渐渐模糊，上帝决定要带走一些东西，从来不需要提前跟你打招呼。</p>
+<p>时间不停留，万分之一概率的意外也不会说要除了我，有些事情，想好了今天就开始吧，别再辜负年华了。</p>
+<p>4 月份回到广州，在一个共享空间租了一个工位，继续开发 C 大调的一些功能，近半年的全栈开发，慢慢从一个脑海里一个简单的想法，到产品设计，到具体的系统设计和编码，都习惯一个人来完成了。</p>
+<p>在之前公司当程序员的日子里，其实我和产品经理们相处的还是很愉快的，但内心总有一丝不甘，一个产品的成功，人们通常只会把它和产品经理联系起来，而忘记了在它背后那些亲手把它一砖一瓦搭起来的软件工程师，其实程序员应该是离互联网产品最近的人，可惜国内很多非常厉害的程序员，他们都只满足于实现产品经理们和老板的想法。</p>
+<p>找个合伙人的难度远超出我的预想，没有钱不好找人，没有人不好找钱，鸡蛋和鸡的悖论，一度非常焦虑，实则这种焦虑到今天为止其实都没摆脱哈哈。期间买了个蓝牙耳机，坚持每天跑步了一段时间，游泳也还好一周会去一次，这也许一定程度上让我免于抑郁。但作息不规律，天天吃外卖，长期长时间对着电脑屏幕，视力和手指关节都处于亚健康状态。</p>
+<p>怕朋友问起最近在做什么，真不知道该怎么回答，从来不敢标榜自己是在创业，只是内心觉得这是一件值得再坚持一下的事情。每次想要放弃的时候，很神奇就有了一个新的想法，总觉得如果把这个新的功能开发出来就能得到认可，即便结果往往只是另一个自嗨和失望。</p>
+<p>大部分时间都是在堆积代码，唯一有一些技术挑战的事情就是研究 abc 乐谱语法的解析器了，前后花了将近 2 个月的时间来做了新的乐谱渲染引擎，但还是成了“无用之物”，终究只是技术人的自娱自乐。</p>
+<p>用 cloc 统计了一下，一整年大概写了 5 万行左右的代码，其中 Java 的比例最高，其次是 javascript，用了非常多的开源项目，GitHub 是个蕴藏了无数宝藏的地方，这可能是人类历史上最伟大的协作工具之一，如果没有无数这些乐于分享的开发者，所有研究成果和代码都严格商业保密，大家都必须从零开始，这样估计很多互联网公司都要倒闭了吧。</p>
+<p>到 7 月份为止，每天的生活，基本就是从 8 楼爬下来，然后搭 BRT 去办公室，自己给自己定需求，一个人写代码，一个人吃饭，偶尔抬头看看这座城市在夕阳下的背影，然后一个人爬回 8 楼的房间里面睡觉。</p>
+<p>和机器打交道太久，跟真实的人交流成了一件需要努力的事情。而学会和不同的人打交道成了一件不得不做的事情，每次约人聊事情，总要提前先准备一下写在纸上把思路演练一遍，尽管如此，每次结束聊天后总觉得有不尽人意的地方。在和认识或不认识的朋友聊了一圈后，终于遇到了W，在近一个月的反复沟通下，我们决定一起来做 C 大调。</p>
+<p>8 月份开始就来到了 W 所在的城市-东莞，今天，也是待在东莞的一家书吧里面写这个文章。想到不用一个人来搞这个事情，事情又往前推动了一点，内心多了些许宽慰，心想只要把产品和内容完善一下，再把运营数据做的好看一点，接下来就可以启动融资了。</p>
+<p>但事情并不顺利，W 是个音乐人，有几份工作，原本说好的基本全职变成了一个兼职的状态，没办法承担起内容的建设工作。团队完全没有运营经验，资金有限，招聘的运营人员也是刚毕业的，又一时找不到合适的运营合伙人，运营就成了瞎打乱撞的一件事情。</p>
+<p>一个满带 bug 的团队是没办法走远的，融资的事情只能先放一边了，BP 就一直藏在硬盘里，到今天为止都没主动向任何一个投资人或者投资机构发出去过。</p>
+<p>进退两难，特别痛苦，to be or not to be，总要有个决定，如果选择继续，那接下来应该怎么办？找了一些朋友来聊，这里特别感谢绍琛的指导，我非常敬佩的一个同龄校友，技术出身的创业者，先后创办了多家企业，目前致力于儿童编程教育领域。在和他聊完之后发现自己遇到的这点困难跟别人比起来根本不算什么，方向错了，想办法掉头咯，不懂的东西，又暂时找不到替代的人，那就自己先一点点学着做起来。</p>
+<p>We’re gonna die… But not today.</p>
+<p>我给自己定了 3 个月的期限，如果执行的结果不理想，那就先把这个事情先停下来。同时也在调整团队和发展的方向，lu起袖子来搞运营的事情，联系大V开课、搞活动、微信裂变、写文案… </p>
+<p>时间在一天天过去，资金也在慢慢消耗殆尽… </p>
+<p>每当觉得快要完蛋的时候，却总有一些没想到，鼓舞你再坚持一下：没想到直播分享课有这么多人来报名；没想到大V们都这么挺我们；没想到搞了个广州跨年音乐会人数会不到三天报名人数就爆满….</p>
+<p>是你们给了我们前行的力量，谢谢你们！！</p>
+<p><img src="/assets/2961547276022.jpg" alt=""></p>
+<p>2018 这一年，身边的一些好友都逐渐成家，每次回家都能明显感觉到岁月在父母的脸上、发丝间留下的痕迹，对于时间的感知从未如此强烈，特别感谢亲人的支持，尤其是父亲，给了我莫大的鼓舞。</p>
+<p>2019 年，没有意外会重新回到广州有个新的开始，这将是一段值得期待的旅程。翻了一下自己的时间清单，想完成的事情都还有在做，内心稍微笃定了一些。</p>
+<p>世界这么大，一生太短，要记得浪啊~ </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;依我看，你所有的问题都可以通过多挣点钱来解决 – 生活大爆炸&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>muse 2.7 乐谱脚本快速入门</title>
@@ -2061,184 +2108,6 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
       <category term="代码规范" scheme="https://yedaxia.github.io/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
     
       <category term="团队合作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android团队技术成长计划</title>
-    <link href="https://yedaxia.github.io/Android-Learning-Team/"/>
-    <id>https://yedaxia.github.io/Android-Learning-Team/</id>
-    <published>2017-03-15T12:35:51.000Z</published>
-    <updated>2017-03-15T12:59:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近在想如何提升自己和团队成员的技术能力，其实无非就是多阅读优秀源码，优秀书籍，写技术文章等，但在查阅资料的的时候还是收获了不少东西，尤其是刘未鹏大神那篇文章，这边整理可能更多是学习相关的技能树，发表到这里当个备份了。</p>
-<a id="more"></a>
-<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>建立一个学习型的技术团队，实现公司和个人的共赢。</p>
-<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><p>对于公司:</p>
-<ul>
-<li>更高质量的产品</li>
-<li>更快的产出</li>
-</ul>
-<p>对于个人：</p>
-<ul>
-<li>更出色的能力</li>
-<li>更高的收入</li>
-<li>更少的时间投入(少加班)</li>
-</ul>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
-<li>基于现有开发中用到的库和工具，每周向自己提一个还不是特别懂的问题，通过阅读源码和相关文章，试图找到答案，并输出一篇自己的技术博文。</li>
-<li>基于当前的业务和需求，构建团队内部的基础库, 并逐步开源到社区。</li>
-<li>每月一次内部技术分享。</li>
-</ol>
-<h1 id="技术学习"><a href="#技术学习" class="headerlink" title="技术学习"></a>技术学习</h1><h2 id="优秀书籍"><a href="#优秀书籍" class="headerlink" title="优秀书籍"></a>优秀书籍</h2><p><strong>基础:</strong></p>
-<ul>
-<li>《算法导论》</li>
-<li>《数学之美》</li>
-<li><a href="http://item.jd.com/11786791.html" target="_blank" rel="noopener">《编程之法》</a></li>
-<li>《Unix高级编程》《Unix进程间通信》</li>
-<li>《TCP／IP详解》卷1卷2</li>
-</ul>
-<p><strong>语言:</strong></p>
-<ul>
-<li>《Java编程思想》</li>
-<li>《深入理解Java虚拟机》</li>
-<li><a href="http://www.infoq.com/cn/minibooks/java_memory_model?utm_source=infoq&amp;utm_campaign=user_page&amp;utm_medium=link" target="_blank" rel="noopener">《深入理解Java内存模型》</a></li>
-</ul>
-<p><strong>编码和设计:</strong></p>
-<ul>
-<li>《代码整洁之道》</li>
-<li>《设计模式》</li>
-<li><a href="https://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">《图说设计模式》</a></li>
-</ul>
-<p>Android开发:</p>
-<ul>
-<li><a href="https://developer.android.google.cn/training/index.html" target="_blank" rel="noopener">Android 开发者培训</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc-lJo_RGGXL2Psr8vVCTWjM" target="_blank" rel="noopener">Android Development Patterns 视频集锦</a></li>
-<li><a href="https://www.youtube.com/playlist?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="noopener">Android Performance Patterns 视频集锦</a></li>
-<li>《深入理解Android》系列</li>
-</ul>
-<h2 id="优秀源码"><a href="#优秀源码" class="headerlink" title="优秀源码"></a>优秀源码</h2><p><strong>网络</strong></p>
-<ul>
-<li><a href="http://square.github.io/okhttp/" target="_blank" rel="noopener">okHttp</a></li>
-<li><a href="https://github.com/square/retrofit" target="_blank" rel="noopener">retrofit</a></li>
-<li><a href="https://github.com/google/volley" target="_blank" rel="noopener">volley</a></li>
-<li><a href="https://github.com/Tencent/mars" target="_blank" rel="noopener">tencent mars</a></li>
-</ul>
-<p><strong>数据解析</strong></p>
-<ul>
-<li><a href="https://github.com/google/gson" target="_blank" rel="noopener">Gson</a></li>
-<li><a href="https://github.com/alibaba/fastjson" target="_blank" rel="noopener">fastjson</a></li>
-</ul>
-<p><strong>图片加载</strong></p>
-<ul>
-<li><a href="https://github.com/bumptech/glide" target="_blank" rel="noopener">Glide</a></li>
-<li><a href="https://github.com/square/picasso" target="_blank" rel="noopener">Picasso</a></li>
-<li><a href="https://github.com/facebook/fresco" target="_blank" rel="noopener">Fresco</a></li>
-</ul>
-<p><strong>ORM</strong></p>
-<ul>
-<li><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="noopener">greenDAO</a></li>
-<li><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="noopener">ActiveAndroid</a></li>
-</ul>
-<p><strong>视频</strong></p>
-<ul>
-<li><a href="https://github.com/bbcallen/ijkplayer" target="_blank" rel="noopener">ijkplayer</a></li>
-<li><a href="https://github.com/google/ExoPlayer" target="_blank" rel="noopener">ExoPlayer</a></li>
-<li><a href="https://github.com/sannies/mp4parser" target="_blank" rel="noopener">mp4parser</a></li>
-</ul>
-<p><strong>图片处理</strong></p>
-<ul>
-<li><a href="https://github.com/CyberAgent/android-gpuimage" target="_blank" rel="noopener">GPUImage</a></li>
-</ul>
-<p><strong>依赖注入</strong></p>
-<ul>
-<li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">Butter Knife</a></li>
-<li><a href="https://github.com/google/dagger" target="_blank" rel="noopener">Dagger(Google)</a></li>
-</ul>
-<p><strong>事件订阅</strong></p>
-<ul>
-<li><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">Event Bus</a></li>
-</ul>
-<p><strong>函数式编程</strong></p>
-<ul>
-<li><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava</a></li>
-</ul>
-<p><strong>热加载和插件化</strong></p>
-<ul>
-<li><a href="https://github.com/Tencent/tinker/" target="_blank" rel="noopener">Tinker</a></li>
-<li><a href="https://github.com/alibaba/AndFix" target="_blank" rel="noopener">AndFix</a></li>
-</ul>
-<p><strong>控件集合</strong></p>
-<ul>
-<li><a href="https://github.com/wasabeef/awesome-android-ui" target="_blank" rel="noopener">awesome-android-ui</a></li>
-</ul>
-<h2 id="质量控制"><a href="#质量控制" class="headerlink" title="质量控制"></a>质量控制</h2><ul>
-<li><a href="http://checkstyle.sourceforge.net/" target="_blank" rel="noopener">checkstyle</a></li>
-<li><a href="http://findbugs.sourceforge.net/" target="_blank" rel="noopener">findbugs</a></li>
-<li><a href="http://junit.org/junit4/" target="_blank" rel="noopener">junit</a></li>
-<li><a href="http://site.mockito.org/" target="_blank" rel="noopener">mockito</a></li>
-<li><a href="http://robolectric.org/" target="_blank" rel="noopener">robolectric</a></li>
-<li><a href="https://github.com/hehonghui/android-tech-frontier/tree/master/issue-7/%E4%BD%BF%E7%94%A8Robolectric%E5%92%8CAndroid%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A" target="_blank" rel="noopener">jacoco</a></li>
-<li><a href="https://google.github.io/android-testing-support-library/docs/espresso/" target="_blank" rel="noopener">Espresso</a></li>
-</ul>
-<h2 id="优秀站"><a href="#优秀站" class="headerlink" title="优秀站"></a>优秀站</h2><p>个人:</p>
-<ul>
-<li><a href="http://p.codekk.com/" target="_blank" rel="noopener">CodeKK</a></li>
-<li><a href="https://drakeet.me/" target="_blank" rel="noopener">Drakeet</a></li>
-<li><a href="http://gank.io/" target="_blank" rel="noopener">GankIO</a></li>
-<li><a href="http://stormzhang.com/" target="_blank" rel="noopener">stormzhang</a></li>
-<li><a href="http://www.trinea.cn/" target="_blank" rel="noopener">Trinea</a></li>
-<li><a href="https://blog.piasy.com/" target="_blank" rel="noopener">Piasy</a></li>
-<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="noopener">androiddevtools</a></li>
-<li><a href="http://droidyue.com/" target="_blank" rel="noopener">技术小黑屋</a></li>
-<li><a href="https://www.liaohuqiu.net/cn/" target="_blank" rel="noopener">Srain</a></li>
-<li><a href="http://gityuan.com/" target="_blank" rel="noopener">Gityuan</a></li>
-<li><a href="https://www.diycode.cc/" target="_blank" rel="noopener">diycode</a></li>
-<li><a href="http://hukai.me/" target="_blank" rel="noopener">胡凯</a></li>
-<li><a href="http://blog.csdn.net/luoshengyang" target="_blank" rel="noopener">老罗的Android之旅</a></li>
-<li><a href="http://blog.csdn.net/innost" target="_blank" rel="noopener">邓凡平博客</a></li>
-</ul>
-<p>团体:</p>
-<ul>
-<li><a href="">Android开发官方博客</a></li>
-<li><a href="http://tech.meituan.com/" target="_blank" rel="noopener">美团点评技术团队</a></li>
-<li><a href="https://code.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-<li><a href="http://square.github.io/" target="_blank" rel="noopener">Square</a></li>
-<li><a href="https://yq.aliyun.com/teams/13?spm=5176.100244.0.0.B7S29p" target="_blank" rel="noopener">手机淘宝技术团队</a></li>
-<li><a href="https://github.com/WeMobileDev/article" target="_blank" rel="noopener">WeMobileDev</a></li>
-<li><a href="http://www.cnblogs.com/bugly/" target="_blank" rel="noopener">腾讯bugly</a></li>
-</ul>
-<h2 id="社交账号"><a href="#社交账号" class="headerlink" title="社交账号"></a>社交账号</h2><p>Google Plus: [AndroidDevelopers,Colt McAnlis]</p>
-<p>微信公众号: [WeMobileDev,AndroidDeveloper,谷歌开发者,codeKK]</p>
-<h2 id="高效工具"><a href="#高效工具" class="headerlink" title="高效工具"></a>高效工具</h2><ul>
-<li>抓包: <a href="http://blog.devtang.com/2015/11/14/charles-introduction/" target="_blank" rel="noopener">Charles</a>, <a href="http://www.jianshu.com/p/4903a03a3816" target="_blank" rel="noopener">Fiddler</a>, Wireshark</li>
-<li>编辑器: <a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">vim</a>,  Andoid Studio#<a href="http://weishu.me/2015/12/21/android-studio-debug-tips-you-may-not-know/" target="_blank" rel="noopener">调试</a>#<a href="http://zlv.me/posts/2015/07/13/14_android-studio-tips/" target="_blank" rel="noopener">技巧1</a>#<a href="http://blog.csdn.net/growth58/article/details/46729803" target="_blank" rel="noopener">技巧2</a>#, <a href="http://xianbai.me/learn-md/index.html" target="_blank" rel="noopener">markdown</a></li>
-<li>搜索: google,github,<a href="http://www.oschina.net/" target="_blank" rel="noopener">开源中国</a></li>
-<li>绘图工具: <a href="https://www.processon.com" target="_blank" rel="noopener">processon</a></li>
-<li>协作: <a href="http://git.oschina.net/progit/" target="_blank" rel="noopener">git</a></li>
-<li>构建: <a href="https://lippiouyang.gitbooks.io/gradle-in-action-cn/content/" target="_blank" rel="noopener">gradle</a></li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><ul>
-<li><a href="http://bxbxbai.github.io/2015/09/29/why-a-team-should-write-a-blog/" target="_blank" rel="noopener">为什么技术团队应该写博客？</a></li>
-<li><a href="http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/" target="_blank" rel="noopener">为什么你应该（从现在开始就）写博客</a></li>
-<li><a href="http://qingmang.me/articles/1671909240046720664" target="_blank" rel="noopener">建立学习型组织</a></li>
-<li><a href="https://www.zhihu.com/question/19775981" target="_blank" rel="noopener">有哪些 Android 大牛的 blog 值得推荐</a></li>
-<li><a href="https://github.com/wasabeef/awesome-android-libraries" target="_blank" rel="noopener">优秀的Android开源库</a></li>
-<li><a href="https://www.diycode.cc/trends" target="_blank" rel="noopener">github排行榜</a></li>
-<li><a href="http://tech.youzan.com/code-coverage/" target="_blank" rel="noopener">浅谈测试覆盖率</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在想如何提升自己和团队成员的技术能力，其实无非就是多阅读优秀源码，优秀书籍，写技术文章等，但在查阅资料的的时候还是收获了不少东西，尤其是刘未鹏大神那篇文章，这边整理可能更多是学习相关的技能树，发表到这里当个备份了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="团队学习" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="技术成长" scheme="https://yedaxia.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
     
   </entry>
   
