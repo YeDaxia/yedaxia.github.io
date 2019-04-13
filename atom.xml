@@ -80,6 +80,147 @@
   </entry>
   
   <entry>
+    <title>重学五线谱 - 节拍篇</title>
+    <link href="https://yedaxia.github.io/relearn-score-beats/"/>
+    <id>https://yedaxia.github.io/relearn-score-beats/</id>
+    <published>2019-03-29T16:13:58.000Z</published>
+    <updated>2019-04-13T16:39:13.359Z</updated>
+    
+    <content type="html"><![CDATA[<p>从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。</p>
+<p>上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。</p>
+<a id="more"></a>
+<p>横跨广州小蛮腰和珠江新城的猎德大桥，桥墩下面应该是安装了某种类似弹簧的缓冲器，每当有车经过都会发出一个声响，由于车流是随机的，这些声响常常是毫无规律。尽管周围风景很美，但这种无规则、无秩序的声音容易让人烦躁，扰人心情。</p>
+<blockquote>
+<p>“任何一種運動爲了完成它自己的使命，都必須有規則、有秩序。運動中的這種秩序，也就是節奏。”<br>—前蘇聯戲劇家古里耶夫[1]</p>
+</blockquote>
+<p>音乐的节奏是一种秩序，这真是一个深刻的洞察。我们的呼吸、心跳，不就是一种有秩序的运动吗？生老病死，潮涨潮落，地球的自转公转，这些都是秩序。音乐上的节奏，会不会就是揭示我们身体运行的某种秩序呢？自然的规律，甚至宇宙运行的秩序？</p>
+<p>现在想象一下打开你的闹钟，滴滴滴滴… 它的每次音高和音量应该一样的，但你的大脑却很自然地为这个有秩序的声音叠加上强弱，如果这个例子你还不太理解，你可以试着读一下 12341234（阿拉伯数字），那个 1 是不是会感觉重一些？</p>
+<p><img src="/assets/relearn_score_beats_1.png" alt=""></p>
+<p>以上的例子，就是藏在我们身体里的秩序。而音乐家，则帮助我们发现了这些秩序，并通过音乐的语言表达了出来。</p>
+<h1 id="单拍子和复拍子"><a href="#单拍子和复拍子" class="headerlink" title="单拍子和复拍子"></a>单拍子和复拍子</h1><p>下面一段很有意思的探索旅程，请先忘记那些什么乱七八糟的乐理，纯粹跟着音乐的律动，来探索一下我们身体里面的节奏。跟着秒针的步伐，来试一下：</p>
+<p><img src="/assets/relearn_score_beats_2.png" alt=""></p>
+<p>我相信你应该知道怎么读的，如果不是特别清楚的话，可以看一下下面的视频：</p>
+<iframe src="//player.bilibili.com/player.html?aid=13412368&cid=21974646&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>嗯，下一步我随便在网易云找了几首熟悉的歌曲，你可以点击去播放感受一下它在你内心是 12 还是 123 [2]。</p>
+<p><a href="https://music.163.com/#/song?id=31654455" target="_blank" rel="noopener"><strong>Victory</strong></a>： 单拍子 12 12 12 12…</p>
+<p><a href="https://music.163.com/#/song?id=3413782" target="_blank" rel="noopener"><strong>The End of the World</strong></a>： 复拍子 123 123 123 123 …</p>
+<p><a href="https://music.163.com/#/song?id=64922" target="_blank" rel="noopener"><strong>落花流水</strong></a> ：是单拍子还是复拍子呢？公众号@我爱C大调，回复落花，看看你答对了没~</p>
+<p>如果你感受到了提到的这种身体里很自然流动的秩序，那我们下面就试着把这种感觉用科学一点的语言表达出来哈：</p>
+<p><strong>单拍子</strong>：每拍自然二等分的节拍（12的感觉）。</p>
+<p><strong>复拍子</strong>：每拍自然三等分的节拍（123的感觉）。</p>
+<h1 id="速度和音符时值"><a href="#速度和音符时值" class="headerlink" title="速度和音符时值"></a>速度和音符时值</h1><p>OK，有了对于基本拍流动的强弱感觉。我们再来学习一样东西：流动的速度~</p>
+<p>首先我们定下一个基本单位：每拍的时间应该多长，在音乐上一般用BPM（beats per minute，每分钟多少拍）来标识。演奏时其实不用真的去追求严格意义上的拍长，感觉对了就行了。就像炒菜一样，淡一点就是少放点盐，不用真的去称出精准的 1.34 克来~</p>
+<p><img src="/assets/relearn_score_beats_3.png" alt=""></p>
+<p>好了，我们已经有了一拍的时间长度了，但是我们如果想用半拍，或者1/4拍，或者 2 拍、4拍，那该怎么办？</p>
+<p>在给出答案前，我们又得先学习一个新的东西：音符时值。</p>
+<p><strong>音符时值是个相对时长的单位，它的参考系是拍长</strong>，我们先来了解一下各种音符时值的表示符号先：</p>
+<p><img src="/assets/relearn_score_beats_4.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">全音符 = 2 * 二分音符 ：一个空心圆</span><br><span class="line">二分音符 = 2 * 四份音符 ：空心圆带一条杠</span><br><span class="line">四分音符 = 2 * 八分音符号 ：实心圆带一条杠</span><br><span class="line">八分音符 = 2 * 十六分音符 ： 符尾一条线</span><br><span class="line">十六分音符 =  2 * 三十二分音符：符尾两条线</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>细心的童鞋可能已经发现，这都是二分关系，那如果是 1.5 倍关系怎么搞？为了解决这个问题，音乐家们想出了个附点音符的概念来解决这个问题？</p>
+<p><img src="/assets/relearn_score_beats_5.png" alt=""></p>
+<p>没错，就是<strong>这个点，表示增加原来时长的一半</strong>。</p>
+<p>对了，为了看起来更舒服，你在谱上面看到的符尾可能是连在一块的，希望你不会因为这样认不出这些音符值了，下面举个栗子：</p>
+<p><img src="/assets/relearn_score_beats_6.png" alt=""></p>
+<p>有了这个音符时值这个描述语言，我们可以更灵活的表达音符流动的速度了，还记得我们说过四份音符这些是相对时长描述语言，那怎么在五线谱上怎么和拍长联系起来呢？</p>
+<p><img src="/assets/relearn_score_beats_7.png" alt=""></p>
+<p>上面就表示每分钟有 80 拍，四分音符为一拍。</p>
+<p>下面是每分钟有 80 拍，四分付点音符为一拍。</p>
+<h1 id="小节和节拍"><a href="#小节和节拍" class="headerlink" title="小节和节拍"></a>小节和节拍</h1><p>从上面我们可以理解到音乐就是通过强、弱这种起伏的律动关系来让音符流动的。而小节则是可以表示这种强弱关系的基本单位。</p>
+<p>比如上面陈奕迅《落花流水》这首歌，请认真感受，它听起来就像下面的样子：</p>
+<p><img src="/assets/relearn_score_beats_8.png" alt=""></p>
+<p>如果用一个小节来区分，则就变成了下面五线谱的模样，红点标识强拍。我们把这种节拍叫做 4/4 拍，分母的4表示以四分音符为一拍，分子的4表示每个小节有4拍，这是在流行音乐中最常见的节拍。</p>
+<p><img src="/assets/relearn_score_beats_9.png" alt=""></p>
+<p>另外还有比较常用的是2/4拍和6/8拍，这里要说明一下的是 6/8 拍是个复合拍子，还记得上面提到的复合拍子的概念吗？实际就是以四分附点音符为一拍，然后再把其中一拍拆成三等分：</p>
+<p><video src="/assets/Video_of_6o8_at_90_bpm.ogv.240p.vp9.webm" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"><br>your browser does not support the video tag<br></video><br>视频来源：维基百科</p>
+<p>两种拍子的强弱关系如上，这种强拍开始的小节成为完全小节。需要注意的是，并不是所有的曲子都必须强拍开始的，我们把弱拍开始的小节成为弱起小节。</p>
+<p><img src="/assets/relearn_score_beats_10.png" alt=""></p>
+<p>嗯，最后我们再给出节拍的定义：节拍就是强、弱拍规律交替的模式。看到这里，你理解节拍了吗？</p>
+<p>文章内容为个人总结，难免有错漏，如果你有发现，欢迎给我留言。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p>[1]：音乐节奏中文百科：<a href="http://t.cn/EJen1EU" target="_blank" rel="noopener">http://t.cn/EJen1EU</a></p>
+<p>[2]：维基百科：有的人认为有“四拍子”，但也有人认为“四拍子”不过是两个二拍子。除此之外的分法都被认为是附加拍，如一小节五拍，可分为二拍子+三拍子（12123）或三拍子+二拍子（12312）（按重音位置）。不过有些类型的音乐中，五拍可能作为一个整体（尤其是速度较快时）。</p>
+<hr>
+<p>版权声明：</p>
+<p>本文首发在微信公众号@我爱C大调，未经允许，不得转载，转载或投稿请联系（DarcyYe）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。&lt;/p&gt;
+&lt;p&gt;上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="音乐" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+      <category term="乐理" scheme="https://yedaxia.github.io/tags/%E4%B9%90%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重学五线谱 - 音符篇</title>
+    <link href="https://yedaxia.github.io/relearn-score-notes/"/>
+    <id>https://yedaxia.github.io/relearn-score-notes/</id>
+    <published>2019-03-20T15:44:53.000Z</published>
+    <updated>2019-04-13T16:39:25.960Z</updated>
+    
+    <content type="html"><![CDATA[<p>从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。</p>
+<a id="more"></a>
+<p>我们在设计软件的时候，是想尽可能降低用户的认知成本。五线谱也不例外，在设计之初肯定也是想方设法让大家很容易就学会的。笔者和大部分弹吉他的童鞋一样，以前也是从来不看五线谱的，但很多音乐作品和音乐书籍都是用五线谱的，作为音乐世界通用语言，还是值得花点时间来学习一下的，有兴趣的童鞋可以跟着我的脚步，一起来学习。</p>
+<h1 id="音乐的本质"><a href="#音乐的本质" class="headerlink" title="音乐的本质"></a>音乐的本质</h1><p>我理解的音乐的本质就是<strong>音在空间和时间上的排列组合</strong>。</p>
+<p>如果忘掉手机、录音笔等能够通过采样把声音记录下来的技术手段，我们听到一段音乐，我们可以通过什么方法，以便我们的后代，后代的后代都能听到相同的一段旋律呢？</p>
+<p><img src="/assets/relearn_score_notes_1.png" alt=""></p>
+<p>上诉的方法是我简单脑洞的，按照这种办法，那应该就不用学看谱了。但如果是小提琴、长号这些乐器，那就不好使了，而且记录起来非常麻烦。我们需要一种更好的记录方法。</p>
+<p>伟大的音乐先驱们通过更高层次的抽象，发现了几乎所有的旋律，都可以通过下面的基本元素来进行表达：（下面是个人的总结，可能不完全正确）</p>
+<p><img src="/assets/relearn_score_notes_2.png" alt=""></p>
+<p>嗯，所有的记谱法都是基于这 5 种基础元素进行展开的。<strong>五线谱，就是用来抽象旋律的一套语言系统，通过这套音乐语言来达到拷贝旋律的目的</strong>。有了这层认识，下面就让我们正式开始学习五线谱吧。</p>
+<p><img src="/assets/relearn_score_notes_3.png" alt=""></p>
+<p>一个随意的例子，千万别去弹…</p>
+<h1 id="do-音在哪里？"><a href="#do-音在哪里？" class="headerlink" title="do 音在哪里？"></a>do 音在哪里？</h1><p>这可能很多初学者会问的第一个问题，在回答这个问题之前，我们先来了解一个叫做十二平均律的东西。</p>
+<p>物理上频率比为 1:2 的两个单音（从共振的原理理解一下），我们定义为一个八度。而一个八度里面，又把它拆成十二份，每个相邻音之间的频率差距成为半音，也就是音程的最小单位，这就是十二平均律（想深入了解其中物理规律的读者可以参考扩展内容）。</p>
+<p><img src="/assets/relearn_score_notes_4.png" alt=""></p>
+<p>单个音基本是无意义的，我们在表达一段旋律的时候，其实是在表达这段旋律里面音的相对关系。而 1234567 则是用来表达其中一种最常见的音阶关系，我们把这种音的相对关系称为自然大调。</p>
+<p><img src="/assets/relearn_score_notes_5.png" alt=""></p>
+<p><strong>1234567 这种在音乐中叫做唱名，它用来表示音的相对关系</strong>比较方便。而 <strong>CDEFGAB 这些叫做音名，表示的就是绝对音高</strong>，需要区别不同八度的音高时，则会在音名后加上数字，中央C是c1，高八度是c2，低八度是c ，下面以钢琴作为对照音名和五线谱的关系：</p>
+<p><img src="/assets/relearn_score_notes_6.jpeg" alt="" title="图片来源网络"></p>
+<h1 id="音符和谱号"><a href="#音符和谱号" class="headerlink" title="音符和谱号"></a>音符和谱号</h1><p>五线谱，其实不是真的只有五条线，它是可以在上面和下面增加线的。五线谱非常紧凑，线和空隙都用来表示音高了，其中，从下到上是音高（频率）轴，从左到右是时间轴。如果有升降的半音，则在音符上加 # 或者 b 表示。</p>
+<p><img src="/assets/relearn_score_notes_7.png" alt=""></p>
+<p>同时发出多个音，比如和弦，则可以在纵轴添加音符：</p>
+<p><img src="/assets/relearn_score_notes_8.png" alt=""></p>
+<p>试想一下，如果要表示非常低的音，那不是要在下面划很多线了？这样的谱就难看了，而且会浪费很多纸，因此人们就想到了用谱号来处理这个问题，用它来决定乐谱中不同位置表示的音高。</p>
+<p><img src="/assets/relearn_score_notes_9.png" alt="" title="图：维基百科，其中 G4 是表示钢琴中第 4 组八度中的 G 音，F3 表示钢琴中第 3 组八度中的 F 音。"></p>
+<p><img src="/assets/relearn_score_notes_10.png" alt=""></p>
+<h1 id="调号"><a href="#调号" class="headerlink" title="调号"></a>调号</h1><p>对于 1234567，既然它只是个相对关系，那它肯定就<strong>需要一个参考系，才能表示的到这个音具体是多高</strong>，在乐谱中，一般用音名作为它的参考系，比如 1 = C。</p>
+<p><img src="/assets/relearn_score_notes_11.png" alt=""></p>
+<p>不难看到，下面那个 B 大调由于多了很多升降号，阅读起来困难了不少，于是人们又想了一个办法来标识一个谱的调号，把那些升降号挪到谱的左边，于是 B 大调的谱就可以变成下面的形式：</p>
+<p><img src="/assets/relearn_score_notes_12.png" alt=""></p>
+<p>是不是好看了很多？这里有个非常奇妙的规律，其他调的对应关系，很容易看出，我们<strong>只要看左边的 # 或者 b 个数就能知道是什么调号了</strong>。</p>
+<p><img src="/assets/relearn_score_notes_13.png" alt="" title="来源: 维基百科"></p>
+<p>看完上面的内容，不知道你找到 do 了没有？</p>
+<p>文章内容为个人总结，难免有错漏，如果你有发现，欢迎给我留言。</p>
+<h1 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h1><p>1、知乎：为什么是12平均律，而不是13平均律：<a href="http://t.cn/EMDunpn" target="_blank" rel="noopener">http://t.cn/EMDunpn</a></p>
+<p>2、写给理工科人看的乐理：<a href="http://t.cn/RQPSZ10" target="_blank" rel="noopener">http://t.cn/RQPSZ10</a></p>
+<p>3、五度圈的终极指南：<a href="http://t.cn/EMDdBey" target="_blank" rel="noopener">http://t.cn/EMDdBey</a></p>
+<hr>
+<p>版权声明：</p>
+<p>本文首发在微信公众号@我爱C大调，未经允许，不得转载，转载或投稿请联系（DarcyYe）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="音乐" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    
+      <category term="乐理" scheme="https://yedaxia.github.io/tags/%E4%B9%90%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2018 的一些事情</title>
     <link href="https://yedaxia.github.io/my-2018-summary/"/>
     <id>https://yedaxia.github.io/my-2018-summary/</id>
@@ -1686,110 +1827,6 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
       <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
       <category term="代码重构" scheme="https://yedaxia.github.io/tags/%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录网页爬虫注意的几个问题</title>
-    <link href="https://yedaxia.github.io/SomeWebSpiderProblem/"/>
-    <id>https://yedaxia.github.io/SomeWebSpiderProblem/</id>
-    <published>2017-07-07T06:37:19.000Z</published>
-    <updated>2018-02-03T06:52:16.800Z</updated>
-    
-    <content type="html"><![CDATA[<p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
-<a id="more"></a>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。</p>
-<h1 id="设置合理的user-agent"><a href="#设置合理的user-agent" class="headerlink" title="设置合理的user-agent"></a>设置合理的user-agent</h1><p>一些站点会把这个当作很基本的过滤条件，我们就不碰壁了，直接找个浏览器粘贴一个，有些文章介绍用一些爬虫的<code>user-agent</code>，但是对方可能会有相关的爬虫服务器的 iplist，不过这种情况不多见，可以试一下。</p>
-<h1 id="设置合理的爬取间隔"><a href="#设置合理的爬取间隔" class="headerlink" title="设置合理的爬取间隔"></a>设置合理的爬取间隔</h1><p>过于频繁的流量很容易被监控到，当然除了一些没人管的站点，通常请求ip会被对方禁用一段时间，严重的可能会拉入黑名单，这就浪费掉一个 ip 地址了。如果你不是很急的话，我一般设置个 1 到 10 秒的随机访问间隔，单线程执行，慢慢爬。一般来说很多站点都能接受这样的方式，也不会给对方运维人员造成压力，如果还有限制同个 ip 的访问次数，那我们还有代理招。</p>
-<h1 id="需要登录权限"><a href="#需要登录权限" class="headerlink" title="需要登录权限"></a>需要登录权限</h1><p>有登录就有注册，以前很多注册是需要验证邮箱，通过SMTP协议读取邮件内容实现自动化是个思路，前提你也要有很多邮箱地址，牛逼的你可以自己搭建个邮件服务器，要多少有多少。现在很多是通过手机号码的验证码了，这个就麻烦了，首先要有很多设备插很多sim卡接收短信，然后还要在这些设备上把数据传到你运行的那台机子解析出验证码才能把整个流程自动化。反正我是没试过，一般我都是手工注册几个。</p>
-<p>登录的话就会简单一些，把用户名和密码post上去之后根据服务端返回的<code>Set-Cookie</code>设置好相关请求头就行了，甚至有些框架都帮你处理好了。如果需要验证码的话，出门左拐去购买破解验证码的接口或者自己实现吧，拿到凭证后就可以在相关页面里面横冲直撞了。当然，你也可以像我一样手动在浏览器上登录，拿到<code>Set-Cookie</code>之后在进行后面的操作。</p>
-<h1 id="增量爬取"><a href="#增量爬取" class="headerlink" title="增量爬取"></a>增量爬取</h1><p>如果爬的内容非常多，你永远也不知道在什么时候就 GameOver 了，因此一定要保存好你的进度，通常来说抓取工作都很重，抓到半天然后从头开始，It sucks ! 多写一点代码换来的好处是值得的。</p>
-<h1 id="代理魔法好"><a href="#代理魔法好" class="headerlink" title="代理魔法好"></a>代理魔法好</h1><p>关于拉内容，这里介绍的是终极大招了。有了代理服务器，你就相当于找到了多个帮你干活的小弟，而且还是远程指挥，被封了也不会影响到你的本尊。</p>
-<p>代理的来源：你可以自己用工具去扫描全网找到可用的免费代理，也可以像笔者一样偷懒去购买一些可用的代理。</p>
-<p>代理的使用策略：你可能拥有了便宜甚至免费的代理地址，但是这里面很多可能都没法使用，或者现在能用，待会就不能用了，因此在使用之前应该测试一下，及时移除不能用的地址，提高效率。另外，注意不要用一个代理地址连续范围，笔者的策略一般是每个请求顺序换一个代理地址，如果数量足够多的前提下，你可以尽可能地提升你的爬取线程或者进程数，由于每个 ip 的访问间隔足够长，这样也不会被封 ip 。</p>
-<h1 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h1><p>在没认识<a href="https://jsoup.org/" target="_blank" rel="noopener">Jsoup</a>之前，笔者一般通过正则表达式和字符串的处理来滤出想要的内容，如果你还在拼难写的正则表达式，不妨可以试一下 Jsoup 。</p>
-<h1 id="Ajax异步内容"><a href="#Ajax异步内容" class="headerlink" title="Ajax异步内容"></a>Ajax异步内容</h1><p>现在很多单页的应用都是先把 js 和基本的页面框架先加载，然后在异步请求一些其他的内容，比如很多的下拉到底部请求下一页的列表数据。对于这样的情况，我建议还是读一下它的 js 代码，然后模拟这个过程，这样爬取效率会更高一些；另外也可以<a href="http://www.seleniumhq.org/" target="_blank" rel="noopener">selenium</a>这样的工具来模拟浏览器的执行，这个笔者还没用过。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>抓取信息其实是个攻与防的过程，总结规律，多测试和践行你的想法，找到合适的策略。最后，善用工具，但行好事哈～</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>java 爬虫框架：<a href="https://github.com/code4craft/webmagic" target="_blank" rel="noopener">webmagic</a></li>
-<li>html解析框架：<a href="https://jsoup.org/" target="_blank" rel="noopener">jsoup</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;能随意地收集大量的信息是作为程序员一个酷炫的技能之一。他们谙习这些二进制存储和流通，不管是处于正义还是邪恶的目的，这些公开或者半公开的数据对于他们来说唾手可得！是不是有大片开场的画面感！！当然我是遵纪守法的好公民，最近需要抓取某个站点的公开数据，结合以前爬取的一些经验做个总结。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="网络爬虫" scheme="https://yedaxia.github.io/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android原生简易图文编辑器和富文本显示实现</title>
-    <link href="https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/"/>
-    <id>https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/</id>
-    <published>2017-05-21T05:57:03.000Z</published>
-    <updated>2018-02-03T06:08:10.029Z</updated>
-    
-    <content type="html"><![CDATA[<p>文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。</p>
-<p>talk is cheep, show you the code. <a href="https://github.com/YeDaxia/Android-YRichEditor" target="_blank" rel="noopener">源码参考</a></p>
-<a id="more"></a>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>尽管Android设备的性能日益增强，但是通过webview来展示内容和原生的体验还是有一定的差距的，在某些情况下，我们只是需要简单的图文并排就够了，比如一些帖子，这个时候用webview就显的有点重，考虑到这一点，我们决定在客户端原生支持特定的网页标签。</p>
-<p>为了兼顾到各个平台，我们约定输出是标准的html内容，对于已有的内容，可以进行内容的重新排版，把多余的标签去掉并换成约定好的标签。</p>
-<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/editor_screenshot.jpg?imageView2/0/w/500" alt=""></p>
-<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>笔者有着多年对于markdown编辑器的使用经验，对于markdown语法的简洁有深度的喜爱，对于很多时候的编辑工作都是够用了，我更倾向于轻便够用而非周全复杂的东西，在设计编辑器的时候，不经意就想到了markdown。</p>
-<p>经过协商我们初期先支持下面的几种简单的样式：</p>
-<ol>
-<li>标题[一级] 对应 <code>&lt;h1&gt;</code> 标签。</li>
-<li>文本段落[一级] 对应 <code>&lt;p&gt;</code> 标签。</li>
-<li>文本加粗、换行[二级，嵌在<code>&lt;p&gt;</code>里面] 对应 <code>&lt;b&gt;</code> <code>&lt;br&gt;</code> 标签。</li>
-<li>图片[一级]，对应 <code>&lt;img&gt;</code> 标签。</li>
-<li>超链接[二级] 对应 <code>&lt;a&gt;</code> 标签。</li>
-</ol>
-<p><strong>约定结果：</strong></p>
-<p>正确：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落2<span class="tag">&lt;<span class="name">b</span>&gt;</span>我是加粗部分<span class="tag">&lt;/<span class="name">b</span>&gt;</span>hello<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://github.com/pic.png"</span> <span class="attr">width</span>=<span class="string">"100"</span>, <span class="attr">height</span>=<span class="string">"100"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落3<span class="tag">&lt;<span class="name">b</span>&gt;</span>加粗加粗加粗<span class="tag">&lt;<span class="name">br</span>&gt;</span>加粗加粗加粗<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>错误：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落1<span class="tag">&lt;<span class="name">p</span>&gt;</span>内部段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落3<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://github.com/pic.png"</span> <span class="attr">width</span>=<span class="string">"100"</span>, <span class="attr">height</span>=<span class="string">"100"</span>/&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>定义好支持的标签之后，接着就是由设计师设计好各个标签对应的文字样式，间距和图片的展示方式了。</p>
-<h1 id="编辑器实现"><a href="#编辑器实现" class="headerlink" title="编辑器实现"></a>编辑器实现</h1><p>通过研究几个开源项目，发现原生实现富文本编辑器主要有两个思路，一个是基于单个EditText通过组合不同的Spannable来实现，另外一个是组合EditText和ImageView等不同的控件，个人认为第二种方式更加灵活，但是加粗，链接等处理也是需要Spannable的，因此组合了两种方式。</p>
-<p>根据上面约定支持的标签，我定义了三种类型的控件：</p>
-<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/YRichEidtText.png?imageView2/0/w/500" alt="YRichEidtText"></p>
-<ol>
-<li><code>EditImageView</code>是插入编辑框的图片控件，它也负责了上传的相关工作。</li>
-<li><code>RichEditText</code>这个控件负责段落的编辑，段落内可以支持一些文字样式，比如加粗和超链接。这个控件是<a href="https://github.com/commonsguy/cwac-richedit" target="_blank" rel="noopener">cwac-richedit</a>的一个实现，它封装了很多的spannable实现，这里只是用到了加粗和链接，源码虽然有改动，为了尊重作者的劳动成果，决定不改动它的名字。</li>
-<li><code>HeadingEditText</code>这个控件用来处理标题的输入，其实就是字体大一些和加粗的EditText。</li>
-</ol>
-<p><code>RichTextEditor</code>是比较核心的实现，它继承了<code>ScrollView</code>，它的职责是协调控件和光标、返回键之间的交互，主要实现了下面的接口：</p>
-<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/IRichEditor-Interface.png?imageView2/0/w/350" alt=""></p>
-<p>输出：生成html的过程其实就是遍历各个控件了RichEditText里面的Spannable的过程。</p>
-<p><strong>Note:</strong> 值得一提的是笔者在看的时候，发现<a href="https://github.com/commonsguy/cwac-richedit.png" target="_blank" rel="noopener">cwac-richedit</a>这个项目是运行不起来的，一般情况下到这里就放弃对这个库的研究了，但是翻了下代码，发现作者的单元测试很充分，而且文档描述也算是比较清晰，仔细研究了一下，发现代码设计的有很多亮点，思路也非常清晰，于是后面就选择了这个库作为基础的文字段落样式实现，如果想基于它实现下划线，斜体，字体颜色等功能，应该是非常方便的一件事情。</p>
-<h1 id="网页内容显示实现"><a href="#网页内容显示实现" class="headerlink" title="网页内容显示实现"></a>网页内容显示实现</h1><p>我们的富文本会作未帖子的详情和评论列表中，由于是出现在列表中，我们需要考虑到控件的复用问题，所以一开始定义一个完整实现的富文本控件的思路就放弃了，而是通过按竖直方向拆分不同的Item，利用RecylerView或者ListView的复用特性来实现，尽管这样做起来会麻烦不少，但是完美地避免了列表不断滑动过程中对象不断创建和销毁带来的内存抖动问题。</p>
-<p>从下面流程图可以看出这个处理流程，首先解析html相关节点，并把其中相关的值和属性封装到不同的对象中，然后通过列表数据去驱动整个视图的显示，解析Html是通过<a href="https://jsoup.org/" target="_blank" rel="noopener">Jsoup</a>来实现的，接口非常友好，和用Jquery差不多。</p>
-<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/html-parser-process.png?imageView2/0/w/500" alt=""></p>
-<p>由于要处理的标签很少，在Jsoup的帮助下，整个解析代码不超过30行：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Document doc = Jsoup.parseBodyFragment(htmlContent);</span><br><span class="line">List&lt;Node&gt; childNodeList = doc.body().childNodes();</span><br><span class="line"><span class="keyword">if</span> (childNodeList == <span class="keyword">null</span> || childNodeList.isEmpty()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> size = childNodeList.size();</span><br><span class="line">List&lt;IHtmlElement&gt; elList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> pos = <span class="number">0</span>; pos != size; pos++) &#123;</span><br><span class="line">    Node childNode = childNodeList.get(pos);</span><br><span class="line">    String tagName = childNode.nodeName();</span><br><span class="line">    <span class="keyword">if</span> (tagName.equalsIgnoreCase(<span class="string">"h"</span>)) &#123;</span><br><span class="line">        elList.add(<span class="keyword">new</span> PElement(Html.fromHtml(((Element) childNode).html())));</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(tagName.equalsIgnoreCase(<span class="string">"h1"</span>))&#123;</span><br><span class="line">        elList.add(<span class="keyword">new</span> HElement(((Element) childNode).html()));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (tagName.equalsIgnoreCase(<span class="string">"img"</span>)) &#123;</span><br><span class="line">        String src = childNode.attr(<span class="string">"src"</span>);</span><br><span class="line">        String width = childNode.attr(<span class="string">"width"</span>);</span><br><span class="line">        String height = childNode.attr(<span class="string">"height"</span>);</span><br><span class="line">        elList.add(<span class="keyword">new</span> ImgElement(src, NumberUtils.parseInt(width, <span class="number">0</span>), NumberUtils.parseInt(height, <span class="number">0</span>)));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (childNode <span class="keyword">instanceof</span> Element) &#123;</span><br><span class="line">            elList.add(<span class="keyword">new</span> PElement(Html.fromHtml(((Element) childNode).html())));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            elList.add(<span class="keyword">new</span> PElement(htmlContent));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>节点对象和对应的Item视图，可以看到结构还是非常清晰的，对于以后想添加一些其他的样式也是很好扩展的。</p>
-<p><img src="http://7ktocj.com1.z0.glb.clouddn.com/rich_list_element_to_item.png?imageView2/0/w/500" alt=""></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然不是一个很复杂的东西，从整个实现思路来看，还是比较好的兼顾了性能和可扩展度，也很好体现了分而治之和数据驱动视图的开发模式。不过从功能上来说还是存在一些缺陷的，比如光标不能跨段进行选择, 只能支持至上而下的排版。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>XRichText: <a href="https://github.com/sendtion/XRichText" target="_blank" rel="noopener">https://github.com/sendtion/XRichText</a></li>
-<li>cwac-richedit: <a href="https://github.com/commonsguy/cwac-richedit" target="_blank" rel="noopener">https://github.com/commonsguy/cwac-richedit</a></li>
-<li>Html解析库Jsoup：<a href="https://jsoup.org/" target="_blank" rel="noopener">https://jsoup.org/</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;文章介绍了如何在 Android 实现一个简单的富文本编辑器以及富文本的展示方案，并附有源码 demo 实现，读者可以先把 demo 运行起来，对照代码和文章阅读应该不难弄懂。&lt;/p&gt;
-&lt;p&gt;talk is cheep, show you the code. &lt;a href=&quot;https://github.com/YeDaxia/Android-YRichEditor&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;源码参考&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   

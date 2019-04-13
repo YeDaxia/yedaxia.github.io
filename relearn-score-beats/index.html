@@ -1,0 +1,765 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="音乐,乐理,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="叶大侠的主页" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
+
+
+
+
+
+
+<meta name="description" content="从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。 上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。">
+<meta name="keywords" content="音乐,乐理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学五线谱 - 节拍篇">
+<meta property="og:url" content="https://yedaxia.github.io/relearn-score-beats/index.html">
+<meta property="og:site_name" content="叶大侠的主页">
+<meta property="og:description" content="从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。 上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_1.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_2.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_3.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_4.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_5.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_6.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_7.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_8.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_9.png">
+<meta property="og:image" content="https://yedaxia.github.io/assets/relearn_score_beats_10.png">
+<meta property="og:updated_time" content="2019-04-13T16:39:13.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重学五线谱 - 节拍篇">
+<meta name="twitter:description" content="从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。 上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。">
+<meta name="twitter:image" content="https://yedaxia.github.io/assets/relearn_score_beats_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://yedaxia.github.io/relearn-score-beats/">
+
+
+  <title> 重学五线谱 - 节拍篇 | 叶大侠的主页 </title>
+</head>
+
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88015696-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">叶大侠的主页</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">纸上得来终觉浅，绝知此时要躬行。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                重学五线谱 - 节拍篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-03-30T00:13:58+08:00" content="2019-03-30">
+              2019-03-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/relearn-score-beats/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="relearn-score-beats/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>从初学者的角度，死磕音乐的逻辑，用直白的语言，让你轻松掌握五线谱。</p>
+<p>上一篇我们主要讲了音乐在空间维度上的一个演化变量：音符。接下来我们来认识音乐的另一个维度：时间维度，也就是节拍和节奏。</p>
+<a id="more"></a>
+<p>横跨广州小蛮腰和珠江新城的猎德大桥，桥墩下面应该是安装了某种类似弹簧的缓冲器，每当有车经过都会发出一个声响，由于车流是随机的，这些声响常常是毫无规律。尽管周围风景很美，但这种无规则、无秩序的声音容易让人烦躁，扰人心情。</p>
+<blockquote>
+<p>“任何一種運動爲了完成它自己的使命，都必須有規則、有秩序。運動中的這種秩序，也就是節奏。”<br>—前蘇聯戲劇家古里耶夫[1]</p>
+</blockquote>
+<p>音乐的节奏是一种秩序，这真是一个深刻的洞察。我们的呼吸、心跳，不就是一种有秩序的运动吗？生老病死，潮涨潮落，地球的自转公转，这些都是秩序。音乐上的节奏，会不会就是揭示我们身体运行的某种秩序呢？自然的规律，甚至宇宙运行的秩序？</p>
+<p>现在想象一下打开你的闹钟，滴滴滴滴… 它的每次音高和音量应该一样的，但你的大脑却很自然地为这个有秩序的声音叠加上强弱，如果这个例子你还不太理解，你可以试着读一下 12341234（阿拉伯数字），那个 1 是不是会感觉重一些？</p>
+<p><img src="/assets/relearn_score_beats_1.png" alt=""></p>
+<p>以上的例子，就是藏在我们身体里的秩序。而音乐家，则帮助我们发现了这些秩序，并通过音乐的语言表达了出来。</p>
+<h1 id="单拍子和复拍子"><a href="#单拍子和复拍子" class="headerlink" title="单拍子和复拍子"></a>单拍子和复拍子</h1><p>下面一段很有意思的探索旅程，请先忘记那些什么乱七八糟的乐理，纯粹跟着音乐的律动，来探索一下我们身体里面的节奏。跟着秒针的步伐，来试一下：</p>
+<p><img src="/assets/relearn_score_beats_2.png" alt=""></p>
+<p>我相信你应该知道怎么读的，如果不是特别清楚的话，可以看一下下面的视频：</p>
+<iframe src="//player.bilibili.com/player.html?aid=13412368&cid=21974646&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>嗯，下一步我随便在网易云找了几首熟悉的歌曲，你可以点击去播放感受一下它在你内心是 12 还是 123 [2]。</p>
+<p><a href="https://music.163.com/#/song?id=31654455" target="_blank" rel="noopener"><strong>Victory</strong></a>： 单拍子 12 12 12 12…</p>
+<p><a href="https://music.163.com/#/song?id=3413782" target="_blank" rel="noopener"><strong>The End of the World</strong></a>： 复拍子 123 123 123 123 …</p>
+<p><a href="https://music.163.com/#/song?id=64922" target="_blank" rel="noopener"><strong>落花流水</strong></a> ：是单拍子还是复拍子呢？公众号@我爱C大调，回复落花，看看你答对了没~</p>
+<p>如果你感受到了提到的这种身体里很自然流动的秩序，那我们下面就试着把这种感觉用科学一点的语言表达出来哈：</p>
+<p><strong>单拍子</strong>：每拍自然二等分的节拍（12的感觉）。</p>
+<p><strong>复拍子</strong>：每拍自然三等分的节拍（123的感觉）。</p>
+<h1 id="速度和音符时值"><a href="#速度和音符时值" class="headerlink" title="速度和音符时值"></a>速度和音符时值</h1><p>OK，有了对于基本拍流动的强弱感觉。我们再来学习一样东西：流动的速度~</p>
+<p>首先我们定下一个基本单位：每拍的时间应该多长，在音乐上一般用BPM（beats per minute，每分钟多少拍）来标识。演奏时其实不用真的去追求严格意义上的拍长，感觉对了就行了。就像炒菜一样，淡一点就是少放点盐，不用真的去称出精准的 1.34 克来~</p>
+<p><img src="/assets/relearn_score_beats_3.png" alt=""></p>
+<p>好了，我们已经有了一拍的时间长度了，但是我们如果想用半拍，或者1/4拍，或者 2 拍、4拍，那该怎么办？</p>
+<p>在给出答案前，我们又得先学习一个新的东西：音符时值。</p>
+<p><strong>音符时值是个相对时长的单位，它的参考系是拍长</strong>，我们先来了解一下各种音符时值的表示符号先：</p>
+<p><img src="/assets/relearn_score_beats_4.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">全音符 = 2 * 二分音符 ：一个空心圆</span><br><span class="line">二分音符 = 2 * 四份音符 ：空心圆带一条杠</span><br><span class="line">四分音符 = 2 * 八分音符号 ：实心圆带一条杠</span><br><span class="line">八分音符 = 2 * 十六分音符 ： 符尾一条线</span><br><span class="line">十六分音符 =  2 * 三十二分音符：符尾两条线</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>细心的童鞋可能已经发现，这都是二分关系，那如果是 1.5 倍关系怎么搞？为了解决这个问题，音乐家们想出了个附点音符的概念来解决这个问题？</p>
+<p><img src="/assets/relearn_score_beats_5.png" alt=""></p>
+<p>没错，就是<strong>这个点，表示增加原来时长的一半</strong>。</p>
+<p>对了，为了看起来更舒服，你在谱上面看到的符尾可能是连在一块的，希望你不会因为这样认不出这些音符值了，下面举个栗子：</p>
+<p><img src="/assets/relearn_score_beats_6.png" alt=""></p>
+<p>有了这个音符时值这个描述语言，我们可以更灵活的表达音符流动的速度了，还记得我们说过四份音符这些是相对时长描述语言，那怎么在五线谱上怎么和拍长联系起来呢？</p>
+<p><img src="/assets/relearn_score_beats_7.png" alt=""></p>
+<p>上面就表示每分钟有 80 拍，四分音符为一拍。</p>
+<p>下面是每分钟有 80 拍，四分付点音符为一拍。</p>
+<h1 id="小节和节拍"><a href="#小节和节拍" class="headerlink" title="小节和节拍"></a>小节和节拍</h1><p>从上面我们可以理解到音乐就是通过强、弱这种起伏的律动关系来让音符流动的。而小节则是可以表示这种强弱关系的基本单位。</p>
+<p>比如上面陈奕迅《落花流水》这首歌，请认真感受，它听起来就像下面的样子：</p>
+<p><img src="/assets/relearn_score_beats_8.png" alt=""></p>
+<p>如果用一个小节来区分，则就变成了下面五线谱的模样，红点标识强拍。我们把这种节拍叫做 4/4 拍，分母的4表示以四分音符为一拍，分子的4表示每个小节有4拍，这是在流行音乐中最常见的节拍。</p>
+<p><img src="/assets/relearn_score_beats_9.png" alt=""></p>
+<p>另外还有比较常用的是2/4拍和6/8拍，这里要说明一下的是 6/8 拍是个复合拍子，还记得上面提到的复合拍子的概念吗？实际就是以四分附点音符为一拍，然后再把其中一拍拆成三等分：</p>
+<p><video src="/assets/Video_of_6o8_at_90_bpm.ogv.240p.vp9.webm" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;"><br>your browser does not support the video tag<br></video><br>视频来源：维基百科</p>
+<p>两种拍子的强弱关系如上，这种强拍开始的小节成为完全小节。需要注意的是，并不是所有的曲子都必须强拍开始的，我们把弱拍开始的小节成为弱起小节。</p>
+<p><img src="/assets/relearn_score_beats_10.png" alt=""></p>
+<p>嗯，最后我们再给出节拍的定义：节拍就是强、弱拍规律交替的模式。看到这里，你理解节拍了吗？</p>
+<p>文章内容为个人总结，难免有错漏，如果你有发现，欢迎给我留言。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p>[1]：音乐节奏中文百科：<a href="http://t.cn/EJen1EU" target="_blank" rel="noopener">http://t.cn/EJen1EU</a></p>
+<p>[2]：维基百科：有的人认为有“四拍子”，但也有人认为“四拍子”不过是两个二拍子。除此之外的分法都被认为是附加拍，如一小节五拍，可分为二拍子+三拍子（12123）或三拍子+二拍子（12312）（按重音位置）。不过有些类型的音乐中，五拍可能作为一个整体（尤其是速度较快时）。</p>
+<hr>
+<p>版权声明：</p>
+<p>本文首发在微信公众号@我爱C大调，未经允许，不得转载，转载或投稿请联系（DarcyYe）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/assets/yedaxia-money-weixin-qrcode.jpg.png" alt="叶大侠 WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/assets/yedaxia-money-zhifubao-qrcode.jpg" alt="叶大侠 Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/音乐/" rel="tag">#音乐</a>
+          
+            <a href="/tags/乐理/" rel="tag">#乐理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/relearn-score-notes/" rel="next" title="重学五线谱 - 音符篇">
+                <i class="fa fa-chevron-left"></i> 重学五线谱 - 音符篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Who-is-Li-Zhi/" rel="prev" title="谁是李志?">
+                谁是李志? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/yedaxia_avatar.jpeg" alt="叶大侠">
+          <p class="site-author-name" itemprop="name">叶大侠</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/YeDaxia" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/da-xia-35-40" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://my.oschina.net/daxia" target="_blank" title="开源中国">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  开源中国
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sopu.52cmajor.com/" title="为你搜谱" target="_blank">为你搜谱</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://52cmajor.com/app/musicNote/" title="音乐笔记+" target="_blank">音乐笔记+</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单拍子和复拍子"><span class="nav-number">1.</span> <span class="nav-text">单拍子和复拍子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#速度和音符时值"><span class="nav-number">2.</span> <span class="nav-text">速度和音符时值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小节和节拍"><span class="nav-number">3.</span> <span class="nav-text">小节和节拍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料："><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2016-12 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶大侠</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yedaxia';
+      var disqus_identifier = 'relearn-score-beats/';
+      var disqus_title = "重学五线谱 - 节拍篇";
+      var disqus_url = 'https://yedaxia.github.io/relearn-score-beats/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
