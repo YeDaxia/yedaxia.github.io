@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2019-04-22T10:23:51.862Z</updated>
+  <updated>2019-05-13T15:16:15.409Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我在杭州@2050</title>
+    <link href="https://yedaxia.github.io/hangzhou-2050-in-2019/"/>
+    <id>https://yedaxia.github.io/hangzhou-2050-in-2019/</id>
+    <published>2019-05-02T07:31:54.000Z</published>
+    <updated>2019-05-13T15:16:15.409Z</updated>
+    
+    <content type="html"><![CDATA[<p>这段时间压力特别大，就想找个地方去散散心，刚好看到开源中国宣传了 2050 这个活动，然后我就试着报名一下那个分享嘉宾，没想到就入选了。</p>
+<p>上次上台分享由于准备不足，结果上去之后什么都忘了，这次吸取教训，提前把讲稿写好，然后提前在镜子前演练了两遍~</p>
+<p>这是我第一次去的杭州，特别舒服的一个城市，当然估计跟我身在西湖景区有关~</p>
+<p>特别感谢网友@小姗，带我逛了一天西湖，打卡了四份音符~</p>
+<p>在论坛上，但最大的收获应该是阿里云的创始人王坚博士的分享了，让我也对这个2050是有了个认识，他提到这个论坛，是50岁的人为20岁的人举办的活动，同时20岁的人也给50岁的带来一些新的认知。</p>
+<p><img src="/assets/3851557760339.jpg" alt="阿里云王坚博士@2015"></p>
+<p>他给什么是年轻人总结的特别好。</p>
+<p>第一个关键词是任性。现场有个还没毕业的大学生，从线上组织一些编程教学，到慢慢转移到线下几十人，几百人，到今天他组织起了一个一万人的编程活动，这个就是自己的未来都还不知道在哪里，就想着让别人变得更好。</p>
+<p>连自己都没打理好，就操心起别人的未来，这就是任性。</p>
+<p>第二个是不怕从零开始。张博博士就是这么一个人，他52岁考飞行驾照，54岁完成环球飞行。在逻辑思维的跨年晚会上，也有这么一个一个老奶奶，60岁开始认字，75岁开始写作，到现在为止，已经写了4本书，将近12万字，她叫姜淑梅。</p>
+<p>我不会，但我可以学。这句话里面蕴含了无穷的力量。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这段时间压力特别大，就想找个地方去散散心，刚好看到开源中国宣传了 2050 这个活动，然后我就试着报名一下那个分享嘉宾，没想到就入选了。&lt;/p&gt;
+&lt;p&gt;上次上台分享由于准备不足，结果上去之后什么都忘了，这次吸取教训，提前把讲稿写好，然后提前在镜子前演练了两遍~&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+    
+      <category term="个人成长" scheme="https://yedaxia.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>从吉他身上学到的物理知识</title>
@@ -1752,77 +1785,6 @@ text :w, |#segno, ,|, :hd, , #tr</pre>
     
     
       <category term="技术成长" scheme="https://yedaxia.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>加速前后端并行开发，JApiDocs 可以帮到你</title>
-    <link href="https://yedaxia.github.io/How-JApiDocs-Help-You/"/>
-    <id>https://yedaxia.github.io/How-JApiDocs-Help-You/</id>
-    <published>2017-08-18T05:57:03.000Z</published>
-    <updated>2019-01-10T16:08:19.577Z</updated>
-    
-    <content type="html"><![CDATA[<p>JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。</p>
-<a id="more"></a>
-<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>一般公司的开发流程应该是这样的，产品评估会议完了之后，接着就是各就位的设计，开发了，当然这个过程中会有一些反复的交叉。我们这里主要讨论在评估完成之后，原型交给开发的这个节点。在这个节点上，如果没有接口文档，UI 稿也还在设计，那前端开发人员只能无奈的陷入等待，然后后面时间紧迫，不得不加班完成。</p>
-<p><img src="/assets/yedaxia_app_product_work_flow.png" alt="develop flow"></p>
-<p>接口文档非常重要，但什么时候写？谁来写呢？我的建议是接口的设计应该是交给有一定经验的后端开发人员来提前设计好，然后分给后端人员去实现，同时也交付接口协议给前端，两端并行开发。但实际情况是由于文档本身就是一个工作量，后端人员也不太关心前端的工作进度，而且提前设计的接口后面也可能会有一些小改动，对自己来说得不偿失，所以就变成了后端同学懒得去提前设计，一直等接口开发完了再去完善文档，这可能算好的了，有些团队就直接把一个 URL 贴到聊天框里面了事，前端同学只能去翻聊天记录。</p>
-<p>这里顺便提一下没有接口文档的后果，一个生命周期比较长的产品，肯定经历了多个版本的迭代，接口的数量也会变的庞大，新进来的开发已经没办法在短时间之内了解每个接口的作用了，当碰到相同功能的时候，很容易又写了个差不多的接口，重复的接口越来越多，当其中一个有问题时，你要处理的可不仅仅是一个地方；更惨的是客户端人员，这个接口对他来说就是个黑盒子，要打开这个盒子，只能不断找服务端的问问问了，极大的沟通成本啊～</p>
-<p>在前后端协作中还有一个问题就是，即使有了完善的 API 文档，在接口没有开发出来之前，要进行接口的测试，只能本地或者通过一些平台(比如 <a href="http://rapapi.org/org/index.do" target="_blank" rel="noopener">rap</a>)去模拟接口生成相关数据，这对于前端开发人员来说也是一个额外的负担。</p>
-<h2 id="视频介绍"><a href="#视频介绍" class="headerlink" title="视频介绍"></a>视频介绍</h2><p><a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="noopener">JApiDocs</a> 可以以非常优雅的方式帮助 Java 程序员解决上面的问题，让 API 文档这件重要的”小事”不再是一种负担，尤其你如果是用 <a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">spring boot</a>、 <a href="https://www.playframework.com/" target="_blank" rel="noopener">play framework</a> 或者 <a href="http://www.jfinal.com/" target="_blank" rel="noopener">jfinal</a> 的话，你会尤其感受到它的友好。尤其是小步快跑的小团队，希望 Ta 可以帮你们赢得一些时间。</p>
-<p>本来想用图文的形式，后来灵感一现，何不用一个简短的视频呢？直接明了，所以硬着头皮第一次录了个视频，恶心的优酷有广告，视频时长3分30秒，不会浪费大家很多时间: <a href="http://v.youku.com/v_show/id_XMjk3NDk0MTY0NA==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="noopener">点击查看</a>。</p>
-<h2 id="和其他工具的对比"><a href="#和其他工具的对比" class="headerlink" title="和其他工具的对比"></a>和其他工具的对比</h2><p>JApiDocs 和 <a href="https://swagger.io/" target="_blank" rel="noopener">swagger</a>，<a href="http://apidocjs.com/" target="_blank" rel="noopener">apidocjs</a> 有什么区别呢？这里我无意见看到 github<br>上网友的提的一个 issue ，大家可以感受一下：</p>
-<p><img src="/assets/yedaxia_swagger_issue?imageView2/0/w/600" alt=""></p>
-<p>这两天把想集成的 rap 功能做好了，终于可以自恋的总结了一下：</p>
-<table>
-<thead>
-<tr>
-<th>API 工具</th>
-<th>文档支持</th>
-<th>语言支持</th>
-<th>接口测试</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>swagger</td>
-<td>功能强大，学习成本高，维护成本高</td>
-<td>多语言</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>apidocjs</td>
-<td>学习成本一般，维护成本高</td>
-<td>多语言</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>JApiDocs</td>
-<td>代码即文档，学习和维护成本低</td>
-<td>Java</td>
-<td>支持发布到 <a href="http://rapapi.org/org/" target="_blank" rel="noopener">RAP</a></td>
-</tr>
-</tbody>
-</table>
-<p>对于 Java 程序员来说，JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标。反正它已经成为我的首选 API 文档工具了，我希望也可以成为你的首选。</p>
-<h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>项目地址：<a href="https://github.com/YeDaxia/JApiDocs" target="_blank" rel="noopener">https://github.com/YeDaxia/JApiDocs</a>，目前用不到，可以先点个星星收藏起来哇。</p>
-<p>如果你以前已经在用其他的了，积重难返，我建议你还是用以前的工具；如果你还是手工去创建文档，或者要做一个新的项目，我墙裂建议你马上开始使用 JApiDocs，记得先看文档，运行一下测试用例，5分钟就能从入门到爱不释手～ 有问题欢迎反馈，我会第一时间积极响应。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JApiDocs 作为一个衔接前后端开发的的工具，尽可能把重复劳动都自动化了，实现了代码即文档，持续集成接口测试的小目标，非常优雅的解决在前后端并行开发碰到的一些问题。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="团队协作" scheme="https://yedaxia.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
-    
-      <category term="JApiDocs" scheme="https://yedaxia.github.io/tags/JApiDocs/"/>
-    
-      <category term="文档工具" scheme="https://yedaxia.github.io/tags/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="开发工具" scheme="https://yedaxia.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
