@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yedaxia.github.io/"/>
-  <updated>2019-05-13T15:16:15.409Z</updated>
+  <updated>2019-05-13T15:43:09.391Z</updated>
   <id>https://yedaxia.github.io/</id>
   
   <author>
@@ -20,26 +20,30 @@
     <link href="https://yedaxia.github.io/hangzhou-2050-in-2019/"/>
     <id>https://yedaxia.github.io/hangzhou-2050-in-2019/</id>
     <published>2019-05-02T07:31:54.000Z</published>
-    <updated>2019-05-13T15:16:15.409Z</updated>
+    <updated>2019-05-13T15:43:09.391Z</updated>
     
-    <content type="html"><![CDATA[<p>这段时间压力特别大，就想找个地方去散散心，刚好看到开源中国宣传了 2050 这个活动，然后我就试着报名一下那个分享嘉宾，没想到就入选了。</p>
-<p>上次上台分享由于准备不足，结果上去之后什么都忘了，这次吸取教训，提前把讲稿写好，然后提前在镜子前演练了两遍~</p>
+    <content type="html"><![CDATA[<p>分享一下杭州之行~</p>
+<a id="more"></a>
+<p>这段时间压力特别大，就想找个地方去散散心，刚好看到开源中国宣传了 2050 这个活动，然后我就试着报名一下那个分享嘉宾，然后就这样机缘巧合了。</p>
+<p>上次上台分享由于准备不足，结果上去之后什么都忘了，这次吸取教训，提前把讲稿写好，然后提前在镜子前演练了两遍，嗯，事实证明这样会好很多~</p>
 <p>这是我第一次去的杭州，特别舒服的一个城市，当然估计跟我身在西湖景区有关~</p>
-<p>特别感谢网友@小姗，带我逛了一天西湖，打卡了四份音符~</p>
-<p>在论坛上，但最大的收获应该是阿里云的创始人王坚博士的分享了，让我也对这个2050是有了个认识，他提到这个论坛，是50岁的人为20岁的人举办的活动，同时20岁的人也给50岁的带来一些新的认知。</p>
-<p><img src="/assets/3851557760339.jpg" alt="阿里云王坚博士@2015"></p>
+<p>特别感谢网友@小姗，带我逛了一天西湖，打卡了四份音符，这是她发掘出来的哈哈~</p>
+<p><img src="/assets/3861557760452.jpg" alt="" title="小西湖的四份音符"></p>
+<p>在论坛上，让我印象最深刻是阿里云的创始人王坚博士的讲话，对2050论坛也有了个认识，他提到这个论坛，是50岁的人为20岁的人举办的活动，同时也是20岁的人给50岁的带来一些新的认知。</p>
+<p><img src="/assets/3851557760339.jpg" alt="" title="王坚博士在大会场"></p>
 <p>他给什么是年轻人总结的特别好。</p>
-<p>第一个关键词是任性。现场有个还没毕业的大学生，从线上组织一些编程教学，到慢慢转移到线下几十人，几百人，到今天他组织起了一个一万人的编程活动，这个就是自己的未来都还不知道在哪里，就想着让别人变得更好。</p>
+<p>第一个关键词是任性。现场一个大学还没毕业的大学生，从线上组织一些编程教学，到慢慢转移到线下几十人，几百人，到今天他组织起了一个一万人的编程活动，这个就是自己的未来都还不知道在哪里，就想着让别人变得更好。</p>
 <p>连自己都没打理好，就操心起别人的未来，这就是任性。</p>
 <p>第二个是不怕从零开始。张博博士就是这么一个人，他52岁考飞行驾照，54岁完成环球飞行。在逻辑思维的跨年晚会上，也有这么一个一个老奶奶，60岁开始认字，75岁开始写作，到现在为止，已经写了4本书，将近12万字，她叫姜淑梅。</p>
 <p>我不会，但我可以学。这句话里面蕴含了无穷的力量。</p>
+<p>希望我也可以永远年轻，永远还有热泪盈眶的时刻。</p>
+<p><img src="/assets/3871557761294.jpg" alt="" title="我在分会场的分享"></p>
+<p><a href="/assets/2019-2050-ppt.keynote.zip">keynote下载</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;这段时间压力特别大，就想找个地方去散散心，刚好看到开源中国宣传了 2050 这个活动，然后我就试着报名一下那个分享嘉宾，没想到就入选了。&lt;/p&gt;
-&lt;p&gt;上次上台分享由于准备不足，结果上去之后什么都忘了，这次吸取教训，提前把讲稿写好，然后提前在镜子前演练了两遍~&lt;/p&gt;
-&lt;p
+      &lt;p&gt;分享一下杭州之行~&lt;/p&gt;
     
     </summary>
     
@@ -984,9 +988,9 @@
     </summary>
     
     
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
       <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   
@@ -1094,9 +1098,9 @@
     </summary>
     
     
-      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
-    
       <category term="音频处理" scheme="https://yedaxia.github.io/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Android" scheme="https://yedaxia.github.io/tags/Android/"/>
     
   </entry>
   
